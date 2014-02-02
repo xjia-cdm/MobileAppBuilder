@@ -1,0 +1,73 @@
+--- 
+conform: 
+    - NSObject
+properties: !java.util.LinkedHashMap
+    objectRestorationClass: !java.util.LinkedHashMap
+        name: objectRestorationClass
+        type: Class
+        ref: ""
+        explanation: The class responsible for creating this object when restoring the app?s state. (read-only)
+        readonly: true
+    restorationParent: !java.util.LinkedHashMap
+        name: restorationParent
+        type: id
+        ref: ""
+        explanation: The parent object used to scope the current object. (read-only)
+        readonly: true
+methods: !java.util.LinkedHashMap
+    applicationFinishedRestoringState: !java.util.LinkedHashMap
+        isInstance: &7 true
+        name: applicationFinishedRestoringState
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: &9 false
+            isRef: *9
+        isVarArgs: *9
+        args: []
+    decodeRestorableStateWithCoder: !java.util.LinkedHashMap
+        isInstance: *7
+        name: decodeRestorableStateWithCoder
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *9
+            isRef: *9
+        isVarArgs: *9
+        args: 
+            - !java.util.LinkedHashMap
+                param: coder
+                type: !java.util.LinkedHashMap
+                    name: NSCoder
+                    delegate: ~
+                    isConst: *9
+                    isRef: *7
+    encodeRestorableStateWithCoder: !java.util.LinkedHashMap
+        isInstance: *7
+        name: encodeRestorableStateWithCoder
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *9
+            isRef: *9
+        isVarArgs: *9
+        args: 
+            - !java.util.LinkedHashMap
+                param: coder
+                type: !java.util.LinkedHashMap
+                    name: NSCoder
+                    delegate: ~
+                    isConst: *9
+                    isRef: *7
+constants: !java.util.LinkedHashMap
+    State Restoration Keys: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *9
+        isTypedef: *9
+        values: ~
+        defValues: 
+            - UIStateRestorationViewControllerStoryboardKey
+            - UIApplicationStateRestorationBundleVersionKey
+            - UIApplicationStateRestorationUserInterfaceIdiomKey
+            - UIApplicationStateRestorationTimestampKey
+            - UIApplicationStateRestorationSystemVersionKey

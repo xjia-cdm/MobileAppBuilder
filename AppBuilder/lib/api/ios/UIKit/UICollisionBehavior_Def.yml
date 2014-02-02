@@ -1,0 +1,193 @@
+--- 
+inherit: 
+    - UIDynamicBehavior
+    - NSObject
+conform: 
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    boundaryIdentifiers: !java.util.LinkedHashMap
+        name: boundaryIdentifiers
+        type: NSArray
+        ref: "*"
+        explanation: The set of boundary identifiers that you?ve added to the collision behavior. (read-only)
+        readonly: true
+    collisionDelegate: !java.util.LinkedHashMap
+        name: collisionDelegate
+        type: id
+        ref: ""
+        explanation: The delegate object that you want to respond to collisions for the collision behavior.
+        readonly: false
+    collisionMode: !java.util.LinkedHashMap
+        name: collisionMode
+        type: UICollisionBehaviorMode
+        ref: ""
+        explanation: The type of edges that participate in collisions for the collision behavior.
+        readonly: false
+    items: !java.util.LinkedHashMap
+        name: items
+        type: NSArray
+        ref: "*"
+        explanation: Returns the set of dynamic items you?ve added to the collision behavior. (read-only)
+        readonly: true
+    translatesReferenceBoundsIntoBoundary: !java.util.LinkedHashMap
+        name: translatesReferenceBoundsIntoBoundary
+        type: BOOL
+        ref: ""
+        explanation: Specifies whether a boundary based on the reference system is active.
+        readonly: false
+methods: !java.util.LinkedHashMap
+    addBoundaryWithIdentifier: !java.util.LinkedHashMap
+        isInstance: &11 true
+        name: addBoundaryWithIdentifier
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: &13 false
+            isRef: *13
+        isVarArgs: *13
+        args: 
+            - !java.util.LinkedHashMap
+                param: identifier
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <NSCopying>
+                    isConst: *13
+                    isRef: *13
+            - !java.util.LinkedHashMap
+                name: fromPoint
+                param: p1
+                type: !java.util.LinkedHashMap
+                    name: CGPoint
+                    delegate: ~
+                    isConst: *13
+                    isRef: *13
+            - !java.util.LinkedHashMap
+                name: toPoint
+                param: p2
+                type: !java.util.LinkedHashMap
+                    name: CGPoint
+                    delegate: ~
+                    isConst: *13
+                    isRef: *13
+    addItem: !java.util.LinkedHashMap
+        isInstance: *11
+        name: addItem
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *13
+            isRef: *13
+        isVarArgs: *13
+        args: 
+            - !java.util.LinkedHashMap
+                param: item
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *13
+                    isRef: *13
+    boundaryWithIdentifier: !java.util.LinkedHashMap
+        isInstance: *11
+        name: boundaryWithIdentifier
+        type: !java.util.LinkedHashMap
+            name: UIBezierPath
+            delegate: ~
+            isConst: *13
+            isRef: *11
+        isVarArgs: *13
+        args: 
+            - !java.util.LinkedHashMap
+                param: identifier
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <NSCopying>
+                    isConst: *13
+                    isRef: *13
+    initWithItems: !java.util.LinkedHashMap
+        isInstance: *11
+        name: initWithItems
+        type: !java.util.LinkedHashMap
+            name: instancetype
+            delegate: ~
+            isConst: *13
+            isRef: *13
+        isVarArgs: *13
+        args: 
+            - !java.util.LinkedHashMap
+                param: items
+                type: !java.util.LinkedHashMap
+                    name: NSArray
+                    delegate: ~
+                    isConst: *13
+                    isRef: *11
+    removeAllBoundaries: !java.util.LinkedHashMap
+        isInstance: *11
+        name: removeAllBoundaries
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *13
+            isRef: *13
+        isVarArgs: *13
+        args: []
+    removeBoundaryWithIdentifier: !java.util.LinkedHashMap
+        isInstance: *11
+        name: removeBoundaryWithIdentifier
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *13
+            isRef: *13
+        isVarArgs: *13
+        args: 
+            - !java.util.LinkedHashMap
+                param: identifier
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <NSCopying>
+                    isConst: *13
+                    isRef: *13
+    removeItem: !java.util.LinkedHashMap
+        isInstance: *11
+        name: removeItem
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *13
+            isRef: *13
+        isVarArgs: *13
+        args: 
+            - !java.util.LinkedHashMap
+                param: item
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *13
+                    isRef: *13
+    setTranslatesReferenceBoundsIntoBoundaryWithInsets: !java.util.LinkedHashMap
+        isInstance: *11
+        name: setTranslatesReferenceBoundsIntoBoundaryWithInsets
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *13
+            isRef: *13
+        isVarArgs: *13
+        args: 
+            - !java.util.LinkedHashMap
+                param: insets
+                type: !java.util.LinkedHashMap
+                    name: UIEdgeInsets
+                    delegate: ~
+                    isConst: *13
+                    isRef: *13
+constants: !java.util.LinkedHashMap
+    UICollisionBehaviorMode: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *13
+        isTypedef: *11
+        values: ~
+        defValues: 
+            - UICollisionBehaviorModeItems
+            - UICollisionBehaviorModeBoundaries
+            - UICollisionBehaviorModeEverything

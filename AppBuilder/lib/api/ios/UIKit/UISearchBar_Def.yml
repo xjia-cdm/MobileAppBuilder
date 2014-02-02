@@ -1,0 +1,551 @@
+--- 
+inherit: 
+    - UIView
+    - UIResponder
+    - NSObject
+conform: 
+    - UIBarPositioning
+    - NSCoding (UIView)
+    - UIAppearance (UIView)
+    - UIAppearanceContainer (UIView)
+    - UIDynamicItem (UIView)
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    autocapitalizationType: !java.util.LinkedHashMap
+        name: autocapitalizationType
+        type: UITextAutocapitalizationType
+        ref: ""
+        explanation: The auto-capitalization style for the text object.
+        readonly: false
+    autocorrectionType: !java.util.LinkedHashMap
+        name: autocorrectionType
+        type: UITextAutocorrectionType
+        ref: ""
+        explanation: The auto-correction style for the text object.
+        readonly: false
+    backgroundImage: !java.util.LinkedHashMap
+        name: backgroundImage
+        type: UIImage
+        ref: "*"
+        explanation: The background image for the search bar.
+        readonly: false
+    barStyle: !java.util.LinkedHashMap
+        name: barStyle
+        type: UIBarStyle
+        ref: ""
+        explanation: A bar style that specifies the search bar?s appearance.
+        readonly: false
+    barTintColor: !java.util.LinkedHashMap
+        name: barTintColor
+        type: UIColor
+        ref: "*"
+        explanation: The tint color to apply to the search bar background.
+        readonly: false
+    delegate: !java.util.LinkedHashMap
+        name: delegate
+        type: id
+        ref: ""
+        explanation: The search bar?s delegate object.
+        readonly: false
+    inputAccessoryView: !java.util.LinkedHashMap
+        name: inputAccessoryView
+        type: UIView
+        ref: "*"
+        explanation: A custom input accessory view for the keyboard of the search bar.
+        readonly: false
+    keyboardType: !java.util.LinkedHashMap
+        name: keyboardType
+        type: UIKeyboardType
+        ref: ""
+        explanation: The keyboard style associated with the text object.
+        readonly: false
+    placeholder: !java.util.LinkedHashMap
+        name: placeholder
+        type: NSString
+        ref: "*"
+        explanation: The string that is displayed when there is no other text in the text field.
+        readonly: false
+    prompt: !java.util.LinkedHashMap
+        name: prompt
+        type: NSString
+        ref: "*"
+        explanation: A single line of text displayed at the top of the search bar.
+        readonly: false
+    scopeBarBackgroundImage: !java.util.LinkedHashMap
+        name: scopeBarBackgroundImage
+        type: UIImage
+        ref: "*"
+        explanation: The background image for the scope bar.
+        readonly: false
+    scopeButtonTitles: !java.util.LinkedHashMap
+        name: scopeButtonTitles
+        type: NSArray
+        ref: "*"
+        explanation: An array of strings indicating the titles of the scope buttons.
+        readonly: false
+    searchBarStyle: !java.util.LinkedHashMap
+        name: searchBarStyle
+        type: UISearchBarStyle
+        ref: ""
+        explanation: A search bar style that specifies the search bar?s appearance.
+        readonly: false
+    searchFieldBackgroundPositionAdjustment: !java.util.LinkedHashMap
+        name: searchFieldBackgroundPositionAdjustment
+        type: UIOffset
+        ref: ""
+        explanation: The offset of the search text field background in the search bar.
+        readonly: false
+    searchResultsButtonSelected: !java.util.LinkedHashMap
+        name: searchResultsButtonSelected
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value indicating whether the search results button is selected.
+        readonly: false
+    searchTextPositionAdjustment: !java.util.LinkedHashMap
+        name: searchTextPositionAdjustment
+        type: UIOffset
+        ref: ""
+        explanation: The offset of the text within the search text field background.
+        readonly: false
+    selectedScopeButtonIndex: !java.util.LinkedHashMap
+        name: selectedScopeButtonIndex
+        type: NSInteger
+        ref: ""
+        explanation: The index of the selected scope button.
+        readonly: false
+    showsBookmarkButton: !java.util.LinkedHashMap
+        name: showsBookmarkButton
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value indicating whether the bookmark button is displayed.
+        readonly: false
+    showsCancelButton: !java.util.LinkedHashMap
+        name: showsCancelButton
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value indicating whether the cancel button is displayed.
+        readonly: false
+    showsScopeBar: !java.util.LinkedHashMap
+        name: showsScopeBar
+        type: BOOL
+        ref: ""
+        explanation: Specifies whether the scope bar is displayed.
+        readonly: false
+    showsSearchResultsButton: !java.util.LinkedHashMap
+        name: showsSearchResultsButton
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value indicating whether the search results button is displayed.
+        readonly: false
+    spellCheckingType: !java.util.LinkedHashMap
+        name: spellCheckingType
+        type: UITextSpellCheckingType
+        ref: ""
+        explanation: The spell-checking type.
+        readonly: false
+    text: !java.util.LinkedHashMap
+        name: text
+        type: NSString
+        ref: "*"
+        explanation: The current or starting search text.
+        readonly: false
+    tintColor: !java.util.LinkedHashMap
+        name: tintColor
+        type: UIColor
+        ref: "*"
+        explanation: The tint color to apply to key elements in the search bar.
+        readonly: false
+    translucent: !java.util.LinkedHashMap
+        name: translucent
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value that indicates whether the search bar is translucent (YES) or not (NO).
+        readonly: false
+methods: !java.util.LinkedHashMap
+    backgroundImageForBarPosition: !java.util.LinkedHashMap
+        isInstance: &31 true
+        name: backgroundImageForBarPosition
+        type: !java.util.LinkedHashMap
+            name: UIImage
+            delegate: ~
+            isConst: &33 false
+            isRef: *31
+        isVarArgs: *33
+        args: 
+            - !java.util.LinkedHashMap
+                param: barPosition
+                type: !java.util.LinkedHashMap
+                    name: UIBarPosition
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+            - !java.util.LinkedHashMap
+                name: barMetrics
+                param: barMetrics
+                type: !java.util.LinkedHashMap
+                    name: UIBarMetrics
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+    imageForSearchBarIcon: !java.util.LinkedHashMap
+        isInstance: *31
+        name: imageForSearchBarIcon
+        type: !java.util.LinkedHashMap
+            name: UIImage
+            delegate: ~
+            isConst: *33
+            isRef: *31
+        isVarArgs: *33
+        args: 
+            - !java.util.LinkedHashMap
+                param: icon
+                type: !java.util.LinkedHashMap
+                    name: UISearchBarIcon
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+            - !java.util.LinkedHashMap
+                name: state
+                param: state
+                type: !java.util.LinkedHashMap
+                    name: UIControlState
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+    positionAdjustmentForSearchBarIcon: !java.util.LinkedHashMap
+        isInstance: *31
+        name: positionAdjustmentForSearchBarIcon
+        type: !java.util.LinkedHashMap
+            name: UIOffset
+            delegate: ~
+            isConst: *33
+            isRef: *33
+        isVarArgs: *33
+        args: 
+            - !java.util.LinkedHashMap
+                param: icon
+                type: !java.util.LinkedHashMap
+                    name: UISearchBarIcon
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+    scopeBarButtonBackgroundImageForState: !java.util.LinkedHashMap
+        isInstance: *31
+        name: scopeBarButtonBackgroundImageForState
+        type: !java.util.LinkedHashMap
+            name: UIImage
+            delegate: ~
+            isConst: *33
+            isRef: *31
+        isVarArgs: *33
+        args: 
+            - !java.util.LinkedHashMap
+                param: state
+                type: !java.util.LinkedHashMap
+                    name: UIControlState
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+    scopeBarButtonDividerImageForLeftSegmentState: !java.util.LinkedHashMap
+        isInstance: *31
+        name: scopeBarButtonDividerImageForLeftSegmentState
+        type: !java.util.LinkedHashMap
+            name: UIImage
+            delegate: ~
+            isConst: *33
+            isRef: *31
+        isVarArgs: *33
+        args: 
+            - !java.util.LinkedHashMap
+                param: leftState
+                type: !java.util.LinkedHashMap
+                    name: UIControlState
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+            - !java.util.LinkedHashMap
+                name: rightSegmentState
+                param: rightState
+                type: !java.util.LinkedHashMap
+                    name: UIControlState
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+    scopeBarButtonTitleTextAttributesForState: !java.util.LinkedHashMap
+        isInstance: *31
+        name: scopeBarButtonTitleTextAttributesForState
+        type: !java.util.LinkedHashMap
+            name: NSDictionary
+            delegate: ~
+            isConst: *33
+            isRef: *31
+        isVarArgs: *33
+        args: 
+            - !java.util.LinkedHashMap
+                param: state
+                type: !java.util.LinkedHashMap
+                    name: UIControlState
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+    searchFieldBackgroundImageForState: !java.util.LinkedHashMap
+        isInstance: *31
+        name: searchFieldBackgroundImageForState
+        type: !java.util.LinkedHashMap
+            name: UIImage
+            delegate: ~
+            isConst: *33
+            isRef: *31
+        isVarArgs: *33
+        args: 
+            - !java.util.LinkedHashMap
+                param: state
+                type: !java.util.LinkedHashMap
+                    name: UIControlState
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+    setBackgroundImage: !java.util.LinkedHashMap
+        isInstance: *31
+        name: setBackgroundImage
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *33
+            isRef: *33
+        isVarArgs: *33
+        args: 
+            - !java.util.LinkedHashMap
+                param: backgroundImage
+                type: !java.util.LinkedHashMap
+                    name: UIImage
+                    delegate: ~
+                    isConst: *33
+                    isRef: *31
+            - !java.util.LinkedHashMap
+                name: forBarPosition
+                param: barPosition
+                type: !java.util.LinkedHashMap
+                    name: UIBarPosition
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+            - !java.util.LinkedHashMap
+                name: barMetrics
+                param: barMetrics
+                type: !java.util.LinkedHashMap
+                    name: UIBarMetrics
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+    setImage: !java.util.LinkedHashMap
+        isInstance: *31
+        name: setImage
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *33
+            isRef: *33
+        isVarArgs: *33
+        args: 
+            - !java.util.LinkedHashMap
+                param: iconImage
+                type: !java.util.LinkedHashMap
+                    name: UIImage
+                    delegate: ~
+                    isConst: *33
+                    isRef: *31
+            - !java.util.LinkedHashMap
+                name: forSearchBarIcon
+                param: icon
+                type: !java.util.LinkedHashMap
+                    name: UISearchBarIcon
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+            - !java.util.LinkedHashMap
+                name: state
+                param: state
+                type: !java.util.LinkedHashMap
+                    name: UIControlState
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+    setPositionAdjustment: !java.util.LinkedHashMap
+        isInstance: *31
+        name: setPositionAdjustment
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *33
+            isRef: *33
+        isVarArgs: *33
+        args: 
+            - !java.util.LinkedHashMap
+                param: adjustment
+                type: !java.util.LinkedHashMap
+                    name: UIOffset
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+            - !java.util.LinkedHashMap
+                name: forSearchBarIcon
+                param: icon
+                type: !java.util.LinkedHashMap
+                    name: UISearchBarIcon
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+    setScopeBarButtonBackgroundImage: !java.util.LinkedHashMap
+        isInstance: *31
+        name: setScopeBarButtonBackgroundImage
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *33
+            isRef: *33
+        isVarArgs: *33
+        args: 
+            - !java.util.LinkedHashMap
+                param: backgroundImage
+                type: !java.util.LinkedHashMap
+                    name: UIImage
+                    delegate: ~
+                    isConst: *33
+                    isRef: *31
+            - !java.util.LinkedHashMap
+                name: forState
+                param: state
+                type: !java.util.LinkedHashMap
+                    name: UIControlState
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+    setScopeBarButtonDividerImage: !java.util.LinkedHashMap
+        isInstance: *31
+        name: setScopeBarButtonDividerImage
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *33
+            isRef: *33
+        isVarArgs: *33
+        args: 
+            - !java.util.LinkedHashMap
+                param: dividerImage
+                type: !java.util.LinkedHashMap
+                    name: UIImage
+                    delegate: ~
+                    isConst: *33
+                    isRef: *31
+            - !java.util.LinkedHashMap
+                name: forLeftSegmentState
+                param: leftState
+                type: !java.util.LinkedHashMap
+                    name: UIControlState
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+            - !java.util.LinkedHashMap
+                name: rightSegmentState
+                param: rightState
+                type: !java.util.LinkedHashMap
+                    name: UIControlState
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+    setScopeBarButtonTitleTextAttributes: !java.util.LinkedHashMap
+        isInstance: *31
+        name: setScopeBarButtonTitleTextAttributes
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *33
+            isRef: *33
+        isVarArgs: *33
+        args: 
+            - !java.util.LinkedHashMap
+                param: attributes
+                type: !java.util.LinkedHashMap
+                    name: NSDictionary
+                    delegate: ~
+                    isConst: *33
+                    isRef: *31
+            - !java.util.LinkedHashMap
+                name: forState
+                param: state
+                type: !java.util.LinkedHashMap
+                    name: UIControlState
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+    setSearchFieldBackgroundImage: !java.util.LinkedHashMap
+        isInstance: *31
+        name: setSearchFieldBackgroundImage
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *33
+            isRef: *33
+        isVarArgs: *33
+        args: 
+            - !java.util.LinkedHashMap
+                param: backgroundImage
+                type: !java.util.LinkedHashMap
+                    name: UIImage
+                    delegate: ~
+                    isConst: *33
+                    isRef: *31
+            - !java.util.LinkedHashMap
+                name: forState
+                param: state
+                type: !java.util.LinkedHashMap
+                    name: UIControlState
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+    setShowsCancelButton: !java.util.LinkedHashMap
+        isInstance: *31
+        name: setShowsCancelButton
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *33
+            isRef: *33
+        isVarArgs: *33
+        args: 
+            - !java.util.LinkedHashMap
+                param: showsCancelButton
+                type: !java.util.LinkedHashMap
+                    name: BOOL
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+            - !java.util.LinkedHashMap
+                name: animated
+                param: animated
+                type: !java.util.LinkedHashMap
+                    name: BOOL
+                    delegate: ~
+                    isConst: *33
+                    isRef: *33
+constants: !java.util.LinkedHashMap
+    UISearchBarIcon: !java.util.LinkedHashMap
+        name: UISearchBarIcon
+        isEnum: *31
+        isTypedef: *31
+        values: []
+        defValues: 
+            - UISearchBarIconSearch
+            - UISearchBarIconClear
+            - UISearchBarIconBookmark
+            - UISearchBarIconResultsList
+    UISearchBarStyle: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *33
+        isTypedef: *31
+        values: ~
+        defValues: 
+            - UISearchBarStyleDefault
+            - UISearchBarStyleProminent
+            - UISearchBarStyleMinimal

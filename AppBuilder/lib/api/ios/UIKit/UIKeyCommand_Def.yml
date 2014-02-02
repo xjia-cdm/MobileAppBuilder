@@ -1,0 +1,78 @@
+--- 
+inherit: 
+    - NSObject
+conform: 
+    - NSCopying
+    - NSSecureCoding
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    input: !java.util.LinkedHashMap
+        name: input
+        type: NSString
+        ref: "*"
+        explanation: The string of characters corresponding to the keys that must be pressed to match this key command. (read-only)
+        readonly: true
+    modifierFlags: !java.util.LinkedHashMap
+        name: modifierFlags
+        type: UIKeyModifierFlags
+        ref: ""
+        explanation: The bit mask of modifier flags that must be pressed to match this key command. (read-only)
+        readonly: true
+methods: !java.util.LinkedHashMap
+    keyCommandWithInput: !java.util.LinkedHashMap
+        isInstance: &8 false
+        name: keyCommandWithInput
+        type: !java.util.LinkedHashMap
+            name: UIKeyCommand
+            delegate: ~
+            isConst: *8
+            isRef: &10 true
+        isVarArgs: *8
+        args: 
+            - !java.util.LinkedHashMap
+                param: input
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *8
+                    isRef: *10
+            - !java.util.LinkedHashMap
+                name: modifierFlags
+                param: modifierFlags
+                type: !java.util.LinkedHashMap
+                    name: UIKeyModifierFlags
+                    delegate: ~
+                    isConst: *8
+                    isRef: *8
+            - !java.util.LinkedHashMap
+                name: action
+                param: action
+                type: !java.util.LinkedHashMap
+                    name: SEL
+                    delegate: ~
+                    isConst: *8
+                    isRef: *8
+constants: !java.util.LinkedHashMap
+    UIKeyModifierFlags: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *8
+        isTypedef: *10
+        values: ~
+        defValues: 
+            - UIKeyModifierAlphaShift
+            - UIKeyModifierShift
+            - UIKeyModifierControl
+            - UIKeyModifierAlternate
+            - UIKeyModifierCommand
+            - UIKeyModifierNumericPad
+    Input Strings for Special Keys: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *8
+        isTypedef: *8
+        values: ~
+        defValues: 
+            - UIKeyInputUpArrow
+            - UIKeyInputDownArrow
+            - UIKeyInputLeftArrow
+            - UIKeyInputRightArrow
+            - UIKeyInputEscape

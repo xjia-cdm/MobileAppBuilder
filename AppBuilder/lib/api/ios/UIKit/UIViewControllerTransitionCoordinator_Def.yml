@@ -1,0 +1,42 @@
+--- 
+conform: 
+    - UIViewControllerTransitionCoordinatorContext
+properties: !java.util.LinkedHashMap {}
+methods: !java.util.LinkedHashMap
+    animateAlongsideTransition: !java.util.LinkedHashMap
+        isInstance: &5 true
+        name: animateAlongsideTransition
+        type: !java.util.LinkedHashMap
+            name: BOOL
+            delegate: ~
+            isConst: &7 false
+            isRef: *7
+        isVarArgs: *7
+        args: []
+    animateAlongsideTransitionInView: !java.util.LinkedHashMap
+        isInstance: *5
+        name: animateAlongsideTransitionInView
+        type: !java.util.LinkedHashMap
+            name: BOOL
+            delegate: ~
+            isConst: *7
+            isRef: *7
+        isVarArgs: *7
+        args: 
+            - !java.util.LinkedHashMap
+                param: view
+                type: !java.util.LinkedHashMap
+                    name: UIView
+                    delegate: ~
+                    isConst: *7
+                    isRef: *5
+    notifyWhenInteractionEndsUsingBlock: !java.util.LinkedHashMap
+        isInstance: *5
+        name: notifyWhenInteractionEndsUsingBlock
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *7
+            isRef: *7
+        isVarArgs: *7
+        args: []

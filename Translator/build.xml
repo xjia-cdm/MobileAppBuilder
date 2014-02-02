@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<project name="Translator" default="translator" basedir=".">
+
+  <!-- set global properties for this build -->
+
+  <property file="build.properties"/>
+
+  <property name="debug" value="on"/>
+  <property name="deprecation" value="off"/>
+
+  <import file="build-base.xml"/>
+
+  <target name="translator" depends="prepare,clean">
+    <!-- Compile translator application -->
+    <groovyc srcdir="${src}" 
+	     destdir="${classes}">
+      <classpath>
+	<pathelement path="${classes}"/>
+	<path refid="compile.classpath"/>
+      </classpath>
+      <include name="${prefix}/**"/>
+      <javac source="1.5" target="1.5" debug="on" />
+    </groovyc>
+  </target>
+
+  <!-- Compile Java util -->
+  <target name="java" depends="prepare">
+    <javac srcdir="${src}/java"
+	   destdir="${classes}">
+      <classpath refid="compile.classpath"/>
+      <include name="**/*.java"/>
+    </javac> 
+  </target>
+
+  <!-- Generate Groovy Docs -->
+  <taskdef name           = "groovydoc"
+           classname      = "org.codehaus.groovy.ant.Groovydoc"
+           classpathref   = "compile.classpath"/>
+
+  <target name="docAPI" depends="translator">
+      <groovydoc 
+             destdir      = "gapi"
+             sourcepath   = "src"
+             packagenames = "**.*"
+             use          = "true"
+             windowtitle  = "Groovy Translator API"
+             doctitle     = "Groovy Translator API"
+             header       = "Groovy Translator API"
+             private      = "false">
+        <link packages="java.,org.xml.,javax.,org.xml." href="http://download.oracle.com/javase/6/docs/api"/>
+        <link packages="org.apache.tools.ant."          href="http://evgeny-goldin.org/javadoc/ant/api"/>
+        <link packages="org.junit.,junit.framework."    href="http://kentbeck.github.com/junit/javadoc/latest"/>
+        <link packages="groovy.,org.codehaus.groovy."   href="http://groovy.codehaus.org/api/"/>
+        <link packages="org.codehaus.gmaven."           href="http://evgeny-goldin.org/javadoc/gmaven"/>
+      </groovydoc>
+  </target>
+
+</project>

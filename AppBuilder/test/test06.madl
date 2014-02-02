@@ -1,0 +1,16 @@
+app('Test06') { 
+
+  View { 
+	Label(id:l1)
+	Label(id:l2)
+	Button(text: 'Convert', 
+		   action:{
+			 convt(l1.text);
+		   })
+
+	def convt = { String amt -> 
+	  Float amt1 = Float.parseFloat(amt);
+	}
+
+  }
+}

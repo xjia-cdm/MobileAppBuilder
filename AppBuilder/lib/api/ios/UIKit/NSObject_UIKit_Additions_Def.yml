@@ -1,0 +1,48 @@
+--- 
+inherit: []
+properties: !java.util.LinkedHashMap {}
+methods: !java.util.LinkedHashMap
+    awakeFromNib: !java.util.LinkedHashMap
+        isInstance: &5 true
+        name: awakeFromNib
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: &7 false
+            isRef: *7
+        isVarArgs: *7
+        args: []
+    decreaseSize: !java.util.LinkedHashMap
+        isInstance: *5
+        name: decreaseSize
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *7
+            isRef: *7
+        isVarArgs: *7
+        args: 
+            - !java.util.LinkedHashMap
+                param: sender
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: ~
+                    isConst: *7
+                    isRef: *7
+    increaseSize: !java.util.LinkedHashMap
+        isInstance: *5
+        name: increaseSize
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *7
+            isRef: *7
+        isVarArgs: *7
+        args: 
+            - !java.util.LinkedHashMap
+                param: sender
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: ~
+                    isConst: *7
+                    isRef: *7

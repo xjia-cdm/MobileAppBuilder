@@ -1,0 +1,26 @@
+--- 
+inherit: 
+    - NSObject
+conform: 
+    - NSCoding
+    - NSCopying
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap {}
+methods: !java.util.LinkedHashMap
+    keyPathsAndRelativeValuesForViewerOffset: !java.util.LinkedHashMap
+        isInstance: &6 true
+        name: keyPathsAndRelativeValuesForViewerOffset
+        type: !java.util.LinkedHashMap
+            name: NSDictionary
+            delegate: ~
+            isConst: &8 false
+            isRef: *6
+        isVarArgs: *8
+        args: 
+            - !java.util.LinkedHashMap
+                param: viewerOffset
+                type: !java.util.LinkedHashMap
+                    name: UIOffset
+                    delegate: ~
+                    isConst: *8
+                    isRef: *8

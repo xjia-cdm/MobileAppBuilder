@@ -1,0 +1,23 @@
+--- 
+conform: 
+    - NSObject
+properties: !java.util.LinkedHashMap
+    bounds: !java.util.LinkedHashMap
+        name: bounds
+        type: CGRect
+        ref: ""
+        explanation: Called when a dynamic animator needs the bounds of the dynamic item. (required) (read-only)
+        readonly: true
+    center: !java.util.LinkedHashMap
+        name: center
+        type: CGPoint
+        ref: ""
+        explanation: The center point of the dynamic item. (required)
+        readonly: false
+    transform: !java.util.LinkedHashMap
+        name: transform
+        type: CGAffineTransform
+        ref: ""
+        explanation: The rotation of the dynamic item. (required)
+        readonly: false
+methods: !java.util.LinkedHashMap {}

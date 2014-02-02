@@ -1,0 +1,53 @@
+--- 
+inherit: 
+    - UIView
+    - UIResponder
+    - NSObject
+conform: 
+    - NSCoding (UIView)
+    - UIAppearance (UIView)
+    - UIAppearanceContainer (UIView)
+    - UIDynamicItem (UIView)
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    inputViewStyle: !java.util.LinkedHashMap
+        name: inputViewStyle
+        type: UIInputViewStyle
+        ref: ""
+        explanation: The style applied to the content of the view. (read-only)
+        readonly: true
+methods: !java.util.LinkedHashMap
+    initWithFrame: !java.util.LinkedHashMap
+        isInstance: &7 true
+        name: initWithFrame
+        type: !java.util.LinkedHashMap
+            name: id
+            delegate: ~
+            isConst: &9 false
+            isRef: *9
+        isVarArgs: *9
+        args: 
+            - !java.util.LinkedHashMap
+                param: frame
+                type: !java.util.LinkedHashMap
+                    name: CGRect
+                    delegate: ~
+                    isConst: *9
+                    isRef: *9
+            - !java.util.LinkedHashMap
+                name: inputViewStyle
+                param: inputViewStyle
+                type: !java.util.LinkedHashMap
+                    name: UIInputViewStyle
+                    delegate: ~
+                    isConst: *9
+                    isRef: *9
+constants: !java.util.LinkedHashMap
+    UIInputViewStyle: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *9
+        isTypedef: *7
+        values: ~
+        defValues: 
+            - UIInputViewStyleDefault
+            - UIInputViewStyleKeyboard

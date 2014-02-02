@@ -1,0 +1,94 @@
+--- 
+inherit: 
+    - UIDynamicBehavior
+    - NSObject
+conform: 
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    anchorPoint: !java.util.LinkedHashMap
+        name: anchorPoint
+        type: CGPoint
+        ref: ""
+        explanation: The anchor point for an attachment behavior of type UIAttachmentBehaviorTypeAnchor.
+        readonly: false
+    attachedBehaviorType: !java.util.LinkedHashMap
+        name: attachedBehaviorType
+        type: UIAttachmentBehaviorType
+        ref: ""
+        explanation: The type of the attachment behavior. (read-only)
+        readonly: true
+    damping: !java.util.LinkedHashMap
+        name: damping
+        type: CGFloat
+        ref: ""
+        explanation: The amount of damping to apply to the attachment behavior.
+        readonly: false
+    frequency: !java.util.LinkedHashMap
+        name: frequency
+        type: CGFloat
+        ref: ""
+        explanation: The frequency of oscillation for the attachment behavior.
+        readonly: false
+    items: !java.util.LinkedHashMap
+        name: items
+        type: NSArray
+        ref: "*"
+        explanation: The dynamic items connected by the attachment behavior. (read-only)
+        readonly: true
+    length: !java.util.LinkedHashMap
+        name: length
+        type: CGFloat
+        ref: ""
+        explanation: "The distance, in points, between the two attachment points of the attachment behavior."
+        readonly: false
+methods: !java.util.LinkedHashMap
+    initWithItem: !java.util.LinkedHashMap
+        isInstance: &12 true
+        name: initWithItem
+        type: !java.util.LinkedHashMap
+            name: instancetype
+            delegate: ~
+            isConst: &14 false
+            isRef: *14
+        isVarArgs: *14
+        args: 
+            - !java.util.LinkedHashMap
+                param: item1
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *14
+                    isRef: *14
+            - !java.util.LinkedHashMap
+                name: offsetFromCenter
+                param: p1
+                type: !java.util.LinkedHashMap
+                    name: UIOffset
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+            - !java.util.LinkedHashMap
+                name: attachedToItem
+                param: item2
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *14
+                    isRef: *14
+            - !java.util.LinkedHashMap
+                name: offsetFromCenter
+                param: p2
+                type: !java.util.LinkedHashMap
+                    name: UIOffset
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+constants: !java.util.LinkedHashMap
+    UIAttachmentBehaviorType: !java.util.LinkedHashMap
+        name: UIAttachmentBehaviorType
+        isEnum: *12
+        isTypedef: *12
+        values: []
+        defValues: 
+            - UIAttachmentBehaviorTypeItems
+            - UIAttachmentBehaviorTypeAnchor

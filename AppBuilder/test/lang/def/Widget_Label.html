@@ -1,0 +1,2871 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/main.css"></link>
+    <link rel="stylesheet" type="text/css" href="css/styles2.css"></link>
+    <script language="JavaScript" src="script/main.js"></script>
+    <style type="text/css">.syntaxhighlighter { font-size: 12px !important; }</style>
+    <title>UI.Neutral: Label</title>
+  </head>
+  <body class="ContentPage" onLoad="NDOnLoad()">
+    <script language="JavaScript"><!--
+if (browserType) {document.write("<div class=" + browserType + ">");if (browserVer) {document.write("<div class=" + browserVer + ">"); }}// --></script>
+    <div id="Content">
+      <div class="CSection">
+        <div class="CTopic" id="MainTopic">
+          <h1 class="CTitle">
+            <a name="Label">UI Widget: Label</a>
+          </h1>
+          <div class="CBody">
+            <div class="TOC">
+              <a href="#type">Widget Type</a> &middot; 
+              <a href="#platforms">Supported Platforms</a> &middot; 
+              <a href="#attributes">Attributes</a> &middot; 
+              <a href="#annotations">Annotations</a> &middot; 
+              <a href="#iOS_attributes">iOS Attributes</a> &middot; 
+              <a href="#Android_attributes">Android Attributes</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="CGroup">
+        <div class="CTopic">
+          <h2 class="CTitle">
+            <a name="type">Widget Type</a>
+          </h2>
+          <div class="CBody">
+            <ul>
+              <li>Widget</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGroup">
+        <div class="CTopic">
+          <h2 class="CTitle">
+            <a name="platforms">Supported Platforms</a>
+          </h2>
+          <div class="CBody">
+            <ul>
+              <li>Neutral</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="widget_mapping">Native Widget Class Mapping</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Native class for iOS: UILabel </li>
+              <li>Native class for Android: android.widget.TextView </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGroup">
+        <div class="CTopic">
+          <h2 class="CTitle">
+            <a name="attributes">Attributes</a>
+          </h2>
+          <div class="CBody">
+            <div class="Summary">
+              <div class="STitle">Summary</div>
+              <div class="SBorder">
+                <table border="0" cellspacing="0" cellpadding="0" class="STable">
+                  <tbody>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#align">align</a>
+                      </td>
+                      <td class="SDescription">String</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#background">background</a>
+                      </td>
+                      <td class="SDescription">Color</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#color">color</a>
+                      </td>
+                      <td class="SDescription">Color</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#font">font</a>
+                      </td>
+                      <td class="SDescription">LabelFont</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#frame">frame</a>
+                      </td>
+                      <td class="SDescription">List&lt;int&gt;</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#line">line</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#lineBreak">lineBreak</a>
+                      </td>
+                      <td class="SDescription">String</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#lines">lines</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#shadow">shadow</a>
+                      </td>
+                      <td class="SDescription">Color</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#shadowOffset">shadowOffset</a>
+                      </td>
+                      <td class="SDescription">List&lt;int&gt;</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#text">text</a>
+                      </td>
+                      <td class="SDescription">String, data</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#textColor">textColor</a>
+                      </td>
+                      <td class="SDescription">Color</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#width">width</a>
+                      </td>
+                      <td class="SDescription">String</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="align">align</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Type: String</li>
+              <li>Examples of value: 
+                <ul>
+                  <li>right</li>
+                  <li>center</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="background">background</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Type: 
+                <a href="Type_Color.html">Color</a>
+              </li>
+              <li>Examples of value: 
+                <ul>
+                  <li>Color.orange</li>
+                  <li>Color[0, 128, 128]</li>
+                  <li>Color[0, 153, 153]</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="color">color</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Type: 
+                <a href="Type_Color.html">Color</a>
+              </li>
+              <li>Examples of value: 
+                <ul>
+                  <li>Color.green</li>
+                  <li>Color.purple</li>
+                  <li>Color[0, 255, 255]</li>
+                  <li>Color.red</li>
+                  <li>Color.white</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="font">font</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Type: LabelFont</li>
+              <li>Examples of value: 
+                <ul>
+                  <li>Font[System 0 Bold]</li>
+                  <li>Font[System 0 Italic]</li>
+                  <li>Font[Plain 24]</li>
+                  <li>Font[System 24]</li>
+                  <li>Font[System 24 Bold]</li>
+                  <li>Font[System 24 Italic]</li>
+                  <li>Font[Serif 20]</li>
+                  <li>Font[Serif 20 Italic]</li>
+                  <li>Font[Serif 20 Bold]</li>
+                  <li>Font[Plain 20]</li>
+                  <li>Font[Serif 0]</li>
+                  <li>Font[Sans 20 Italic]</li>
+                  <li>Font[Mono 20 Bold]</li>
+                  <li>Font[System 36]</li>
+                  <li>Font[System 20 Bold]</li>
+                  <li>Font[System 18 Bold]</li>
+                  <li>Font[System 14 Bold]</li>
+                  <li>Font[System 36 Bold]</li>
+                  <li>Font[System 30 Bold]</li>
+                  <li>Font[Plain 48]</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="frame">frame</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Type: List&lt;int&gt;</li>
+              <li>Examples of value: 
+                <ul>
+                  <li>[20,187,280,85]</li>
+                  <li>[20,329,295,131]</li>
+                  <li>[30,50,300,50]</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="line">line</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Type: int</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="lineBreak">lineBreak</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Type: String</li>
+              <li>Examples of value: 
+                <ul>
+                  <li>Wrap</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="lines">lines</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Type: int</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="shadow">shadow</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Type: 
+                <a href="Type_Color.html">Color</a>
+              </li>
+              <li>Examples of value: 
+                <ul>
+                  <li>Color[169, 169, 169]</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="shadowOffset">shadowOffset</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Type: List&lt;int&gt;</li>
+              <li>Examples of value: 
+                <ul>
+                  <li>[2,2]</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="text">text</a>
+          </h3>
+          <div class="CBody">
+            <p>A descriptive text.</p>
+            <ul>
+              <li>Type: String</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="text">text</a>
+          </h3>
+          <div class="CBody">
+            <p>A descriptive text.</p>
+            <ul>
+              <li>Type: data</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="textColor">textColor</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Type: 
+                <a href="Type_Color.html">Color</a>
+              </li>
+              <li>Examples of value: 
+                <ul>
+                  <li>Color.red</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="width">width</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Type: String</li>
+              <li>Examples of value: 
+                <ul>
+                  <li>*</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGroup">
+        <div class="CTopic">
+          <h2 class="CTitle">
+            <a name="annotations">Annotations</a>
+          </h2>
+          <div class="CBody">
+            <div class="Summary">
+              <div class="STitle">Summary</div>
+              <div class="SBorder">
+                <table border="0" cellspacing="0" cellpadding="0" class="STable">
+                  <tbody>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#@Style">@Style</a>
+                      </td>
+                      <td class="SDescription">String</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="@Style">@Style</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Type: String</li>
+              <li>Examples of value: 
+                <ul>
+                  <li>white</li>
+                  <li>dark</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGroup">
+        <div class="CTopic">
+          <h2 class="CTitle">
+            <a name="iOS_attributes">Platform Attributes: iOS</a>
+          </h2>
+          <div class="CBody">
+            <div class="Summary">
+              <div class="STitle">Summary</div>
+              <div class="SBorder">
+                <table border="0" cellspacing="0" cellpadding="0" class="STable">
+                  <tbody>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:adjustsFontSizeToFitWidth">adjustsFontSizeToFitWidth</a>
+                      </td>
+                      <td class="SDescription">BOOL</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#iOS:adjustsLetterSpacingToFitWidth">adjustsLetterSpacingToFitWidth</a>
+                      </td>
+                      <td class="SDescription">BOOL</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:alpha">alpha</a>
+                      </td>
+                      <td class="SDescription">CGFloat</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#iOS:attributedText">attributedText</a>
+                      </td>
+                      <td class="SDescription">NSAttributedString</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:backgroundColor">backgroundColor</a>
+                      </td>
+                      <td class="SDescription">UIColor</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#iOS:baselineAdjustment">baselineAdjustment</a>
+                      </td>
+                      <td class="SDescription">UIBaselineAdjustment</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:contentScaleFactor">contentScaleFactor</a>
+                      </td>
+                      <td class="SDescription">CGFloat</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#iOS:enabled">enabled</a>
+                      </td>
+                      <td class="SDescription">BOOL</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:font">font</a>
+                      </td>
+                      <td class="SDescription">UIFont</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#iOS:hidden">hidden</a>
+                      </td>
+                      <td class="SDescription">BOOL</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:highlighted">highlighted</a>
+                      </td>
+                      <td class="SDescription">BOOL</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#iOS:highlightedTextColor">highlightedTextColor</a>
+                      </td>
+                      <td class="SDescription">UIColor</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:lineBreakMode">lineBreakMode</a>
+                      </td>
+                      <td class="SDescription">NSLineBreakMode</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#iOS:minimumScaleFactor">minimumScaleFactor</a>
+                      </td>
+                      <td class="SDescription">CGFloat</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:numberOfLines">numberOfLines</a>
+                      </td>
+                      <td class="SDescription">NSInteger</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#iOS:opaque">opaque</a>
+                      </td>
+                      <td class="SDescription">BOOL</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:preferredMaxLayoutWidth">preferredMaxLayoutWidth</a>
+                      </td>
+                      <td class="SDescription">CGFloat</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#iOS:shadowColor">shadowColor</a>
+                      </td>
+                      <td class="SDescription">UIColor</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:shadowOffset">shadowOffset</a>
+                      </td>
+                      <td class="SDescription">CGSize</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#iOS:text">text</a>
+                      </td>
+                      <td class="SDescription">NSString</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:textAlignment">textAlignment</a>
+                      </td>
+                      <td class="SDescription">NSTextAlignment</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#iOS:textColor">textColor</a>
+                      </td>
+                      <td class="SDescription">UIColor</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:transform">transform</a>
+                      </td>
+                      <td class="SDescription">CGAffineTransform</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:adjustsFontSizeToFitWidth">adjustsFontSizeToFitWidth</a>
+          </h3>
+          <div class="CBody">
+            <p>A Boolean value indicating whether the font size should be reduced in order to fit the title string into the label?s bounding rectangle.</p>
+            <ul>
+              <li>Type: BOOL </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:adjustsLetterSpacingToFitWidth">adjustsLetterSpacingToFitWidth</a>
+          </h3>
+          <div class="CBody">
+            <p>A Boolean value indicating whether spacing between letters should be adjusted to fit the string within the label?s bounds rectangle.</p>
+            <ul>
+              <li>Type: BOOL </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:alpha">alpha</a>
+          </h3>
+          <div class="CBody">
+            <p>The receiver?s alpha value.</p>
+            <ul>
+              <li>Type: CGFloat </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:attributedText">attributedText</a>
+          </h3>
+          <div class="CBody">
+            <p>The styled text displayed by the label. </p>
+            <ul>
+              <li>Type: NSAttributedString </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:backgroundColor">backgroundColor</a>
+          </h3>
+          <div class="CBody">
+            <p>The receiver?s background color.</p>
+            <ul>
+              <li>Type: UIColor </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:baselineAdjustment">baselineAdjustment</a>
+          </h3>
+          <div class="CBody">
+            <p>Controls how text baselines are adjusted when text needs to shrink to fit in the label.</p>
+            <ul>
+              <li>Type: UIBaselineAdjustment </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:contentScaleFactor">contentScaleFactor</a>
+          </h3>
+          <div class="CBody">
+            <p>The scale factor applied to the view.</p>
+            <ul>
+              <li>Type: CGFloat </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:enabled">enabled</a>
+          </h3>
+          <div class="CBody">
+            <p>The enabled state to use when drawing the label?s text.</p>
+            <ul>
+              <li>Type: BOOL </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:font">font</a>
+          </h3>
+          <div class="CBody">
+            <p>The font of the text. </p>
+            <ul>
+              <li>Type: UIFont </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:hidden">hidden</a>
+          </h3>
+          <div class="CBody">
+            <p>A Boolean value that determines whether the receiver is hidden.</p>
+            <ul>
+              <li>Type: BOOL </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:highlighted">highlighted</a>
+          </h3>
+          <div class="CBody">
+            <p>A Boolean value indicating whether the receiver should be drawn with a highlight.</p>
+            <ul>
+              <li>Type: BOOL </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:highlightedTextColor">highlightedTextColor</a>
+          </h3>
+          <div class="CBody">
+            <p>The highlight color applied to the label?s text.</p>
+            <ul>
+              <li>Type: UIColor </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:lineBreakMode">lineBreakMode</a>
+          </h3>
+          <div class="CBody">
+            <p>The technique to use for wrapping and truncating the label?s text.</p>
+            <ul>
+              <li>Type: NSLineBreakMode </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:minimumScaleFactor">minimumScaleFactor</a>
+          </h3>
+          <div class="CBody">
+            <p>The minimum scale factor supported for the label?s text.</p>
+            <ul>
+              <li>Type: CGFloat </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:numberOfLines">numberOfLines</a>
+          </h3>
+          <div class="CBody">
+            <p>The maximum number of lines to use for rendering text.</p>
+            <ul>
+              <li>Type: NSInteger </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:opaque">opaque</a>
+          </h3>
+          <div class="CBody">
+            <p>A Boolean value that determines whether the receiver is opaque.</p>
+            <ul>
+              <li>Type: BOOL </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:preferredMaxLayoutWidth">preferredMaxLayoutWidth</a>
+          </h3>
+          <div class="CBody">
+            <p>The preferred maximum width (in points) for a multiline label.</p>
+            <ul>
+              <li>Type: CGFloat </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:shadowColor">shadowColor</a>
+          </h3>
+          <div class="CBody">
+            <p>The shadow color of the text.</p>
+            <ul>
+              <li>Type: UIColor </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:shadowOffset">shadowOffset</a>
+          </h3>
+          <div class="CBody">
+            <p>The shadow offset (measured in points) for the text. </p>
+            <ul>
+              <li>Type: CGSize </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:text">text</a>
+          </h3>
+          <div class="CBody">
+            <p>The text displayed by the label. </p>
+            <ul>
+              <li>Type: NSString </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:textAlignment">textAlignment</a>
+          </h3>
+          <div class="CBody">
+            <p>The technique to use for aligning the text.</p>
+            <ul>
+              <li>Type: NSTextAlignment </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:textColor">textColor</a>
+          </h3>
+          <div class="CBody">
+            <p>The color of the text.</p>
+            <ul>
+              <li>Type: UIColor </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:transform">transform</a>
+          </h3>
+          <div class="CBody">
+            <p>Specifies the transform applied to the receiver, relative to the center of its bounds.</p>
+            <ul>
+              <li>Type: CGAffineTransform </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGroup">
+        <div class="CTopic">
+          <h2 class="CTitle">
+            <a name="Android_attributes">Platform Attributes: Android</a>
+          </h2>
+          <div class="CBody">
+            <div class="Summary">
+              <div class="STitle">Summary</div>
+              <div class="SBorder">
+                <table border="0" cellspacing="0" cellpadding="0" class="STable">
+                  <tbody>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:alpha">alpha</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:autoLink">autoLink</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:autoText">autoText</a>
+                      </td>
+                      <td class="SDescription">KeyListener</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:background">background</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:bufferType">bufferType</a>
+                      </td>
+                      <td class="SDescription">String</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:capitalize">capitalize</a>
+                      </td>
+                      <td class="SDescription">KeyListener</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:clickable">clickable</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:contentDescription">contentDescription</a>
+                      </td>
+                      <td class="SDescription">String</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:cursorVisible">cursorVisible</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:digits">digits</a>
+                      </td>
+                      <td class="SDescription">KeyListener</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:drawableEnd">drawableEnd</a>
+                      </td>
+                      <td class="SDescription">int,int,int,int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:drawableStart">drawableStart</a>
+                      </td>
+                      <td class="SDescription">int,int,int,int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:ellipsize">ellipsize</a>
+                      </td>
+                      <td class="SDescription">TextUtils.TruncateAt</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:fadeScrollbars">fadeScrollbars</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:focusable">focusable</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:focusableInTouchMode">focusableInTouchMode</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:fontFamily">fontFamily</a>
+                      </td>
+                      <td class="SDescription">Typeface</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:freezesText">freezesText</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:gravity">gravity</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:hapticFeedbackEnabled">hapticFeedbackEnabled</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:hint">hint</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:imeActionId">imeActionId</a>
+                      </td>
+                      <td class="SDescription">CharSequence,int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:imeActionLabel">imeActionLabel</a>
+                      </td>
+                      <td class="SDescription">CharSequence,int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:imeOptions">imeOptions</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:inputMethod">inputMethod</a>
+                      </td>
+                      <td class="SDescription">KeyListener</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:inputType">inputType</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:isScrollContainer">isScrollContainer</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:keepScreenOn">keepScreenOn</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:layoutDirection">layoutDirection</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:lineSpacingExtra">lineSpacingExtra</a>
+                      </td>
+                      <td class="SDescription">float,float</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:lineSpacingMultiplier">lineSpacingMultiplier</a>
+                      </td>
+                      <td class="SDescription">float,float</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:lines">lines</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:linksClickable">linksClickable</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:longClickable">longClickable</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:marqueeRepeatLimit">marqueeRepeatLimit</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:maxLength">maxLength</a>
+                      </td>
+                      <td class="SDescription">InputFilter</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:maxLines">maxLines</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:minLines">minLines</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:nextFocusDown">nextFocusDown</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:nextFocusForward">nextFocusForward</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:nextFocusLeft">nextFocusLeft</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:nextFocusRight">nextFocusRight</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:nextFocusUp">nextFocusUp</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:numeric">numeric</a>
+                      </td>
+                      <td class="SDescription">KeyListener</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:paddingEnd">paddingEnd</a>
+                      </td>
+                      <td class="SDescription">int,int,int,int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:paddingStart">paddingStart</a>
+                      </td>
+                      <td class="SDescription">int,int,int,int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:password">password</a>
+                      </td>
+                      <td class="SDescription">TransformationMethod</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:phoneNumber">phoneNumber</a>
+                      </td>
+                      <td class="SDescription">KeyListener</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:requiresFadingEdge">requiresFadingEdge</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:rotation">rotation</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:rotationX">rotationX</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:rotationY">rotationY</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:saveEnabled">saveEnabled</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:scaleX">scaleX</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:scaleY">scaleY</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:scrollHorizontally">scrollHorizontally</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:scrollbarDefaultDelayBeforeFade">scrollbarDefaultDelayBeforeFade</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:scrollbarFadeDuration">scrollbarFadeDuration</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:scrollbarSize">scrollbarSize</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:scrollbarStyle">scrollbarStyle</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:shadowColor">shadowColor</a>
+                      </td>
+                      <td class="SDescription">float,float,float,int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:shadowDx">shadowDx</a>
+                      </td>
+                      <td class="SDescription">float,float,float,int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:shadowDy">shadowDy</a>
+                      </td>
+                      <td class="SDescription">float,float,float,int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:shadowRadius">shadowRadius</a>
+                      </td>
+                      <td class="SDescription">float,float,float,int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:singleLine">singleLine</a>
+                      </td>
+                      <td class="SDescription">TransformationMethod</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:soundEffectsEnabled">soundEffectsEnabled</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:text">text</a>
+                      </td>
+                      <td class="SDescription">String</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:textAlignment">textAlignment</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:textAllCaps">textAllCaps</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:textColor">textColor</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:textColorHighlight">textColorHighlight</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:textColorHint">textColorHint</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:textColorLink">textColorLink</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:textScaleX">textScaleX</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:textSize">textSize</a>
+                      </td>
+                      <td class="SDescription">int,float</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:textStyle">textStyle</a>
+                      </td>
+                      <td class="SDescription">Typeface</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:transformPivotX">transformPivotX</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:transformPivotY">transformPivotY</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:translationX">translationX</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:translationY">translationY</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:typeface">typeface</a>
+                      </td>
+                      <td class="SDescription">Typeface</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:visibility">visibility</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:alpha">alpha</a>
+          </h3>
+          <div class="CBody">
+            <p>alpha property of the view, as a value between 0 (completely transparent) and 1
+             (completely opaque).?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:autoLink">autoLink</a>
+          </h3>
+          <div class="CBody">
+            <p>Controls whether links such as urls and email addresses are
+         automatically found and converted to clickable links.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:autoText">autoText</a>
+          </h3>
+          <div class="CBody">
+            <p>If set, specifies that this TextView has a textual input method
+             and automatically corrects some common spelling errors.?</p>
+            <ul>
+              <li>Type: KeyListener </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:background">background</a>
+          </h3>
+          <div class="CBody">
+            <p>A drawable to use as the background.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:bufferType">bufferType</a>
+          </h3>
+          <div class="CBody">
+            <p>Determines the minimum type that getText() will return.?</p>
+            <ul>
+              <li>Type: String </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:capitalize">capitalize</a>
+          </h3>
+          <div class="CBody">
+            <p>If set, specifies that this TextView has a textual input method
+             and should automatically capitalize what the user types.?</p>
+            <ul>
+              <li>Type: KeyListener </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:clickable">clickable</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines whether this view reacts to click events.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:contentDescription">contentDescription</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines text that briefly describes content of the view.?</p>
+            <ul>
+              <li>Type: String </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:cursorVisible">cursorVisible</a>
+          </h3>
+          <div class="CBody">
+            <p>Makes the cursor visible (the default) or invisible.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:digits">digits</a>
+          </h3>
+          <div class="CBody">
+            <p>If set, specifies that this TextView has a numeric input method
+             and that these specific characters are the ones that it will
+             accept.?</p>
+            <ul>
+              <li>Type: KeyListener </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:drawableEnd">drawableEnd</a>
+          </h3>
+          <div class="CBody">
+            <p>The drawable to be drawn to the end of the text.?</p>
+            <ul>
+              <li>Type: int,int,int,int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:drawableStart">drawableStart</a>
+          </h3>
+          <div class="CBody">
+            <p>The drawable to be drawn to the start of the text.?</p>
+            <ul>
+              <li>Type: int,int,int,int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:ellipsize">ellipsize</a>
+          </h3>
+          <div class="CBody">
+            <p>If set, causes words that are longer than the view is wide
+             to be ellipsized instead of broken in the middle.?</p>
+            <ul>
+              <li>Type: TextUtils.TruncateAt </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:fadeScrollbars">fadeScrollbars</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines whether to fade out scrollbars when they are not in use.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:focusable">focusable</a>
+          </h3>
+          <div class="CBody">
+            <p>Boolean that controls whether a view can take focus.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:focusableInTouchMode">focusableInTouchMode</a>
+          </h3>
+          <div class="CBody">
+            <p>Boolean that controls whether a view can take focus while in touch mode.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:fontFamily">fontFamily</a>
+          </h3>
+          <div class="CBody">
+            <p>Font family (named by string) for the text.?</p>
+            <ul>
+              <li>Type: Typeface </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:freezesText">freezesText</a>
+          </h3>
+          <div class="CBody">
+            <p>If set, the text view will include its current complete text
+             inside of its frozen icicle in addition to meta-data such as
+             the current cursor position.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:gravity">gravity</a>
+          </h3>
+          <div class="CBody">
+            <p>Specifies how to align the text by the view's x- and/or y-axis
+             when the text is smaller than the view.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:hapticFeedbackEnabled">hapticFeedbackEnabled</a>
+          </h3>
+          <div class="CBody">
+            <p>Boolean that controls whether a view should have haptic feedback
+             enabled for events such as long presses.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:hint">hint</a>
+          </h3>
+          <div class="CBody">
+            <p>Hint text to display when the text is empty.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:imeActionId">imeActionId</a>
+          </h3>
+          <div class="CBody">
+            <p>Supply a value for
+             EditorInfo.actionId
+             used when an input method is connected to the text view.?</p>
+            <ul>
+              <li>Type: CharSequence,int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:imeActionLabel">imeActionLabel</a>
+          </h3>
+          <div class="CBody">
+            <p>Supply a value for
+             EditorInfo.actionLabel
+             used when an input method is connected to the text view.?</p>
+            <ul>
+              <li>Type: CharSequence,int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:imeOptions">imeOptions</a>
+          </h3>
+          <div class="CBody">
+            <p>Additional features you can enable in an IME associated with an editor
+         to improve the integration with your application.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:inputMethod">inputMethod</a>
+          </h3>
+          <div class="CBody">
+            <p>If set, specifies that this TextView should use the specified
+             input method (specified by fully-qualified class name).?</p>
+            <ul>
+              <li>Type: KeyListener </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:inputType">inputType</a>
+          </h3>
+          <div class="CBody">
+            <p>The type of data being placed in a text field, used to help an
+         input method decide how to let the user enter text.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:isScrollContainer">isScrollContainer</a>
+          </h3>
+          <div class="CBody">
+            <p>Set this if the view will serve as a scrolling container, meaing
+             that it can be resized to shrink its overall window so that there
+             will be space for an input method.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:keepScreenOn">keepScreenOn</a>
+          </h3>
+          <div class="CBody">
+            <p>Controls whether the view's window should keep the screen on
+             while visible.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:layoutDirection">layoutDirection</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines the direction of layout drawing.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:lineSpacingExtra">lineSpacingExtra</a>
+          </h3>
+          <div class="CBody">
+            <p>Extra spacing between lines of text.?</p>
+            <ul>
+              <li>Type: float,float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:lineSpacingMultiplier">lineSpacingMultiplier</a>
+          </h3>
+          <div class="CBody">
+            <p>Extra spacing between lines of text, as a multiplier.?</p>
+            <ul>
+              <li>Type: float,float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:lines">lines</a>
+          </h3>
+          <div class="CBody">
+            <p>Makes the TextView be exactly this many lines tall.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:linksClickable">linksClickable</a>
+          </h3>
+          <div class="CBody">
+            <p>If set to false, keeps the movement method from being set
+             to the link movement method even if autoLink causes links
+             to be found.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:longClickable">longClickable</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines whether this view reacts to long click events.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:marqueeRepeatLimit">marqueeRepeatLimit</a>
+          </h3>
+          <div class="CBody">
+            <p>The number of times to repeat the marquee animation.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:maxLength">maxLength</a>
+          </h3>
+          <div class="CBody">
+            <p>Set an input filter to constrain the text length to the
+             specified number.?</p>
+            <ul>
+              <li>Type: InputFilter </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:maxLines">maxLines</a>
+          </h3>
+          <div class="CBody">
+            <p>Makes the TextView be at most this many lines tall.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:minLines">minLines</a>
+          </h3>
+          <div class="CBody">
+            <p>Makes the TextView be at least this many lines tall.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:nextFocusDown">nextFocusDown</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines the next view to give focus to when the next focus is
+             FOCUS_DOWN
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a RuntimeException
+             will result when the reference is accessed.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:nextFocusForward">nextFocusForward</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines the next view to give focus to when the next focus is
+             FOCUS_FORWARD
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a RuntimeException
+             will result when the reference is accessed.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:nextFocusLeft">nextFocusLeft</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines the next view to give focus to when the next focus is
+             FOCUS_LEFT.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:nextFocusRight">nextFocusRight</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines the next view to give focus to when the next focus is
+             FOCUS_RIGHT
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a RuntimeException
+             will result when the reference is accessed.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:nextFocusUp">nextFocusUp</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines the next view to give focus to when the next focus is
+             FOCUS_UP
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a RuntimeException
+             will result when the reference is accessed.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:numeric">numeric</a>
+          </h3>
+          <div class="CBody">
+            <p>If set, specifies that this TextView has a numeric input method.?</p>
+            <ul>
+              <li>Type: KeyListener </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:paddingEnd">paddingEnd</a>
+          </h3>
+          <div class="CBody">
+            <p>Sets the padding, in pixels, of the end edge; see padding.?</p>
+            <ul>
+              <li>Type: int,int,int,int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:paddingStart">paddingStart</a>
+          </h3>
+          <div class="CBody">
+            <p>Sets the padding, in pixels, of the start edge; see padding.?</p>
+            <ul>
+              <li>Type: int,int,int,int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:password">password</a>
+          </h3>
+          <div class="CBody">
+            <p>Whether the characters of the field are displayed as
+             password dots instead of themselves.?</p>
+            <ul>
+              <li>Type: TransformationMethod </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:phoneNumber">phoneNumber</a>
+          </h3>
+          <div class="CBody">
+            <p>If set, specifies that this TextView has a phone number input
+             method.?</p>
+            <ul>
+              <li>Type: KeyListener </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:requiresFadingEdge">requiresFadingEdge</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines which edges should be faded on scrolling.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:rotation">rotation</a>
+          </h3>
+          <div class="CBody">
+            <p>rotation of the view, in degrees.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:rotationX">rotationX</a>
+          </h3>
+          <div class="CBody">
+            <p>rotation of the view around the x axis, in degrees.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:rotationY">rotationY</a>
+          </h3>
+          <div class="CBody">
+            <p>rotation of the view around the y axis, in degrees.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:saveEnabled">saveEnabled</a>
+          </h3>
+          <div class="CBody">
+            <p>If unset, no state will be saved for this view when it is being
+             frozen.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:scaleX">scaleX</a>
+          </h3>
+          <div class="CBody">
+            <p>scale of the view in the x direction.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:scaleY">scaleY</a>
+          </h3>
+          <div class="CBody">
+            <p>scale of the view in the y direction.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:scrollHorizontally">scrollHorizontally</a>
+          </h3>
+          <div class="CBody">
+            <p>Whether the text is allowed to be wider than the view (and
+             therefore can be scrolled horizontally).?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:scrollbarDefaultDelayBeforeFade">scrollbarDefaultDelayBeforeFade</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines the delay in milliseconds that a scrollbar waits before fade out.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:scrollbarFadeDuration">scrollbarFadeDuration</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines the delay in milliseconds that a scrollbar takes to fade out.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:scrollbarSize">scrollbarSize</a>
+          </h3>
+          <div class="CBody">
+            <p>Sets the width of vertical scrollbars and height of horizontal scrollbars.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:scrollbarStyle">scrollbarStyle</a>
+          </h3>
+          <div class="CBody">
+            <p>Controls the scrollbar style and position.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:shadowColor">shadowColor</a>
+          </h3>
+          <div class="CBody">
+            <p>Place a shadow of the specified color behind the text.?</p>
+            <ul>
+              <li>Type: float,float,float,int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:shadowDx">shadowDx</a>
+          </h3>
+          <div class="CBody">
+            <p>Horizontal offset of the shadow.?</p>
+            <ul>
+              <li>Type: float,float,float,int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:shadowDy">shadowDy</a>
+          </h3>
+          <div class="CBody">
+            <p>Vertical offset of the shadow.?</p>
+            <ul>
+              <li>Type: float,float,float,int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:shadowRadius">shadowRadius</a>
+          </h3>
+          <div class="CBody">
+            <p>Radius of the shadow.?</p>
+            <ul>
+              <li>Type: float,float,float,int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:singleLine">singleLine</a>
+          </h3>
+          <div class="CBody">
+            <p>Constrains the text to a single horizontally scrolling line
+             instead of letting it wrap onto multiple lines, and advances
+             focus instead of inserting a newline when you press the
+             enter key.?</p>
+            <ul>
+              <li>Type: TransformationMethod </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:soundEffectsEnabled">soundEffectsEnabled</a>
+          </h3>
+          <div class="CBody">
+            <p>Boolean that controls whether a view should have sound effects
+             enabled for events such as clicking and touching.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:text">text</a>
+          </h3>
+          <div class="CBody">
+            <p>Text to display.?</p>
+            <ul>
+              <li>Type: String </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:textAlignment">textAlignment</a>
+          </h3>
+          <div class="CBody">
+            <p>Alignment of the text.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:textAllCaps">textAllCaps</a>
+          </h3>
+          <div class="CBody">
+            <p>Present the text in ALL CAPS.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:textColor">textColor</a>
+          </h3>
+          <div class="CBody">
+            <p>Text color.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:textColorHighlight">textColorHighlight</a>
+          </h3>
+          <div class="CBody">
+            <p>Color of the text selection highlight.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:textColorHint">textColorHint</a>
+          </h3>
+          <div class="CBody">
+            <p>Color of the hint text.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:textColorLink">textColorLink</a>
+          </h3>
+          <div class="CBody">
+            <p>Text color for links.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:textScaleX">textScaleX</a>
+          </h3>
+          <div class="CBody">
+            <p>Sets the horizontal scaling factor for the text.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:textSize">textSize</a>
+          </h3>
+          <div class="CBody">
+            <p>Size of the text.?</p>
+            <ul>
+              <li>Type: int,float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:textStyle">textStyle</a>
+          </h3>
+          <div class="CBody">
+            <p>Style (bold, italic, bolditalic) for the text.?</p>
+            <ul>
+              <li>Type: Typeface </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:transformPivotX">transformPivotX</a>
+          </h3>
+          <div class="CBody">
+            <p>x location of the pivot point around which the view will rotate and scale.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:transformPivotY">transformPivotY</a>
+          </h3>
+          <div class="CBody">
+            <p>y location of the pivot point around which the view will rotate and scale.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:translationX">translationX</a>
+          </h3>
+          <div class="CBody">
+            <p>translation in x of the view.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:translationY">translationY</a>
+          </h3>
+          <div class="CBody">
+            <p>translation in y of the view.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:typeface">typeface</a>
+          </h3>
+          <div class="CBody">
+            <p>Typeface (normal, sans, serif, monospace) for the text.?</p>
+            <ul>
+              <li>Type: Typeface </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:visibility">visibility</a>
+          </h3>
+          <div class="CBody">
+            <p>Controls the initial visibility of the view.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="Footer">Copyright &copy; 2013 Generated by Mobile App Builder</div>
+    <div id="Menu">
+      <div class="MEntry">
+        <div class="MFile">
+          <a href="index.html">Summary</a>
+        </div>
+      </div>
+      <div class="MEntry">
+        <div class="MGroup">
+          <a href="javascript:ToggleMenu('MGroupContent1')" target="_self">System</a>
+          <div class="MGroupContent" id="MGroupContent1" style="display: block; ">
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="System_app.html">app</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="MEntry">
+        <div class="MGroup">
+          <a href="javascript:ToggleMenu('MGroupContent1')" target="_self">UI.Neutral</a>
+          <div class="MGroupContent" id="MGroupContent1" style="display: block; ">
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_AbsolutePanel.html">AbsolutePanel</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Alert.html">Alert</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Annotation.html">Annotation</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Box.html">Box</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Button.html">Button</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Canvas.html">Canvas</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_CheckBox.html">CheckBox</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_DatePicker.html">DatePicker</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_DatePickerDialog.html">DatePickerDialog</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_DockPanel.html">DockPanel</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_FlowPanel.html">FlowPanel</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_GridPanel.html">GridPanel</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Image.html">Image</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Item.html">Item</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile" id="MSelected">Label</div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_ListView.html">ListView</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Map.html">Map</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Menu.html">Menu</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_NavigationView.html">NavigationView</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_NumberStepper.html">NumberStepper</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Panel.html">Panel</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Picker.html">Picker</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Popup.html">Popup</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_ProgressBar.html">ProgressBar</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_RadioButton.html">RadioButton</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_RadioGroup.html">RadioGroup</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Row.html">Row</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Section.html">Section</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Selection.html">Selection</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Slider.html">Slider</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_SplitPanel.html">SplitPanel</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_StackPanel.html">StackPanel</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Switch.html">Switch</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_TabbedView.html">TabbedView</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Table.html">Table</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Text.html">Text</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_TimePicker.html">TimePicker</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_TimePickerDialog.html">TimePickerDialog</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Toast.html">Toast</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_View.html">View</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Web.html">Web</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="MEntry">
+        <div class="MGroup">
+          <a href="javascript:ToggleMenu('MGroupContent1')" target="_self">UI.Android</a>
+          <div class="MGroupContent" id="MGroupContent1" style="display: block; ">
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_ExpandableListView.html">ExpandableListView</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_ImageButton.html">ImageButton</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Spinner.html">Spinner</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_SpinnerGroup.html">SpinnerGroup</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="MEntry">
+        <div class="MGroup">
+          <a href="javascript:ToggleMenu('MGroupContent1')" target="_self">UI.iOS</a>
+          <div class="MGroupContent" id="MGroupContent1" style="display: block; ">
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_DateTimePicker.html">DateTimePicker</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Page.html">Page</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_PageControl.html">PageControl</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_PageView.html">PageView</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="MEntry">
+        <div class="MGroup">
+          <a href="javascript:ToggleMenu('MGroupContent1')" target="_self">Data Types</a>
+          <div class="MGroupContent" id="MGroupContent1" style="display: block; ">
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Type_AccessoryType.html">AccessoryType</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Type_CellStyle.html">CellStyle</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Type_Color.html">Color</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Type_DatePickerMode.html">DatePickerMode</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Type_ListStyle.html">ListStyle</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Type_SystemButton.html">SystemButton</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script language="JavaScript"><!--
+if (browserType) {if (browserVer) {document.write("</div>"); }document.write("</div>");}// --></script>
+  </body>
+</html>

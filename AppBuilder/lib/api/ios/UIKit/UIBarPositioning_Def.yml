@@ -1,0 +1,32 @@
+--- 
+conform: 
+    - NSObject
+properties: !java.util.LinkedHashMap
+    barPosition: !java.util.LinkedHashMap
+        name: barPosition
+        type: UIBarPosition
+        ref: ""
+        explanation: The position of the bar. (required)
+        readonly: false
+methods: !java.util.LinkedHashMap {}
+constants: !java.util.LinkedHashMap
+    UIBarMetrics: !java.util.LinkedHashMap
+        name: ~
+        isEnum: &7 false
+        isTypedef: &8 true
+        values: ~
+        defValues: 
+            - UIBarMetricsDefault
+            - UIBarMetricsLandscapePhone
+            - UIBarMetricsDefaultPrompt
+            - UIBarMetricsLandscapePhonePrompt
+    UIBarPosition: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *7
+        isTypedef: *8
+        values: ~
+        defValues: 
+            - UIBarPositionAny
+            - UIBarPositionBottom
+            - UIBarPositionTop
+            - UIBarPositionTopAttached

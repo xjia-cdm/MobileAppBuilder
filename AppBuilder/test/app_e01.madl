@@ -1,0 +1,55 @@
+
+/* Mobile Application Definition Language */
+
+
+/*
+ *  A app model to test various syntactic features 
+ *  - multiline comments, literals, numbers, multiline strings 
+ *
+ *  Version 1, 2013/12/06
+ */
+
+// A simple app 
+app(name : 'App Test 01') { 
+  
+  View(id: top) { 
+    Label(text: "Test app", font: Bold)   
+    Label(id: l1, text: "Hello ${t1.text}", width: '*')   // a label 
+    Button(id: b1, text: 'Next', next: view1)
+    Button(id: b2, text: 'Exit')
+    Panel(id: row3, orientation: 'horizontal') { 
+      Label(id: l2, text : 'Name') 
+      Text(id: t1, prompt: 'Enter text')
+    }
+	Row { 
+	  Label(text: 100)
+	  Label(text: 3.14159265)
+	}
+	Label(text: Math.PI)
+
+	Label(text: '''This is a multi-line label
+This is line 2 // not comment 
+This is line 3''', 
+		  color: Red)
+	Label(text: """This is another multi-line label
+This is line 2 /* not comment */
+This is line 3""", 
+		  font: [Italic, Serif, 14], color: [0, 128, 128])
+  }
+
+  View(id: view1) { 
+    int counter = 0  // local variable 
+
+    Label(id: l11, text: 'Counter: 0', width: '*') 
+    Button(text: 'Increment',
+		   action: { nextNumber() }) 
+    Button(text: 'Back', next: Previous)
+
+	// defines a closure 
+	def nextNumber = { 
+	  l11.text = "Counter: ${++counter}"
+	}
+
+  }
+
+}

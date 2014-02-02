@@ -1,0 +1,20 @@
+--- 
+inherit: 
+    - UICollectionViewLayoutInvalidationContext
+    - NSObject
+conform: 
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    invalidateFlowLayoutAttributes: !java.util.LinkedHashMap
+        name: invalidateFlowLayoutAttributes
+        type: BOOL
+        ref: ""
+        explanation: "A Boolean indicating whether to recompute the layout attributes for items and views in the layout. "
+        readonly: false
+    invalidateFlowLayoutDelegateMetrics: !java.util.LinkedHashMap
+        name: invalidateFlowLayoutDelegateMetrics
+        type: BOOL
+        ref: ""
+        explanation: A Boolean indicating whether to recompute the size of items and views in the layout.
+        readonly: false
+methods: !java.util.LinkedHashMap {}

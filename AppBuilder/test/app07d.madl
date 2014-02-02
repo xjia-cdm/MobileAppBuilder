@@ -1,0 +1,20 @@
+app('UK+France') { 
+
+  View { 
+	Button(text: 'Britain', next: britain)
+	Button(text: 'France', next: france)	
+  }
+
+  View(id: britain, autoLayout: true) { 
+	Label('United Kingdom')
+	Button(text: 'Back', next: Previous)
+	Image(file: 'unitedkingdom_flag.gif')
+  }
+
+  View(id: france, autoLayout: true) { 
+	Label('France')
+	Button(text: 'Back', next: Previous)
+	Image(file: 'france_flag.gif')
+  }
+
+}

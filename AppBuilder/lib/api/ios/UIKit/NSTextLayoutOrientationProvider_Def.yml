@@ -1,0 +1,9 @@
+--- 
+properties: !java.util.LinkedHashMap
+    layoutOrientation: !java.util.LinkedHashMap
+        name: layoutOrientation
+        type: NSTextLayoutOrientation
+        ref: ""
+        explanation: The receiver?s layout orientation. (required)
+        readonly: false
+methods: !java.util.LinkedHashMap {}

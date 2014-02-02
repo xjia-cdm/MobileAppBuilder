@@ -1,0 +1,179 @@
+--- 
+inherit: 
+    - UIDynamicBehavior
+    - NSObject
+conform: 
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    active: !java.util.LinkedHashMap
+        name: active
+        type: BOOL
+        ref: ""
+        explanation: "The state of the push behavior?s force: either active or inactive."
+        readonly: false
+    angle: !java.util.LinkedHashMap
+        name: angle
+        type: CGFloat
+        ref: ""
+        explanation: "The angle, in radians, of the force vector for the behavior."
+        readonly: false
+    items: !java.util.LinkedHashMap
+        name: items
+        type: NSArray
+        ref: "*"
+        explanation: Returns the set of dynamic items you?ve added to the push behavior. (read-only)
+        readonly: true
+    magnitude: !java.util.LinkedHashMap
+        name: magnitude
+        type: CGFloat
+        ref: ""
+        explanation: The magnitude of the force vector for the push behavior.
+        readonly: false
+    mode: !java.util.LinkedHashMap
+        name: mode
+        type: UIPushBehaviorMode
+        ref: ""
+        explanation: Returns the force mode for the push behavior. (read-only)
+        readonly: true
+    pushDirection: !java.util.LinkedHashMap
+        name: pushDirection
+        type: CGVector
+        ref: ""
+        explanation: "The direction of the force vector for the behavior, expressed as x and y components and using standard UIKit geometry."
+        readonly: false
+methods: !java.util.LinkedHashMap
+    addItem: !java.util.LinkedHashMap
+        isInstance: &12 true
+        name: addItem
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: &14 false
+            isRef: *14
+        isVarArgs: *14
+        args: 
+            - !java.util.LinkedHashMap
+                param: item
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *14
+                    isRef: *14
+    initWithItems: !java.util.LinkedHashMap
+        isInstance: *12
+        name: initWithItems
+        type: !java.util.LinkedHashMap
+            name: instancetype
+            delegate: ~
+            isConst: *14
+            isRef: *14
+        isVarArgs: *14
+        args: 
+            - !java.util.LinkedHashMap
+                param: items
+                type: !java.util.LinkedHashMap
+                    name: NSArray
+                    delegate: ~
+                    isConst: *14
+                    isRef: *12
+            - !java.util.LinkedHashMap
+                name: mode
+                param: mode
+                type: !java.util.LinkedHashMap
+                    name: UIPushBehaviorMode
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+    removeItem: !java.util.LinkedHashMap
+        isInstance: *12
+        name: removeItem
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *14
+            isRef: *14
+        isVarArgs: *14
+        args: 
+            - !java.util.LinkedHashMap
+                param: item
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *14
+                    isRef: *14
+    setAngle: !java.util.LinkedHashMap
+        isInstance: *12
+        name: setAngle
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *14
+            isRef: *14
+        isVarArgs: *14
+        args: 
+            - !java.util.LinkedHashMap
+                param: angle
+                type: !java.util.LinkedHashMap
+                    name: CGFloat
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+            - !java.util.LinkedHashMap
+                name: magnitude
+                param: magnitude
+                type: !java.util.LinkedHashMap
+                    name: CGFloat
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+    setTargetOffsetFromCenter: !java.util.LinkedHashMap
+        isInstance: *12
+        name: setTargetOffsetFromCenter
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *14
+            isRef: *14
+        isVarArgs: *14
+        args: 
+            - !java.util.LinkedHashMap
+                param: o
+                type: !java.util.LinkedHashMap
+                    name: UIOffset
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+            - !java.util.LinkedHashMap
+                name: forItem
+                param: item
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *14
+                    isRef: *14
+    targetOffsetFromCenterForItem: !java.util.LinkedHashMap
+        isInstance: *12
+        name: targetOffsetFromCenterForItem
+        type: !java.util.LinkedHashMap
+            name: UIOffset
+            delegate: ~
+            isConst: *14
+            isRef: *14
+        isVarArgs: *14
+        args: 
+            - !java.util.LinkedHashMap
+                param: item
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *14
+                    isRef: *14
+constants: !java.util.LinkedHashMap
+    UIPushBehaviorMode: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *14
+        isTypedef: *12
+        values: ~
+        defValues: 
+            - UIPushBehaviorModeContinuous
+            - UIPushBehaviorModeInstantaneous

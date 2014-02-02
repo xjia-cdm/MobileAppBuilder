@@ -1,0 +1,185 @@
+--- 
+inherit: 
+    - UIView
+    - UIResponder
+    - NSObject
+conform: 
+    - UIBarPositioning
+    - NSCoding (UIView)
+    - UIAppearance (UIView)
+    - UIAppearanceContainer (UIView)
+    - UIDynamicItem (UIView)
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    barStyle: !java.util.LinkedHashMap
+        name: barStyle
+        type: UIBarStyle
+        ref: ""
+        explanation: The toolbar style that specifies its appearance.
+        readonly: false
+    barTintColor: !java.util.LinkedHashMap
+        name: barTintColor
+        type: UIColor
+        ref: "*"
+        explanation: The tint color to apply to the toolbar background.
+        readonly: false
+    delegate: !java.util.LinkedHashMap
+        name: delegate
+        type: id
+        ref: ""
+        explanation: The toolbar?s delegate object.
+        readonly: false
+    items: !java.util.LinkedHashMap
+        name: items
+        type: NSArray
+        ref: "*"
+        explanation: The items displayed on the toolbar.
+        readonly: false
+    tintColor: !java.util.LinkedHashMap
+        name: tintColor
+        type: UIColor
+        ref: "*"
+        explanation: The tint color to apply to the bar button items.
+        readonly: false
+    translucent: !java.util.LinkedHashMap
+        name: translucent
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value that indicates whether the toolbar is translucent (YES) or not (NO).
+        readonly: false
+methods: !java.util.LinkedHashMap
+    backgroundImageForToolbarPosition: !java.util.LinkedHashMap
+        isInstance: &12 true
+        name: backgroundImageForToolbarPosition
+        type: !java.util.LinkedHashMap
+            name: UIImage
+            delegate: ~
+            isConst: &14 false
+            isRef: *12
+        isVarArgs: *14
+        args: 
+            - !java.util.LinkedHashMap
+                param: topOrBottom
+                type: !java.util.LinkedHashMap
+                    name: UIBarPosition
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+            - !java.util.LinkedHashMap
+                name: barMetrics
+                param: barMetrics
+                type: !java.util.LinkedHashMap
+                    name: UIBarMetrics
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+    setBackgroundImage: !java.util.LinkedHashMap
+        isInstance: *12
+        name: setBackgroundImage
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *14
+            isRef: *14
+        isVarArgs: *14
+        args: 
+            - !java.util.LinkedHashMap
+                param: backgroundImage
+                type: !java.util.LinkedHashMap
+                    name: UIImage
+                    delegate: ~
+                    isConst: *14
+                    isRef: *12
+            - !java.util.LinkedHashMap
+                name: forToolbarPosition
+                param: topOrBottom
+                type: !java.util.LinkedHashMap
+                    name: UIBarPosition
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+            - !java.util.LinkedHashMap
+                name: barMetrics
+                param: barMetrics
+                type: !java.util.LinkedHashMap
+                    name: UIBarMetrics
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+    setItems: !java.util.LinkedHashMap
+        isInstance: *12
+        name: setItems
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *14
+            isRef: *14
+        isVarArgs: *14
+        args: 
+            - !java.util.LinkedHashMap
+                param: items
+                type: !java.util.LinkedHashMap
+                    name: NSArray
+                    delegate: ~
+                    isConst: *14
+                    isRef: *12
+            - !java.util.LinkedHashMap
+                name: animated
+                param: animated
+                type: !java.util.LinkedHashMap
+                    name: BOOL
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+    setShadowImage: !java.util.LinkedHashMap
+        isInstance: *12
+        name: setShadowImage
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *14
+            isRef: *14
+        isVarArgs: *14
+        args: 
+            - !java.util.LinkedHashMap
+                param: shadowImage
+                type: !java.util.LinkedHashMap
+                    name: UIImage
+                    delegate: ~
+                    isConst: *14
+                    isRef: *12
+            - !java.util.LinkedHashMap
+                name: forToolbarPosition
+                param: topOrBottom
+                type: !java.util.LinkedHashMap
+                    name: UIBarPosition
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+    shadowImageForToolbarPosition: !java.util.LinkedHashMap
+        isInstance: *12
+        name: shadowImageForToolbarPosition
+        type: !java.util.LinkedHashMap
+            name: UIImage
+            delegate: ~
+            isConst: *14
+            isRef: *12
+        isVarArgs: *14
+        args: 
+            - !java.util.LinkedHashMap
+                param: topOrBottom
+                type: !java.util.LinkedHashMap
+                    name: UIBarPosition
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+constants: !java.util.LinkedHashMap
+    UIToolbarPosition: !java.util.LinkedHashMap
+        name: UIToolbarPosition
+        isEnum: *12
+        isTypedef: *12
+        values: []
+        defValues: 
+            - UIToolbarPositionAny
+            - UIToolbarPositionBottom
+            - UIToolbarPositionTop

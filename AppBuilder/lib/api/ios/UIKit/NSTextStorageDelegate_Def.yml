@@ -1,0 +1,46 @@
+--- 
+conform: 
+    - NSObject
+properties: !java.util.LinkedHashMap {}
+methods: !java.util.LinkedHashMap
+    textStorage: !java.util.LinkedHashMap
+        isInstance: &5 true
+        name: textStorage
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: &7 false
+            isRef: *7
+        isVarArgs: *7
+        args: 
+            - !java.util.LinkedHashMap
+                param: textStorage
+                type: !java.util.LinkedHashMap
+                    name: NSTextStorage
+                    delegate: ~
+                    isConst: *7
+                    isRef: *5
+            - !java.util.LinkedHashMap
+                name: willProcessEditing
+                param: editedMask
+                type: !java.util.LinkedHashMap
+                    name: NSTextStorageEditActions
+                    delegate: ~
+                    isConst: *7
+                    isRef: *7
+            - !java.util.LinkedHashMap
+                name: range
+                param: editedRange
+                type: !java.util.LinkedHashMap
+                    name: NSRange
+                    delegate: ~
+                    isConst: *7
+                    isRef: *7
+            - !java.util.LinkedHashMap
+                name: changeInLength
+                param: delta
+                type: !java.util.LinkedHashMap
+                    name: NSInteger
+                    delegate: ~
+                    isConst: *7
+                    isRef: *7

@@ -1,0 +1,513 @@
+--- 
+inherit: 
+    - android.widget.CompoundButton
+    - android.widget.Button
+    - android.widget.TextView
+    - android.view.View
+    - java.lang.Object
+attributes: !java.util.LinkedHashMap
+    autoLink: !java.util.LinkedHashMap
+        name: "android:autoLink"
+        method: setAutoLinkMask(int)
+        methodName: setAutoLinkMask
+        type: int
+        explanation: |
+            Controls whether links such as urls and email addresses are
+                     automatically found and converted to clickable links. 
+        from: android.widget.TextView
+    autoText: !java.util.LinkedHashMap
+        name: "android:autoText"
+        method: setKeyListener(KeyListener)
+        methodName: setKeyListener
+        type: KeyListener
+        explanation: |
+            If set, specifies that this TextView has a textual input method
+                         and automatically corrects some common spelling errors. 
+        from: android.widget.TextView
+    bufferType: !java.util.LinkedHashMap
+        name: "android:bufferType"
+        method: "setText(CharSequence,TextView.BufferType)"
+        methodName: setText
+        type: "CharSequence,TextView.BufferType"
+        explanation: Determines the minimum type that getText() will return. 
+        from: android.widget.TextView
+    capitalize: !java.util.LinkedHashMap
+        name: "android:capitalize"
+        method: setKeyListener(KeyListener)
+        methodName: setKeyListener
+        type: KeyListener
+        explanation: |
+            If set, specifies that this TextView has a textual input method
+                         and should automatically capitalize what the user types. 
+        from: android.widget.TextView
+    cursorVisible: !java.util.LinkedHashMap
+        name: "android:cursorVisible"
+        method: setCursorVisible(boolean)
+        methodName: setCursorVisible
+        type: boolean
+        explanation: Makes the cursor visible (the default) or invisible. 
+        from: android.widget.TextView
+    digits: !java.util.LinkedHashMap
+        name: "android:digits"
+        method: setKeyListener(KeyListener)
+        methodName: setKeyListener
+        type: KeyListener
+        explanation: |
+            If set, specifies that this TextView has a numeric input method
+                         and that these specific characters are the ones that it will
+                         accept. 
+        from: android.widget.TextView
+    drawableEnd: !java.util.LinkedHashMap
+        name: "android:drawableEnd"
+        method: "setCompoundDrawablesRelativeWithIntrinsicBounds(int,int,int,int)"
+        methodName: setCompoundDrawablesRelativeWithIntrinsicBounds
+        type: "int,int,int,int"
+        explanation: The drawable to be drawn to the end of the text. 
+        from: android.widget.TextView
+    drawableStart: !java.util.LinkedHashMap
+        name: "android:drawableStart"
+        method: "setCompoundDrawablesRelativeWithIntrinsicBounds(int,int,int,int)"
+        methodName: setCompoundDrawablesRelativeWithIntrinsicBounds
+        type: "int,int,int,int"
+        explanation: The drawable to be drawn to the start of the text. 
+        from: android.widget.TextView
+    ellipsize: !java.util.LinkedHashMap
+        name: "android:ellipsize"
+        method: setEllipsize(TextUtils.TruncateAt)
+        methodName: setEllipsize
+        type: TextUtils.TruncateAt
+        explanation: |
+            If set, causes words that are longer than the view is wide
+                         to be ellipsized instead of broken in the middle. 
+        from: android.widget.TextView
+    fontFamily: !java.util.LinkedHashMap
+        name: "android:fontFamily"
+        method: setTypeface(Typeface)
+        methodName: setTypeface
+        type: Typeface
+        explanation: Font family (named by string) for the text. 
+        from: android.widget.TextView
+    freezesText: !java.util.LinkedHashMap
+        name: "android:freezesText"
+        method: setFreezesText(boolean)
+        methodName: setFreezesText
+        type: boolean
+        explanation: |
+            If set, the text view will include its current complete text
+                         inside of its frozen icicle in addition to meta-data such as
+                         the current cursor position. 
+        from: android.widget.TextView
+    gravity: !java.util.LinkedHashMap
+        name: "android:gravity"
+        method: setGravity(int)
+        methodName: setGravity
+        type: int
+        explanation: |
+            Specifies how to align the text by the view's x- and/or y-axis
+                         when the text is smaller than the view. 
+        from: android.widget.TextView
+    hint: !java.util.LinkedHashMap
+        name: "android:hint"
+        method: setHint(int)
+        methodName: setHint
+        type: int
+        explanation: Hint text to display when the text is empty. 
+        from: android.widget.TextView
+    inputMethod: !java.util.LinkedHashMap
+        name: "android:inputMethod"
+        method: setKeyListener(KeyListener)
+        methodName: setKeyListener
+        type: KeyListener
+        explanation: |
+            If set, specifies that this TextView should use the specified
+                         input method (specified by fully-qualified class name). 
+        from: android.widget.TextView
+    inputType: !java.util.LinkedHashMap
+        name: "android:inputType"
+        method: setRawInputType(int)
+        methodName: setRawInputType
+        type: int
+        explanation: |
+            The type of data being placed in a text field, used to help an
+                     input method decide how to let the user enter text. 
+        from: android.widget.TextView
+    lineSpacingExtra: !java.util.LinkedHashMap
+        name: "android:lineSpacingExtra"
+        method: "setLineSpacing(float,float)"
+        methodName: setLineSpacing
+        type: "float,float"
+        explanation: Extra spacing between lines of text. 
+        from: android.widget.TextView
+    lineSpacingMultiplier: !java.util.LinkedHashMap
+        name: "android:lineSpacingMultiplier"
+        method: "setLineSpacing(float,float)"
+        methodName: setLineSpacing
+        type: "float,float"
+        explanation: "Extra spacing between lines of text, as a multiplier. "
+        from: android.widget.TextView
+    lines: !java.util.LinkedHashMap
+        name: "android:lines"
+        method: setLines(int)
+        methodName: setLines
+        type: int
+        explanation: Makes the TextView be exactly this many lines tall. 
+        from: android.widget.TextView
+    linksClickable: !java.util.LinkedHashMap
+        name: "android:linksClickable"
+        method: setLinksClickable(boolean)
+        methodName: setLinksClickable
+        type: boolean
+        explanation: |
+            If set to false, keeps the movement method from being set
+                         to the link movement method even if autoLink causes links
+                         to be found. 
+        from: android.widget.TextView
+    maxLength: !java.util.LinkedHashMap
+        name: "android:maxLength"
+        method: setFilters(InputFilter)
+        methodName: setFilters
+        type: InputFilter
+        explanation: |
+            Set an input filter to constrain the text length to the
+                         specified number. 
+        from: android.widget.TextView
+    maxLines: !java.util.LinkedHashMap
+        name: "android:maxLines"
+        method: setMaxLines(int)
+        methodName: setMaxLines
+        type: int
+        explanation: Makes the TextView be at most this many lines tall. 
+        from: android.widget.TextView
+    minLines: !java.util.LinkedHashMap
+        name: "android:minLines"
+        method: setMinLines(int)
+        methodName: setMinLines
+        type: int
+        explanation: Makes the TextView be at least this many lines tall. 
+        from: android.widget.TextView
+    numeric: !java.util.LinkedHashMap
+        name: "android:numeric"
+        method: setKeyListener(KeyListener)
+        methodName: setKeyListener
+        type: KeyListener
+        explanation: "If set, specifies that this TextView has a numeric input method. "
+        from: android.widget.TextView
+    password: !java.util.LinkedHashMap
+        name: "android:password"
+        method: setTransformationMethod(TransformationMethod)
+        methodName: setTransformationMethod
+        type: TransformationMethod
+        explanation: |
+            Whether the characters of the field are displayed as
+                         password dots instead of themselves. 
+        from: android.widget.TextView
+    phoneNumber: !java.util.LinkedHashMap
+        name: "android:phoneNumber"
+        method: setKeyListener(KeyListener)
+        methodName: setKeyListener
+        type: KeyListener
+        explanation: |
+            If set, specifies that this TextView has a phone number input
+                         method. 
+        from: android.widget.TextView
+    shadowColor: !java.util.LinkedHashMap
+        name: "android:shadowColor"
+        method: "setShadowLayer(float,float,float,int)"
+        methodName: setShadowLayer
+        type: "float,float,float,int"
+        explanation: Place a shadow of the specified color behind the text. 
+        from: android.widget.TextView
+    shadowDx: !java.util.LinkedHashMap
+        name: "android:shadowDx"
+        method: "setShadowLayer(float,float,float,int)"
+        methodName: setShadowLayer
+        type: "float,float,float,int"
+        explanation: Horizontal offset of the shadow. 
+        from: android.widget.TextView
+    shadowDy: !java.util.LinkedHashMap
+        name: "android:shadowDy"
+        method: "setShadowLayer(float,float,float,int)"
+        methodName: setShadowLayer
+        type: "float,float,float,int"
+        explanation: Vertical offset of the shadow. 
+        from: android.widget.TextView
+    shadowRadius: !java.util.LinkedHashMap
+        name: "android:shadowRadius"
+        method: "setShadowLayer(float,float,float,int)"
+        methodName: setShadowLayer
+        type: "float,float,float,int"
+        explanation: Radius of the shadow. 
+        from: android.widget.TextView
+    singleLine: !java.util.LinkedHashMap
+        name: "android:singleLine"
+        method: setTransformationMethod(TransformationMethod)
+        methodName: setTransformationMethod
+        type: TransformationMethod
+        explanation: |
+            Constrains the text to a single horizontally scrolling line
+                         instead of letting it wrap onto multiple lines, and advances
+                         focus instead of inserting a newline when you press the
+                         enter key. 
+        from: android.widget.TextView
+    text: !java.util.LinkedHashMap
+        name: "android:text"
+        method: "setText(CharSequence,TextView.BufferType)"
+        methodName: setText
+        type: "CharSequence,TextView.BufferType"
+        explanation: Text to display. 
+        from: android.widget.TextView
+    textAllCaps: !java.util.LinkedHashMap
+        name: "android:textAllCaps"
+        method: setAllCaps(boolean)
+        methodName: setAllCaps
+        type: boolean
+        explanation: Present the text in ALL CAPS. 
+        from: android.widget.TextView
+    textColor: !java.util.LinkedHashMap
+        name: "android:textColor"
+        method: setTextColor(int)
+        methodName: setTextColor
+        type: int
+        explanation: Text color. 
+        from: android.widget.TextView
+    textColorHighlight: !java.util.LinkedHashMap
+        name: "android:textColorHighlight"
+        method: setHighlightColor(int)
+        methodName: setHighlightColor
+        type: int
+        explanation: Color of the text selection highlight. 
+        from: android.widget.TextView
+    textColorHint: !java.util.LinkedHashMap
+        name: "android:textColorHint"
+        method: setHintTextColor(int)
+        methodName: setHintTextColor
+        type: int
+        explanation: Color of the hint text. 
+        from: android.widget.TextView
+    textColorLink: !java.util.LinkedHashMap
+        name: "android:textColorLink"
+        method: setLinkTextColor(int)
+        methodName: setLinkTextColor
+        type: int
+        explanation: Text color for links. 
+        from: android.widget.TextView
+    textScaleX: !java.util.LinkedHashMap
+        name: "android:textScaleX"
+        method: setTextScaleX(float)
+        methodName: setTextScaleX
+        type: float
+        explanation: Sets the horizontal scaling factor for the text. 
+        from: android.widget.TextView
+    textSize: !java.util.LinkedHashMap
+        name: "android:textSize"
+        method: "setTextSize(int,float)"
+        methodName: setTextSize
+        type: "int,float"
+        explanation: Size of the text. 
+        from: android.widget.TextView
+    textStyle: !java.util.LinkedHashMap
+        name: "android:textStyle"
+        method: setTypeface(Typeface)
+        methodName: setTypeface
+        type: Typeface
+        explanation: "Style (bold, italic, bolditalic) for the text. "
+        from: android.widget.TextView
+    typeface: !java.util.LinkedHashMap
+        name: "android:typeface"
+        method: setTypeface(Typeface)
+        methodName: setTypeface
+        type: Typeface
+        explanation: "Typeface (normal, sans, serif, monospace) for the text. "
+        from: android.widget.TextView
+    accessibilityLiveRegion: !java.util.LinkedHashMap
+        name: "android:accessibilityLiveRegion"
+        method: setAccessibilityLiveRegion(int)
+        methodName: setAccessibilityLiveRegion
+        type: int
+        explanation: |
+            Indicates to accessibility services whether the user should be notified when
+                         this view changes. 
+        from: android.view.View
+    alpha: !java.util.LinkedHashMap
+        name: "android:alpha"
+        method: setAlpha(float)
+        methodName: setAlpha
+        type: float
+        explanation: |
+            alpha property of the view, as a value between 0 (completely transparent) and 1
+                         (completely opaque). 
+        from: android.view.View
+    background: !java.util.LinkedHashMap
+        name: "android:background"
+        method: setBackgroundResource(int)
+        methodName: setBackgroundResource
+        type: int
+        explanation: A drawable to use as the background. 
+        from: android.view.View
+    clickable: !java.util.LinkedHashMap
+        name: "android:clickable"
+        method: setClickable(boolean)
+        methodName: setClickable
+        type: boolean
+        explanation: Defines whether this view reacts to click events. 
+        from: android.view.View
+    contentDescription: !java.util.LinkedHashMap
+        name: "android:contentDescription"
+        method: setContentDescription(CharSequence)
+        methodName: setContentDescription
+        type: CharSequence
+        explanation: Defines text that briefly describes content of the view. 
+        from: android.view.View
+    fadeScrollbars: !java.util.LinkedHashMap
+        name: "android:fadeScrollbars"
+        method: setScrollbarFadingEnabled(boolean)
+        methodName: setScrollbarFadingEnabled
+        type: boolean
+        explanation: Defines whether to fade out scrollbars when they are not in use. 
+        from: android.view.View
+    focusable: !java.util.LinkedHashMap
+        name: "android:focusable"
+        method: setFocusable(boolean)
+        methodName: setFocusable
+        type: boolean
+        explanation: Boolean that controls whether a view can take focus. 
+        from: android.view.View
+    focusableInTouchMode: !java.util.LinkedHashMap
+        name: "android:focusableInTouchMode"
+        method: setFocusableInTouchMode(boolean)
+        methodName: setFocusableInTouchMode
+        type: boolean
+        explanation: Boolean that controls whether a view can take focus while in touch mode. 
+        from: android.view.View
+    hapticFeedbackEnabled: !java.util.LinkedHashMap
+        name: "android:hapticFeedbackEnabled"
+        method: setHapticFeedbackEnabled(boolean)
+        methodName: setHapticFeedbackEnabled
+        type: boolean
+        explanation: |
+            Boolean that controls whether a view should have haptic feedback
+                         enabled for events such as long presses. 
+        from: android.view.View
+    keepScreenOn: !java.util.LinkedHashMap
+        name: "android:keepScreenOn"
+        method: setKeepScreenOn(boolean)
+        methodName: setKeepScreenOn
+        type: boolean
+        explanation: |
+            Controls whether the view's window should keep the screen on
+                         while visible. 
+        from: android.view.View
+    layoutDirection: !java.util.LinkedHashMap
+        name: "android:layoutDirection"
+        method: setLayoutDirection(int)
+        methodName: setLayoutDirection
+        type: int
+        explanation: Defines the direction of layout drawing. 
+        from: android.view.View
+    paddingEnd: !java.util.LinkedHashMap
+        name: "android:paddingEnd"
+        method: "setPaddingRelative(int,int,int,int)"
+        methodName: setPaddingRelative
+        type: "int,int,int,int"
+        explanation: "Sets the padding, in pixels, of the end edge; see padding. "
+        from: android.view.View
+    paddingStart: !java.util.LinkedHashMap
+        name: "android:paddingStart"
+        method: "setPaddingRelative(int,int,int,int)"
+        methodName: setPaddingRelative
+        type: "int,int,int,int"
+        explanation: "Sets the padding, in pixels, of the start edge; see padding. "
+        from: android.view.View
+    rotation: !java.util.LinkedHashMap
+        name: "android:rotation"
+        method: setRotation(float)
+        methodName: setRotation
+        type: float
+        explanation: "rotation of the view, in degrees. "
+        from: android.view.View
+    rotationX: !java.util.LinkedHashMap
+        name: "android:rotationX"
+        method: setRotationX(float)
+        methodName: setRotationX
+        type: float
+        explanation: "rotation of the view around the x axis, in degrees. "
+        from: android.view.View
+    rotationY: !java.util.LinkedHashMap
+        name: "android:rotationY"
+        method: setRotationY(float)
+        methodName: setRotationY
+        type: float
+        explanation: "rotation of the view around the y axis, in degrees. "
+        from: android.view.View
+    saveEnabled: !java.util.LinkedHashMap
+        name: "android:saveEnabled"
+        method: setSaveEnabled(boolean)
+        methodName: setSaveEnabled
+        type: boolean
+        explanation: |
+            If unset, no state will be saved for this view when it is being
+                         frozen. 
+        from: android.view.View
+    scaleX: !java.util.LinkedHashMap
+        name: "android:scaleX"
+        method: setScaleX(float)
+        methodName: setScaleX
+        type: float
+        explanation: scale of the view in the x direction. 
+        from: android.view.View
+    scaleY: !java.util.LinkedHashMap
+        name: "android:scaleY"
+        method: setScaleY(float)
+        methodName: setScaleY
+        type: float
+        explanation: scale of the view in the y direction. 
+        from: android.view.View
+    textAlignment: !java.util.LinkedHashMap
+        name: "android:textAlignment"
+        method: setTextAlignment(int)
+        methodName: setTextAlignment
+        type: int
+        explanation: Defines the alignment of the text. 
+        from: android.view.View
+    textDirection: !java.util.LinkedHashMap
+        name: "android:textDirection"
+        method: setTextDirection(int)
+        methodName: setTextDirection
+        type: int
+        explanation: Defines the direction of the text. 
+        from: android.view.View
+    transformPivotX: !java.util.LinkedHashMap
+        name: "android:transformPivotX"
+        method: setPivotX(float)
+        methodName: setPivotX
+        type: float
+        explanation: x location of the pivot point around which the view will rotate and scale. 
+        from: android.view.View
+    transformPivotY: !java.util.LinkedHashMap
+        name: "android:transformPivotY"
+        method: setPivotY(float)
+        methodName: setPivotY
+        type: float
+        explanation: y location of the pivot point around which the view will rotate and scale. 
+        from: android.view.View
+    translationX: !java.util.LinkedHashMap
+        name: "android:translationX"
+        method: setTranslationX(float)
+        methodName: setTranslationX
+        type: float
+        explanation: translation in x of the view. 
+        from: android.view.View
+    translationY: !java.util.LinkedHashMap
+        name: "android:translationY"
+        method: setTranslationY(float)
+        methodName: setTranslationY
+        type: float
+        explanation: translation in y of the view. 
+        from: android.view.View
+    visibility: !java.util.LinkedHashMap
+        name: "android:visibility"
+        method: setVisibility(int)
+        methodName: setVisibility
+        type: int
+        explanation: Controls the initial visibility of the view. 
+        from: android.view.View

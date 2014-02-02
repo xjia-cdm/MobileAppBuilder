@@ -1,0 +1,79 @@
+--- 
+conform: 
+    - NSObject
+properties: !java.util.LinkedHashMap {}
+methods: !java.util.LinkedHashMap
+    attachmentBoundsForTextContainer: !java.util.LinkedHashMap
+        isInstance: &5 true
+        name: attachmentBoundsForTextContainer
+        type: !java.util.LinkedHashMap
+            name: CGRect
+            delegate: ~
+            isConst: &7 false
+            isRef: *7
+        isVarArgs: *7
+        args: 
+            - !java.util.LinkedHashMap
+                param: textContainer
+                type: !java.util.LinkedHashMap
+                    name: NSTextContainer
+                    delegate: ~
+                    isConst: *7
+                    isRef: *5
+            - !java.util.LinkedHashMap
+                name: proposedLineFragment
+                param: lineFrag
+                type: !java.util.LinkedHashMap
+                    name: CGRect
+                    delegate: ~
+                    isConst: *7
+                    isRef: *7
+            - !java.util.LinkedHashMap
+                name: glyphPosition
+                param: position
+                type: !java.util.LinkedHashMap
+                    name: CGPoint
+                    delegate: ~
+                    isConst: *7
+                    isRef: *7
+            - !java.util.LinkedHashMap
+                name: characterIndex
+                param: charIndex
+                type: !java.util.LinkedHashMap
+                    name: NSUInteger
+                    delegate: ~
+                    isConst: *7
+                    isRef: *7
+    imageForBounds: !java.util.LinkedHashMap
+        isInstance: *5
+        name: imageForBounds
+        type: !java.util.LinkedHashMap
+            name: UIImage
+            delegate: ~
+            isConst: *7
+            isRef: *5
+        isVarArgs: *7
+        args: 
+            - !java.util.LinkedHashMap
+                param: imageBounds
+                type: !java.util.LinkedHashMap
+                    name: CGRect
+                    delegate: ~
+                    isConst: *7
+                    isRef: *7
+            - !java.util.LinkedHashMap
+                name: textContainer
+                param: textContainer
+                type: !java.util.LinkedHashMap
+                    name: NSTextContainer
+                    delegate: ~
+                    isConst: *7
+                    isRef: *5
+            - !java.util.LinkedHashMap
+                name: characterIndex
+                param: charIndex
+                type: !java.util.LinkedHashMap
+                    name: NSUInteger
+                    delegate: ~
+                    isConst: *7
+                    isRef: *7

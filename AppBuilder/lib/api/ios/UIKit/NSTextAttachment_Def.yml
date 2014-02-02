@@ -1,0 +1,72 @@
+--- 
+inherit: 
+    - NSObject
+conform: 
+    - NSCoding
+    - NSTextAttachmentContainer
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    bounds: !java.util.LinkedHashMap
+        name: bounds
+        type: CGRect
+        ref: ""
+        explanation: "Defines the layout bounds of the receiver's graphical representation in the text coordinate system."
+        readonly: false
+    contents: !java.util.LinkedHashMap
+        name: contents
+        type: NSData
+        ref: "*"
+        explanation: Defines the contents for the text attachment.
+        readonly: false
+    fileType: !java.util.LinkedHashMap
+        name: fileType
+        type: NSString
+        ref: "*"
+        explanation: Defines the file type of the contents for the text attachment.
+        readonly: false
+    fileWrapper: !java.util.LinkedHashMap
+        name: fileWrapper
+        type: NSFileWrapper
+        ref: "*"
+        explanation: File wrapper associated with the text attachment.
+        readonly: false
+    image: !java.util.LinkedHashMap
+        name: image
+        type: UIImage
+        ref: "*"
+        explanation: Image representing the text attachment contents.
+        readonly: false
+methods: !java.util.LinkedHashMap
+    initWithData: !java.util.LinkedHashMap
+        isInstance: &11 true
+        name: initWithData
+        type: !java.util.LinkedHashMap
+            name: id
+            delegate: ~
+            isConst: &13 false
+            isRef: *13
+        isVarArgs: *13
+        args: 
+            - !java.util.LinkedHashMap
+                param: contentData
+                type: !java.util.LinkedHashMap
+                    name: NSData
+                    delegate: ~
+                    isConst: *13
+                    isRef: *11
+            - !java.util.LinkedHashMap
+                name: ofType
+                param: uti
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *13
+                    isRef: *11
+constants: !java.util.LinkedHashMap
+    Attachment Character: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *11
+        isTypedef: *13
+        values: []
+        defValues: 
+            - NSAttachmentCharacter

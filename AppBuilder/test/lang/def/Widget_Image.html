@@ -1,0 +1,1838 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/main.css"></link>
+    <link rel="stylesheet" type="text/css" href="css/styles2.css"></link>
+    <script language="JavaScript" src="script/main.js"></script>
+    <style type="text/css">.syntaxhighlighter { font-size: 12px !important; }</style>
+    <title>UI.Neutral: Image</title>
+  </head>
+  <body class="ContentPage" onLoad="NDOnLoad()">
+    <script language="JavaScript"><!--
+if (browserType) {document.write("<div class=" + browserType + ">");if (browserVer) {document.write("<div class=" + browserVer + ">"); }}// --></script>
+    <div id="Content">
+      <div class="CSection">
+        <div class="CTopic" id="MainTopic">
+          <h1 class="CTitle">
+            <a name="Image">UI Widget: Image</a>
+          </h1>
+          <div class="CBody">
+            <div class="TOC">
+              <a href="#type">Widget Type</a> &middot; 
+              <a href="#platforms">Supported Platforms</a> &middot; 
+              <a href="#attributes">Attributes</a> &middot; 
+              <a href="#iOS_attributes">iOS Attributes</a> &middot; 
+              <a href="#Android_attributes">Android Attributes</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="CGroup">
+        <div class="CTopic">
+          <h2 class="CTitle">
+            <a name="type">Widget Type</a>
+          </h2>
+          <div class="CBody">
+            <ul>
+              <li>Widget</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGroup">
+        <div class="CTopic">
+          <h2 class="CTitle">
+            <a name="platforms">Supported Platforms</a>
+          </h2>
+          <div class="CBody">
+            <ul>
+              <li>Neutral</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="widget_mapping">Native Widget Class Mapping</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Native class for iOS: UIImageView </li>
+              <li>Native class for Android: android.widget.ImageView </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGroup">
+        <div class="CTopic">
+          <h2 class="CTitle">
+            <a name="attributes">Attributes</a>
+          </h2>
+          <div class="CBody">
+            <div class="Summary">
+              <div class="STitle">Summary</div>
+              <div class="SBorder">
+                <table border="0" cellspacing="0" cellpadding="0" class="STable">
+                  <tbody>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#action">action</a>
+                      </td>
+                      <td class="SDescription">Closure</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#file">file</a>
+                      </td>
+                      <td class="SDescription">String</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#next">next</a>
+                      </td>
+                      <td class="SDescription">String</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#scroll">scroll</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#size">size</a>
+                      </td>
+                      <td class="SDescription">[int,int]</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="action">action</a>
+          </h3>
+          <div class="CBody">
+            <p>The action triggered by the action event originating from this widget.</p>
+            <ul>
+              <li>Type: Closure</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="file">file</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Type: String</li>
+              <li>Examples of value: 
+                <ul>
+                  <li>iPad.jpg</li>
+                  <li>GoldenGate.png</li>
+                  <li>scene1.jpg</li>
+                  <li>scene2.jpg</li>
+                  <li>scene3.jpg</li>
+                  <li>austria_map.gif</li>
+                  <li>belgium_map.gif</li>
+                  <li>bulgaria_map.gif</li>
+                  <li>cyprus_map.gif</li>
+                  <li>czechrepublic_map.gif</li>
+                  <li>denmark_map.gif</li>
+                  <li>estonia_map.gif</li>
+                  <li>finland_map.gif</li>
+                  <li>france_map.gif</li>
+                  <li>germany_map.gif</li>
+                  <li>greece_map.gif</li>
+                  <li>hungary_map.gif</li>
+                  <li>ireland_map.gif</li>
+                  <li>italy_map.gif</li>
+                  <li>latvia_map.gif</li>
+                  <li>lithuania_map.gif</li>
+                  <li>luxembourg_map.gif</li>
+                  <li>malta_map.gif</li>
+                  <li>netherlands_map.gif</li>
+                  <li>poland_map.gif</li>
+                  <li>portugal_map.gif</li>
+                  <li>romania_map.gif</li>
+                  <li>slovakia_map.gif</li>
+                  <li>slovenia_map.gif</li>
+                  <li>spain_map.gif</li>
+                  <li>sweden_map.gif</li>
+                  <li>unitedkingdom_map.gif</li>
+                  <li>data_map.gif</li>
+                  <li>unitedkingdom_flag.gif</li>
+                  <li>france_flag.gif</li>
+                  <li>audi_a6_01.jpg</li>
+                  <li>audi_a6_02.jpg</li>
+                  <li>audi_a6_03.jpg</li>
+                  <li>audi_a6_04.jpg</li>
+                  <li>audi_a4_01.jpg</li>
+                  <li>audi_a4_02.jpg</li>
+                  <li>audi_a4_03.jpg</li>
+                  <li>audi_a4_04.jpg</li>
+                  <li>audi_tt_01.jpg</li>
+                  <li>audi_tt_02.jpg</li>
+                  <li>audi_tt_03.jpg</li>
+                  <li>audi_tt_04.jpg</li>
+                  <li>audi_r8_01.jpg</li>
+                  <li>audi_r8_02.jpg</li>
+                  <li>audi_r8_03.jpg</li>
+                  <li>audi_r8_04.jpg</li>
+                  <li>audi_q5_01.jpg</li>
+                  <li>audi_q5_02.jpg</li>
+                  <li>audi_q5_03.jpg</li>
+                  <li>audi_q5_04.jpg</li>
+                  <li>hyundai_accent_01.jpg</li>
+                  <li>hyundai_accent_02.jpg</li>
+                  <li>hyundai_accent_03.jpg</li>
+                  <li>hyundai_accent_04.jpg</li>
+                  <li>hyundai_elantra_01.jpg</li>
+                  <li>hyundai_elantra_02.jpg</li>
+                  <li>hyundai_elantra_03.jpg</li>
+                  <li>hyundai_elantra_04.jpg</li>
+                  <li>hyundai_veloster_01.jpg</li>
+                  <li>hyundai_veloster_02.jpg</li>
+                  <li>hyundai_veloster_03.jpg</li>
+                  <li>hyundai_veloster_04.jpg</li>
+                  <li>hyundai_tucson_01.jpg</li>
+                  <li>hyundai_tucson_02.jpg</li>
+                  <li>hyundai_tucson_03.jpg</li>
+                  <li>hyundai_tucson_04.jpg</li>
+                  <li>toyota_prius_01.jpg</li>
+                  <li>toyota_prius_02.jpg</li>
+                  <li>toyota_prius_03.jpg</li>
+                  <li>toyota_prius_04.jpg</li>
+                  <li>toyota_highlander_01.jpg</li>
+                  <li>toyota_highlander_02.jpg</li>
+                  <li>toyota_highlander_03.jpg</li>
+                  <li>toyota_highlander_04.jpg</li>
+                  <li>toyota_rav4_01.jpg</li>
+                  <li>toyota_rav4_02.jpg</li>
+                  <li>toyota_rav4_03.jpg</li>
+                  <li>toyota_rav4_04.jpg</li>
+                  <li>austria_flag_map.png</li>
+                  <li>austria_poi.png</li>
+                  <li>belgium_flag_map.png</li>
+                  <li>belgium_poi.png</li>
+                  <li>bulgaria_flag_map.png</li>
+                  <li>bulgaria_poi.png</li>
+                  <li>cyprus_flag_map.png</li>
+                  <li>cyprus_poi.png</li>
+                  <li>czechrepublic_flag_map.png</li>
+                  <li>czechrepublic_poi.png</li>
+                  <li>denmark_flag_map.png</li>
+                  <li>denmark_poi.png</li>
+                  <li>estonia_flag_map.png</li>
+                  <li>estonia_poi.png</li>
+                  <li>finland_flag_map.png</li>
+                  <li>finland_poi.png</li>
+                  <li>france_flag_map.png</li>
+                  <li>france_poi.png</li>
+                  <li>germany_flag_map.png</li>
+                  <li>germany_poi.png</li>
+                  <li>greece_flag_map.png</li>
+                  <li>greece_poi.png</li>
+                  <li>hungary_flag_map.png</li>
+                  <li>hungary_poi.png</li>
+                  <li>ireland_flag_map.png</li>
+                  <li>ireland_poi.png</li>
+                  <li>italy_flag_map.png</li>
+                  <li>italy_poi.png</li>
+                  <li>latvia_flag_map.png</li>
+                  <li>latvia_poi.png</li>
+                  <li>lithuania_flag_map.png</li>
+                  <li>lithuania_poi.png</li>
+                  <li>luxembourg_flag_map.png</li>
+                  <li>luxembourg_poi.png</li>
+                  <li>malta_flag_map.png</li>
+                  <li>malta_poi.png</li>
+                  <li>netherlands_flag_map.png</li>
+                  <li>netherlands_poi.png</li>
+                  <li>poland_flag_map.png</li>
+                  <li>poland_poi.png</li>
+                  <li>portugal_flag_map.png</li>
+                  <li>portugal_poi.png</li>
+                  <li>romania_flag_map.png</li>
+                  <li>romania_poi.png</li>
+                  <li>slovakia_flag_map.png</li>
+                  <li>slovakia_poi.png</li>
+                  <li>slovenia_flag_map.png</li>
+                  <li>slovenia_poi.png</li>
+                  <li>spain_flag_map.png</li>
+                  <li>spain_poi.png</li>
+                  <li>sweden_flag_map.png</li>
+                  <li>sweden_poi.png</li>
+                  <li>unitedkingdom_flag_map.png</li>
+                  <li>unitedkingdom_poi.png</li>
+                  <li>emo_01.png</li>
+                  <li>emo_16.png</li>
+                  <li>emo_15.png</li>
+                  <li>emo_02.png</li>
+                  <li>emo_17.png</li>
+                  <li>emo_03.png</li>
+                  <li>emo_04.png</li>
+                  <li>emo_07.png</li>
+                  <li>emo_08.png</li>
+                  <li>emo_18.png</li>
+                  <li>emo_09.png</li>
+                  <li>emo_06.png</li>
+                  <li>emo_10.png</li>
+                  <li>emo_12.png</li>
+                  <li>emo_19.png</li>
+                  <li>emo_05.png</li>
+                  <li>emo_13.png</li>
+                  <li>emo_11.png</li>
+                  <li>emo_14.png</li>
+                  <li>emo_20.png</li>
+                  <li>emo_21.png</li>
+                  <li>emo_22.png</li>
+                  <li>emo_23.png</li>
+                  <li>emo_24.png</li>
+                  <li>emo_25.png</li>
+                  <li>itm_01.jpg</li>
+                  <li>itm_02.jpg</li>
+                  <li>itm_03.jpg</li>
+                  <li>itm_04.jpg</li>
+                  <li>itm_05.jpg</li>
+                  <li>background.png</li>
+                  <li>scene4.jpg</li>
+                  <li>nonexistant.png</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="next">next</a>
+          </h3>
+          <div class="CBody">
+            <p>The id of the next view or state, which is the result or destination of the transition triggered by an event.</p>
+            <ul>
+              <li>Type: String</li>
+              <li>Restriction: Reference to the unique id of the next view or state.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="scroll">scroll</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Type: boolean</li>
+              <li>Examples of value: 
+                <ul>
+                  <li>true</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="size">size</a>
+          </h3>
+          <div class="CBody">
+            <ul>
+              <li>Type: [int,int]</li>
+              <li>Examples of value: 
+                <ul>
+                  <li>[100,50]</li>
+                  <li>[55,55]</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGroup">
+        <div class="CTopic">
+          <h2 class="CTitle">
+            <a name="iOS_attributes">Platform Attributes: iOS</a>
+          </h2>
+          <div class="CBody">
+            <div class="Summary">
+              <div class="STitle">Summary</div>
+              <div class="SBorder">
+                <table border="0" cellspacing="0" cellpadding="0" class="STable">
+                  <tbody>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:alpha">alpha</a>
+                      </td>
+                      <td class="SDescription">CGFloat</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#iOS:animationDuration">animationDuration</a>
+                      </td>
+                      <td class="SDescription">NSTimeInterval</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:animationImages">animationImages</a>
+                      </td>
+                      <td class="SDescription">NSArray</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#iOS:animationRepeatCount">animationRepeatCount</a>
+                      </td>
+                      <td class="SDescription">NSInteger</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:backgroundColor">backgroundColor</a>
+                      </td>
+                      <td class="SDescription">UIColor</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#iOS:contentScaleFactor">contentScaleFactor</a>
+                      </td>
+                      <td class="SDescription">CGFloat</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:hidden">hidden</a>
+                      </td>
+                      <td class="SDescription">BOOL</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#iOS:highlighted">highlighted</a>
+                      </td>
+                      <td class="SDescription">BOOL</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:highlightedAnimationImages">highlightedAnimationImages</a>
+                      </td>
+                      <td class="SDescription">NSArray</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#iOS:highlightedImage">highlightedImage</a>
+                      </td>
+                      <td class="SDescription">UIImage</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:image">image</a>
+                      </td>
+                      <td class="SDescription">UIImage</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#iOS:opaque">opaque</a>
+                      </td>
+                      <td class="SDescription">BOOL</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#iOS:transform">transform</a>
+                      </td>
+                      <td class="SDescription">CGAffineTransform</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:alpha">alpha</a>
+          </h3>
+          <div class="CBody">
+            <p>The receiver?s alpha value.</p>
+            <ul>
+              <li>Type: CGFloat </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:animationDuration">animationDuration</a>
+          </h3>
+          <div class="CBody">
+            <p>The amount of time it takes to go through one cycle of the images.</p>
+            <ul>
+              <li>Type: NSTimeInterval </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:animationImages">animationImages</a>
+          </h3>
+          <div class="CBody">
+            <p>An array of UIImage objects to use for an animation. </p>
+            <ul>
+              <li>Type: NSArray </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:animationRepeatCount">animationRepeatCount</a>
+          </h3>
+          <div class="CBody">
+            <p>Specifies the number of times to repeat the animation.</p>
+            <ul>
+              <li>Type: NSInteger </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:backgroundColor">backgroundColor</a>
+          </h3>
+          <div class="CBody">
+            <p>The receiver?s background color.</p>
+            <ul>
+              <li>Type: UIColor </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:contentScaleFactor">contentScaleFactor</a>
+          </h3>
+          <div class="CBody">
+            <p>The scale factor applied to the view.</p>
+            <ul>
+              <li>Type: CGFloat </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:hidden">hidden</a>
+          </h3>
+          <div class="CBody">
+            <p>A Boolean value that determines whether the receiver is hidden.</p>
+            <ul>
+              <li>Type: BOOL </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:highlighted">highlighted</a>
+          </h3>
+          <div class="CBody">
+            <p>A Boolean value that determines whether the image is highlighted.</p>
+            <ul>
+              <li>Type: BOOL </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:highlightedAnimationImages">highlightedAnimationImages</a>
+          </h3>
+          <div class="CBody">
+            <p>An array of UIImage objects to use for an animation when the view is highlighted. </p>
+            <ul>
+              <li>Type: NSArray </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:highlightedImage">highlightedImage</a>
+          </h3>
+          <div class="CBody">
+            <p>The highlighted image displayed in the image view.</p>
+            <ul>
+              <li>Type: UIImage </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:image">image</a>
+          </h3>
+          <div class="CBody">
+            <p>The image displayed in the image view.</p>
+            <ul>
+              <li>Type: UIImage </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:opaque">opaque</a>
+          </h3>
+          <div class="CBody">
+            <p>A Boolean value that determines whether the receiver is opaque.</p>
+            <ul>
+              <li>Type: BOOL </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="iOS:transform">transform</a>
+          </h3>
+          <div class="CBody">
+            <p>Specifies the transform applied to the receiver, relative to the center of its bounds.</p>
+            <ul>
+              <li>Type: CGAffineTransform </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGroup">
+        <div class="CTopic">
+          <h2 class="CTitle">
+            <a name="Android_attributes">Platform Attributes: Android</a>
+          </h2>
+          <div class="CBody">
+            <div class="Summary">
+              <div class="STitle">Summary</div>
+              <div class="SBorder">
+                <table border="0" cellspacing="0" cellpadding="0" class="STable">
+                  <tbody>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:adjustViewBounds">adjustViewBounds</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:alpha">alpha</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:background">background</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:baseline">baseline</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:baselineAlignBottom">baselineAlignBottom</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:clickable">clickable</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:contentDescription">contentDescription</a>
+                      </td>
+                      <td class="SDescription">String</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:cropToPadding">cropToPadding</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:fadeScrollbars">fadeScrollbars</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:focusable">focusable</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:focusableInTouchMode">focusableInTouchMode</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:hapticFeedbackEnabled">hapticFeedbackEnabled</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:isScrollContainer">isScrollContainer</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:keepScreenOn">keepScreenOn</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:layoutDirection">layoutDirection</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:longClickable">longClickable</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:nextFocusDown">nextFocusDown</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:nextFocusForward">nextFocusForward</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:nextFocusLeft">nextFocusLeft</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:nextFocusRight">nextFocusRight</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:nextFocusUp">nextFocusUp</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:paddingEnd">paddingEnd</a>
+                      </td>
+                      <td class="SDescription">int,int,int,int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:paddingStart">paddingStart</a>
+                      </td>
+                      <td class="SDescription">int,int,int,int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:requiresFadingEdge">requiresFadingEdge</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:rotation">rotation</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:rotationX">rotationX</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:rotationY">rotationY</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:saveEnabled">saveEnabled</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:scaleType">scaleType</a>
+                      </td>
+                      <td class="SDescription">ImageView.ScaleType</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:scaleX">scaleX</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:scaleY">scaleY</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:scrollbarDefaultDelayBeforeFade">scrollbarDefaultDelayBeforeFade</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:scrollbarFadeDuration">scrollbarFadeDuration</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:scrollbarSize">scrollbarSize</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:scrollbarStyle">scrollbarStyle</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:soundEffectsEnabled">soundEffectsEnabled</a>
+                      </td>
+                      <td class="SDescription">boolean</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:src">src</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:textAlignment">textAlignment</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:tint">tint</a>
+                      </td>
+                      <td class="SDescription">int,PorterDuff.Mode</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:transformPivotX">transformPivotX</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:transformPivotY">transformPivotY</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:translationX">translationX</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric">
+                      <td class="SEntry">
+                        <a href="#Android:translationY">translationY</a>
+                      </td>
+                      <td class="SDescription">float</td>
+                    </tr>
+                    <tr class="SGeneric SMarked">
+                      <td class="SEntry">
+                        <a href="#Android:visibility">visibility</a>
+                      </td>
+                      <td class="SDescription">int</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:adjustViewBounds">adjustViewBounds</a>
+          </h3>
+          <div class="CBody">
+            <p>Set this to true if you want the ImageView to adjust its bounds
+             to preserve the aspect ratio of its drawable.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:alpha">alpha</a>
+          </h3>
+          <div class="CBody">
+            <p>alpha property of the view, as a value between 0 (completely transparent) and 1
+             (completely opaque).?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:background">background</a>
+          </h3>
+          <div class="CBody">
+            <p>A drawable to use as the background.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:baseline">baseline</a>
+          </h3>
+          <div class="CBody">
+            <p>The offset of the baseline within this view.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:baselineAlignBottom">baselineAlignBottom</a>
+          </h3>
+          <div class="CBody">
+            <p>If true, the image view will be baseline aligned with based on its
+             bottom edge.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:clickable">clickable</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines whether this view reacts to click events.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:contentDescription">contentDescription</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines text that briefly describes content of the view.?</p>
+            <ul>
+              <li>Type: String </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:cropToPadding">cropToPadding</a>
+          </h3>
+          <div class="CBody">
+            <p>If true, the image will be cropped to fit within its padding.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:fadeScrollbars">fadeScrollbars</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines whether to fade out scrollbars when they are not in use.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:focusable">focusable</a>
+          </h3>
+          <div class="CBody">
+            <p>Boolean that controls whether a view can take focus.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:focusableInTouchMode">focusableInTouchMode</a>
+          </h3>
+          <div class="CBody">
+            <p>Boolean that controls whether a view can take focus while in touch mode.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:hapticFeedbackEnabled">hapticFeedbackEnabled</a>
+          </h3>
+          <div class="CBody">
+            <p>Boolean that controls whether a view should have haptic feedback
+             enabled for events such as long presses.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:isScrollContainer">isScrollContainer</a>
+          </h3>
+          <div class="CBody">
+            <p>Set this if the view will serve as a scrolling container, meaing
+             that it can be resized to shrink its overall window so that there
+             will be space for an input method.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:keepScreenOn">keepScreenOn</a>
+          </h3>
+          <div class="CBody">
+            <p>Controls whether the view's window should keep the screen on
+             while visible.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:layoutDirection">layoutDirection</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines the direction of layout drawing.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:longClickable">longClickable</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines whether this view reacts to long click events.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:nextFocusDown">nextFocusDown</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines the next view to give focus to when the next focus is
+             FOCUS_DOWN
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a RuntimeException
+             will result when the reference is accessed.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:nextFocusForward">nextFocusForward</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines the next view to give focus to when the next focus is
+             FOCUS_FORWARD
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a RuntimeException
+             will result when the reference is accessed.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:nextFocusLeft">nextFocusLeft</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines the next view to give focus to when the next focus is
+             FOCUS_LEFT.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:nextFocusRight">nextFocusRight</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines the next view to give focus to when the next focus is
+             FOCUS_RIGHT
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a RuntimeException
+             will result when the reference is accessed.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:nextFocusUp">nextFocusUp</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines the next view to give focus to when the next focus is
+             FOCUS_UP
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a RuntimeException
+             will result when the reference is accessed.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:paddingEnd">paddingEnd</a>
+          </h3>
+          <div class="CBody">
+            <p>Sets the padding, in pixels, of the end edge; see padding.?</p>
+            <ul>
+              <li>Type: int,int,int,int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:paddingStart">paddingStart</a>
+          </h3>
+          <div class="CBody">
+            <p>Sets the padding, in pixels, of the start edge; see padding.?</p>
+            <ul>
+              <li>Type: int,int,int,int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:requiresFadingEdge">requiresFadingEdge</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines which edges should be faded on scrolling.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:rotation">rotation</a>
+          </h3>
+          <div class="CBody">
+            <p>rotation of the view, in degrees.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:rotationX">rotationX</a>
+          </h3>
+          <div class="CBody">
+            <p>rotation of the view around the x axis, in degrees.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:rotationY">rotationY</a>
+          </h3>
+          <div class="CBody">
+            <p>rotation of the view around the y axis, in degrees.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:saveEnabled">saveEnabled</a>
+          </h3>
+          <div class="CBody">
+            <p>If unset, no state will be saved for this view when it is being
+             frozen.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:scaleType">scaleType</a>
+          </h3>
+          <div class="CBody">
+            <p>Controls how the image should be resized or moved to match the size
+             of this ImageView.?</p>
+            <ul>
+              <li>Type: ImageView.ScaleType </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:scaleX">scaleX</a>
+          </h3>
+          <div class="CBody">
+            <p>scale of the view in the x direction.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:scaleY">scaleY</a>
+          </h3>
+          <div class="CBody">
+            <p>scale of the view in the y direction.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:scrollbarDefaultDelayBeforeFade">scrollbarDefaultDelayBeforeFade</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines the delay in milliseconds that a scrollbar waits before fade out.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:scrollbarFadeDuration">scrollbarFadeDuration</a>
+          </h3>
+          <div class="CBody">
+            <p>Defines the delay in milliseconds that a scrollbar takes to fade out.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:scrollbarSize">scrollbarSize</a>
+          </h3>
+          <div class="CBody">
+            <p>Sets the width of vertical scrollbars and height of horizontal scrollbars.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:scrollbarStyle">scrollbarStyle</a>
+          </h3>
+          <div class="CBody">
+            <p>Controls the scrollbar style and position.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:soundEffectsEnabled">soundEffectsEnabled</a>
+          </h3>
+          <div class="CBody">
+            <p>Boolean that controls whether a view should have sound effects
+             enabled for events such as clicking and touching.?</p>
+            <ul>
+              <li>Type: boolean </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:src">src</a>
+          </h3>
+          <div class="CBody">
+            <p>Sets a drawable as the content of this ImageView.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:textAlignment">textAlignment</a>
+          </h3>
+          <div class="CBody">
+            <p>Alignment of the text.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:tint">tint</a>
+          </h3>
+          <div class="CBody">
+            <p>Set a tinting color for the image.?</p>
+            <ul>
+              <li>Type: int,PorterDuff.Mode </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:transformPivotX">transformPivotX</a>
+          </h3>
+          <div class="CBody">
+            <p>x location of the pivot point around which the view will rotate and scale.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:transformPivotY">transformPivotY</a>
+          </h3>
+          <div class="CBody">
+            <p>y location of the pivot point around which the view will rotate and scale.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:translationX">translationX</a>
+          </h3>
+          <div class="CBody">
+            <p>translation in x of the view.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:translationY">translationY</a>
+          </h3>
+          <div class="CBody">
+            <p>translation in y of the view.?</p>
+            <ul>
+              <li>Type: float </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="CGeneric">
+        <div class="CTopic">
+          <h3 class="CTitle">
+            <a name="Android:visibility">visibility</a>
+          </h3>
+          <div class="CBody">
+            <p>Controls the initial visibility of the view.?</p>
+            <ul>
+              <li>Type: int </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="Footer">Copyright &copy; 2013 Generated by Mobile App Builder</div>
+    <div id="Menu">
+      <div class="MEntry">
+        <div class="MFile">
+          <a href="index.html">Summary</a>
+        </div>
+      </div>
+      <div class="MEntry">
+        <div class="MGroup">
+          <a href="javascript:ToggleMenu('MGroupContent1')" target="_self">System</a>
+          <div class="MGroupContent" id="MGroupContent1" style="display: block; ">
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="System_app.html">app</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="MEntry">
+        <div class="MGroup">
+          <a href="javascript:ToggleMenu('MGroupContent1')" target="_self">UI.Neutral</a>
+          <div class="MGroupContent" id="MGroupContent1" style="display: block; ">
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_AbsolutePanel.html">AbsolutePanel</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Alert.html">Alert</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Annotation.html">Annotation</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Box.html">Box</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Button.html">Button</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Canvas.html">Canvas</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_CheckBox.html">CheckBox</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_DatePicker.html">DatePicker</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_DatePickerDialog.html">DatePickerDialog</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_DockPanel.html">DockPanel</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_FlowPanel.html">FlowPanel</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_GridPanel.html">GridPanel</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile" id="MSelected">Image</div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Item.html">Item</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Label.html">Label</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_ListView.html">ListView</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Map.html">Map</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Menu.html">Menu</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_NavigationView.html">NavigationView</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_NumberStepper.html">NumberStepper</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Panel.html">Panel</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Picker.html">Picker</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Popup.html">Popup</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_ProgressBar.html">ProgressBar</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_RadioButton.html">RadioButton</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_RadioGroup.html">RadioGroup</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Row.html">Row</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Section.html">Section</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Selection.html">Selection</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Slider.html">Slider</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_SplitPanel.html">SplitPanel</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_StackPanel.html">StackPanel</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Switch.html">Switch</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_TabbedView.html">TabbedView</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Table.html">Table</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Text.html">Text</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_TimePicker.html">TimePicker</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_TimePickerDialog.html">TimePickerDialog</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Toast.html">Toast</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_View.html">View</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Web.html">Web</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="MEntry">
+        <div class="MGroup">
+          <a href="javascript:ToggleMenu('MGroupContent1')" target="_self">UI.Android</a>
+          <div class="MGroupContent" id="MGroupContent1" style="display: block; ">
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_ExpandableListView.html">ExpandableListView</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_ImageButton.html">ImageButton</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Spinner.html">Spinner</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_SpinnerGroup.html">SpinnerGroup</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="MEntry">
+        <div class="MGroup">
+          <a href="javascript:ToggleMenu('MGroupContent1')" target="_self">UI.iOS</a>
+          <div class="MGroupContent" id="MGroupContent1" style="display: block; ">
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_DateTimePicker.html">DateTimePicker</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_Page.html">Page</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_PageControl.html">PageControl</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Widget_PageView.html">PageView</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="MEntry">
+        <div class="MGroup">
+          <a href="javascript:ToggleMenu('MGroupContent1')" target="_self">Data Types</a>
+          <div class="MGroupContent" id="MGroupContent1" style="display: block; ">
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Type_AccessoryType.html">AccessoryType</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Type_CellStyle.html">CellStyle</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Type_Color.html">Color</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Type_DatePickerMode.html">DatePickerMode</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Type_ListStyle.html">ListStyle</a>
+              </div>
+            </div>
+            <div class="MEntry">
+              <div class="MFile">
+                <a href="Type_SystemButton.html">SystemButton</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script language="JavaScript"><!--
+if (browserType) {if (browserVer) {document.write("</div>"); }document.write("</div>");}// --></script>
+  </body>
+</html>

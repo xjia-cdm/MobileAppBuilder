@@ -1,0 +1,73 @@
+--- 
+inherit: 
+    - UIPrintFormatter
+    - NSObject
+conform: 
+    - NSCopying (UIPrintFormatter)
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    attributedText: !java.util.LinkedHashMap
+        name: attributedText
+        type: NSAttributedString
+        ref: "*"
+        explanation: A string of attributed text.
+        readonly: false
+    color: !java.util.LinkedHashMap
+        name: color
+        type: UIColor
+        ref: "*"
+        explanation: The color of the printed text.
+        readonly: false
+    font: !java.util.LinkedHashMap
+        name: font
+        type: UIFont
+        ref: "*"
+        explanation: The font of the printed text.
+        readonly: false
+    text: !java.util.LinkedHashMap
+        name: text
+        type: NSString
+        ref: "*"
+        explanation: A string of plain text.
+        readonly: false
+    textAlignment: !java.util.LinkedHashMap
+        name: textAlignment
+        type: UITextAlignment
+        ref: ""
+        explanation: The alignment of the printed text.
+        readonly: false
+methods: !java.util.LinkedHashMap
+    initWithAttributedText: !java.util.LinkedHashMap
+        isInstance: &11 true
+        name: initWithAttributedText
+        type: !java.util.LinkedHashMap
+            name: instancetype
+            delegate: ~
+            isConst: &13 false
+            isRef: *13
+        isVarArgs: *13
+        args: 
+            - !java.util.LinkedHashMap
+                param: attributedText
+                type: !java.util.LinkedHashMap
+                    name: NSAttributedString
+                    delegate: ~
+                    isConst: *13
+                    isRef: *11
+    initWithText: !java.util.LinkedHashMap
+        isInstance: *11
+        name: initWithText
+        type: !java.util.LinkedHashMap
+            name: id
+            delegate: ~
+            isConst: *13
+            isRef: *13
+        isVarArgs: *13
+        args: 
+            - !java.util.LinkedHashMap
+                param: text
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *13
+                    isRef: *11

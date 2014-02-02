@@ -1,0 +1,69 @@
+--- 
+inherit: 
+    - NSObject
+conform: 
+    - UIViewControllerInteractiveTransitioning
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    completionCurve: !java.util.LinkedHashMap
+        name: completionCurve
+        type: UIViewAnimationCurve
+        ref: ""
+        explanation: Indicates the animation completion curve for an interactive transition.
+        readonly: false
+    completionSpeed: !java.util.LinkedHashMap
+        name: completionSpeed
+        type: CGFloat
+        ref: ""
+        explanation: The speed of the transition animation.
+        readonly: false
+    duration: !java.util.LinkedHashMap
+        name: duration
+        type: CGFloat
+        ref: ""
+        explanation: The overall duration (in seconds) of the transition animation. (read-only)
+        readonly: true
+    percentComplete: !java.util.LinkedHashMap
+        name: percentComplete
+        type: CGFloat
+        ref: ""
+        explanation: The amount of the transition (specified as a percentage of the overall duration) that is complete. (read-only)
+        readonly: true
+methods: !java.util.LinkedHashMap
+    cancelInteractiveTransition: !java.util.LinkedHashMap
+        isInstance: &10 true
+        name: cancelInteractiveTransition
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: &12 false
+            isRef: *12
+        isVarArgs: *12
+        args: []
+    finishInteractiveTransition: !java.util.LinkedHashMap
+        isInstance: *10
+        name: finishInteractiveTransition
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *12
+            isRef: *12
+        isVarArgs: *12
+        args: []
+    updateInteractiveTransition: !java.util.LinkedHashMap
+        isInstance: *10
+        name: updateInteractiveTransition
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *12
+            isRef: *12
+        isVarArgs: *12
+        args: 
+            - !java.util.LinkedHashMap
+                param: percentComplete
+                type: !java.util.LinkedHashMap
+                    name: CGFloat
+                    delegate: ~
+                    isConst: *12
+                    isRef: *12

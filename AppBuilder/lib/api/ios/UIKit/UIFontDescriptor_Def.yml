@@ -1,0 +1,337 @@
+--- 
+inherit: 
+    - NSObject
+conform: 
+    - NSCoding
+    - NSCopying
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    matrix: !java.util.LinkedHashMap
+        name: matrix
+        type: CGAffineTransform
+        ref: ""
+        explanation: The current transform matrix of the receiver. (read-only)
+        readonly: true
+    pointSize: !java.util.LinkedHashMap
+        name: pointSize
+        type: CGFloat
+        ref: ""
+        explanation: The point size of the receiver. (read-only)
+        readonly: true
+    postscriptName: !java.util.LinkedHashMap
+        name: postscriptName
+        type: NSString
+        ref: "*"
+        explanation: The PostScript name of the receiver. (read-only)
+        readonly: true
+    symbolicTraits: !java.util.LinkedHashMap
+        name: symbolicTraits
+        type: UIFontDescriptorSymbolicTraits
+        ref: ""
+        explanation: A bit mask that describes the traits of the receiver. (read-only)
+        readonly: true
+methods: !java.util.LinkedHashMap
+    fontDescriptorWithFontAttributes: !java.util.LinkedHashMap
+        isInstance: &10 false
+        name: fontDescriptorWithFontAttributes
+        type: !java.util.LinkedHashMap
+            name: UIFontDescriptor
+            delegate: ~
+            isConst: *10
+            isRef: &12 true
+        isVarArgs: *10
+        args: 
+            - !java.util.LinkedHashMap
+                param: attributes
+                type: !java.util.LinkedHashMap
+                    name: NSDictionary
+                    delegate: ~
+                    isConst: *10
+                    isRef: *12
+    fontDescriptorWithName: !java.util.LinkedHashMap
+        isInstance: *10
+        name: fontDescriptorWithName
+        type: !java.util.LinkedHashMap
+            name: UIFontDescriptor
+            delegate: ~
+            isConst: *10
+            isRef: *12
+        isVarArgs: *10
+        args: 
+            - !java.util.LinkedHashMap
+                param: fontName
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *10
+                    isRef: *12
+            - !java.util.LinkedHashMap
+                name: size
+                param: size
+                type: !java.util.LinkedHashMap
+                    name: CGFloat
+                    delegate: ~
+                    isConst: *10
+                    isRef: *10
+    preferredFontDescriptorWithTextStyle: !java.util.LinkedHashMap
+        isInstance: *10
+        name: preferredFontDescriptorWithTextStyle
+        type: !java.util.LinkedHashMap
+            name: UIFontDescriptor
+            delegate: ~
+            isConst: *10
+            isRef: *12
+        isVarArgs: *10
+        args: 
+            - !java.util.LinkedHashMap
+                param: style
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *10
+                    isRef: *12
+    fontAttributes: !java.util.LinkedHashMap
+        isInstance: *12
+        name: fontAttributes
+        type: !java.util.LinkedHashMap
+            name: NSDictionary
+            delegate: ~
+            isConst: *10
+            isRef: *12
+        isVarArgs: *10
+        args: []
+    fontDescriptorByAddingAttributes: !java.util.LinkedHashMap
+        isInstance: *12
+        name: fontDescriptorByAddingAttributes
+        type: !java.util.LinkedHashMap
+            name: UIFontDescriptor
+            delegate: ~
+            isConst: *10
+            isRef: *12
+        isVarArgs: *10
+        args: 
+            - !java.util.LinkedHashMap
+                param: attributes
+                type: !java.util.LinkedHashMap
+                    name: NSDictionary
+                    delegate: ~
+                    isConst: *10
+                    isRef: *12
+    fontDescriptorWithFace: !java.util.LinkedHashMap
+        isInstance: *12
+        name: fontDescriptorWithFace
+        type: !java.util.LinkedHashMap
+            name: UIFontDescriptor
+            delegate: ~
+            isConst: *10
+            isRef: *12
+        isVarArgs: *10
+        args: 
+            - !java.util.LinkedHashMap
+                param: newFace
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *10
+                    isRef: *12
+    fontDescriptorWithFamily: !java.util.LinkedHashMap
+        isInstance: *12
+        name: fontDescriptorWithFamily
+        type: !java.util.LinkedHashMap
+            name: UIFontDescriptor
+            delegate: ~
+            isConst: *10
+            isRef: *12
+        isVarArgs: *10
+        args: 
+            - !java.util.LinkedHashMap
+                param: newFamily
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *10
+                    isRef: *12
+    fontDescriptorWithMatrix: !java.util.LinkedHashMap
+        isInstance: *12
+        name: fontDescriptorWithMatrix
+        type: !java.util.LinkedHashMap
+            name: UIFontDescriptor
+            delegate: ~
+            isConst: *10
+            isRef: *12
+        isVarArgs: *10
+        args: 
+            - !java.util.LinkedHashMap
+                param: matrix
+                type: !java.util.LinkedHashMap
+                    name: CGAffineTransform
+                    delegate: ~
+                    isConst: *10
+                    isRef: *10
+    fontDescriptorWithSize: !java.util.LinkedHashMap
+        isInstance: *12
+        name: fontDescriptorWithSize
+        type: !java.util.LinkedHashMap
+            name: UIFontDescriptor
+            delegate: ~
+            isConst: *10
+            isRef: *12
+        isVarArgs: *10
+        args: 
+            - !java.util.LinkedHashMap
+                param: newPointSize
+                type: !java.util.LinkedHashMap
+                    name: CGFloat
+                    delegate: ~
+                    isConst: *10
+                    isRef: *10
+    fontDescriptorWithSymbolicTraits: !java.util.LinkedHashMap
+        isInstance: *12
+        name: fontDescriptorWithSymbolicTraits
+        type: !java.util.LinkedHashMap
+            name: UIFontDescriptor
+            delegate: ~
+            isConst: *10
+            isRef: *12
+        isVarArgs: *10
+        args: 
+            - !java.util.LinkedHashMap
+                param: symbolicTraits
+                type: !java.util.LinkedHashMap
+                    name: UIFontDescriptorSymbolicTraits
+                    delegate: ~
+                    isConst: *10
+                    isRef: *10
+    initWithFontAttributes: !java.util.LinkedHashMap
+        isInstance: *12
+        name: initWithFontAttributes
+        type: !java.util.LinkedHashMap
+            name: instancetype
+            delegate: ~
+            isConst: *10
+            isRef: *10
+        isVarArgs: *10
+        args: 
+            - !java.util.LinkedHashMap
+                param: attributes
+                type: !java.util.LinkedHashMap
+                    name: NSDictionary
+                    delegate: ~
+                    isConst: *10
+                    isRef: *12
+    matchingFontDescriptorsWithMandatoryKeys: !java.util.LinkedHashMap
+        isInstance: *12
+        name: matchingFontDescriptorsWithMandatoryKeys
+        type: !java.util.LinkedHashMap
+            name: NSArray
+            delegate: ~
+            isConst: *10
+            isRef: *12
+        isVarArgs: *10
+        args: 
+            - !java.util.LinkedHashMap
+                param: mandatoryKeys
+                type: !java.util.LinkedHashMap
+                    name: NSSet
+                    delegate: ~
+                    isConst: *10
+                    isRef: *12
+    objectForKey: !java.util.LinkedHashMap
+        isInstance: *12
+        name: objectForKey
+        type: !java.util.LinkedHashMap
+            name: id
+            delegate: ~
+            isConst: *10
+            isRef: *10
+        isVarArgs: *10
+        args: 
+            - !java.util.LinkedHashMap
+                param: anAttribute
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *10
+                    isRef: *12
+constants: !java.util.LinkedHashMap
+    Text Styles: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *10
+        isTypedef: *10
+        values: ~
+        defValues: 
+            - UIFontTextStyleHeadline
+            - UIFontTextStyleSubheadline
+            - UIFontTextStyleBody
+            - UIFontTextStyleFootnote
+            - UIFontTextStyleCaption1
+            - UIFontTextStyleCaption2
+    Symbolic Font Traits: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *10
+        isTypedef: *12
+        values: ~
+        defValues: 
+            - UIFontDescriptorTraitItalic
+            - UIFontDescriptorTraitBold
+            - UIFontDescriptorTraitExpanded
+            - UIFontDescriptorTraitCondensed
+            - UIFontDescriptorTraitMonoSpace
+            - UIFontDescriptorTraitVertical
+            - UIFontDescriptorTraitUIOptimized
+            - UIFontDescriptorTraitTightLeading
+            - UIFontDescriptorTraitLooseLeading
+            - UIFontDescriptorClassMask
+            - UIFontDescriptorClassUnknown
+            - UIFontDescriptorClassOldStyleSerifs
+            - UIFontDescriptorClassTransitionalSerifs
+            - UIFontDescriptorClassModernSerifs
+            - UIFontDescriptorClassClarendonSerifs
+            - UIFontDescriptorClassSlabSerifs
+            - UIFontDescriptorClassFreeformSerifs
+            - UIFontDescriptorClassSansSerif
+            - UIFontDescriptorClassOrnamentals
+            - UIFontDescriptorClassScripts
+            - UIFontDescriptorClassSymbolic
+    Font Descriptor Class: !java.util.LinkedHashMap
+        name: UIFontDescriptorClass
+        isEnum: *10
+        isTypedef: *12
+        values: ~
+        aliasOf: NSUInteger
+    Font Attributes: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *10
+        isTypedef: *10
+        values: ~
+        defValues: 
+            - UIFontDescriptorFamilyAttribute
+            - UIFontDescriptorNameAttribute
+            - UIFontDescriptorFaceAttribute
+            - UIFontDescriptorSizeAttribute
+            - UIFontDescriptorVisibleNameAttribute
+            - UIFontDescriptorMatrixAttribute
+            - UIFontDescriptorCharacterSetAttribute
+            - UIFontDescriptorCascadeListAttribute
+            - UIFontDescriptorTraitsAttribute
+            - UIFontDescriptorFixedAdvanceAttribute
+            - UIFontDescriptorFeatureSettingsAttribute
+            - UIFontDescriptorTextStyleAttribute
+    Font Traits Dictionary Keys: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *10
+        isTypedef: *10
+        values: ~
+        defValues: 
+            - UIFontSymbolicTrait
+            - UIFontWeightTrait
+            - UIFontWidthTrait
+            - UIFontSlantTrait
+    Font Feature Keys: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *10
+        isTypedef: *10
+        values: ~
+        defValues: 
+            - UIFontFeatureTypeIdentifierKey
+            - UIFontFeatureSelectorIdentifierKey

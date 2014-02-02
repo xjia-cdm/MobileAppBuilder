@@ -1,0 +1,76 @@
+--- 
+inherit: 
+    - NSObject
+conform: 
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    action: !java.util.LinkedHashMap
+        name: action
+        type: void
+        ref: ""
+        explanation: The block you want to execute during dynamic animation.
+        readonly: false
+    childBehaviors: !java.util.LinkedHashMap
+        name: childBehaviors
+        type: NSArray
+        ref: "*"
+        explanation: Returns the array of dynamic behaviors that are children of a custom dynamic behavior. (read-only)
+        readonly: true
+    dynamicAnimator: !java.util.LinkedHashMap
+        name: dynamicAnimator
+        type: UIDynamicAnimator
+        ref: "*"
+        explanation: The dynamic animator that the dynamic behavior is associated with. (read-only)
+        readonly: true
+methods: !java.util.LinkedHashMap
+    addChildBehavior: !java.util.LinkedHashMap
+        isInstance: &9 true
+        name: addChildBehavior
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: &11 false
+            isRef: *11
+        isVarArgs: *11
+        args: 
+            - !java.util.LinkedHashMap
+                param: behavior
+                type: !java.util.LinkedHashMap
+                    name: UIDynamicBehavior
+                    delegate: ~
+                    isConst: *11
+                    isRef: *9
+    removeChildBehavior: !java.util.LinkedHashMap
+        isInstance: *9
+        name: removeChildBehavior
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *11
+            isRef: *11
+        isVarArgs: *11
+        args: 
+            - !java.util.LinkedHashMap
+                param: behavior
+                type: !java.util.LinkedHashMap
+                    name: UIDynamicBehavior
+                    delegate: ~
+                    isConst: *11
+                    isRef: *9
+    willMoveToAnimator: !java.util.LinkedHashMap
+        isInstance: *9
+        name: willMoveToAnimator
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *11
+            isRef: *11
+        isVarArgs: *11
+        args: 
+            - !java.util.LinkedHashMap
+                param: dynamicAnimator
+                type: !java.util.LinkedHashMap
+                    name: UIDynamicAnimator
+                    delegate: ~
+                    isConst: *11
+                    isRef: *9

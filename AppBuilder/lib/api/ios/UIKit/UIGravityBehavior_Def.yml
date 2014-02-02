@@ -1,0 +1,108 @@
+--- 
+inherit: 
+    - UIDynamicBehavior
+    - NSObject
+conform: 
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    angle: !java.util.LinkedHashMap
+        name: angle
+        type: CGFloat
+        ref: ""
+        explanation: "The angle, in radians, of the gravity vector for the behavior."
+        readonly: false
+    gravityDirection: !java.util.LinkedHashMap
+        name: gravityDirection
+        type: CGVector
+        ref: ""
+        explanation: "The direction for the gravity behavior?s gravity vector, expressed as an (x, y) pair."
+        readonly: false
+    items: !java.util.LinkedHashMap
+        name: items
+        type: NSArray
+        ref: "*"
+        explanation: Returns the set of dynamic items you?ve added to the gravity behavior. (read-only)
+        readonly: true
+    magnitude: !java.util.LinkedHashMap
+        name: magnitude
+        type: CGFloat
+        ref: ""
+        explanation: The magnitude of the gravity vector for the gravity behavior.
+        readonly: false
+methods: !java.util.LinkedHashMap
+    addItem: !java.util.LinkedHashMap
+        isInstance: &10 true
+        name: addItem
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: &12 false
+            isRef: *12
+        isVarArgs: *12
+        args: 
+            - !java.util.LinkedHashMap
+                param: item
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *12
+                    isRef: *12
+    initWithItems: !java.util.LinkedHashMap
+        isInstance: *10
+        name: initWithItems
+        type: !java.util.LinkedHashMap
+            name: instancetype
+            delegate: ~
+            isConst: *12
+            isRef: *12
+        isVarArgs: *12
+        args: 
+            - !java.util.LinkedHashMap
+                param: items
+                type: !java.util.LinkedHashMap
+                    name: NSArray
+                    delegate: ~
+                    isConst: *12
+                    isRef: *10
+    removeItem: !java.util.LinkedHashMap
+        isInstance: *10
+        name: removeItem
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *12
+            isRef: *12
+        isVarArgs: *12
+        args: 
+            - !java.util.LinkedHashMap
+                param: item
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *12
+                    isRef: *12
+    setAngle: !java.util.LinkedHashMap
+        isInstance: *10
+        name: setAngle
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *12
+            isRef: *12
+        isVarArgs: *12
+        args: 
+            - !java.util.LinkedHashMap
+                param: angle
+                type: !java.util.LinkedHashMap
+                    name: CGFloat
+                    delegate: ~
+                    isConst: *12
+                    isRef: *12
+            - !java.util.LinkedHashMap
+                name: magnitude
+                param: magnitude
+                type: !java.util.LinkedHashMap
+                    name: CGFloat
+                    delegate: ~
+                    isConst: *12
+                    isRef: *12

@@ -1,0 +1,147 @@
+--- 
+inherit: 
+    - NSObject
+conform: 
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap {}
+methods: !java.util.LinkedHashMap
+    activityCategory: !java.util.LinkedHashMap
+        isInstance: &6 false
+        name: activityCategory
+        type: !java.util.LinkedHashMap
+            name: UIActivityCategory
+            delegate: ~
+            isConst: *6
+            isRef: *6
+        isVarArgs: *6
+        args: []
+    activityDidFinish: !java.util.LinkedHashMap
+        isInstance: &10 true
+        name: activityDidFinish
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *6
+            isRef: *6
+        isVarArgs: *6
+        args: 
+            - !java.util.LinkedHashMap
+                param: completed
+                type: !java.util.LinkedHashMap
+                    name: BOOL
+                    delegate: ~
+                    isConst: *6
+                    isRef: *6
+    activityImage: !java.util.LinkedHashMap
+        isInstance: *10
+        name: activityImage
+        type: !java.util.LinkedHashMap
+            name: UIImage
+            delegate: ~
+            isConst: *6
+            isRef: *10
+        isVarArgs: *6
+        args: []
+    activityTitle: !java.util.LinkedHashMap
+        isInstance: *10
+        name: activityTitle
+        type: !java.util.LinkedHashMap
+            name: NSString
+            delegate: ~
+            isConst: *6
+            isRef: *10
+        isVarArgs: *6
+        args: []
+    activityType: !java.util.LinkedHashMap
+        isInstance: *10
+        name: activityType
+        type: !java.util.LinkedHashMap
+            name: NSString
+            delegate: ~
+            isConst: *6
+            isRef: *10
+        isVarArgs: *6
+        args: []
+    activityViewController: !java.util.LinkedHashMap
+        isInstance: *10
+        name: activityViewController
+        type: !java.util.LinkedHashMap
+            name: UIViewController
+            delegate: ~
+            isConst: *6
+            isRef: *10
+        isVarArgs: *6
+        args: []
+    canPerformWithActivityItems: !java.util.LinkedHashMap
+        isInstance: *10
+        name: canPerformWithActivityItems
+        type: !java.util.LinkedHashMap
+            name: BOOL
+            delegate: ~
+            isConst: *6
+            isRef: *6
+        isVarArgs: *6
+        args: 
+            - !java.util.LinkedHashMap
+                param: activityItems
+                type: !java.util.LinkedHashMap
+                    name: NSArray
+                    delegate: ~
+                    isConst: *6
+                    isRef: *10
+    performActivity: !java.util.LinkedHashMap
+        isInstance: *10
+        name: performActivity
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *6
+            isRef: *6
+        isVarArgs: *6
+        args: []
+    prepareWithActivityItems: !java.util.LinkedHashMap
+        isInstance: *10
+        name: prepareWithActivityItems
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *6
+            isRef: *6
+        isVarArgs: *6
+        args: 
+            - !java.util.LinkedHashMap
+                param: activityItems
+                type: !java.util.LinkedHashMap
+                    name: NSArray
+                    delegate: ~
+                    isConst: *6
+                    isRef: *10
+constants: !java.util.LinkedHashMap
+    Built-in Activity Types: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *6
+        isTypedef: *6
+        values: ~
+        defValues: 
+            - UIActivityTypePostToFacebook
+            - UIActivityTypePostToTwitter
+            - UIActivityTypePostToWeibo
+            - UIActivityTypeMessage
+            - UIActivityTypeMail
+            - UIActivityTypePrint
+            - UIActivityTypeCopyToPasteboard
+            - UIActivityTypeAssignToContact
+            - UIActivityTypeSaveToCameraRoll
+            - UIActivityTypeAddToReadingList
+            - UIActivityTypePostToFlickr
+            - UIActivityTypePostToVimeo
+            - UIActivityTypePostToTencentWeibo
+            - UIActivityTypeAirDrop
+    Categories of Activity: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *6
+        isTypedef: *10
+        values: ~
+        defValues: 
+            - UIActivityCategoryAction
+            - UIActivityCategoryShare

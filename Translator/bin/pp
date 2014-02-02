@@ -1,0 +1,8 @@
+#!/bin/sh
+
+HOME=`dirname $0`/..
+CLASSPATH=$HOME/classes:$HOME/lib/ext/groovy-all-1.8.0-beta-2.jar:$HOME/lib/ext/commons-lang3-3.0-beta.jar 
+
+java -Xms1024m -Xmx2048m -classpath $CLASSPATH xj.tool.PrettyPrinter $* 
+
+exit 0

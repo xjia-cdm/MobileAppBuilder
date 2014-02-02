@@ -1,0 +1,51 @@
+app(name : 'European Countries 3') { 
+
+  def EUCountries = [ 
+	[ key: 'austria', name: 'Austria', capital: 'Vienna' ],
+	[ key: 'belgium', name: 'Belgium', capital: 'City of Brussels' ],
+	[ key: 'bulgaria', name: 'Bulgaria', capital: 'Sofia' ],
+	[ key: 'cyprus', name: 'Cyprus', capital: 'Nicosia' ],
+	[ key: 'czechrepublic', name: 'Czech Republic', capital: 'Prague' ],
+	[ key: 'denmark', name: 'Denmark', capital: 'Copenhagen' ],
+	[ key: 'estonia', name: 'Estonia', capital: 'Tallinn' ],
+	[ key: 'finland', name: 'Finland', capital: 'Helsinki' ],
+	[ key: 'france', name: 'France', capital: 'Paris' ],
+	[ key: 'germany', name: 'Germany', capital: 'Berlin' ],
+	[ key: 'greece', name: 'Greece', capital: 'Athens' ],
+	[ key: 'hungary', name: 'Hungary', capital: 'Budapest' ],
+	[ key: 'ireland', name: 'Ireland', capital: 'Dublin' ],
+	[ key: 'italy', name: 'Italy', capital: 'Rome' ],
+	[ key: 'latvia', name: 'Latvia', capital: 'Riga' ],
+	[ key: 'lithuania', name: 'Lithuania', capital: 'Vilnius' ],
+	[ key: 'luxembourg', name: 'Luxembourg', capital: 'Luxembourg' ],
+	[ key: 'malta', name: 'Malta', capital: 'Valletta' ],
+	[ key: 'netherlands', name: 'Netherlands', capital: 'Amsterdam' ],
+	[ key: 'poland', name: 'Poland', capital: 'Warsaw' ],
+	[ key: 'portugal', name: 'Portugal', capital: 'Lisbon' ],
+	[ key: 'romania', name: 'Romania', capital: 'Bucharest' ],
+	[ key: 'slovakia', name: 'Slovakia', capital: 'Bratislava' ],
+	[ key: 'slovenia', name: 'Slovenia', capital: 'Ljubljana' ],
+	[ key: 'spain', name: 'Spain', capital: 'Madrid' ],
+	[ key: 'sweden', name: 'Sweden', capital: 'Stockholm' ],
+	[ key: 'unitedkingdom', name: 'United Kingdom', capital: 'London' ],
+  ]
+  
+  ListView(id: list1, title: 'European Countries') { 
+    EUCountries.each { c ->
+      Item(text: c.name, 
+		   detailText: "Capital: ${c.capital}",
+		   image: "${c.key}_flag.gif",
+		   next: [to: country, data: c])
+	}
+  }
+
+  View(id: "country", 
+	   title: "${data.name}", 
+	   scroll: true) {
+	Label(text: data.name)
+	Image(size: [275, 160], mode: ScaleToFit, file: "${data.key}_map.gif")
+  }
+
+
+
+}

@@ -1,0 +1,271 @@
+--- 
+inherit: 
+    - UIView
+    - UIResponder
+    - NSObject
+conform: 
+    - NSCoding
+    - UIBarPositioning
+    - NSCoding (UIView)
+    - UIAppearance (UIView)
+    - UIAppearanceContainer (UIView)
+    - UIDynamicItem (UIView)
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    backIndicatorImage: !java.util.LinkedHashMap
+        name: backIndicatorImage
+        type: UIImage
+        ref: "*"
+        explanation: The image shown beside the back button.
+        readonly: false
+    backIndicatorTransitionMaskImage: !java.util.LinkedHashMap
+        name: backIndicatorTransitionMaskImage
+        type: UIImage
+        ref: "*"
+        explanation: The image used as a mask for content during push and pop transitions.
+        readonly: false
+    backItem: !java.util.LinkedHashMap
+        name: backItem
+        type: UINavigationItem
+        ref: "*"
+        explanation: The navigation item that is immediately below the topmost item on navigation bar?s stack. (read-only)
+        readonly: true
+    barStyle: !java.util.LinkedHashMap
+        name: barStyle
+        type: UIBarStyle
+        ref: ""
+        explanation: The navigation bar style that specifies its appearance.
+        readonly: false
+    barTintColor: !java.util.LinkedHashMap
+        name: barTintColor
+        type: UIColor
+        ref: "*"
+        explanation: The tint color to apply to the navigation bar background.
+        readonly: false
+    delegate: !java.util.LinkedHashMap
+        name: delegate
+        type: id
+        ref: ""
+        explanation: The navigation bar?s delegate object.
+        readonly: false
+    items: !java.util.LinkedHashMap
+        name: items
+        type: NSArray
+        ref: "*"
+        explanation: An array of navigation items managed by the navigation bar.
+        readonly: false
+    shadowImage: !java.util.LinkedHashMap
+        name: shadowImage
+        type: UIImage
+        ref: "*"
+        explanation: The shadow image to be used for the navigation bar.
+        readonly: false
+    tintColor: !java.util.LinkedHashMap
+        name: tintColor
+        type: UIColor
+        ref: "*"
+        explanation: The tint color to apply to the navigation items and bar button items.
+        readonly: false
+    titleTextAttributes: !java.util.LinkedHashMap
+        name: titleTextAttributes
+        type: NSDictionary
+        ref: "*"
+        explanation: Display attributes for the bar?s title text.
+        readonly: false
+    topItem: !java.util.LinkedHashMap
+        name: topItem
+        type: UINavigationItem
+        ref: "*"
+        explanation: The navigation item at the top of the navigation bar?s stack. (read-only)
+        readonly: true
+    translucent: !java.util.LinkedHashMap
+        name: translucent
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value indicating whether the navigation bar is translucent (YES) or not (NO).
+        readonly: false
+methods: !java.util.LinkedHashMap
+    backgroundImageForBarMetrics: !java.util.LinkedHashMap
+        isInstance: &18 true
+        name: backgroundImageForBarMetrics
+        type: !java.util.LinkedHashMap
+            name: UIImage
+            delegate: ~
+            isConst: &20 false
+            isRef: *18
+        isVarArgs: *20
+        args: 
+            - !java.util.LinkedHashMap
+                param: barMetrics
+                type: !java.util.LinkedHashMap
+                    name: UIBarMetrics
+                    delegate: ~
+                    isConst: *20
+                    isRef: *20
+    backgroundImageForBarPosition: !java.util.LinkedHashMap
+        isInstance: *18
+        name: backgroundImageForBarPosition
+        type: !java.util.LinkedHashMap
+            name: UIImage
+            delegate: ~
+            isConst: *20
+            isRef: *18
+        isVarArgs: *20
+        args: 
+            - !java.util.LinkedHashMap
+                param: barPosition
+                type: !java.util.LinkedHashMap
+                    name: UIBarPosition
+                    delegate: ~
+                    isConst: *20
+                    isRef: *20
+            - !java.util.LinkedHashMap
+                name: barMetrics
+                param: barMetrics
+                type: !java.util.LinkedHashMap
+                    name: UIBarMetrics
+                    delegate: ~
+                    isConst: *20
+                    isRef: *20
+    popNavigationItemAnimated: !java.util.LinkedHashMap
+        isInstance: *18
+        name: popNavigationItemAnimated
+        type: !java.util.LinkedHashMap
+            name: UINavigationItem
+            delegate: ~
+            isConst: *20
+            isRef: *18
+        isVarArgs: *20
+        args: 
+            - !java.util.LinkedHashMap
+                param: animated
+                type: !java.util.LinkedHashMap
+                    name: BOOL
+                    delegate: ~
+                    isConst: *20
+                    isRef: *20
+    pushNavigationItem: !java.util.LinkedHashMap
+        isInstance: *18
+        name: pushNavigationItem
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *20
+            isRef: *20
+        isVarArgs: *20
+        args: 
+            - !java.util.LinkedHashMap
+                param: item
+                type: !java.util.LinkedHashMap
+                    name: UINavigationItem
+                    delegate: ~
+                    isConst: *20
+                    isRef: *18
+            - !java.util.LinkedHashMap
+                name: animated
+                param: animated
+                type: !java.util.LinkedHashMap
+                    name: BOOL
+                    delegate: ~
+                    isConst: *20
+                    isRef: *20
+    setBackgroundImage: !java.util.LinkedHashMap
+        isInstance: *18
+        name: setBackgroundImage
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *20
+            isRef: *20
+        isVarArgs: *20
+        args: 
+            - !java.util.LinkedHashMap
+                param: backgroundImage
+                type: !java.util.LinkedHashMap
+                    name: UIImage
+                    delegate: ~
+                    isConst: *20
+                    isRef: *18
+            - !java.util.LinkedHashMap
+                name: forBarPosition
+                param: barPosition
+                type: !java.util.LinkedHashMap
+                    name: UIBarPosition
+                    delegate: ~
+                    isConst: *20
+                    isRef: *20
+            - !java.util.LinkedHashMap
+                name: barMetrics
+                param: barMetrics
+                type: !java.util.LinkedHashMap
+                    name: UIBarMetrics
+                    delegate: ~
+                    isConst: *20
+                    isRef: *20
+    setItems: !java.util.LinkedHashMap
+        isInstance: *18
+        name: setItems
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *20
+            isRef: *20
+        isVarArgs: *20
+        args: 
+            - !java.util.LinkedHashMap
+                param: items
+                type: !java.util.LinkedHashMap
+                    name: NSArray
+                    delegate: ~
+                    isConst: *20
+                    isRef: *18
+            - !java.util.LinkedHashMap
+                name: animated
+                param: animated
+                type: !java.util.LinkedHashMap
+                    name: BOOL
+                    delegate: ~
+                    isConst: *20
+                    isRef: *20
+    setTitleVerticalPositionAdjustment: !java.util.LinkedHashMap
+        isInstance: *18
+        name: setTitleVerticalPositionAdjustment
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *20
+            isRef: *20
+        isVarArgs: *20
+        args: 
+            - !java.util.LinkedHashMap
+                param: adjustment
+                type: !java.util.LinkedHashMap
+                    name: CGFloat
+                    delegate: ~
+                    isConst: *20
+                    isRef: *20
+            - !java.util.LinkedHashMap
+                name: forBarMetrics
+                param: barMetrics
+                type: !java.util.LinkedHashMap
+                    name: UIBarMetrics
+                    delegate: ~
+                    isConst: *20
+                    isRef: *20
+    titleVerticalPositionAdjustmentForBarMetrics: !java.util.LinkedHashMap
+        isInstance: *18
+        name: titleVerticalPositionAdjustmentForBarMetrics
+        type: !java.util.LinkedHashMap
+            name: CGFloat
+            delegate: ~
+            isConst: *20
+            isRef: *20
+        isVarArgs: *20
+        args: 
+            - !java.util.LinkedHashMap
+                param: barMetrics
+                type: !java.util.LinkedHashMap
+                    name: UIBarMetrics
+                    delegate: ~
+                    isConst: *20
+                    isRef: *20

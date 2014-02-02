@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">csc699 web service consumer</string>
+    <string name="app_name">Csc699</string>
+    <string name="getUsers">GET users</string>
+    <string name="addUser">ADD user</string>
+    <string name="updateUser">CHG user</string>
+    <string name="delUser">DEL user</string>
+    <string name="getFiles">GET files</string>
+    <string name="addFile">ADD file</string>
+    <string name="delFile">DEL file</string>
+    <string name="updateFile">CHG file</string>
+    <string name="dnldFile">DLD file</string>
+
+</resources>

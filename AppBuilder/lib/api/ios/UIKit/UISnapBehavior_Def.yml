@@ -1,0 +1,39 @@
+--- 
+inherit: 
+    - UIDynamicBehavior
+    - NSObject
+conform: 
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    damping: !java.util.LinkedHashMap
+        name: damping
+        type: CGFloat
+        ref: ""
+        explanation: The amount of oscillation of a dynamic item during the conclusion of a snap.
+        readonly: false
+methods: !java.util.LinkedHashMap
+    initWithItem: !java.util.LinkedHashMap
+        isInstance: true
+        name: initWithItem
+        type: !java.util.LinkedHashMap
+            name: instancetype
+            delegate: ~
+            isConst: &9 false
+            isRef: *9
+        isVarArgs: *9
+        args: 
+            - !java.util.LinkedHashMap
+                param: item
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *9
+                    isRef: *9
+            - !java.util.LinkedHashMap
+                name: snapToPoint
+                param: point
+                type: !java.util.LinkedHashMap
+                    name: CGPoint
+                    delegate: ~
+                    isConst: *9
+                    isRef: *9

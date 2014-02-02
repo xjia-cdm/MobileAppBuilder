@@ -1,0 +1,185 @@
+--- 
+inherit: 
+    - UIDynamicBehavior
+    - NSObject
+conform: 
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    allowsRotation: !java.util.LinkedHashMap
+        name: allowsRotation
+        type: BOOL
+        ref: ""
+        explanation: Specifies whether rotation is allowed for the behavior?s dynamic items.
+        readonly: false
+    angularResistance: !java.util.LinkedHashMap
+        name: angularResistance
+        type: CGFloat
+        ref: ""
+        explanation: The angular resistance for the behavior?s dynamic items.
+        readonly: false
+    density: !java.util.LinkedHashMap
+        name: density
+        type: CGFloat
+        ref: ""
+        explanation: The relative mass density of the behavior?s dynamic items.
+        readonly: false
+    elasticity: !java.util.LinkedHashMap
+        name: elasticity
+        type: CGFloat
+        ref: ""
+        explanation: The amount of elasticity applied to collisions for the behavior?s dynamic items.
+        readonly: false
+    friction: !java.util.LinkedHashMap
+        name: friction
+        type: CGFloat
+        ref: ""
+        explanation: The linear resistance for the behavior?s dynamic items when two slide against each other.
+        readonly: false
+    items: !java.util.LinkedHashMap
+        name: items
+        type: NSArray
+        ref: "*"
+        explanation: Returns the set of dynamic items you?ve added to the dynamic item behavior. (read-only)
+        readonly: true
+    resistance: !java.util.LinkedHashMap
+        name: resistance
+        type: CGFloat
+        ref: ""
+        explanation: "The linear resistance for the behavior?s dynamic items, which reduces their linear velocity over time."
+        readonly: false
+methods: !java.util.LinkedHashMap
+    addAngularVelocity: !java.util.LinkedHashMap
+        isInstance: &13 true
+        name: addAngularVelocity
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: &15 false
+            isRef: *15
+        isVarArgs: *15
+        args: 
+            - !java.util.LinkedHashMap
+                param: velocity
+                type: !java.util.LinkedHashMap
+                    name: CGFloat
+                    delegate: ~
+                    isConst: *15
+                    isRef: *15
+            - !java.util.LinkedHashMap
+                name: forItem
+                param: item
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *15
+                    isRef: *15
+    addItem: !java.util.LinkedHashMap
+        isInstance: *13
+        name: addItem
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *15
+            isRef: *15
+        isVarArgs: *15
+        args: 
+            - !java.util.LinkedHashMap
+                param: item
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *15
+                    isRef: *15
+    addLinearVelocity: !java.util.LinkedHashMap
+        isInstance: *13
+        name: addLinearVelocity
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *15
+            isRef: *15
+        isVarArgs: *15
+        args: 
+            - !java.util.LinkedHashMap
+                param: velocity
+                type: !java.util.LinkedHashMap
+                    name: CGPoint
+                    delegate: ~
+                    isConst: *15
+                    isRef: *15
+            - !java.util.LinkedHashMap
+                name: forItem
+                param: item
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *15
+                    isRef: *15
+    angularVelocityForItem: !java.util.LinkedHashMap
+        isInstance: *13
+        name: angularVelocityForItem
+        type: !java.util.LinkedHashMap
+            name: CGFloat
+            delegate: ~
+            isConst: *15
+            isRef: *15
+        isVarArgs: *15
+        args: 
+            - !java.util.LinkedHashMap
+                param: item
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *15
+                    isRef: *15
+    initWithItems: !java.util.LinkedHashMap
+        isInstance: *13
+        name: initWithItems
+        type: !java.util.LinkedHashMap
+            name: instancetype
+            delegate: ~
+            isConst: *15
+            isRef: *15
+        isVarArgs: *15
+        args: 
+            - !java.util.LinkedHashMap
+                param: items
+                type: !java.util.LinkedHashMap
+                    name: NSArray
+                    delegate: ~
+                    isConst: *15
+                    isRef: *13
+    linearVelocityForItem: !java.util.LinkedHashMap
+        isInstance: *13
+        name: linearVelocityForItem
+        type: !java.util.LinkedHashMap
+            name: CGPoint
+            delegate: ~
+            isConst: *15
+            isRef: *15
+        isVarArgs: *15
+        args: 
+            - !java.util.LinkedHashMap
+                param: item
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *15
+                    isRef: *15
+    removeItem: !java.util.LinkedHashMap
+        isInstance: *13
+        name: removeItem
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *15
+            isRef: *15
+        isVarArgs: *15
+        args: 
+            - !java.util.LinkedHashMap
+                param: item
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *15
+                    isRef: *15

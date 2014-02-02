@@ -1,0 +1,78 @@
+--- 
+inherit: 
+    - NSAttributedString
+    - NSObject
+conform: 
+    - NSCoding (NSAttributedString)
+    - NSCopying (NSAttributedString)
+    - NSMutableCopying (NSAttributedString)
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap {}
+methods: !java.util.LinkedHashMap
+    fixAttributesInRange: !java.util.LinkedHashMap
+        isInstance: &6 true
+        name: fixAttributesInRange
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: &8 false
+            isRef: *8
+        isVarArgs: *8
+        args: 
+            - !java.util.LinkedHashMap
+                param: range
+                type: !java.util.LinkedHashMap
+                    name: NSRange
+                    delegate: ~
+                    isConst: *8
+                    isRef: *8
+    readFromData: !java.util.LinkedHashMap
+        isInstance: *6
+        name: readFromData
+        type: !java.util.LinkedHashMap
+            name: BOOL
+            delegate: ~
+            isConst: *8
+            isRef: *8
+        isVarArgs: *8
+        args: 
+            - !java.util.LinkedHashMap
+                param: data
+                type: !java.util.LinkedHashMap
+                    name: NSData
+                    delegate: ~
+                    isConst: *8
+                    isRef: *6
+            - !java.util.LinkedHashMap
+                name: options
+                param: opts
+                type: !java.util.LinkedHashMap
+                    name: NSDictionary
+                    delegate: ~
+                    isConst: *8
+                    isRef: *6
+    readFromFileURL: !java.util.LinkedHashMap
+        isInstance: *6
+        name: readFromFileURL
+        type: !java.util.LinkedHashMap
+            name: BOOL
+            delegate: ~
+            isConst: *8
+            isRef: *8
+        isVarArgs: *8
+        args: 
+            - !java.util.LinkedHashMap
+                param: url
+                type: !java.util.LinkedHashMap
+                    name: NSURL
+                    delegate: ~
+                    isConst: *8
+                    isRef: *6
+            - !java.util.LinkedHashMap
+                name: options
+                param: opts
+                type: !java.util.LinkedHashMap
+                    name: NSDictionary
+                    delegate: ~
+                    isConst: *8
+                    isRef: *6

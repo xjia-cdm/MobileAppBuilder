@@ -1,0 +1,296 @@
+--- 
+inherit: 
+    - UIView
+    - UIResponder
+    - NSObject
+conform: 
+    - NSCoding
+    - UIScrollViewDelegate
+    - NSCoding (UIView)
+    - UIAppearance (UIView)
+    - UIAppearanceContainer (UIView)
+    - UIDynamicItem (UIView)
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    allowsInlineMediaPlayback: !java.util.LinkedHashMap
+        name: allowsInlineMediaPlayback
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value that determines whether HTML5 videos play inline or use the native full-screen controller.
+        readonly: false
+    canGoBack: !java.util.LinkedHashMap
+        name: canGoBack
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value indicating whether the receiver can move backward. (read-only)
+        readonly: true
+    canGoForward: !java.util.LinkedHashMap
+        name: canGoForward
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value indicating whether the receiver can move forward. (read-only)
+        readonly: true
+    dataDetectorTypes: !java.util.LinkedHashMap
+        name: dataDetectorTypes
+        type: UIDataDetectorTypes
+        ref: ""
+        explanation: The types of data converted to clickable URLs in the web view?s content.
+        readonly: false
+    delegate: !java.util.LinkedHashMap
+        name: delegate
+        type: id
+        ref: ""
+        explanation: The receiver?s delegate.
+        readonly: false
+    gapBetweenPages: !java.util.LinkedHashMap
+        name: gapBetweenPages
+        type: CGFloat
+        ref: ""
+        explanation: "The size of the gap, in points, between pages."
+        readonly: false
+    keyboardDisplayRequiresUserAction: !java.util.LinkedHashMap
+        name: keyboardDisplayRequiresUserAction
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value indicating whether web content can programmatically display the keyboard.
+        readonly: false
+    loading: !java.util.LinkedHashMap
+        name: loading
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value indicating whether the receiver is done loading content. (read-only)
+        readonly: true
+    mediaPlaybackAllowsAirPlay: !java.util.LinkedHashMap
+        name: mediaPlaybackAllowsAirPlay
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value that determines whether Air Play is allowed from this view.
+        readonly: false
+    mediaPlaybackRequiresUserAction: !java.util.LinkedHashMap
+        name: mediaPlaybackRequiresUserAction
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value that determines whether HTML5 videos can play automatically or require the user to start playing them.
+        readonly: false
+    pageCount: !java.util.LinkedHashMap
+        name: pageCount
+        type: NSUInteger
+        ref: ""
+        explanation: The number of pages produced by the layout of the web view. (read-only)
+        readonly: true
+    pageLength: !java.util.LinkedHashMap
+        name: pageLength
+        type: CGFloat
+        ref: ""
+        explanation: "The size of each page, in points, in the direction that the pages flow."
+        readonly: false
+    paginationBreakingMode: !java.util.LinkedHashMap
+        name: paginationBreakingMode
+        type: UIWebPaginationBreakingMode
+        ref: ""
+        explanation: The manner in which column- or page-breaking occurs.
+        readonly: false
+    paginationMode: !java.util.LinkedHashMap
+        name: paginationMode
+        type: UIWebPaginationMode
+        ref: ""
+        explanation: The layout of content in the web view.
+        readonly: false
+    request: !java.util.LinkedHashMap
+        name: request
+        type: NSURLRequest
+        ref: "*"
+        explanation: The URL request identifying the location of the content to load. (read-only)
+        readonly: true
+    scalesPageToFit: !java.util.LinkedHashMap
+        name: scalesPageToFit
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value determining whether the webpage scales to fit the view and the user can change the scale.
+        readonly: false
+    scrollView: !java.util.LinkedHashMap
+        name: scrollView
+        type: UIScrollView
+        ref: "*"
+        explanation: The scroll view associated with the web view. (read-only)
+        readonly: true
+    suppressesIncrementalRendering: !java.util.LinkedHashMap
+        name: suppressesIncrementalRendering
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value indicating whether the web view suppresses content rendering until it is fully loaded into memory.
+        readonly: false
+methods: !java.util.LinkedHashMap
+    goBack: !java.util.LinkedHashMap
+        isInstance: &24 true
+        name: goBack
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: &26 false
+            isRef: *26
+        isVarArgs: *26
+        args: []
+    goForward: !java.util.LinkedHashMap
+        isInstance: *24
+        name: goForward
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *26
+            isRef: *26
+        isVarArgs: *26
+        args: []
+    loadData: !java.util.LinkedHashMap
+        isInstance: *24
+        name: loadData
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *26
+            isRef: *26
+        isVarArgs: *26
+        args: 
+            - !java.util.LinkedHashMap
+                param: data
+                type: !java.util.LinkedHashMap
+                    name: NSData
+                    delegate: ~
+                    isConst: *26
+                    isRef: *24
+            - !java.util.LinkedHashMap
+                name: MIMEType
+                param: MIMEType
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *26
+                    isRef: *24
+            - !java.util.LinkedHashMap
+                name: textEncodingName
+                param: encodingName
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *26
+                    isRef: *24
+            - !java.util.LinkedHashMap
+                name: baseURL
+                param: baseURL
+                type: !java.util.LinkedHashMap
+                    name: NSURL
+                    delegate: ~
+                    isConst: *26
+                    isRef: *24
+    loadHTMLString: !java.util.LinkedHashMap
+        isInstance: *24
+        name: loadHTMLString
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *26
+            isRef: *26
+        isVarArgs: *26
+        args: 
+            - !java.util.LinkedHashMap
+                param: string
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *26
+                    isRef: *24
+            - !java.util.LinkedHashMap
+                name: baseURL
+                param: baseURL
+                type: !java.util.LinkedHashMap
+                    name: NSURL
+                    delegate: ~
+                    isConst: *26
+                    isRef: *24
+    loadRequest: !java.util.LinkedHashMap
+        isInstance: *24
+        name: loadRequest
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *26
+            isRef: *26
+        isVarArgs: *26
+        args: 
+            - !java.util.LinkedHashMap
+                param: request
+                type: !java.util.LinkedHashMap
+                    name: NSURLRequest
+                    delegate: ~
+                    isConst: *26
+                    isRef: *24
+    reload: !java.util.LinkedHashMap
+        isInstance: *24
+        name: reload
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *26
+            isRef: *26
+        isVarArgs: *26
+        args: []
+    stopLoading: !java.util.LinkedHashMap
+        isInstance: *24
+        name: stopLoading
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *26
+            isRef: *26
+        isVarArgs: *26
+        args: []
+    stringByEvaluatingJavaScriptFromString: !java.util.LinkedHashMap
+        isInstance: *24
+        name: stringByEvaluatingJavaScriptFromString
+        type: !java.util.LinkedHashMap
+            name: NSString
+            delegate: ~
+            isConst: *26
+            isRef: *24
+        isVarArgs: *26
+        args: 
+            - !java.util.LinkedHashMap
+                param: script
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *26
+                    isRef: *24
+constants: !java.util.LinkedHashMap
+    UIWebViewNavigationType: !java.util.LinkedHashMap
+        name: UIWebViewNavigationType
+        isEnum: *24
+        isTypedef: *24
+        values: []
+        aliasOf: NSUInteger
+        defValues: 
+            - UIWebViewNavigationTypeLinkClicked
+            - UIWebViewNavigationTypeFormSubmitted
+            - UIWebViewNavigationTypeBackForward
+            - UIWebViewNavigationTypeReload
+            - UIWebViewNavigationTypeFormResubmitted
+            - UIWebViewNavigationTypeOther
+    UIWebPaginationBreakingMode: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *26
+        isTypedef: *24
+        values: ~
+        defValues: 
+            - UIWebPaginationBreakingModePage
+            - UIWebPaginationBreakingModeColumn
+    UIWebPaginationMode: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *26
+        isTypedef: *24
+        values: ~
+        defValues: 
+            - UIWebPaginationModeUnpaginated
+            - UIWebPaginationModeLeftToRight
+            - UIWebPaginationModeTopToBottom
+            - UIWebPaginationModeBottomToTop
+            - UIWebPaginationModeRightToLeft

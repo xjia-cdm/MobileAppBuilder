@@ -1,0 +1,168 @@
+--- 
+inherit: 
+    - NSMutableAttributedString
+    - NSAttributedString
+    - NSObject
+conform: 
+    - NSCoding (NSAttributedString)
+    - NSCopying (NSAttributedString)
+    - NSMutableCopying (NSAttributedString)
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    changeInLength: !java.util.LinkedHashMap
+        name: changeInLength
+        type: NSInteger
+        ref: ""
+        explanation: The length delta for the pending changes.
+        readonly: false
+    delegate: !java.util.LinkedHashMap
+        name: delegate
+        type: id
+        ref: ""
+        explanation: The text storage delegate.
+        readonly: false
+    editedMask: !java.util.LinkedHashMap
+        name: editedMask
+        type: NSTextStorageEditActions
+        ref: ""
+        explanation: The kinds of edits pending for the receiver.
+        readonly: false
+    editedRange: !java.util.LinkedHashMap
+        name: editedRange
+        type: NSRange
+        ref: ""
+        explanation: "The range of the receiver to which pending changes have been made, whether of characters or of attributes."
+        readonly: false
+    fixesAttributesLazily: !java.util.LinkedHashMap
+        name: fixesAttributesLazily
+        type: BOOL
+        ref: ""
+        explanation: Indicates whether the receiver fixes attributes lazily. (read-only)
+        readonly: true
+    layoutManagers: !java.util.LinkedHashMap
+        name: layoutManagers
+        type: NSArray
+        ref: "*"
+        explanation: The receiver?s layout managers. (read-only)
+        readonly: true
+methods: !java.util.LinkedHashMap
+    addLayoutManager: !java.util.LinkedHashMap
+        isInstance: &12 true
+        name: addLayoutManager
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: &14 false
+            isRef: *14
+        isVarArgs: *14
+        args: 
+            - !java.util.LinkedHashMap
+                param: aLayoutManager
+                type: !java.util.LinkedHashMap
+                    name: NSLayoutManager
+                    delegate: ~
+                    isConst: *14
+                    isRef: *12
+    edited: !java.util.LinkedHashMap
+        isInstance: *12
+        name: edited
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *14
+            isRef: *14
+        isVarArgs: *14
+        args: 
+            - !java.util.LinkedHashMap
+                param: editedMask
+                type: !java.util.LinkedHashMap
+                    name: NSTextStorageEditActions
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+            - !java.util.LinkedHashMap
+                name: range
+                param: editedRange
+                type: !java.util.LinkedHashMap
+                    name: NSRange
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+            - !java.util.LinkedHashMap
+                name: changeInLength
+                param: delta
+                type: !java.util.LinkedHashMap
+                    name: NSInteger
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+    ensureAttributesAreFixedInRange: !java.util.LinkedHashMap
+        isInstance: *12
+        name: ensureAttributesAreFixedInRange
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *14
+            isRef: *14
+        isVarArgs: *14
+        args: 
+            - !java.util.LinkedHashMap
+                param: range
+                type: !java.util.LinkedHashMap
+                    name: NSRange
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+    invalidateAttributesInRange: !java.util.LinkedHashMap
+        isInstance: *12
+        name: invalidateAttributesInRange
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *14
+            isRef: *14
+        isVarArgs: *14
+        args: 
+            - !java.util.LinkedHashMap
+                param: range
+                type: !java.util.LinkedHashMap
+                    name: NSRange
+                    delegate: ~
+                    isConst: *14
+                    isRef: *14
+    processEditing: !java.util.LinkedHashMap
+        isInstance: *12
+        name: processEditing
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *14
+            isRef: *14
+        isVarArgs: *14
+        args: []
+    removeLayoutManager: !java.util.LinkedHashMap
+        isInstance: *12
+        name: removeLayoutManager
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *14
+            isRef: *14
+        isVarArgs: *14
+        args: 
+            - !java.util.LinkedHashMap
+                param: aLayoutManager
+                type: !java.util.LinkedHashMap
+                    name: NSLayoutManager
+                    delegate: ~
+                    isConst: *14
+                    isRef: *12
+constants: !java.util.LinkedHashMap
+    Change notifications: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *14
+        isTypedef: *12
+        values: ~
+        defValues: 
+            - NSTextStorageEditedAttributes
+            - NSTextStorageEditedCharacters

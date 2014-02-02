@@ -1,0 +1,241 @@
+--- 
+inherit: 
+    - android.widget.AdapterViewAnimator
+    - android.widget.AdapterView<T extends android.widget.Adapter>
+    - android.view.ViewGroup
+    - android.view.View
+    - java.lang.Object
+attributes: !java.util.LinkedHashMap
+    animateLayoutChanges: !java.util.LinkedHashMap
+        name: "android:animateLayoutChanges"
+        method: setLayoutTransition(LayoutTransition)
+        methodName: setLayoutTransition
+        type: LayoutTransition
+        explanation: |
+            Defines whether changes in layout (caused by adding and removing items) should
+                         cause a LayoutTransition to run. 
+        from: android.view.ViewGroup
+    clipChildren: !java.util.LinkedHashMap
+        name: "android:clipChildren"
+        method: setClipChildren(boolean)
+        methodName: setClipChildren
+        type: boolean
+        explanation: Defines whether a child is limited to draw inside of its bounds or not. 
+        from: android.view.ViewGroup
+    clipToPadding: !java.util.LinkedHashMap
+        name: "android:clipToPadding"
+        method: setClipToPadding(boolean)
+        methodName: setClipToPadding
+        type: boolean
+        explanation: |
+            Defines whether the ViewGroup will clip its drawing surface so as to exclude
+                         the padding area. 
+        from: android.view.ViewGroup
+    layoutMode: !java.util.LinkedHashMap
+        name: "android:layoutMode"
+        method: setLayoutMode(int)
+        methodName: setLayoutMode
+        type: int
+        explanation: Defines the layout mode of this ViewGroup. 
+        from: android.view.ViewGroup
+    splitMotionEvents: !java.util.LinkedHashMap
+        name: "android:splitMotionEvents"
+        method: setMotionEventSplittingEnabled(boolean)
+        methodName: setMotionEventSplittingEnabled
+        type: boolean
+        explanation: |
+            Sets whether this ViewGroup should split MotionEvents
+                         to separate child views during touch event dispatch. 
+        from: android.view.ViewGroup
+    accessibilityLiveRegion: !java.util.LinkedHashMap
+        name: "android:accessibilityLiveRegion"
+        method: setAccessibilityLiveRegion(int)
+        methodName: setAccessibilityLiveRegion
+        type: int
+        explanation: |
+            Indicates to accessibility services whether the user should be notified when
+                         this view changes. 
+        from: android.view.View
+    alpha: !java.util.LinkedHashMap
+        name: "android:alpha"
+        method: setAlpha(float)
+        methodName: setAlpha
+        type: float
+        explanation: |
+            alpha property of the view, as a value between 0 (completely transparent) and 1
+                         (completely opaque). 
+        from: android.view.View
+    background: !java.util.LinkedHashMap
+        name: "android:background"
+        method: setBackgroundResource(int)
+        methodName: setBackgroundResource
+        type: int
+        explanation: A drawable to use as the background. 
+        from: android.view.View
+    clickable: !java.util.LinkedHashMap
+        name: "android:clickable"
+        method: setClickable(boolean)
+        methodName: setClickable
+        type: boolean
+        explanation: Defines whether this view reacts to click events. 
+        from: android.view.View
+    contentDescription: !java.util.LinkedHashMap
+        name: "android:contentDescription"
+        method: setContentDescription(CharSequence)
+        methodName: setContentDescription
+        type: CharSequence
+        explanation: Defines text that briefly describes content of the view. 
+        from: android.view.View
+    fadeScrollbars: !java.util.LinkedHashMap
+        name: "android:fadeScrollbars"
+        method: setScrollbarFadingEnabled(boolean)
+        methodName: setScrollbarFadingEnabled
+        type: boolean
+        explanation: Defines whether to fade out scrollbars when they are not in use. 
+        from: android.view.View
+    focusable: !java.util.LinkedHashMap
+        name: "android:focusable"
+        method: setFocusable(boolean)
+        methodName: setFocusable
+        type: boolean
+        explanation: Boolean that controls whether a view can take focus. 
+        from: android.view.View
+    focusableInTouchMode: !java.util.LinkedHashMap
+        name: "android:focusableInTouchMode"
+        method: setFocusableInTouchMode(boolean)
+        methodName: setFocusableInTouchMode
+        type: boolean
+        explanation: Boolean that controls whether a view can take focus while in touch mode. 
+        from: android.view.View
+    hapticFeedbackEnabled: !java.util.LinkedHashMap
+        name: "android:hapticFeedbackEnabled"
+        method: setHapticFeedbackEnabled(boolean)
+        methodName: setHapticFeedbackEnabled
+        type: boolean
+        explanation: |
+            Boolean that controls whether a view should have haptic feedback
+                         enabled for events such as long presses. 
+        from: android.view.View
+    keepScreenOn: !java.util.LinkedHashMap
+        name: "android:keepScreenOn"
+        method: setKeepScreenOn(boolean)
+        methodName: setKeepScreenOn
+        type: boolean
+        explanation: |
+            Controls whether the view's window should keep the screen on
+                         while visible. 
+        from: android.view.View
+    layoutDirection: !java.util.LinkedHashMap
+        name: "android:layoutDirection"
+        method: setLayoutDirection(int)
+        methodName: setLayoutDirection
+        type: int
+        explanation: Defines the direction of layout drawing. 
+        from: android.view.View
+    paddingEnd: !java.util.LinkedHashMap
+        name: "android:paddingEnd"
+        method: "setPaddingRelative(int,int,int,int)"
+        methodName: setPaddingRelative
+        type: "int,int,int,int"
+        explanation: "Sets the padding, in pixels, of the end edge; see padding. "
+        from: android.view.View
+    paddingStart: !java.util.LinkedHashMap
+        name: "android:paddingStart"
+        method: "setPaddingRelative(int,int,int,int)"
+        methodName: setPaddingRelative
+        type: "int,int,int,int"
+        explanation: "Sets the padding, in pixels, of the start edge; see padding. "
+        from: android.view.View
+    rotation: !java.util.LinkedHashMap
+        name: "android:rotation"
+        method: setRotation(float)
+        methodName: setRotation
+        type: float
+        explanation: "rotation of the view, in degrees. "
+        from: android.view.View
+    rotationX: !java.util.LinkedHashMap
+        name: "android:rotationX"
+        method: setRotationX(float)
+        methodName: setRotationX
+        type: float
+        explanation: "rotation of the view around the x axis, in degrees. "
+        from: android.view.View
+    rotationY: !java.util.LinkedHashMap
+        name: "android:rotationY"
+        method: setRotationY(float)
+        methodName: setRotationY
+        type: float
+        explanation: "rotation of the view around the y axis, in degrees. "
+        from: android.view.View
+    saveEnabled: !java.util.LinkedHashMap
+        name: "android:saveEnabled"
+        method: setSaveEnabled(boolean)
+        methodName: setSaveEnabled
+        type: boolean
+        explanation: |
+            If unset, no state will be saved for this view when it is being
+                         frozen. 
+        from: android.view.View
+    scaleX: !java.util.LinkedHashMap
+        name: "android:scaleX"
+        method: setScaleX(float)
+        methodName: setScaleX
+        type: float
+        explanation: scale of the view in the x direction. 
+        from: android.view.View
+    scaleY: !java.util.LinkedHashMap
+        name: "android:scaleY"
+        method: setScaleY(float)
+        methodName: setScaleY
+        type: float
+        explanation: scale of the view in the y direction. 
+        from: android.view.View
+    textAlignment: !java.util.LinkedHashMap
+        name: "android:textAlignment"
+        method: setTextAlignment(int)
+        methodName: setTextAlignment
+        type: int
+        explanation: Defines the alignment of the text. 
+        from: android.view.View
+    textDirection: !java.util.LinkedHashMap
+        name: "android:textDirection"
+        method: setTextDirection(int)
+        methodName: setTextDirection
+        type: int
+        explanation: Defines the direction of the text. 
+        from: android.view.View
+    transformPivotX: !java.util.LinkedHashMap
+        name: "android:transformPivotX"
+        method: setPivotX(float)
+        methodName: setPivotX
+        type: float
+        explanation: x location of the pivot point around which the view will rotate and scale. 
+        from: android.view.View
+    transformPivotY: !java.util.LinkedHashMap
+        name: "android:transformPivotY"
+        method: setPivotY(float)
+        methodName: setPivotY
+        type: float
+        explanation: y location of the pivot point around which the view will rotate and scale. 
+        from: android.view.View
+    translationX: !java.util.LinkedHashMap
+        name: "android:translationX"
+        method: setTranslationX(float)
+        methodName: setTranslationX
+        type: float
+        explanation: translation in x of the view. 
+        from: android.view.View
+    translationY: !java.util.LinkedHashMap
+        name: "android:translationY"
+        method: setTranslationY(float)
+        methodName: setTranslationY
+        type: float
+        explanation: translation in y of the view. 
+        from: android.view.View
+    visibility: !java.util.LinkedHashMap
+        name: "android:visibility"
+        method: setVisibility(int)
+        methodName: setVisibility
+        type: int
+        explanation: Controls the initial visibility of the view. 
+        from: android.view.View

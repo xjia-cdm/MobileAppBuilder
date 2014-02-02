@@ -1,0 +1,11 @@
+/* Mobile Application Definition Language */
+
+app('First App 12a') {
+
+  View(autoLayout: true) { 
+	Button(text: 'Left')
+	Button(text: 'Right', align: Right)
+	Button(text: 'Center', align: Center)
+  }
+
+}

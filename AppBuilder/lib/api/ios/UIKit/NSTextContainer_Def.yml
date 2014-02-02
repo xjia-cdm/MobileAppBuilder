@@ -1,0 +1,115 @@
+--- 
+inherit: 
+    - NSObject
+conform: 
+    - NSCoding
+    - NSTextLayoutOrientationProvider
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    exclusionPaths: !java.util.LinkedHashMap
+        name: exclusionPaths
+        type: NSArray
+        ref: "*"
+        explanation: "An array of UIBezierPath objects representing the exclusion paths inside the receiver's bounding rectangle. Default value: nil."
+        readonly: false
+    heightTracksTextView: !java.util.LinkedHashMap
+        name: heightTracksTextView
+        type: BOOL
+        ref: ""
+        explanation: "Controls whether the receiver adjusts the height of its bounding rectangle when its text view is resized. Default value: NO."
+        readonly: false
+    layoutManager: !java.util.LinkedHashMap
+        name: layoutManager
+        type: NSLayoutManager
+        ref: "*"
+        explanation: Accessor for the NSLayoutManager object owning the receiver.
+        readonly: false
+    lineBreakMode: !java.util.LinkedHashMap
+        name: lineBreakMode
+        type: NSLineBreakMode
+        ref: ""
+        explanation: "Defines the behavior of the last line inside the text container. Default value: NSLineBreakByWordWrapping."
+        readonly: false
+    lineFragmentPadding: !java.util.LinkedHashMap
+        name: lineFragmentPadding
+        type: CGFloat
+        ref: ""
+        explanation: "The amount by which text is inset within line fragment rectangles, in points. Default value: 5.0."
+        readonly: false
+    maximumNumberOfLines: !java.util.LinkedHashMap
+        name: maximumNumberOfLines
+        type: NSUInteger
+        ref: ""
+        explanation: "The maximum number of lines that can be stored in the receiver. Default value: 0 (no limit)."
+        readonly: false
+    size: !java.util.LinkedHashMap
+        name: size
+        type: CGSize
+        ref: ""
+        explanation: "Controls the size of the receiver?s bounding rectangle. Default value: CGSizeZero."
+        readonly: false
+    widthTracksTextView: !java.util.LinkedHashMap
+        name: widthTracksTextView
+        type: BOOL
+        ref: ""
+        explanation: "Controls whether the receiver adjusts the width of its bounding rectangle when its text view is resized. Default value: NO."
+        readonly: false
+methods: !java.util.LinkedHashMap
+    initWithSize: !java.util.LinkedHashMap
+        isInstance: &14 true
+        name: initWithSize
+        type: !java.util.LinkedHashMap
+            name: id
+            delegate: ~
+            isConst: &16 false
+            isRef: *16
+        isVarArgs: *16
+        args: 
+            - !java.util.LinkedHashMap
+                param: size
+                type: !java.util.LinkedHashMap
+                    name: CGSize
+                    delegate: ~
+                    isConst: *16
+                    isRef: *16
+    lineFragmentRectForProposedRect: !java.util.LinkedHashMap
+        isInstance: *14
+        name: lineFragmentRectForProposedRect
+        type: !java.util.LinkedHashMap
+            name: CGRect
+            delegate: ~
+            isConst: *16
+            isRef: *16
+        isVarArgs: *16
+        args: 
+            - !java.util.LinkedHashMap
+                param: proposedRect
+                type: !java.util.LinkedHashMap
+                    name: CGRect
+                    delegate: ~
+                    isConst: *16
+                    isRef: *16
+            - !java.util.LinkedHashMap
+                name: atIndex
+                param: characterIndex
+                type: !java.util.LinkedHashMap
+                    name: NSUInteger
+                    delegate: ~
+                    isConst: *16
+                    isRef: *16
+            - !java.util.LinkedHashMap
+                name: writingDirection
+                param: baseWritingDirection
+                type: !java.util.LinkedHashMap
+                    name: NSWritingDirection
+                    delegate: ~
+                    isConst: *16
+                    isRef: *16
+            - !java.util.LinkedHashMap
+                name: remainingRect
+                param: remainingRect
+                type: !java.util.LinkedHashMap
+                    name: CGRect
+                    delegate: ~
+                    isConst: *16
+                    isRef: *14

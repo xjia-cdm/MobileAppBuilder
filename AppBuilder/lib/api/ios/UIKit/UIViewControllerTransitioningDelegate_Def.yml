@@ -1,0 +1,89 @@
+--- 
+conform: 
+    - NSObject
+properties: !java.util.LinkedHashMap {}
+methods: !java.util.LinkedHashMap
+    animationControllerForDismissedController: !java.util.LinkedHashMap
+        isInstance: &5 true
+        name: animationControllerForDismissedController
+        type: !java.util.LinkedHashMap
+            name: id
+            delegate: <UIViewControllerAnimatedTransitioning>
+            isConst: &7 false
+            isRef: *7
+        isVarArgs: *7
+        args: 
+            - !java.util.LinkedHashMap
+                param: dismissed
+                type: !java.util.LinkedHashMap
+                    name: UIViewController
+                    delegate: ~
+                    isConst: *7
+                    isRef: *5
+    animationControllerForPresentedController: !java.util.LinkedHashMap
+        isInstance: *5
+        name: animationControllerForPresentedController
+        type: !java.util.LinkedHashMap
+            name: id
+            delegate: <UIViewControllerAnimatedTransitioning>
+            isConst: *7
+            isRef: *7
+        isVarArgs: *7
+        args: 
+            - !java.util.LinkedHashMap
+                param: presented
+                type: !java.util.LinkedHashMap
+                    name: UIViewController
+                    delegate: ~
+                    isConst: *7
+                    isRef: *5
+            - !java.util.LinkedHashMap
+                name: presentingController
+                param: presenting
+                type: !java.util.LinkedHashMap
+                    name: UIViewController
+                    delegate: ~
+                    isConst: *7
+                    isRef: *5
+            - !java.util.LinkedHashMap
+                name: sourceController
+                param: source
+                type: !java.util.LinkedHashMap
+                    name: UIViewController
+                    delegate: ~
+                    isConst: *7
+                    isRef: *5
+    interactionControllerForDismissal: !java.util.LinkedHashMap
+        isInstance: *5
+        name: interactionControllerForDismissal
+        type: !java.util.LinkedHashMap
+            name: id
+            delegate: <UIViewControllerInteractiveTransitioning>
+            isConst: *7
+            isRef: *7
+        isVarArgs: *7
+        args: 
+            - !java.util.LinkedHashMap
+                param: animator
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIViewControllerAnimatedTransitioning>
+                    isConst: *7
+                    isRef: *7
+    interactionControllerForPresentation: !java.util.LinkedHashMap
+        isInstance: *5
+        name: interactionControllerForPresentation
+        type: !java.util.LinkedHashMap
+            name: id
+            delegate: <UIViewControllerInteractiveTransitioning>
+            isConst: *7
+            isRef: *7
+        isVarArgs: *7
+        args: 
+            - !java.util.LinkedHashMap
+                param: animator
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIViewControllerAnimatedTransitioning>
+                    isConst: *7
+                    isRef: *7

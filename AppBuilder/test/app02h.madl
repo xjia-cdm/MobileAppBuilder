@@ -1,0 +1,42 @@
+app(name: 'App Control') { 
+
+  View { 
+	Table(cols: [ [align: right] ]) { 
+	  Row { 
+		Label('Name:') 
+		Text(id: name, prompt: 'Type in a name')
+      }
+      Row { 
+		Label('Number:') 
+		Text(type: number,
+			 prompt: 'Type in a number') 
+      }
+	}
+	Row { 
+	  Label(text: "${slider.value}")
+	  Slider(id: slider)
+	}
+
+	Label(id: l1, text: 'Selection', width: '*')
+	Label(id: l2, text: "Selection: ${sel.selectedIndex}", width: '*')
+	Selection(id: sel, 
+			  options : [ 'Switches', 'Button' ],
+			  action: { l1.text = selectedIndex } )
+
+	Row { 
+	  Label(text: "${sw1.on}")
+	  Label(text: "${sw2.on}")
+	}
+	Row {
+	  Switch(id: sw1)
+	  Switch(id: sw2)
+	}
+
+	Label(id: l3, text: 'switch')
+	Row {
+	  Switch(id: sw3)
+	  Switch(id: sw4)
+	}
+  }
+ 
+}

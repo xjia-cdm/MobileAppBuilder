@@ -1,0 +1,19 @@
+--- 
+inherit: 
+    - NSObject
+conform: 
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    invalidateDataSourceCounts: !java.util.LinkedHashMap
+        name: invalidateDataSourceCounts
+        type: BOOL
+        ref: ""
+        explanation: A Boolean that indicates whether the layout should ask for new section and item counts. (read-only)
+        readonly: true
+    invalidateEverything: !java.util.LinkedHashMap
+        name: invalidateEverything
+        type: BOOL
+        ref: ""
+        explanation: A Boolean that indicates that all layout data should be marked as invalid. (read-only)
+        readonly: true
+methods: !java.util.LinkedHashMap {}

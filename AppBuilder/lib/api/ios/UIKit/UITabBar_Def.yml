@@ -1,0 +1,173 @@
+--- 
+inherit: 
+    - UIView
+    - UIResponder
+    - NSObject
+conform: 
+    - NSCoding (UIView)
+    - UIAppearance (UIView)
+    - UIAppearanceContainer (UIView)
+    - UIDynamicItem (UIView)
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    backgroundImage: !java.util.LinkedHashMap
+        name: backgroundImage
+        type: UIImage
+        ref: "*"
+        explanation: The background image for the tab bar.
+        readonly: false
+    barStyle: !java.util.LinkedHashMap
+        name: barStyle
+        type: UIBarStyle
+        ref: ""
+        explanation: The tab bar style that specifies its appearance.
+        readonly: false
+    barTintColor: !java.util.LinkedHashMap
+        name: barTintColor
+        type: UIColor
+        ref: "*"
+        explanation: The tint color to apply to the tab bar background.
+        readonly: false
+    delegate: !java.util.LinkedHashMap
+        name: delegate
+        type: id
+        ref: ""
+        explanation: The tab bar?s delegate object.
+        readonly: false
+    itemPositioning: !java.util.LinkedHashMap
+        name: itemPositioning
+        type: UITabBarItemPositioning
+        ref: ""
+        explanation: The positioning scheme for the tab bar items in the tab bar.
+        readonly: false
+    items: !java.util.LinkedHashMap
+        name: items
+        type: NSArray
+        ref: "*"
+        explanation: The items displayed on the tab bar.
+        readonly: false
+    itemSpacing: !java.util.LinkedHashMap
+        name: itemSpacing
+        type: CGFloat
+        ref: ""
+        explanation: "The custom inter-item spacing for tab bar items, in points, when using centered-style positioning."
+        readonly: false
+    itemWidth: !java.util.LinkedHashMap
+        name: itemWidth
+        type: CGFloat
+        ref: ""
+        explanation: "The custom item width for tab bar items, in points, when using centered-style positioning."
+        readonly: false
+    selectedImageTintColor: !java.util.LinkedHashMap
+        name: selectedImageTintColor
+        type: UIColor
+        ref: "*"
+        explanation: The tint color applied to the selected tab bar item.
+        readonly: false
+    selectedItem: !java.util.LinkedHashMap
+        name: selectedItem
+        type: UITabBarItem
+        ref: "*"
+        explanation: The currently selected item on the tab bar.
+        readonly: false
+    selectionIndicatorImage: !java.util.LinkedHashMap
+        name: selectionIndicatorImage
+        type: UIImage
+        ref: "*"
+        explanation: The image used for the selection indicator.
+        readonly: false
+    shadowImage: !java.util.LinkedHashMap
+        name: shadowImage
+        type: UIImage
+        ref: "*"
+        explanation: The shadow image to be used for the tab bar.
+        readonly: false
+    tintColor: !java.util.LinkedHashMap
+        name: tintColor
+        type: UIColor
+        ref: "*"
+        explanation: The tint color to apply to the tab bar?s tab bar items.
+        readonly: false
+    translucent: !java.util.LinkedHashMap
+        name: translucent
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value that indicates whether the tab bar is translucent (YES) or not (NO).
+        readonly: false
+methods: !java.util.LinkedHashMap
+    beginCustomizingItems: !java.util.LinkedHashMap
+        isInstance: &20 true
+        name: beginCustomizingItems
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: &22 false
+            isRef: *22
+        isVarArgs: *22
+        args: 
+            - !java.util.LinkedHashMap
+                param: items
+                type: !java.util.LinkedHashMap
+                    name: NSArray
+                    delegate: ~
+                    isConst: *22
+                    isRef: *20
+    endCustomizingAnimated: !java.util.LinkedHashMap
+        isInstance: *20
+        name: endCustomizingAnimated
+        type: !java.util.LinkedHashMap
+            name: BOOL
+            delegate: ~
+            isConst: *22
+            isRef: *22
+        isVarArgs: *22
+        args: 
+            - !java.util.LinkedHashMap
+                param: animated
+                type: !java.util.LinkedHashMap
+                    name: BOOL
+                    delegate: ~
+                    isConst: *22
+                    isRef: *22
+    isCustomizing: !java.util.LinkedHashMap
+        isInstance: *20
+        name: isCustomizing
+        type: !java.util.LinkedHashMap
+            name: BOOL
+            delegate: ~
+            isConst: *22
+            isRef: *22
+        isVarArgs: *22
+        args: []
+    setItems: !java.util.LinkedHashMap
+        isInstance: *20
+        name: setItems
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *22
+            isRef: *22
+        isVarArgs: *22
+        args: 
+            - !java.util.LinkedHashMap
+                param: items
+                type: !java.util.LinkedHashMap
+                    name: NSArray
+                    delegate: ~
+                    isConst: *22
+                    isRef: *20
+            - !java.util.LinkedHashMap
+                name: animated
+                param: animated
+                type: !java.util.LinkedHashMap
+                    name: BOOL
+                    delegate: ~
+                    isConst: *22
+                    isRef: *22
+constants: !java.util.LinkedHashMap
+    UITabBarItemPositioning: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *22
+        isTypedef: *20
+        values: ~
+        defValues: []

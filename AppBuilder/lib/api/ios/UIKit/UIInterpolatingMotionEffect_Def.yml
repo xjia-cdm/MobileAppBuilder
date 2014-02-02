@@ -1,0 +1,68 @@
+--- 
+inherit: 
+    - UIMotionEffect
+    - NSObject
+conform: 
+    - NSCoding (UIMotionEffect)
+    - NSCopying (UIMotionEffect)
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    keyPath: !java.util.LinkedHashMap
+        name: keyPath
+        type: NSString
+        ref: "*"
+        explanation: The key path you want to modify on the view. (read-only)
+        readonly: true
+    maximumRelativeValue: !java.util.LinkedHashMap
+        name: maximumRelativeValue
+        type: id
+        ref: ""
+        explanation: The value that maps to the maximum viewer offset.
+        readonly: false
+    minimumRelativeValue: !java.util.LinkedHashMap
+        name: minimumRelativeValue
+        type: id
+        ref: ""
+        explanation: The value that maps to the minimum viewer offset.
+        readonly: false
+    type: !java.util.LinkedHashMap
+        name: type
+        type: UIInterpolatingMotionEffectType
+        ref: ""
+        explanation: The tilt direction to monitor. (read-only)
+        readonly: true
+methods: !java.util.LinkedHashMap
+    initWithKeyPath: !java.util.LinkedHashMap
+        isInstance: &10 true
+        name: initWithKeyPath
+        type: !java.util.LinkedHashMap
+            name: instancetype
+            delegate: ~
+            isConst: &12 false
+            isRef: *12
+        isVarArgs: *12
+        args: 
+            - !java.util.LinkedHashMap
+                param: keyPath
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *12
+                    isRef: *10
+            - !java.util.LinkedHashMap
+                name: type
+                param: type
+                type: !java.util.LinkedHashMap
+                    name: UIInterpolatingMotionEffectType
+                    delegate: ~
+                    isConst: *12
+                    isRef: *12
+constants: !java.util.LinkedHashMap
+    UIInterpolatingMotionEffectType: !java.util.LinkedHashMap
+        name: UIInterpolatingMotionEffectType
+        isEnum: *10
+        isTypedef: *10
+        values: []
+        defValues: 
+            - UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis
+            - UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis

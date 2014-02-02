@@ -1,0 +1,125 @@
+--- 
+inherit: 
+    - UIBarItem
+    - NSObject
+conform: 
+    - UIAppearance (UIBarItem)
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    badgeValue: !java.util.LinkedHashMap
+        name: badgeValue
+        type: NSString
+        ref: "*"
+        explanation: Text that is displayed in the upper-right corner of the item with a surrounding red oval.
+        readonly: false
+    selectedImage: !java.util.LinkedHashMap
+        name: selectedImage
+        type: UIImage
+        ref: "*"
+        explanation: The image displayed when the tab bar item is selected.
+        readonly: false
+methods: !java.util.LinkedHashMap
+    initWithTabBarSystemItem: !java.util.LinkedHashMap
+        isInstance: &8 true
+        name: initWithTabBarSystemItem
+        type: !java.util.LinkedHashMap
+            name: id
+            delegate: ~
+            isConst: &10 false
+            isRef: *10
+        isVarArgs: *10
+        args: 
+            - !java.util.LinkedHashMap
+                param: systemItem
+                type: !java.util.LinkedHashMap
+                    name: UITabBarSystemItem
+                    delegate: ~
+                    isConst: *10
+                    isRef: *10
+            - !java.util.LinkedHashMap
+                name: tag
+                param: tag
+                type: !java.util.LinkedHashMap
+                    name: NSInteger
+                    delegate: ~
+                    isConst: *10
+                    isRef: *10
+    initWithTitle: !java.util.LinkedHashMap
+        isInstance: *8
+        name: initWithTitle
+        type: !java.util.LinkedHashMap
+            name: id
+            delegate: ~
+            isConst: *10
+            isRef: *10
+        isVarArgs: *10
+        args: 
+            - !java.util.LinkedHashMap
+                param: title
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *10
+                    isRef: *8
+            - !java.util.LinkedHashMap
+                name: image
+                param: image
+                type: !java.util.LinkedHashMap
+                    name: UIImage
+                    delegate: ~
+                    isConst: *10
+                    isRef: *8
+            - !java.util.LinkedHashMap
+                name: tag
+                param: tag
+                type: !java.util.LinkedHashMap
+                    name: NSInteger
+                    delegate: ~
+                    isConst: *10
+                    isRef: *10
+    setTitlePositionAdjustment: !java.util.LinkedHashMap
+        isInstance: *8
+        name: setTitlePositionAdjustment
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *10
+            isRef: *10
+        isVarArgs: *10
+        args: 
+            - !java.util.LinkedHashMap
+                param: adjustment
+                type: !java.util.LinkedHashMap
+                    name: UIOffset
+                    delegate: ~
+                    isConst: *10
+                    isRef: *10
+    titlePositionAdjustment: !java.util.LinkedHashMap
+        isInstance: *8
+        name: titlePositionAdjustment
+        type: !java.util.LinkedHashMap
+            name: UIOffset
+            delegate: ~
+            isConst: *10
+            isRef: *10
+        isVarArgs: *10
+        args: []
+constants: !java.util.LinkedHashMap
+    UITabBarSystemItem: !java.util.LinkedHashMap
+        name: UITabBarSystemItem
+        isEnum: *8
+        isTypedef: *8
+        values: []
+        defValues: 
+            - UITabBarSystemItemMore
+            - UITabBarSystemItemFavorites
+            - UITabBarSystemItemFeatured
+            - UITabBarSystemItemTopRated
+            - UITabBarSystemItemRecents
+            - UITabBarSystemItemContacts
+            - UITabBarSystemItemHistory
+            - UITabBarSystemItemBookmarks
+            - UITabBarSystemItemSearch
+            - UITabBarSystemItemDownloads
+            - UITabBarSystemItemMostRecent
+            - UITabBarSystemItemMostViewed

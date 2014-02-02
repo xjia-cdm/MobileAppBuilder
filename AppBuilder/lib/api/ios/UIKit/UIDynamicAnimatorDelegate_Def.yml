@@ -1,0 +1,39 @@
+--- 
+conform: 
+    - NSObject
+properties: !java.util.LinkedHashMap {}
+methods: !java.util.LinkedHashMap
+    dynamicAnimatorDidPause: !java.util.LinkedHashMap
+        isInstance: &5 true
+        name: dynamicAnimatorDidPause
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: &7 false
+            isRef: *7
+        isVarArgs: *7
+        args: 
+            - !java.util.LinkedHashMap
+                param: animator
+                type: !java.util.LinkedHashMap
+                    name: UIDynamicAnimator
+                    delegate: ~
+                    isConst: *7
+                    isRef: *5
+    dynamicAnimatorWillResume: !java.util.LinkedHashMap
+        isInstance: *5
+        name: dynamicAnimatorWillResume
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *7
+            isRef: *7
+        isVarArgs: *7
+        args: 
+            - !java.util.LinkedHashMap
+                param: animator
+                type: !java.util.LinkedHashMap
+                    name: UIDynamicAnimator
+                    delegate: ~
+                    isConst: *7
+                    isRef: *5

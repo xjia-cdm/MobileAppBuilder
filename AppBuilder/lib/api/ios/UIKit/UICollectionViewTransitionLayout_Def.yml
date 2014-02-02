@@ -1,0 +1,94 @@
+--- 
+inherit: 
+    - UICollectionViewLayout
+    - NSObject
+conform: 
+    - NSCoding (UICollectionViewLayout)
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    currentLayout: !java.util.LinkedHashMap
+        name: currentLayout
+        type: UICollectionViewLayout
+        ref: "*"
+        explanation: The collection view?s current layout object. (read-only)
+        readonly: true
+    nextLayout: !java.util.LinkedHashMap
+        name: nextLayout
+        type: UICollectionViewLayout
+        ref: "*"
+        explanation: The collection view?s new layout object. (read-only)
+        readonly: true
+    transitionProgress: !java.util.LinkedHashMap
+        name: transitionProgress
+        type: CGFloat
+        ref: ""
+        explanation: The completion percentage of the transition.
+        readonly: false
+methods: !java.util.LinkedHashMap
+    initWithCurrentLayout: !java.util.LinkedHashMap
+        isInstance: &9 true
+        name: initWithCurrentLayout
+        type: !java.util.LinkedHashMap
+            name: id
+            delegate: ~
+            isConst: &11 false
+            isRef: *11
+        isVarArgs: *11
+        args: 
+            - !java.util.LinkedHashMap
+                param: currentLayout
+                type: !java.util.LinkedHashMap
+                    name: UICollectionViewLayout
+                    delegate: ~
+                    isConst: *11
+                    isRef: *9
+            - !java.util.LinkedHashMap
+                name: nextLayout
+                param: newLayout
+                type: !java.util.LinkedHashMap
+                    name: UICollectionViewLayout
+                    delegate: ~
+                    isConst: *11
+                    isRef: *9
+    updateValue: !java.util.LinkedHashMap
+        isInstance: *9
+        name: updateValue
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *11
+            isRef: *11
+        isVarArgs: *11
+        args: 
+            - !java.util.LinkedHashMap
+                param: value
+                type: !java.util.LinkedHashMap
+                    name: CGFloat
+                    delegate: ~
+                    isConst: *11
+                    isRef: *11
+            - !java.util.LinkedHashMap
+                name: forAnimatedKey
+                param: key
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *11
+                    isRef: *9
+    valueForAnimatedKey: !java.util.LinkedHashMap
+        isInstance: *9
+        name: valueForAnimatedKey
+        type: !java.util.LinkedHashMap
+            name: CGFloat
+            delegate: ~
+            isConst: *11
+            isRef: *11
+        isVarArgs: *11
+        args: 
+            - !java.util.LinkedHashMap
+                param: key
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *11
+                    isRef: *9

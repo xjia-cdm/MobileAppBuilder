@@ -1,0 +1,344 @@
+--- 
+inherit: 
+    - NSObject
+conform: 
+    - NSCoding
+    - NSCopying
+    - NSMutableCopying
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap {}
+methods: !java.util.LinkedHashMap
+    attributedStringWithAttachment: !java.util.LinkedHashMap
+        isInstance: &6 false
+        name: attributedStringWithAttachment
+        type: !java.util.LinkedHashMap
+            name: NSAttributedString
+            delegate: ~
+            isConst: *6
+            isRef: &8 true
+        isVarArgs: *6
+        args: 
+            - !java.util.LinkedHashMap
+                param: attachment
+                type: !java.util.LinkedHashMap
+                    name: NSTextAttachment
+                    delegate: ~
+                    isConst: *6
+                    isRef: *8
+    boundingRectWithSize: !java.util.LinkedHashMap
+        isInstance: *8
+        name: boundingRectWithSize
+        type: !java.util.LinkedHashMap
+            name: CGRect
+            delegate: ~
+            isConst: *6
+            isRef: *6
+        isVarArgs: *6
+        args: 
+            - !java.util.LinkedHashMap
+                param: size
+                type: !java.util.LinkedHashMap
+                    name: CGSize
+                    delegate: ~
+                    isConst: *6
+                    isRef: *6
+            - !java.util.LinkedHashMap
+                name: options
+                param: options
+                type: !java.util.LinkedHashMap
+                    name: NSStringDrawingOptions
+                    delegate: ~
+                    isConst: *6
+                    isRef: *6
+            - !java.util.LinkedHashMap
+                name: context
+                param: context
+                type: !java.util.LinkedHashMap
+                    name: NSStringDrawingContext
+                    delegate: ~
+                    isConst: *6
+                    isRef: *8
+    dataFromRange: !java.util.LinkedHashMap
+        isInstance: *8
+        name: dataFromRange
+        type: !java.util.LinkedHashMap
+            name: NSData
+            delegate: ~
+            isConst: *6
+            isRef: *8
+        isVarArgs: *6
+        args: 
+            - !java.util.LinkedHashMap
+                param: range
+                type: !java.util.LinkedHashMap
+                    name: NSRange
+                    delegate: ~
+                    isConst: *6
+                    isRef: *6
+            - !java.util.LinkedHashMap
+                name: documentAttributes
+                param: dict
+                type: !java.util.LinkedHashMap
+                    name: NSDictionary
+                    delegate: ~
+                    isConst: *6
+                    isRef: *8
+    drawAtPoint: !java.util.LinkedHashMap
+        isInstance: *8
+        name: drawAtPoint
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *6
+            isRef: *6
+        isVarArgs: *6
+        args: 
+            - !java.util.LinkedHashMap
+                param: point
+                type: !java.util.LinkedHashMap
+                    name: CGPoint
+                    delegate: ~
+                    isConst: *6
+                    isRef: *6
+    drawInRect: !java.util.LinkedHashMap
+        isInstance: *8
+        name: drawInRect
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *6
+            isRef: *6
+        isVarArgs: *6
+        args: 
+            - !java.util.LinkedHashMap
+                param: rect
+                type: !java.util.LinkedHashMap
+                    name: CGRect
+                    delegate: ~
+                    isConst: *6
+                    isRef: *6
+    drawWithRect: !java.util.LinkedHashMap
+        isInstance: *8
+        name: drawWithRect
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *6
+            isRef: *6
+        isVarArgs: *6
+        args: 
+            - !java.util.LinkedHashMap
+                param: rect
+                type: !java.util.LinkedHashMap
+                    name: CGRect
+                    delegate: ~
+                    isConst: *6
+                    isRef: *6
+            - !java.util.LinkedHashMap
+                name: options
+                param: options
+                type: !java.util.LinkedHashMap
+                    name: NSStringDrawingOptions
+                    delegate: ~
+                    isConst: *6
+                    isRef: *6
+            - !java.util.LinkedHashMap
+                name: context
+                param: context
+                type: !java.util.LinkedHashMap
+                    name: NSStringDrawingContext
+                    delegate: ~
+                    isConst: *6
+                    isRef: *8
+    fileWrapperFromRange: !java.util.LinkedHashMap
+        isInstance: *8
+        name: fileWrapperFromRange
+        type: !java.util.LinkedHashMap
+            name: NSFileWrapper
+            delegate: ~
+            isConst: *6
+            isRef: *8
+        isVarArgs: *6
+        args: 
+            - !java.util.LinkedHashMap
+                param: range
+                type: !java.util.LinkedHashMap
+                    name: NSRange
+                    delegate: ~
+                    isConst: *6
+                    isRef: *6
+            - !java.util.LinkedHashMap
+                name: documentAttributes
+                param: dict
+                type: !java.util.LinkedHashMap
+                    name: NSDictionary
+                    delegate: ~
+                    isConst: *6
+                    isRef: *8
+    initWithData: !java.util.LinkedHashMap
+        isInstance: *8
+        name: initWithData
+        type: !java.util.LinkedHashMap
+            name: id
+            delegate: ~
+            isConst: *6
+            isRef: *6
+        isVarArgs: *6
+        args: 
+            - !java.util.LinkedHashMap
+                param: data
+                type: !java.util.LinkedHashMap
+                    name: NSData
+                    delegate: ~
+                    isConst: *6
+                    isRef: *8
+            - !java.util.LinkedHashMap
+                name: options
+                param: options
+                type: !java.util.LinkedHashMap
+                    name: NSDictionary
+                    delegate: ~
+                    isConst: *6
+                    isRef: *8
+    initWithFileURL: !java.util.LinkedHashMap
+        isInstance: *8
+        name: initWithFileURL
+        type: !java.util.LinkedHashMap
+            name: id
+            delegate: ~
+            isConst: *6
+            isRef: *6
+        isVarArgs: *6
+        args: 
+            - !java.util.LinkedHashMap
+                param: url
+                type: !java.util.LinkedHashMap
+                    name: NSURL
+                    delegate: ~
+                    isConst: *6
+                    isRef: *8
+            - !java.util.LinkedHashMap
+                name: options
+                param: options
+                type: !java.util.LinkedHashMap
+                    name: NSDictionary
+                    delegate: ~
+                    isConst: *6
+                    isRef: *8
+    size: !java.util.LinkedHashMap
+        isInstance: *8
+        name: size
+        type: !java.util.LinkedHashMap
+            name: CGSize
+            delegate: ~
+            isConst: *6
+            isRef: *6
+        isVarArgs: *6
+        args: []
+constants: !java.util.LinkedHashMap
+    String Drawing Options: !java.util.LinkedHashMap
+        name: NSStringDrawingOptions
+        isEnum: *8
+        isTypedef: *8
+        values: []
+        aliasOf: NSInteger
+        defValues: 
+            - NSStringDrawingTruncatesLastVisibleLine
+            - NSStringDrawingUsesLineFragmentOrigin
+            - NSStringDrawingUsesFontLeading
+            - NSStringDrawingUsesDeviceMetrics
+    Underline and Strikethrough Style Attributes: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *6
+        isTypedef: *8
+        values: ~
+        defValues: 
+            - NSUnderlineStyleNone
+            - NSUnderlineStyleSingle
+            - NSUnderlineStyleThick
+            - NSUnderlineStyleDouble
+            - NSUnderlinePatternSolid
+            - NSUnderlinePatternDot
+            - NSUnderlinePatternDash
+            - NSUnderlinePatternDashDot
+            - NSUnderlinePatternDashDotDot
+            - NSUnderlineByWord
+    Character Attributes: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *6
+        isTypedef: *6
+        values: ~
+        defValues: 
+            - NSFontAttributeName
+            - NSParagraphStyleAttributeName
+            - NSForegroundColorAttributeName
+            - NSBackgroundColorAttributeName
+            - NSLigatureAttributeName
+            - NSKernAttributeName
+            - NSStrikethroughStyleAttributeName
+            - NSUnderlineStyleAttributeName
+            - NSStrokeColorAttributeName
+            - NSStrokeWidthAttributeName
+            - NSShadowAttributeName
+            - NSTextEffectAttributeName
+            - NSAttachmentAttributeName
+            - NSLinkAttributeName
+            - NSBaselineOffsetAttributeName
+            - NSUnderlineColorAttributeName
+            - NSStrikethroughColorAttributeName
+            - NSObliquenessAttributeName
+            - NSExpansionAttributeName
+            - NSWritingDirectionAttributeName
+            - NSVerticalGlyphFormAttributeName
+    Text Writing Direction: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *6
+        isTypedef: *8
+        values: ~
+        defValues: 
+            - NSTextWritingDirectionEmbedding
+            - NSTextWritingDirectionOverride
+    Document Types: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *6
+        isTypedef: *6
+        values: ~
+        defValues: 
+            - NSPlainTextDocumentType
+            - NSRTFTextDocumentType
+            - NSRTFDTextDocumentType
+            - NSHTMLTextDocumentType
+    Keys for Options and Document Attributes Dictionaries: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *6
+        isTypedef: *6
+        values: ~
+        defValues: 
+            - NSDocumentTypeDocumentAttribute
+            - NSCharacterEncodingDocumentAttribute
+            - NSDefaultAttributesDocumentAttribute
+            - NSPaperSizeDocumentAttribute
+            - NSPaperMarginDocumentAttribute
+            - NSViewSizeDocumentAttribute
+            - NSViewZoomDocumentAttribute
+            - NSViewModeDocumentAttribute
+            - NSReadOnlyDocumentAttribute
+            - NSBackgroundColorDocumentAttribute
+            - NSHyphenationFactorDocumentAttribute
+            - NSDefaultTabIntervalDocumentAttribute
+            - NSTextLayoutSectionsAttribute
+    Text Layout Sections Attribute: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *6
+        isTypedef: *6
+        values: ~
+        defValues: 
+            - NSTextLayoutSectionOrientation
+            - NSTextLayoutSectionRange
+    Text Effect Attribute: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *6
+        isTypedef: *6
+        values: ~
+        defValues: 
+            - NSTextEffectLetterpressStyle

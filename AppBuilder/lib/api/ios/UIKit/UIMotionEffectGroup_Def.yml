@@ -1,0 +1,16 @@
+--- 
+inherit: 
+    - UIMotionEffect
+    - NSObject
+conform: 
+    - NSCoding (UIMotionEffect)
+    - NSCopying (UIMotionEffect)
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    motionEffects: !java.util.LinkedHashMap
+        name: motionEffects
+        type: NSArray
+        ref: "*"
+        explanation: An array of motion effect objects to apply as a group to the view.
+        readonly: false
+methods: !java.util.LinkedHashMap {}

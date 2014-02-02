@@ -1,0 +1,364 @@
+--- 
+inherit: 
+    - UIView
+    - UIResponder
+    - NSObject
+conform: 
+    - NSCoding
+    - UIGestureRecognizerDelegate
+    - NSCoding (UIView)
+    - UIAppearance (UIView)
+    - UIAppearanceContainer (UIView)
+    - UIDynamicItem (UIView)
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    accessoryType: !java.util.LinkedHashMap
+        name: accessoryType
+        type: UITableViewCellAccessoryType
+        ref: ""
+        explanation: The type of standard accessory view the cell should use (normal state).
+        readonly: false
+    accessoryView: !java.util.LinkedHashMap
+        name: accessoryView
+        type: UIView
+        ref: "*"
+        explanation: "A view that is used, typically as a control, on the right side of the cell (normal state)."
+        readonly: false
+    backgroundView: !java.util.LinkedHashMap
+        name: backgroundView
+        type: UIView
+        ref: "*"
+        explanation: The view used as the background of the cell.
+        readonly: false
+    contentView: !java.util.LinkedHashMap
+        name: contentView
+        type: UIView
+        ref: "*"
+        explanation: Returns the content view of the cell object. (read-only)
+        readonly: true
+    detailTextLabel: !java.util.LinkedHashMap
+        name: detailTextLabel
+        type: UILabel
+        ref: "*"
+        explanation: Returns the secondary label of the table cell if one exists. (read-only)
+        readonly: true
+    editing: !java.util.LinkedHashMap
+        name: editing
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value that indicates whether the cell is in an editable state.
+        readonly: false
+    editingAccessoryType: !java.util.LinkedHashMap
+        name: editingAccessoryType
+        type: UITableViewCellAccessoryType
+        ref: ""
+        explanation: The type of standard accessory view the cell should use in the table view?s editing state.
+        readonly: false
+    editingAccessoryView: !java.util.LinkedHashMap
+        name: editingAccessoryView
+        type: UIView
+        ref: "*"
+        explanation: A view that is used typically as a control on the right side of the cell when it is in editing mode.
+        readonly: false
+    editingStyle: !java.util.LinkedHashMap
+        name: editingStyle
+        type: UITableViewCellEditingStyle
+        ref: ""
+        explanation: The editing style of the cell. (read-only)
+        readonly: true
+    highlighted: !java.util.LinkedHashMap
+        name: highlighted
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value that indicates whether the cell is highlighted.
+        readonly: false
+    imageView: !java.util.LinkedHashMap
+        name: imageView
+        type: UIImageView
+        ref: "*"
+        explanation: Returns the image view of the table cell. (read-only)
+        readonly: true
+    indentationLevel: !java.util.LinkedHashMap
+        name: indentationLevel
+        type: NSInteger
+        ref: ""
+        explanation: The indentation level of the cell?s content.
+        readonly: false
+    indentationWidth: !java.util.LinkedHashMap
+        name: indentationWidth
+        type: CGFloat
+        ref: ""
+        explanation: "The width for each level of indentation of a cell'€™s content."
+        readonly: false
+    multipleSelectionBackgroundView: !java.util.LinkedHashMap
+        name: multipleSelectionBackgroundView
+        type: UIView
+        ref: "*"
+        explanation: The background view to use for a selected cell when the table view allows multiple row selections.
+        readonly: false
+    reuseIdentifier: !java.util.LinkedHashMap
+        name: reuseIdentifier
+        type: NSString
+        ref: "*"
+        explanation: A string used to identify a cell that is reusable. (read-only)
+        readonly: true
+    selected: !java.util.LinkedHashMap
+        name: selected
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value that indicates whether the cell is selected.
+        readonly: false
+    selectedBackgroundView: !java.util.LinkedHashMap
+        name: selectedBackgroundView
+        type: UIView
+        ref: "*"
+        explanation: The view used as the background of the cell when it is selected.
+        readonly: false
+    selectionStyle: !java.util.LinkedHashMap
+        name: selectionStyle
+        type: UITableViewCellSelectionStyle
+        ref: ""
+        explanation: The style of selection for a cell.
+        readonly: false
+    separatorInset: !java.util.LinkedHashMap
+        name: separatorInset
+        type: UIEdgeInsets
+        ref: ""
+        explanation: The inset values for the cell?s content.
+        readonly: false
+    shouldIndentWhileEditing: !java.util.LinkedHashMap
+        name: shouldIndentWhileEditing
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value that controls whether the cell background is indented when the table view is in editing mode.
+        readonly: false
+    showingDeleteConfirmation: !java.util.LinkedHashMap
+        name: showingDeleteConfirmation
+        type: BOOL
+        ref: ""
+        explanation: Returns whether the cell is currently showing the delete-confirmation button. (read-only)
+        readonly: true
+    showsReorderControl: !java.util.LinkedHashMap
+        name: showsReorderControl
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value that determines whether the cell shows the reordering control.
+        readonly: false
+    textLabel: !java.util.LinkedHashMap
+        name: textLabel
+        type: UILabel
+        ref: "*"
+        explanation: Returns the label used for the main textual content of the table cell. (read-only)
+        readonly: true
+methods: !java.util.LinkedHashMap
+    didTransitionToState: !java.util.LinkedHashMap
+        isInstance: &29 true
+        name: didTransitionToState
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: &31 false
+            isRef: *31
+        isVarArgs: *31
+        args: 
+            - !java.util.LinkedHashMap
+                param: state
+                type: !java.util.LinkedHashMap
+                    name: UITableViewCellStateMask
+                    delegate: ~
+                    isConst: *31
+                    isRef: *31
+    initWithStyle: !java.util.LinkedHashMap
+        isInstance: *29
+        name: initWithStyle
+        type: !java.util.LinkedHashMap
+            name: id
+            delegate: ~
+            isConst: *31
+            isRef: *31
+        isVarArgs: *31
+        args: 
+            - !java.util.LinkedHashMap
+                param: style
+                type: !java.util.LinkedHashMap
+                    name: UITableViewCellStyle
+                    delegate: ~
+                    isConst: *31
+                    isRef: *31
+            - !java.util.LinkedHashMap
+                name: reuseIdentifier
+                param: reuseIdentifier
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *31
+                    isRef: *29
+    prepareForReuse: !java.util.LinkedHashMap
+        isInstance: *29
+        name: prepareForReuse
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *31
+            isRef: *31
+        isVarArgs: *31
+        args: []
+    setEditing: !java.util.LinkedHashMap
+        isInstance: *29
+        name: setEditing
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *31
+            isRef: *31
+        isVarArgs: *31
+        args: 
+            - !java.util.LinkedHashMap
+                param: editing
+                type: !java.util.LinkedHashMap
+                    name: BOOL
+                    delegate: ~
+                    isConst: *31
+                    isRef: *31
+            - !java.util.LinkedHashMap
+                name: animated
+                param: animated
+                type: !java.util.LinkedHashMap
+                    name: BOOL
+                    delegate: ~
+                    isConst: *31
+                    isRef: *31
+    setHighlighted: !java.util.LinkedHashMap
+        isInstance: *29
+        name: setHighlighted
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *31
+            isRef: *31
+        isVarArgs: *31
+        args: 
+            - !java.util.LinkedHashMap
+                param: highlighted
+                type: !java.util.LinkedHashMap
+                    name: BOOL
+                    delegate: ~
+                    isConst: *31
+                    isRef: *31
+            - !java.util.LinkedHashMap
+                name: animated
+                param: animated
+                type: !java.util.LinkedHashMap
+                    name: BOOL
+                    delegate: ~
+                    isConst: *31
+                    isRef: *31
+    setSelected: !java.util.LinkedHashMap
+        isInstance: *29
+        name: setSelected
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *31
+            isRef: *31
+        isVarArgs: *31
+        args: 
+            - !java.util.LinkedHashMap
+                param: selected
+                type: !java.util.LinkedHashMap
+                    name: BOOL
+                    delegate: ~
+                    isConst: *31
+                    isRef: *31
+            - !java.util.LinkedHashMap
+                name: animated
+                param: animated
+                type: !java.util.LinkedHashMap
+                    name: BOOL
+                    delegate: ~
+                    isConst: *31
+                    isRef: *31
+    willTransitionToState: !java.util.LinkedHashMap
+        isInstance: *29
+        name: willTransitionToState
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *31
+            isRef: *31
+        isVarArgs: *31
+        args: 
+            - !java.util.LinkedHashMap
+                param: state
+                type: !java.util.LinkedHashMap
+                    name: UITableViewCellStateMask
+                    delegate: ~
+                    isConst: *31
+                    isRef: *31
+constants: !java.util.LinkedHashMap
+    UITableViewCellStyle: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *31
+        isTypedef: *29
+        values: ~
+        defValues: 
+            - UITableViewCellStyleDefault
+            - UITableViewCellStyleValue1
+            - UITableViewCellStyleValue2
+            - UITableViewCellStyleSubtitle
+    UITableViewCellSelectionStyle: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *31
+        isTypedef: *29
+        values: ~
+        defValues: 
+            - UITableViewCellSelectionStyleNone
+            - UITableViewCellSelectionStyleBlue
+            - UITableViewCellSelectionStyleGray
+            - UITableViewCellSelectionStyleDefault
+    UITableViewCellEditingStyle: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *31
+        isTypedef: *29
+        values: ~
+        defValues: 
+            - UITableViewCellEditingStyleNone
+            - UITableViewCellEditingStyleDelete
+            - UITableViewCellEditingStyleInsert
+    UITableViewCellAccessoryType: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *31
+        isTypedef: *29
+        values: ~
+        defValues: 
+            - UITableViewCellAccessoryNone
+            - UITableViewCellAccessoryDisclosureIndicator
+            - UITableViewCellAccessoryDetailDisclosureButton
+            - UITableViewCellAccessoryCheckmark
+            - UITableViewCellAccessoryDetailButton
+    UITableViewCellStateMask: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *31
+        isTypedef: *29
+        values: ~
+        defValues: 
+            - UITableViewCellStateDefaultMask
+            - UITableViewCellStateShowingEditControlMask
+            - UITableViewCellStateShowingDeleteConfirmationMask
+    Cell Separator Style: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *31
+        isTypedef: *29
+        values: ~
+        defValues: 
+            - UITableViewCellSeparatorStyleNone
+            - UITableViewCellSeparatorStyleSingleLine
+            - UITableViewCellSeparatorStyleSingleLineEtched
+    Convenience Definitions for Table View Cells: !java.util.LinkedHashMap
+        name: ~
+        isEnum: *31
+        isTypedef: *31
+        values: ~
+        defValues: 
+            - UITableViewCellSeparatorStyleDoubleLineEtched
+            - UITableViewCellStateEditingMask

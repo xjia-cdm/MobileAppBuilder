@@ -1,0 +1,220 @@
+--- 
+inherit: 
+    - NSObject
+conform: 
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    behaviors: !java.util.LinkedHashMap
+        name: behaviors
+        type: NSArray
+        ref: "*"
+        explanation: The dynamic behaviors managed by a dynamic animator. (read-only)
+        readonly: true
+    delegate: !java.util.LinkedHashMap
+        name: delegate
+        type: id
+        ref: ""
+        explanation: The delegate for responding to pausing or resumption of animation.
+        readonly: false
+    referenceView: !java.util.LinkedHashMap
+        name: referenceView
+        type: UIView
+        ref: "*"
+        explanation: The view that a dynamic animator was initialized with. (read-only)
+        readonly: true
+    running: !java.util.LinkedHashMap
+        name: running
+        type: BOOL
+        ref: ""
+        explanation: " Returns YES if the dynamic animator is running. (read-only)"
+        readonly: true
+methods: !java.util.LinkedHashMap
+    addBehavior: !java.util.LinkedHashMap
+        isInstance: &10 true
+        name: addBehavior
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: &12 false
+            isRef: *12
+        isVarArgs: *12
+        args: 
+            - !java.util.LinkedHashMap
+                param: behavior
+                type: !java.util.LinkedHashMap
+                    name: UIDynamicBehavior
+                    delegate: ~
+                    isConst: *12
+                    isRef: *10
+    elapsedTime: !java.util.LinkedHashMap
+        isInstance: *10
+        name: elapsedTime
+        type: !java.util.LinkedHashMap
+            name: NSTimeInterval
+            delegate: ~
+            isConst: *12
+            isRef: *12
+        isVarArgs: *12
+        args: []
+    initWithCollectionViewLayout: !java.util.LinkedHashMap
+        isInstance: *10
+        name: initWithCollectionViewLayout
+        type: !java.util.LinkedHashMap
+            name: instancetype
+            delegate: ~
+            isConst: *12
+            isRef: *12
+        isVarArgs: *12
+        args: 
+            - !java.util.LinkedHashMap
+                param: layout
+                type: !java.util.LinkedHashMap
+                    name: UICollectionViewLayout
+                    delegate: ~
+                    isConst: *12
+                    isRef: *10
+    initWithReferenceView: !java.util.LinkedHashMap
+        isInstance: *10
+        name: initWithReferenceView
+        type: !java.util.LinkedHashMap
+            name: instancetype
+            delegate: ~
+            isConst: *12
+            isRef: *12
+        isVarArgs: *12
+        args: 
+            - !java.util.LinkedHashMap
+                param: view
+                type: !java.util.LinkedHashMap
+                    name: UIView
+                    delegate: ~
+                    isConst: *12
+                    isRef: *10
+    itemsInRect: !java.util.LinkedHashMap
+        isInstance: *10
+        name: itemsInRect
+        type: !java.util.LinkedHashMap
+            name: NSArray
+            delegate: ~
+            isConst: *12
+            isRef: *10
+        isVarArgs: *12
+        args: 
+            - !java.util.LinkedHashMap
+                param: rect
+                type: !java.util.LinkedHashMap
+                    name: CGRect
+                    delegate: ~
+                    isConst: *12
+                    isRef: *12
+    layoutAttributesForCellAtIndexPath: !java.util.LinkedHashMap
+        isInstance: *10
+        name: layoutAttributesForCellAtIndexPath
+        type: !java.util.LinkedHashMap
+            name: UICollectionViewLayoutAttributes
+            delegate: ~
+            isConst: *12
+            isRef: *10
+        isVarArgs: *12
+        args: 
+            - !java.util.LinkedHashMap
+                param: indexPath
+                type: !java.util.LinkedHashMap
+                    name: NSIndexPath
+                    delegate: ~
+                    isConst: *12
+                    isRef: *10
+    layoutAttributesForDecorationViewOfKind: !java.util.LinkedHashMap
+        isInstance: *10
+        name: layoutAttributesForDecorationViewOfKind
+        type: !java.util.LinkedHashMap
+            name: UICollectionViewLayoutAttributes
+            delegate: ~
+            isConst: *12
+            isRef: *10
+        isVarArgs: *12
+        args: 
+            - !java.util.LinkedHashMap
+                param: decorationViewKind
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *12
+                    isRef: *10
+            - !java.util.LinkedHashMap
+                name: atIndexPath
+                param: indexPath
+                type: !java.util.LinkedHashMap
+                    name: NSIndexPath
+                    delegate: ~
+                    isConst: *12
+                    isRef: *10
+    layoutAttributesForSupplementaryViewOfKind: !java.util.LinkedHashMap
+        isInstance: *10
+        name: layoutAttributesForSupplementaryViewOfKind
+        type: !java.util.LinkedHashMap
+            name: UICollectionViewLayoutAttributes
+            delegate: ~
+            isConst: *12
+            isRef: *10
+        isVarArgs: *12
+        args: 
+            - !java.util.LinkedHashMap
+                param: kind
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *12
+                    isRef: *10
+            - !java.util.LinkedHashMap
+                name: atIndexPath
+                param: indexPath
+                type: !java.util.LinkedHashMap
+                    name: NSIndexPath
+                    delegate: ~
+                    isConst: *12
+                    isRef: *10
+    removeAllBehaviors: !java.util.LinkedHashMap
+        isInstance: *10
+        name: removeAllBehaviors
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *12
+            isRef: *12
+        isVarArgs: *12
+        args: []
+    removeBehavior: !java.util.LinkedHashMap
+        isInstance: *10
+        name: removeBehavior
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *12
+            isRef: *12
+        isVarArgs: *12
+        args: 
+            - !java.util.LinkedHashMap
+                param: behavior
+                type: !java.util.LinkedHashMap
+                    name: UIDynamicBehavior
+                    delegate: ~
+                    isConst: *12
+                    isRef: *10
+    updateItemUsingCurrentState: !java.util.LinkedHashMap
+        isInstance: *10
+        name: updateItemUsingCurrentState
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *12
+            isRef: *12
+        isVarArgs: *12
+        args: 
+            - !java.util.LinkedHashMap
+                param: item
+                type: !java.util.LinkedHashMap
+                    name: id
+                    delegate: <UIDynamicItem>
+                    isConst: *12
+                    isRef: *12

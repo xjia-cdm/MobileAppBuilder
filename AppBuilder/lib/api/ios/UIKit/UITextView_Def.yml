@@ -1,0 +1,178 @@
+--- 
+inherit: 
+    - UIScrollView
+    - UIView
+    - UIResponder
+    - NSObject
+conform: 
+    - UITextInput
+    - NSCoding (UIScrollView)
+    - NSCoding (UIView)
+    - UIAppearance (UIView)
+    - UIAppearanceContainer (UIView)
+    - UIDynamicItem (UIView)
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    allowsEditingTextAttributes: !java.util.LinkedHashMap
+        name: allowsEditingTextAttributes
+        type: BOOL
+        ref: ""
+        explanation: "A Boolean value indicating whether the text view allows the user to edit style information. "
+        readonly: false
+    attributedText: !java.util.LinkedHashMap
+        name: attributedText
+        type: NSAttributedString
+        ref: "*"
+        explanation: The styled text displayed by the text view.
+        readonly: false
+    clearsOnInsertion: !java.util.LinkedHashMap
+        name: clearsOnInsertion
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value indicating whether inserting text replaces the previous contents.
+        readonly: false
+    dataDetectorTypes: !java.util.LinkedHashMap
+        name: dataDetectorTypes
+        type: UIDataDetectorTypes
+        ref: ""
+        explanation: The types of data converted to clickable URLs in the text view.
+        readonly: false
+    delegate: !java.util.LinkedHashMap
+        name: delegate
+        type: id
+        ref: ""
+        explanation: The receiver?s delegate.
+        readonly: false
+    editable: !java.util.LinkedHashMap
+        name: editable
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value indicating whether the receiver is editable.
+        readonly: false
+    font: !java.util.LinkedHashMap
+        name: font
+        type: UIFont
+        ref: "*"
+        explanation: "The font of the text. "
+        readonly: false
+    inputAccessoryView: !java.util.LinkedHashMap
+        name: inputAccessoryView
+        type: UIView
+        ref: "*"
+        explanation: The custom accessory view to display when the text view becomes the first responder
+        readonly: false
+    inputView: !java.util.LinkedHashMap
+        name: inputView
+        type: UIView
+        ref: "*"
+        explanation: "The custom input view to display when the text view becomes the first responder. "
+        readonly: false
+    layoutManager: !java.util.LinkedHashMap
+        name: layoutManager
+        type: NSLayoutManager
+        ref: "*"
+        explanation: The layout manager that lays out text for the receiver?s text container. (read-only)
+        readonly: true
+    linkTextAttributes: !java.util.LinkedHashMap
+        name: linkTextAttributes
+        type: NSDictionary
+        ref: "*"
+        explanation: The attributes to apply to links.
+        readonly: false
+    selectable: !java.util.LinkedHashMap
+        name: selectable
+        type: BOOL
+        ref: ""
+        explanation: A Boolean value indicating whether the receiver is selectable.
+        readonly: false
+    selectedRange: !java.util.LinkedHashMap
+        name: selectedRange
+        type: NSRange
+        ref: ""
+        explanation: The current selection range of the receiver.
+        readonly: false
+    text: !java.util.LinkedHashMap
+        name: text
+        type: NSString
+        ref: "*"
+        explanation: The text displayed by the text view.
+        readonly: false
+    textAlignment: !java.util.LinkedHashMap
+        name: textAlignment
+        type: NSTextAlignment
+        ref: ""
+        explanation: The technique to use for aligning the text.
+        readonly: false
+    textColor: !java.util.LinkedHashMap
+        name: textColor
+        type: UIColor
+        ref: "*"
+        explanation: The color of the text.
+        readonly: false
+    textContainer: !java.util.LinkedHashMap
+        name: textContainer
+        type: NSTextContainer
+        ref: "*"
+        explanation: The text container object defining the area in which text is displayed in this text view. (read-only)
+        readonly: true
+    textContainerInset: !java.util.LinkedHashMap
+        name: textContainerInset
+        type: UIEdgeInsets
+        ref: ""
+        explanation: "The inset of the text container's layout area within the text view's content area."
+        readonly: false
+    textStorage: !java.util.LinkedHashMap
+        name: textStorage
+        type: NSTextStorage
+        ref: "*"
+        explanation: The text storage object holding the text displayed in this text view. (read-only)
+        readonly: true
+    typingAttributes: !java.util.LinkedHashMap
+        name: typingAttributes
+        type: NSDictionary
+        ref: "*"
+        explanation: The attributes to apply to new text being entered by the user.
+        readonly: false
+methods: !java.util.LinkedHashMap
+    initWithFrame: !java.util.LinkedHashMap
+        isInstance: &26 true
+        name: initWithFrame
+        type: !java.util.LinkedHashMap
+            name: instancetype
+            delegate: ~
+            isConst: &28 false
+            isRef: *28
+        isVarArgs: *28
+        args: 
+            - !java.util.LinkedHashMap
+                param: frame
+                type: !java.util.LinkedHashMap
+                    name: CGRect
+                    delegate: ~
+                    isConst: *28
+                    isRef: *28
+            - !java.util.LinkedHashMap
+                name: textContainer
+                param: textContainer
+                type: !java.util.LinkedHashMap
+                    name: NSTextContainer
+                    delegate: ~
+                    isConst: *28
+                    isRef: *26
+    scrollRangeToVisible: !java.util.LinkedHashMap
+        isInstance: *26
+        name: scrollRangeToVisible
+        type: !java.util.LinkedHashMap
+            name: void
+            delegate: ~
+            isConst: *28
+            isRef: *28
+        isVarArgs: *28
+        args: 
+            - !java.util.LinkedHashMap
+                param: range
+                type: !java.util.LinkedHashMap
+                    name: NSRange
+                    delegate: ~
+                    isConst: *28
+                    isRef: *28

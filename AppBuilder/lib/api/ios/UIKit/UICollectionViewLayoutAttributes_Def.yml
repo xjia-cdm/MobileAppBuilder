@@ -1,0 +1,158 @@
+--- 
+inherit: 
+    - NSObject
+conform: 
+    - NSCopying
+    - UIDynamicItem
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    alpha: !java.util.LinkedHashMap
+        name: alpha
+        type: CGFloat
+        ref: ""
+        explanation: The transparency of the item.
+        readonly: false
+    bounds: !java.util.LinkedHashMap
+        name: bounds
+        type: CGRect
+        ref: ""
+        explanation: The bounds of the item.
+        readonly: false
+    center: !java.util.LinkedHashMap
+        name: center
+        type: CGPoint
+        ref: ""
+        explanation: The center point of the item.
+        readonly: false
+    frame: !java.util.LinkedHashMap
+        name: frame
+        type: CGRect
+        ref: ""
+        explanation: The frame rectangle of the item.
+        readonly: false
+    hidden: !java.util.LinkedHashMap
+        name: hidden
+        type: BOOL
+        ref: ""
+        explanation: Determines whether the item is currently displayed.
+        readonly: false
+    indexPath: !java.util.LinkedHashMap
+        name: indexPath
+        type: NSIndexPath
+        ref: "*"
+        explanation: "The index path of the item in the collection view. "
+        readonly: false
+    representedElementCategory: !java.util.LinkedHashMap
+        name: representedElementCategory
+        type: UICollectionElementCategory
+        ref: ""
+        explanation: The type of the item. (read-only)
+        readonly: true
+    representedElementKind: !java.util.LinkedHashMap
+        name: representedElementKind
+        type: NSString
+        ref: "*"
+        explanation: The layout-specific identifier for the target view. (read-only)
+        readonly: true
+    size: !java.util.LinkedHashMap
+        name: size
+        type: CGSize
+        ref: ""
+        explanation: The size of the item.
+        readonly: false
+    transform: !java.util.LinkedHashMap
+        name: transform
+        type: CGAffineTransform
+        ref: ""
+        explanation: The affine transform of the item
+        readonly: false
+    transform3D: !java.util.LinkedHashMap
+        name: transform3D
+        type: CATransform3D
+        ref: ""
+        explanation: The 3D transform of the item.
+        readonly: false
+    zIndex: !java.util.LinkedHashMap
+        name: zIndex
+        type: NSInteger
+        ref: ""
+        explanation: Specifies the item?s position on the z axis.
+        readonly: false
+methods: !java.util.LinkedHashMap
+    layoutAttributesForCellWithIndexPath: !java.util.LinkedHashMap
+        isInstance: &18 false
+        name: layoutAttributesForCellWithIndexPath
+        type: !java.util.LinkedHashMap
+            name: instancetype
+            delegate: ~
+            isConst: *18
+            isRef: *18
+        isVarArgs: *18
+        args: 
+            - !java.util.LinkedHashMap
+                param: indexPath
+                type: !java.util.LinkedHashMap
+                    name: NSIndexPath
+                    delegate: ~
+                    isConst: *18
+                    isRef: &23 true
+    layoutAttributesForDecorationViewOfKind: !java.util.LinkedHashMap
+        isInstance: *18
+        name: layoutAttributesForDecorationViewOfKind
+        type: !java.util.LinkedHashMap
+            name: instancetype
+            delegate: ~
+            isConst: *18
+            isRef: *18
+        isVarArgs: *18
+        args: 
+            - !java.util.LinkedHashMap
+                param: decorationViewKind
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *18
+                    isRef: *23
+            - !java.util.LinkedHashMap
+                name: withIndexPath
+                param: indexPath
+                type: !java.util.LinkedHashMap
+                    name: NSIndexPath
+                    delegate: ~
+                    isConst: *18
+                    isRef: *23
+    layoutAttributesForSupplementaryViewOfKind: !java.util.LinkedHashMap
+        isInstance: *18
+        name: layoutAttributesForSupplementaryViewOfKind
+        type: !java.util.LinkedHashMap
+            name: instancetype
+            delegate: ~
+            isConst: *18
+            isRef: *18
+        isVarArgs: *18
+        args: 
+            - !java.util.LinkedHashMap
+                param: elementKind
+                type: !java.util.LinkedHashMap
+                    name: NSString
+                    delegate: ~
+                    isConst: *18
+                    isRef: *23
+            - !java.util.LinkedHashMap
+                name: withIndexPath
+                param: indexPath
+                type: !java.util.LinkedHashMap
+                    name: NSIndexPath
+                    delegate: ~
+                    isConst: *18
+                    isRef: *23
+constants: !java.util.LinkedHashMap
+    UICollectionElementCategory: !java.util.LinkedHashMap
+        name: UICollectionElementCategory
+        isEnum: *23
+        isTypedef: *23
+        values: []
+        defValues: 
+            - UICollectionElementCategoryCell
+            - UICollectionElementCategorySupplementaryView
+            - UICollectionElementCategoryDecorationView

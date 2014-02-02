@@ -1,0 +1,38 @@
+--- 
+inherit: 
+    - NSObject
+conform: 
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    indexPathAfterUpdate: !java.util.LinkedHashMap
+        name: indexPathAfterUpdate
+        type: NSIndexPath
+        ref: "*"
+        explanation: The index path of the item after the update. (read-only)
+        readonly: true
+    indexPathBeforeUpdate: !java.util.LinkedHashMap
+        name: indexPathBeforeUpdate
+        type: NSIndexPath
+        ref: "*"
+        explanation: The index path of the item before the update. (read-only)
+        readonly: true
+    updateAction: !java.util.LinkedHashMap
+        name: updateAction
+        type: UICollectionUpdateAction
+        ref: ""
+        explanation: The action being performed on the item. (read-only)
+        readonly: true
+methods: !java.util.LinkedHashMap {}
+constants: !java.util.LinkedHashMap
+    UICollectionUpdateAction: !java.util.LinkedHashMap
+        name: UICollectionUpdateAction
+        isEnum: &10 true
+        isTypedef: *10
+        values: []
+        aliasOf: NSUInteger
+        defValues: 
+            - UICollectionUpdateActionNone
+            - UICollectionUpdateActionInsert
+            - UICollectionUpdateActionDelete
+            - UICollectionUpdateActionReload
+            - UICollectionUpdateActionMove

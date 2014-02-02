@@ -1,0 +1,15 @@
+--- 
+inherit: 
+    - UIPanGestureRecognizer
+    - UIGestureRecognizer
+    - NSObject
+conform: 
+    - NSObject (NSObject)
+properties: !java.util.LinkedHashMap
+    edges: !java.util.LinkedHashMap
+        name: edges
+        type: UIRectEdge
+        ref: ""
+        explanation: "The acceptable starting edges for the gesture. "
+        readonly: false
+methods: !java.util.LinkedHashMap {}
