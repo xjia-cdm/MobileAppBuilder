@@ -12,14 +12,18 @@ class AppBuilderTest {
   // test for platforms
 
   static USER_CONFIG = 'test/org.properties'
+
   static USER_CONFIG_IOS = 'test/org-ios.properties'
   static USER_CONFIG_IOS_AUTOLAYOUT = 'test/org-autolayout.properties'
+  static USER_CONFIG_IOS_FORMAT1 = 'test/org-ios-format1.properties'
+
   static USER_CONFIG_ANDROID = 'test/org-android.properties'
   static USER_CONFIG_ANDROID_NOSUPPORT = 'test/org-android-nosupport.properties'
+  static USER_CONFIG_ANDROID_FORMAT1 = 'test/org-android-format1.properties'
 
-  void test_iOS(String name) { 
+  void test_iOS(String name, param = null) { 
     println "\n\nTest Case iOS: ${name}" 
-    test_iOS_Android(name, true, false)
+    test_iOS_Android(name, true, false, param)
   }
 
   void test_iOS_AutoLayout(String name) { 
@@ -27,9 +31,9 @@ class AppBuilderTest {
     test_iOS_Android(name, true, false, [ iosAutoLayout: true ])
   }
 
-  void test_Android(String name) {  
+  void test_Android(String name, param = null) {  
     println "\n\nTest Case Android: ${name}" 
-    test_iOS_Android(name, false, true)
+    test_iOS_Android(name, false, true, param)
   }
 
   void test_Android_NoSupport(String name) {  
@@ -37,18 +41,21 @@ class AppBuilderTest {
     test_iOS_Android(name, false, true, [ androidSupport: false ])
   }
 
-  void test_iOS_Android(String name, 
+  void test_iOS_Android(String fname, 
 						boolean ios = true,
 						boolean android = true,
 						param = null) { 
+	println "AppBuilderTest.test_iOS_Android() ${fname} param=${param}"
+
 	if (ios || android) { 
-	  String appname, appid
-	  boolean iosAutoLayout = false;
-	  boolean androidSupport = true;
-	  if (param) { 
-		if (param.containsKey('androidSupport')) androidSupport = param['androidSupport']
-		if (param.containsKey('iosAutoLayout')) iosAutoLayout = param['iosAutoLayout']
+	  String name = fname
+	  int i = fname.lastIndexOf('/')
+	  if (i > 0) { 
+		name = fname[i+1 .. -1]
 	  }
+	  //println "test_iOS_Android ${fname} ${name}"
+
+	  String appname, appid
 
 	  def filemap = [:]
 	  if (ios) { 
@@ -76,6 +83,8 @@ class AppBuilderTest {
 		iosfiles << "${srcdir}/${icon}.png"
 		iosfiles << "${srcdir}/${icon}@2x.png"
 		filemap['iOS'] = iosfiles
+
+		//if (param == null) param = iOSFileMap[name].param 
 	  }
 
 	  if (android) { 
@@ -99,6 +108,19 @@ class AppBuilderTest {
 		  androidfiles << "${name}/src/com/madl/${name.toLowerCase()}/${v}.java"
 		}
 		filemap['Android'] = androidfiles
+
+		//if (param == null) param = androidFileMap[name].param 
+	  }
+
+
+	  boolean iosAutoLayout = false;
+	  boolean androidSupport = true;
+	  boolean format1 = false
+	  if (param) { 
+		if (param.containsKey('androidSupport')) androidSupport = param['androidSupport']
+		if (param.containsKey('iosAutoLayout')) iosAutoLayout = param['iosAutoLayout']
+		//if (param.containsKey('format1')) 
+		format1 = param['format1']
 	  }
 
 	  String userConfig = USER_CONFIG
@@ -107,17 +129,21 @@ class AppBuilderTest {
 		if (iosAutoLayout) { 
 		  userConfig = USER_CONFIG_IOS_AUTOLAYOUT
 		  outdir = 'AutoLayout'
+		} else if (format1) { 
+		  userConfig = USER_CONFIG_IOS_FORMAT1
 		} else { 
 		  userConfig = USER_CONFIG_IOS
 		}
 	  } else if (!ios && android) { 
-		if (androidSupport) {
-		  userConfig = USER_CONFIG_ANDROID
-		} else {  
+		if (!androidSupport) {
 		  userConfig = USER_CONFIG_ANDROID_NOSUPPORT
+		} else if (format1) { 
+		  userConfig = USER_CONFIG_ANDROID_FORMAT1
+		} else {  
+		  userConfig = USER_CONFIG_ANDROID
 		}
 	  }
-	  testCase(name, filemap, userConfig, outdir) 
+	  testCase(fname, filemap, userConfig, outdir) 
 	}
   }
 

@@ -11,6 +11,8 @@ import xj.translate.typeinf.TypeCategory
 import xj.mobile.codegen.EntityUnparser
 import xj.mobile.codegen.UnparserViewProperty
 import xj.mobile.model.properties.PropertyType
+import xj.mobile.model.impl.ClassModel
+import xj.mobile.common.AppInfo
 
 import xj.mobile.lang.ast.*
 
@@ -25,6 +27,9 @@ import static xj.translate.Logger.info
 class UnparserIOS extends UnparserObjectiveC { 
 
   String target = 'ios'
+
+  AppInfo appInfo
+  ClassModel classModel
   
   EntityUnparser entityUnparser 
 
@@ -55,6 +60,12 @@ class UnparserIOS extends UnparserObjectiveC {
 		def text = entityUnparser?.unparseMethodCallExpression(exp)
 		return text ?: super.expression(exp, expectedType)  
 
+      case ListExpression:
+		return "@[ ${exp.expressions.collect{ e -> toNSObject(e)}.join(', ')} ]"
+
+      case MapExpression:
+		return "@{ ${exp.mapEntryExpressions.collect{ e -> kvpair(e)}.join(', ')} }"
+
 	  case VariableExpression:
 		//def type = getActualType(exp, currentVariableScope)
 		def type = null
@@ -72,6 +83,10 @@ class UnparserIOS extends UnparserObjectiveC {
       }
     }
     return ''
+  }
+
+  String unparseMap(MapExpression exp, String var) { 
+	"NSDictionary *${var} = ${expression(exp)};"
   }
 
   String unparseSwitchStatement(SwitchStatement stmt) { 
@@ -116,6 +131,17 @@ class UnparserIOS extends UnparserObjectiveC {
       return expression(exp)
     }
     return ''
+  }
+
+  String getFloatFormat() { 
+	def floatPrec = appInfo?.userConfig?.format?.floatingPoint?.precision
+	//println "[UnparserIOS] getFloatFormat(): appname = ${appInfo?.appname}  floatPrec = ${floatPrec}"
+	if (floatPrec) { 
+	  int p = floatPrec as int
+	  if (p > 0 && p < 6) 
+		return "%.${p}f"
+	}
+	return '%f'
   }
 
 }

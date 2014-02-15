@@ -344,7 +344,10 @@ ${listVar}.setTextFilterEnabled(true);
   }
 
   String selectNextCode(next, data = null) { 
-    return generateTransitionCode(next, true, view.embedded as boolean, true, null, data)
+	String dataStr = null
+	if (data)
+	  dataStr = generator.valueToCode(classModel, data)
+    return generateTransitionCode(next, true, view.embedded as boolean, true, null, dataStr)
   }
 
   String listItemActionCode() { 

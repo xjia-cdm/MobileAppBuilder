@@ -110,11 +110,14 @@ class DefaultViewProcessor extends ViewProcessor {
 	}
   } 
 
-  static final ClassNode Bundle_TYPE =  ClassHelper.make('Bundle')
+  static final ClassNode Bundle_TYPE = ClassHelper.make('Bundle')
+  static final ClassNode CharSequenceArray_TYPE = ClassHelper.make('CharSequence').makeArray()
 
   protected def getTransitionDataType(type) {
 	if (type == MAP_TYPE || type == OBJECT_TYPE) 
 	  Bundle_TYPE
+	else if (type == LIST_TYPE)
+	  CharSequenceArray_TYPE
 	else 
 	  type ?: STRING_TYPE
   }
@@ -125,7 +128,8 @@ class DefaultViewProcessor extends ViewProcessor {
 	case MAP_TYPE: return 'Bundle';
 	case OBJECT_TYPE: return 'Bundle';
 	case Bundle_TYPE: return 'Bundle';
-	  //case LIST_TYPE: type = 'List'; break; 
+	case LIST_TYPE: return 'CharSequence[]'; 
+	case CharSequenceArray_TYPE: return 'CharSequence[]'; 
 	default: return 'String';
 	}
 	  
@@ -251,7 +255,13 @@ class DefaultViewProcessor extends ViewProcessor {
 		if (colStretch)
 		  attributes['android:stretchColumns'] = colStretch.join(',')
       } else if (widget.widgetType == 'Row') { 
-		layoutName = 'TableRow'
+		if (widget.parent.widgetType == 'Table') { 
+		  layoutName = 'TableRow'
+		} else {  
+		  layoutName = 'LinearLayout'
+		  attributes['android:layout_width'] = 'wrap_content' 
+		  attributes['android:orientation'] = 'horizontal' 
+		}
       } 
 
       if (layoutName in ['RadioGroup', 'LinearLayout']) { 
@@ -260,6 +270,10 @@ class DefaultViewProcessor extends ViewProcessor {
 		  attributes['android:orientation'] = 'vertical'
 		}
       }
+
+	  if (widget.align) { 
+		attributes['android:layout_gravity'] = alignment(widget.align)
+	  }
 
       mainLayout."${layoutName}"(attributes) { 
 		widget.children.each { w -> 
@@ -318,11 +332,11 @@ class DefaultViewProcessor extends ViewProcessor {
 		  selectCode: selectCode,
 		  actionCode: actionCode
 		]
-		generator.injectCodeFromTemplateRef(classModel, "Default:spinner1", binding)
+		generator.injectCodeFromTemplateRef(classModel, "Default:spinnerg1", binding)
 		sgroup.children?.each { w -> 
 		  if (w.widgetType == 'Spinner') { 
 			def binding1 = [ name : w.id ]
-			generator.injectCodeFromTemplateRef(classModel, "Default:spinner2", binding1)
+			generator.injectCodeFromTemplateRef(classModel, "Default:spinnerg2", binding1)
 		  }
 		}
       }
@@ -345,6 +359,12 @@ class DefaultViewProcessor extends ViewProcessor {
 
   void handleKeyboard() { 
 	generator.injectCodeFromTemplateRef(classModel, "Default:keyboard", null)
+  }
+
+  static String alignment(align) { 
+	align = align?.toLowerCase()
+	if (align == 'right' || align == 'center') return align 
+	else return 'left'
   }
 
 }

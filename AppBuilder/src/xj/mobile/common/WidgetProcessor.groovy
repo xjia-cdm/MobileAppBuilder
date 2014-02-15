@@ -5,6 +5,7 @@ import xj.mobile.codegen.templates.WidgetTemplates
 import xj.mobile.codegen.CodeGenerator
 
 import xj.mobile.model.properties.ModalTransitionStyle
+import xj.mobile.model.ui.Widget
 
 import static xj.mobile.common.ViewUtils.getActionInfo
 import static xj.mobile.common.ViewUtils.getTransitionInfo
@@ -28,7 +29,7 @@ class WidgetProcessor {
 	attributeHandler = vp.generator.attributeHandler
   }
   
-  def genActionCode(widget) { 
+  def genActionCode(Widget widget) { 
     String actionCode = null
     def srcInfo = getActionInfo(widget)
     if (srcInfo) { 
@@ -43,10 +44,31 @@ class WidgetProcessor {
 	  if (widget.transition instanceof ModalTransitionStyle)
 		transition = widget.transition
 	  def (String nextState, data) = getTransitionInfo(next)
+	  String dataStr = null
+	  String setup = ''
 	  if (nextState) { 
+		if (data) {
+		  if (data instanceof Map) { 
+			dataStr = 'data'
+			if (widget['next.data.src']) { 
+			  setup = vp.generator.unparseMapExp(vp, widget['next.data.src'].code, 'data', widget)
+			} else { 
+			  setup = vp.generator.mapToCode(data, 'data')
+			}
+			setup += '\n'
+		  } else { 
+			if (widget['next.data.src']) { 
+			  dataStr = vp.generator.unparseUpdateExp(vp, widget['next.data.src'].code, widget)
+			} else { 
+			  dataStr = vp.generator.valueToCode(vp.classModel, data)
+			}
+		  }
+		}
 		actionCode = vp.generateTransitionCode(nextState, isInsideNavigationView(widget), 
 											   vp.view?.embedded as boolean, 
-											   animated, transition, data)
+											   animated, transition, dataStr)
+		if (actionCode)
+		  actionCode = setup + actionCode
 	  }
     }
     return actionCode

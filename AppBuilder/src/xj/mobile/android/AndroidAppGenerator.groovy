@@ -5,6 +5,7 @@ import xj.mobile.*
 import xj.mobile.common.*
 import xj.mobile.model.*
 import xj.mobile.model.ui.*
+import xj.mobile.codegen.CodeGenerator
 import xj.mobile.codegen.java.UnparserAndroid
 import xj.mobile.lang.WidgetMap 
 
@@ -20,12 +21,15 @@ class AndroidAppGenerator extends AppGenerator {
 
   String getTarget() { 'Android' }
 
-  void setUp() { 
+  void setUp(AppInfo appInfo) { 
     ViewProcessorFactory.setFactory('Android')
 
     def unparser = new UnparserAndroid() 
     translator = new Translator(Language.Java, unparser)
     translator.load(Main.confDir + '/View.groovy')
+
+	CodeGenerator generator = CodeGenerator.getCodeGenerator('android')
+	generator.unparser = unparser
 
 	def typeMap = [ 'String' : 'CharSequence' ]
 	WidgetMap.allWidgetNames.each { name -> 

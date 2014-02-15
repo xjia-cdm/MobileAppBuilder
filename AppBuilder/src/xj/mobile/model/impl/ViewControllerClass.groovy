@@ -171,8 +171,8 @@ ${indent(viewWillAppearScrap)}
 	info "[ViewControllerClass] injectActionCode() widgetType: ${widgetType} widgetName: ${widgetName} delegate: ${wtemp.delegate}"
 
     def delegateAction = getDelegateTemplateForWidget(wtemp, 'action')
-    if (delegateAction) { 
-      if (actionCode || widgetType == 'Text') { 
+    if (delegateAction || widgetType == 'Text') { 
+      if (delegateAction && (actionCode || widgetType == 'Text')) { 
 		Delegate d = delegateActions[wtemp.delegate]
 		d.actions << [ name: widgetName, code: actionCode ]
 

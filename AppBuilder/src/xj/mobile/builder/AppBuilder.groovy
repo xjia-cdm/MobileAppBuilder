@@ -62,7 +62,7 @@ class AppBuilder {
 	  if (app.mainView) okay = process()
 	} else { 
 	  if (!Main.quiet) { 
-		println "[Error] There are errors in the app definition."
+		println "=== There are errors in the app definition."
 		builder.printMessages()
 	  }
 	  Main.errors.addAll(builder.errors)
@@ -115,6 +115,7 @@ class AppBuilder {
   }
 
   void printApp() { 
+    info '[AppBuilder] Application: node count = ' + app.count()
     info '[AppBuilder] Application:\n' + app.print()
   }
 
@@ -124,7 +125,7 @@ class AppBuilder {
       return true
     } else {  
 	  if (!Main.quiet) { 
-		println "[Error] There are errors in the app definition."
+		println "==== There are errors in the app definition."
 		checker.printMessages()
 	  }
 	  Main.errors.addAll(checker.errors)

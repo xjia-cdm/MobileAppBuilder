@@ -160,7 +160,7 @@ class Language {
       platforms: [ Platform.Neutral ]
     ],
 
-    NumberStepper: [
+    Stepper: [
       type: ViewType.Widget,
       platforms: [ Platform.Neutral ]
     ],

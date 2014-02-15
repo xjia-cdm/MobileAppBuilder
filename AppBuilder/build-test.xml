@@ -27,6 +27,29 @@
   <property name="coverage.html" location="coverage-html"/>
   -->
 
+  <target name="testall"> 
+    <junit printsummary="yes"
+		   showoutput="no"
+		   outputtoformatters="yes"
+		   fork="yes" 
+		   haltonfailure="no"
+		   maxmemory="512m">
+      <classpath location="${classes}"/>
+      <classpath refid="compile.classpath"/>
+      <classpath location="../Translator/classes"/>
+      <classpath location="work"/>
+
+      <formatter type="plain"/>
+
+	  <batchtest fork="yes">
+		<fileset dir="${src}">
+		  <include name="xj/mobile/test/*Test*.java"/>
+		  <!-- <exclude name="**/AllTests.java"/> -->
+		</fileset>
+	  </batchtest>
+    </junit>
+  </target>  
+
   <target name="regression1"> 
     <junit printsummary="yes"
 		   showoutput="no"
@@ -163,6 +186,23 @@
     </junit>
   </target>   
 
+  <target name="regression_t1"> 
+    <junit printsummary="yes"
+		   showoutput="no"
+		   outputtoformatters="yes"
+		   fork="yes" 
+		   haltonfailure="no"
+		   maxmemory="512m">
+      <classpath location="${classes}"/>
+      <classpath refid="compile.classpath"/>
+      <classpath location="../Translator/classes"/>
+      <classpath location="work"/>
+
+      <formatter type="plain"/>
+      <test name="xj.mobile.test.AppBuilderTestT1"/>
+    </junit>
+  </target>   
+
   <target name="regression_ps1"> 
     <junit printsummary="yes"
 		   showoutput="no"
@@ -221,6 +261,7 @@
     <antcall target="regression6"/>
     <antcall target="regression7"/>
     <antcall target="regression_e1"/>
+    <antcall target="regression_t1"/>
     <antcall target="regression_ps1"/>
     <antcall target="testTypeInfo"/>
 

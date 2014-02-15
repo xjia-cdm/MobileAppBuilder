@@ -6,7 +6,7 @@ app(name: 'App Text Edit 2') {
     Label(id: l1, text: 'Hello') 
 	Text(id: t1, prompt : 'Text')
 	Text(id: t2, lines: 5, prompt : 'Text')
-	Row (aligh: Right) { 
+	Row (align: Right) { 
 	  Button(text: 'Action 1',
 			 action: { l2.text = 'Action 1 ===\nTop:\n' + t1.text + '\nBottom:\n' + t2.text })
 	  Button(text: 'Action 2',

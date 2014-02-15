@@ -5,6 +5,7 @@ import xj.mobile.*
 import xj.mobile.common.*
 import xj.mobile.model.*
 import xj.mobile.model.ui.*
+import xj.mobile.codegen.CodeGenerator
 import xj.mobile.codegen.objc.UnparserIOS
 import xj.mobile.lang.WidgetMap 
 
@@ -19,7 +20,7 @@ class IOSAppGenerator extends AppGenerator {
   
   String getTarget() { 'iOS' }
 
-  void setUp() { 
+  void setUp(AppInfo appInfo) { 
     ViewProcessorFactory.setFactory('iOS')
 
     def unparser = new UnparserIOS()
@@ -27,6 +28,12 @@ class IOSAppGenerator extends AppGenerator {
     translator.load('conf/View.groovy')
 
     unparser.setUnparseOptions([ UseNSInteger: true ])
+	unparser.appInfo = appInfo
+
+	CodeGenerator generator = CodeGenerator.getCodeGenerator('ios')
+	generator.unparser = unparser
+
+	//println "[IOSAppGenerator] setup() ${appInfo?.appname} ${appInfo?.userConfig?.format?.floatingPoint?.precision}"
 
 	def typeMap = [:]
 	WidgetMap.allWidgetNames.each { name -> 
@@ -34,14 +41,6 @@ class IOSAppGenerator extends AppGenerator {
 	  typeMap[name] = tname
 	  typeMap['xj.mobile.lang.madl.' + name] = tname 
 	}
-	/*
-	WidgetMap.widgets.each { name, pmap ->
-	  def pname = pmap['ios']
-	  if (pname instanceof List) pname = pname[0]
-	  typeMap[name] = 'UI' + pname
-	  typeMap['xj.mobile.lang.madl.' + name] = 'UI' + pname
-	}
-	*/
   	ObjectiveCClassProcessor.ObjectiveCTypeMap = typeMap
 
     ModuleProcessor.currentClassProcessor = ModuleProcessor.classMap.get('View')

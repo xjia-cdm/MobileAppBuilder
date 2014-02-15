@@ -16,7 +16,10 @@ class AndroidCodeGenerator extends CodeGenerator {
 	templates = AndroidTemplates.getInstance()
 	actionHandler = new xj.mobile.codegen.AndroidActionHandler()
 	attributeHandler = new xj.mobile.api.AndroidAttributeHandler()
+	init()
+  }
 
+  void init() { 
 	AppGenerator appgen = AppGenerator.getAppGenerator('android')
 	unparser = appgen.translator.unparser
 	engine = appgen.engine
@@ -30,15 +33,15 @@ class AndroidCodeGenerator extends CodeGenerator {
 									String curView, 
 									String nextView, 
 									boolean isEmbedded = false, 
-									data = null) { 
+									String data = null) { 
 	def vhp = AppGenerator.getAppGenerator('android').vhp
     if (nextView != null && nextView != '' && nextView[0] != '#') { 
 	  def activityClass = vhp.findViewProcessor(nextView)?.viewName
 	  String intentCode = "new Intent(${curView}.this, ${activityClass}.class)"
 	  if (data) { 
-		String dataCode = valueToCode(classModel, data)
+		//String dataCode = valueToCode(classModel, data)
 		return """Intent intent = ${intentCode};
-intent.putExtra(\"${nextView.toUpperCase()}_DATA\", ${dataCode}); 
+intent.putExtra(\"${nextView.toUpperCase()}_DATA\", ${data}); 
 startActivity(intent);
 """
 	  } else { 
@@ -61,7 +64,7 @@ startActivity(intent);"""
 									 boolean isEmbedded = false, 
 									 boolean animated = true,
 									 ModalTransitionStyle style = null,
-									 data = null) { 
+									 String data = null) { 
 	String code = generatePushTransitionCode(classModel, curView, nextView, isEmbedded, data)
 	if (!animated) { 
 	  code += "\noverridePendingTransition(0, 0);"
@@ -81,7 +84,7 @@ startActivity(intent);"""
 	}
   }
 
-  static String valueToCode(ClassModel classModel, value) { 
+  String valueToCode(ClassModel classModel, value) { 
 	if (value instanceof Map) { 
 	  classModel.auxiliaryClasses << 'Utils'
 	  def kvlist = []
@@ -90,6 +93,17 @@ startActivity(intent);"""
 	} else { 
 	  return "\"${value}\""
 	}
+  }
+
+  String mapToCode(Map value, String var) { 
+	if (value) { 
+	  def code = [ "Bundle ${var} = new Bundle();" ]
+	  value.each { k, v -> 
+		code <<  "${var}.putCharSequence(\"${k}\", \"${v}\");" 
+	  }
+	  return code.join('\n')
+	}
+	return null
   }
 
 }

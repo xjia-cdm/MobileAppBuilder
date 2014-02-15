@@ -66,7 +66,9 @@ class IOSUtils {
 	  case String: return ('@"' + value + '"')
 	  case Number: return ('@' + value)
 	  case List: return  ('@[ ' + value.collect{ v -> valueToCode(v) }.join(', ') + ' ]')
-	  case Map: return ('@{ ' + value.collect{ k, v -> "@\"${k}\": ${valueToCode(v)}"}.join(', ') + ' }')
+	  case Map: 
+		def map = value.findAll{ k, v -> v != null }
+		return ('@{ ' + map.collect{ k, v -> "@\"${k}\": ${valueToCode(v)}"}.join(', ') + ' }')
 	  }
 	} 
 	return 'nil'

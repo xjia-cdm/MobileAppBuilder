@@ -209,7 +209,20 @@
 #files="app07d"
 #files="app07da"
 
-files="app02h app07c app07ca app07d app07da app13da app20 app20a app20b app_e01"
+#files="app02h app07c app07ca app07d app07da app13da app20 app20a app20b app_e01"
+#files="app04 app04a app04b app04c app04d app04ec app06aa app06ab app06ac app06c app06ca app06cc app12bb app12c app12d"
+#files="app01i app01k app06aa app06ab app06ac app06ad app21a app21b app21c app32 app32a app32b app32c app32d app32d app32e"
+#files="app01g app01h app01i app01j app01k"
+#files="app01ab app01ab app01ac app01ad app01e app01f app02b app02ba app02bb app02bc app02h app21 app21a app21b app21c app32 app32a app32b app32c app32d app32e app_e01"
+#files="app02ia"
+
+#files="app02 app02a app02aa app02b app02h"
+#files="app02h app11b"
+#files="app02 app02h app11b"
+#files="app02b app02ba app02bb app02bc"
+#files="app12fa"
+#files="app07da app12fa"
+files="app02i"
 
 mkdir gen/Platform.iOS-Ref
 mkdir gen/Platform.Android-Ref

@@ -105,7 +105,7 @@ class ErrorMessages {
   }
 
   void printMessages() { 
-	errorMessages.each { e -> println e}
+	errorMessages.each { e -> println e }
   }
 
   void addAll(ErrorMessages errors) { 

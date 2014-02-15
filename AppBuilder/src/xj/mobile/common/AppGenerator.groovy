@@ -44,15 +44,12 @@ abstract class AppGenerator {
   ViewHierarchyProcessor vhp
   Translator translator
 
-  void setUp() { }
+  void setUp(AppInfo appInfo) { }
   void cleanUp() { }
 
   void analyze(Application app, String filename = null, def userConfig = null) { 
     if (app) { 
 	  String platform = target?.capitalize()
-
-	  setUp()
-
 	  app.visit { w -> 
 		if (w instanceof Widget) { 
 		  String platformWidget = WidgetMap.mapWidget(w, target) 
@@ -65,7 +62,10 @@ abstract class AppGenerator {
 	  info "[${platform}AppGenerator] After mapping widgets:\n" + app.print()
 	  info "[${platform}AppGenerator] Analyzing ${target} App ..."
 
-	  def appInfo = new AppInfo(app, filename, getAppConfig(target), userConfig)
+	  def appInfo = new AppInfo(app, filename, target, getAppConfig(target), userConfig)
+	  setUp(appInfo)
+
+
       vhp = new ViewHierarchyProcessor(app, appInfo)
 	  vhp.analyze()
 

@@ -155,12 +155,19 @@ class CodeGenerator {
 		cond = when()
 	  } 
 	  if (cond) { 
-		if (location != InjectionPoint.Execute) { 
-		  String code = instantiateCodeFromTemplate(codeTemplate, binding)
-		  target.injectCode(location, code, binding)
-		} else { 
+		if (location == InjectionPoint.Execute) { 
 		  if (codeTemplate instanceof Closure){ 
 			target.injectCode(codeTemplate, binding)
+		  }
+		} else {
+		  if (codeTemplate instanceof List) { 
+			codeTemplate.each { t ->
+			  String code = instantiateCodeFromTemplate(t, binding)
+			  target.injectCode(location, code, binding)
+			}
+		  } else { 
+			String code = instantiateCodeFromTemplate(codeTemplate, binding)
+			target.injectCode(location, code, binding)
 		  }
 		}
 	  }
@@ -172,6 +179,20 @@ class CodeGenerator {
 	if (temp) { 
 	  if (temp instanceof List) { 
 		temp.each { t -> 
+		  if (t.binding) { 
+			def extraBinding = [:]
+			t.binding.each { k, v -> 
+			  if (v instanceof Closure) { 
+				v.delegate = binding
+				v = v() as String
+			  }
+			  extraBinding[k] = v
+			}
+			if (binding)
+			  binding += extraBinding
+			else 
+			  binding = extraBinding
+		  }
 		  if (t.do instanceof Closure) { 
 			target.injectCode(t.do, binding)
 		  } else { 
@@ -180,6 +201,20 @@ class CodeGenerator {
 		  }
 		}
 	  } else { 
+		if (temp.binding) { 
+		  def extraBinding = [:]
+		  temp.binding.each { k, v -> 
+			if (v instanceof Closure) { 
+			  v.delegate = binding
+			  v = v() as String
+			}
+			extraBinding[k] = v
+		  }
+		  if (binding)
+			binding += extraBinding
+		  else 
+			binding = extraBinding
+		}
 		if (temp.do instanceof Closure) { 
 		  target.injectCode(temp.do, binding)
 		} else { 
@@ -195,24 +230,49 @@ class CodeGenerator {
   //
 
   String generateActionCode(xj.mobile.common.ViewProcessor vp,
-							Map srcInfo, ModelNode widget) { 
+							Map srcInfo, 
+							ModelNode widget) { 
 	actionHandler.setContext(vp)
 	actionHandler.generateActionCode(srcInfo, widget)
   }
 
   String generateUpdateCode(xj.mobile.common.ViewProcessor vp,
-							Set updates, ModelNode widget, VariableScope scope = null) { 
+							Set updates, 
+							ModelNode widget, 
+							VariableScope scope = null) { 
 	actionHandler.setContext(vp)
 	actionHandler.generateUpdateCode(updates, widget, scope)
   }
 
   String generateUpdateCode(xj.mobile.common.ViewProcessor vp,
-							Expression src, ModelNode widget, 
-							String wname, String attribute, VariableScope scope = null) { 
+							Expression src, 
+							ModelNode widget, 
+							String wname, 
+							String attribute, 
+							VariableScope scope = null) { 
 	actionHandler.setContext(vp)
 	def w = vp.getWidget(wname)
 	actionHandler.generateUpdateCode(src, w ?: vp.view, wname, attribute, scope)
 									 
+  }
+
+  String unparseUpdateExp(xj.mobile.common.ViewProcessor vp,
+						  Expression src, 
+						  ModelNode widget, 
+						  Map params = null,
+						  VariableScope scope = null) {  
+	actionHandler.setContext(vp)
+	actionHandler.unparseUpdateExp(src, widget, params, scope)
+  }
+
+  String unparseMapExp(xj.mobile.common.ViewProcessor vp,
+					   Expression src, 
+					   String var, 
+					   ModelNode widget, 
+					   Map params = null,
+					   VariableScope scope = null) {  
+	actionHandler.setContext(vp)
+	actionHandler.unparseMapExp(src, var, widget, params, scope)
   }
 
   String injectCode(xj.mobile.common.ViewProcessor vp,
@@ -235,11 +295,15 @@ class CodeGenerator {
   // generate transition code
   //
 
-  String generatePopupTransitionCode(String popupName, String popupType, boolean isMenu = false) { 
+  String generatePopupTransitionCode(ClassModel classModel,
+									 String popupName, String popupType, 
+									 boolean isMenu = false,
+									 String data = null) { 
 	String actionCode = null
-	def actionTemplate = getActionTemplate(popupType, isMenu)
+	def actionTemplate = getPopupActionTemplate(popupType, isMenu, data != null)
 	if (actionTemplate) { 
-	  def binding = [ name : popupName ] + UnparserUtil.baseBinding
+	  def binding = [ name : popupName,
+					  data: data ] + UnparserUtil.baseBinding
 	  def template = engine.createTemplate(actionTemplate).make(binding)
 	  actionCode = "${template}"
 	}
@@ -249,6 +313,31 @@ class CodeGenerator {
   //
   //  generate get/set attribute code 
   //  
+
+  String getAttributeValue(String widgetType, 
+						   String platformType, 
+						   String attrName, 
+						   attrValue,
+						   String defaultValue = null) { 
+	info "[CodeGenerator] getAttributeValue(): widgetType=${widgetType} platformType=${platformType} attrName=${attrName}"
+
+	if (attrValue == null && defaultValue != null) 
+	  return defaultValue
+
+	String value = null
+	def attrDef = findCommonAttributeDef(widgetType, attrName)
+	if (attrDef && !attrDef.native || defaultValue != null) { 
+	  value = attributeHandler.getAttributeValue(attrName, attrValue, attrDef?.type)
+	  if (value == null) value = defaultValue
+	  return value
+	} else { 
+	  String widgetClass = getWidgetNativeClass(platformType)
+	  def prop = attributeHandler.apiResolver.findPropertyDef(widgetClass, attrName, true)
+	  if (prop)
+		value = attributeHandler.getAttributeValue(attrName, attrValue, prop.type)
+	}
+	return value
+  }
 
   // handler setter
 

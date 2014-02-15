@@ -41,6 +41,26 @@ class CommonAppTransformer extends AppTransformer {
 
   void init() { 
 	widgetTransformationRules = [
+	  Table: [
+		[ { lhs -> lhs.cols as Boolean },
+		  { lhs -> 
+			//println 'Rule match: Table'
+			lhs.children.each { c -> 
+			  //println " - child: nodeType ${c.nodeType}"
+			  if (c.nodeType == 'Row')  
+				//println " - match: Row ${c.id}"
+				c.children.eachWithIndex { w, i ->  
+				  //println "  - col: ${i} ${w.id}"
+				  if (lhs.cols.size() > i && lhs.cols[i] instanceof Map) 
+					lhs.cols[i].each { k, v -> 
+					  if (w[k] == null) w[k] = v
+					}
+				}
+			}
+		  }
+		]
+	  ], 
+
 	  Label: [
 		// rule 1: handle multi-line text
 		[ { lhs -> linesInString(lhs.text as String) > 1 && lhs.lines == null }, 
@@ -122,7 +142,7 @@ class CommonAppTransformer extends AppTransformer {
 		  { lhs -> lhs.embedded = true } ],
 	  ],
 
-	  NumberStepper: [
+	  Stepper: [
 		[ true, 
 		  { lhs -> 
 			boolean isInt = true

@@ -1,0 +1,30 @@
+/* Mobile Application Definition Language */
+
+/*
+ *
+ *  Version 1, 2014/1/1
+ */
+
+static int log2(int x) { 
+  (int) (Math.log(x)/Math.log(2))
+}
+
+app('App Test F-04') { 
+  
+  int d = 7
+  int N = (int) 2 ** d 
+
+  for (i = 1; i < N; i++) { 
+	View(id: "view${i}", title: "View ${i} - Level ${log2(i)}") { 
+	  Label("View ${i}/${N-1} - Level ${log2(i)}")
+	  if (2 * i < N) { 
+		Button(text: "Left (View ${2*i})", next: "view${2*i}")
+		Button(text: "Right (View ${2*i + 1})", next: "view${2*i+1}")
+	  }
+	  if (i > 1) { 
+		Button(text: "Parent (View ${(int) i/2})", next: "view${(int) i/2}")
+	  }
+	}
+  }
+
+}

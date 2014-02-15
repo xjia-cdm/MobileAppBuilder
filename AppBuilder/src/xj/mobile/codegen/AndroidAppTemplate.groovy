@@ -69,6 +69,9 @@ class AndroidAppTemplate extends AppTemplate {
   boolean generateCode(Project project) { 
 	if (isSDKAvailble && isVersionAvailable) { 
 	  generateProject()
+
+	  info '[AndroidAppTemplate] Generating Android App: #classes ' + project.classes.size()
+
 	  def auxiliaryClasses = [] as Set
 	  project.classes.each { c -> 
 		if (c.needGenerateCode) { 

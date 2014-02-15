@@ -8,7 +8,7 @@ import xj.mobile.model.sm.*
 import xj.mobile.lang.*
 
 import static org.codehaus.groovy.ast.ClassHelper.*
-import static xj.mobile.common.ViewUtils.getTransitionInfo
+import static xj.mobile.common.ViewUtils.*
 
 import static xj.translate.Logger.info 
 
@@ -44,32 +44,25 @@ class TransitionAnalyzer extends Analyzer {
   void handleTransitionData(View owner, String next, data) { 
 	if (next && data) { 
 	  // update dataVarType
-	  def type = null
-	  if (data instanceof String) type = STRING_TYPE
-	  else if (data instanceof List) type = LIST_TYPE
-	  else if (data instanceof Map) type = MAP_TYPE
-	  else type = OBJECT_TYPE
-
+	  def type = typeOf(data)
 	  if (owner.widgetType == 'ListView') { 
-		owner.viewProcessor.listItemDataVarType = type 
+		owner.viewProcessor.listItemDataVarType = simpleType(type) 
 	  }
 
-	  ViewProcessor nextViewProcessor = vhp.findViewProcessor(next) 
 	  // to-do: need to handle: top, previous  
-	  if (nextViewProcessor) { 
-		if (nextViewProcessor.dataVarType) { 
-		  if (nextViewProcessor.dataVarType != type) nextViewProcessor.dataVarType = OBJECT_TYPE
+	  Widget nextView = app.getChild(next, true)
+	  if (nextView && (Language.isPopup(nextView.nodeType) ||
+					   Language.isTopView(nextView.nodeType))) { 
+		if (getDataVarTypeForWidget(nextView)) { 
+		  if (getDataVarTypeForWidget(nextView) != type) setDataVarTypeForWidget(nextView, OBJECT_TYPE)
 		} else { 
-		  nextViewProcessor.dataVarType = type
+		  setDataVarTypeForWidget(nextView, type)
 		}
 
-		if (nextViewProcessor.dataVarValues == null) { 
-		  nextViewProcessor.dataVarValues = []
-		}
-		nextViewProcessor.dataVarValues << data
+		addDataVarValuesForWidget(nextView, data)
+
+		info "[TransitionAnalyzer] handleTransitionData() update popup dataVarType: type=${type} dataVarType=${getDataVarTypeForWidget(nextView)}"
 	  }
-
-	  info "[TransitionAnalyzer] handleTransitionData() update dataVarType: type=${type} dataVarType=${nextViewProcessor.dataVarType}"
 	}
   }
 

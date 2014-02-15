@@ -13,6 +13,8 @@ class PropertyModel extends Expando {
 
   PropertyModel(String name) { 
     this.name = name
+	//println "new PropertyModel() name: ${name}"
+	//new Exception().printStackTrace()
   }
 
   PropertyModel(value) { 
@@ -23,7 +25,7 @@ class PropertyModel extends Expando {
 
   // without a context ==> name as String
   def eval(Class context, boolean plural = false) { 
-	info "[PropertyModel] eval: context=${context?.name} owner=${owner} plural=${plural} name=${name} value=${value}"
+	info "[PropertyModel] eval: context=${context?.name} plural=${plural} name=${name} value=${value}"
 	def result = null
 	if (name) { 
 	  result = evalName(context, name, plural)
@@ -136,7 +138,28 @@ class PropertyModel extends Expando {
   }
 
   Object getAt(List indx) { null }
-  Object getAt(String property) { null }
   Object getAt(int idx) { null }
 
+  Object getAt(String property) { null }
+  
+  def propertyMissing(String pname) { 
+	//println "PropertyModel.propertyMissing() name=${name} pname=${pname}"
+	//new Exception().printStackTrace()
+	return null // this
+  }
 }
+/*
+class Omega {  
+
+  Object asType(Class type) { 
+	switch (type) { 
+	case java.lang.String: return ''
+	case java.lang.Float: 
+	case java.lang.Double: 
+	case java.lang.Integer: return 0 
+	}
+	return this;
+  }
+
+}
+*/

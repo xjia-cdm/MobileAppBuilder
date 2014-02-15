@@ -27,6 +27,7 @@ class AppInfo {
 
   AppInfo(Application app, 
 		  String filename,
+		  String target, 
 		  platformConfig,
 		  userConfig) {
     this.filename = filename
@@ -47,6 +48,14 @@ class AppInfo {
 	packageName = (platformConfig.defaults.packageName ?: 'com.example') + '.' + filename.toLowerCase()
 
     outputDir = platformConfig.output.dir
+
+	target = target.toLowerCase()
+	//println "AppInfo target: ${target}"
+	//println "AppInfo userConfig.platform[target].output.dir: ${userConfig.platform[target].output.dir}"
+	if (userConfig.platform[target].output.dir) { 
+	  outputDir = userConfig.platform[target].output.dir
+	}
+
 	if (Main.destDir) { 
 	  outputDir = outputDir + '/' + Main.destDir
 	}

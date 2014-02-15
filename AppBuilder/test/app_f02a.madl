@@ -1,0 +1,32 @@
+/* Mobile Application Definition Language */
+
+/*
+ *
+ *  Version 1, 2013/12/31
+ */
+
+app('App Test F-02a') { 
+
+  int N = 40
+  
+  View(id: list1, 
+	   title: 'A Long List',
+	   scroll: true) { 
+	for (i = 1; i <= N; i++) { 
+	  Button(text: "List item #${i}", 
+			 next: "view${i}")	
+	}
+  }
+
+  for (i = 1; i <= N; i++) { 
+	View(id: "view${i}",
+		 title: "View ${i}",
+		 scroll: true) { 
+	  Button(text: 'Back', next: Previous)
+	  for (j = 0; j < i; j++) {  
+		Label(text: "Label ${j + 1}/${i}")
+	  }
+	}
+  }
+
+}

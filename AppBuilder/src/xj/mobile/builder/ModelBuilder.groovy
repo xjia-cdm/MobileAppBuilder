@@ -53,12 +53,16 @@ class ModelBuilder {
   def plist = []
   int pos = 0
 
+  def widgetTable = [:]  // id -> widget
+
   void reInit() { 
     init = null
 
     parent = null
     plist = []
     pos = 0
+
+	widgetTable = [:]
   }
 
   def getAppDefLineNumber() { 
@@ -260,6 +264,10 @@ class ModelBuilder {
   // groovy hook for processing undefined property 
   def propertyMissing(String name) { 
     if (verbose) info "[ModelBuilder] propertyMissing(): ${name}"
+
+	if (name.toUpperCase() == 'IOS') return IOS
+	if (name.toUpperCase() == 'ANDROID') return ANDROID
+
 	if (name == 'data') { 
 	  //return Null.getInstance()
 	  //return new DummyData()
@@ -269,6 +277,9 @@ class ModelBuilder {
 	  // treated as special var name 
 	  return name
 	} else { 
+	  def w = widgetTable[name]
+	  if (w) return new ModelRef(w) 
+
 	  return new PropertyModel(name)
 	}
 	//return name
@@ -318,6 +329,8 @@ class ModelBuilder {
     if (!owner['id']) { 
       owner['id'] = Preprocessor.generateID(owner.widgetType ?: 'app')
     }
+
+	widgetTable[owner['id'].toString()] = owner
   }
 
   def handleParameter(owner, key, value) { 
@@ -388,6 +401,7 @@ class ModelBuilder {
 	  analyzer.analyzeExpression(owner, key, src)
 	}
 
+	//if (key in [ 'id', 'next' ]) value = value.toString()
 	owner[key] = value
 	if (verbose) info "[ModelBuilder] handleParameter(): Parameter: key=${key}" + 
 	                  (!(value instanceof Closure)? " value=${value}" : '' ) +  " : ${value?.class?.name}"

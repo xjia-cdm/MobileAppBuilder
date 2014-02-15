@@ -2,6 +2,6 @@
 
 source $(dirname $0)/setenv.sh
 
-java -Xms512m -Xmx4096m -classpath $CLASSPATH xj.mobile.Main $* 
+java -Xms512m -Xmx8192m -classpath $CLASSPATH xj.mobile.Main $* 
 
 exit 0

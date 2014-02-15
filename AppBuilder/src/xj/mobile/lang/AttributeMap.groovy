@@ -77,7 +77,7 @@ class AttributeMap {
     ],
 	*/
 
-	NumberStepper: [
+	Stepper: [
 	  value: [ type: 'BigDecimal' ],
 	],
 
@@ -117,6 +117,27 @@ class AttributeMap {
     DateTimePicker: [
 	  date_time: [ type: 'Date' ],
     ],
+
+	Popup: [
+	  title: [ type: 'String' ], 
+	  message: [ type: 'String' ], 
+	  cancel: [ type: 'String' ], 
+	  affirm: [ type: 'String' ],
+	], 
+
+	Alert: [
+	  title: [ type: 'String' ], 
+	  message: [ type: 'String' ], 
+	  cancel: [ type: 'String' ], 
+	  affirm: [ type: 'String' ],
+	], 
+
+	Menu: [
+	  title: [ type: 'String' ], 
+	  message: [ type: 'String' ], 
+	  cancel: [ type: 'String' ], 
+	  affirm: [ type: 'String' ],
+	], 
 
     Web: [
 	  url: [ type: 'String' ],

@@ -14,6 +14,8 @@ class IOSPopupTemplates extends PopupTemplates {
  
       action : '[self showActionSheet_${name}];',
       actionMenu : '[self showActionSheet_${name}:indexPath];',
+      actionData : '[self showActionSheet_${name}_withData:${data}];',
+      actionMenuData : '[self showActionSheet_${name}:indexPath withData:${data}];',
 
       create :  '''${name} = [[UIActionSheet alloc] initWithTitle:${title}
 \t\t\t\tdelegate:self
@@ -39,6 +41,8 @@ ${indent(body)}
 
       action : '[self showAlert_${name}];',
       actionMenu : '[self showAlert_${name}:indexPath];',
+      actionData : '[self showAlert_${name}_withData:${data}];',
+      actionMenuData : '[self showAlert_${name}:indexPath withData:${data}];',
 
       create : '''${name} = [[UIAlertView alloc] initWithTitle:${title}
 \t\t\t\tmessage:${message}

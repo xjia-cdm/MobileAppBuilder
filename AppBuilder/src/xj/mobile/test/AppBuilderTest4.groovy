@@ -23,14 +23,18 @@ class AppBuilderTest4 extends AppBuilderTest {
     'app12ba': [ name: 'Alerts 3a', 
 				 views: [ 'Top' ] ], 
     'app12bb': [ name: 'Alerts 3b', 
-				 views: [ 'Top' ] ], 
+				 views: [ 'Top', 'Top1', 'V2', 'V3' ] ], 
     'app12c' : [ name: 'Menu', 
-				 views: [ 'Top' ] ], 
+				 views: [ 'Top', 'Top1', 'V2' ] ], 
     'app12d' : [ name: 'Menu 2', 
-				 views: [ 'Top' ] ], 
+				 views: [ 'Top', 'Top1', 'V2' ] ], 
     'app12e' : [ name: 'Alerts 4', 
 				 views: [ 'Top' ] ], 
     'app12ea': [ name: 'Alerts 4a', 
+				 views: [ 'Top' ] ], 
+    'app12f' : [ name: 'Alerts 5', 
+				 views: [ 'Top' ] ], 
+    'app12fa': [ name: 'Alerts 5a', 
 				 views: [ 'Top' ] ], 
 
     'app13'  : [ name: 'Shopping List',
@@ -101,6 +105,12 @@ class AppBuilderTest4 extends AppBuilderTest {
 				 layouts: [ 'main' ] ], 
     'app12ea': [ name: 'Alerts4a', 
 				 views: [ 'Alerts4a' ],
+				 layouts: [ 'main' ] ], 
+    'app12f' : [ name: 'Alerts 5', 
+				 views: [ 'Alerts5' ],
+				 layouts: [ 'main' ] ], 
+    'app12fa': [ name: 'Alerts 5a', 
+				 views: [ 'Alerts5a' ],
 				 layouts: [ 'main' ] ], 
 
     'app13'  : [ name: 'ShoppingList', 
@@ -263,6 +273,26 @@ class AppBuilderTest4 extends AppBuilderTest {
   @Test(timeout=80000L)
   public void test12ea_Android() {
     test_Android('app12ea')
+  }
+
+  @Test(timeout=80000L)
+  public void test12f_iOS() {
+    test_iOS('app12f')
+  }
+
+  @Test(timeout=80000L)
+  public void test12f_Android() {
+    test_Android('app12f')
+  }
+
+  @Test(timeout=80000L)
+  public void test12fa_iOS() {
+    test_iOS('app12fa')
+  }
+
+  @Test(timeout=80000L)
+  public void test12fa_Android() {
+    test_Android('app12fa')
   }
 
   @Test(timeout=80000L)

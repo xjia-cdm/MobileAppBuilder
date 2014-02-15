@@ -6,7 +6,7 @@ app(name: 'App Text Edit') {
     Label(id: l1, text: 'Hello') 
 	Text(id: t1, prompt : 'Text')
 	Text(id: t2, lines: 5, prompt : 'Text')
-	Row (aligh: Right) { 
+	Row (align: Right) { 
 	  Button(text: 'Action 1',
 			 action: { l2.text = 'Top:\n' + t1.text + '\nBottom:\n' + t2.text })
 	  Button(text: 'Action 2',
@@ -16,7 +16,7 @@ Bottom:
 ${t2.text}""" 
 			 })
 	}
-	Row (aligh: Center) {
+	Row (align: Center) {
 	  Button(text: 'Popup 1',
 			 next: [ to:p1, data: 'Top:\n' + t1.text + '\nBottom:\n' + t2.text ])
 	  Button(text: 'Popup 2',
@@ -28,21 +28,22 @@ ${t2.text}""" ])
 	Button(text: 'Next', next: [ to: v2, data: [t1.text, t2.text] ])
 
 	Label(id: l2, lines: 10)
+
+	Popup(id: p1,
+		  title: 'Message',
+		  message: data) 
+
+	Alert(id: p2,
+		  title: 'Message',
+		  message: data) 
   }
-
-  Popup(id: p1,
-		title: 'Message',
-		message: data) 
-
-  Alert(id: p2,
-		title: 'Message',
-		message: data) 
 
   View(id: v2, title: 'Message') { 
 	Label(text: 'Top:')
 	Label(text: data[0])
 	Label(text: 'Bottom:')
 	Label(text: data[1], lines: 5)
+	if (iOS) Button(text: 'Back', next: Previous)
   }
   
 }

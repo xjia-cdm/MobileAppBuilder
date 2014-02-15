@@ -53,6 +53,11 @@ class AppBuilderTest1 extends AppBuilderTest {
     'app01j' : [ name: 'First App 11', 
 				 views: [ 'View1' ] ], 
 
+    'app01k' : [ name: 'First App 12', 
+				 views: [ 'View1' ] ], 
+    'app01ka': [ name: 'First App 12a', 
+				 views: [ 'View1' ] ], 
+
   ]
 
   def androidFileMap = [
@@ -119,6 +124,13 @@ class AppBuilderTest1 extends AppBuilderTest {
 				 layouts: [ 'main' ] ], 
     'app01j' : [ name: 'First App 11',
 				 views: [ 'FirstApp11' ], 
+				 layouts: [ 'main' ] ], 
+
+	'app01k' : [ name: 'First App 12',
+				 views: [ 'FirstApp12' ], 
+				 layouts: [ 'main' ] ], 
+	'app01ka': [ name: 'First App 12a',
+				 views: [ 'FirstApp12a' ], 
 				 layouts: [ 'main' ] ], 
 
   ]
@@ -343,6 +355,26 @@ class AppBuilderTest1 extends AppBuilderTest {
     test_Android('app01j')
   }
 
+  @Test(timeout=80000L)
+  public void test01k_iOS() {
+    test_iOS('app01k')
+  }
 
+  @Test(timeout=80000L)
+  public void test01k_Android() {
+    test_Android('app01k')
+  }
+
+  @Ignore
+  @Test(timeout=80000L)
+  public void test01ka_iOS() {
+    test_iOS('app01ka')
+  }
+
+  @Ignore
+  @Test(timeout=80000L)
+  public void test01ka_Android() {
+    test_Android('app01ka')
+  }
 
 }

@@ -31,6 +31,8 @@ import static xj.translate.typeinf.TypeInference.inferExpressionTypes
 
 import static xj.translate.Logger.info 
 
+import static org.codehaus.groovy.ast.ClassHelper.*
+
 abstract class ViewProcessor {
 
   View view
@@ -41,9 +43,6 @@ abstract class ViewProcessor {
   Map viewInfo
 
   TypeInfo typeInfo
-
-  def dataVarType
-  def dataVarValues
 
   WidgetProcessor widgetProcessor
   PopupProcessor popupProcessor
@@ -248,7 +247,8 @@ abstract class ViewProcessor {
 		  if (t.transition instanceof ModalTransitionStyle)
 			transition = t.transition
 
-		  String tcode = generateTransitionCode(t.next, isInsideNavigationView(view), 
+		  def (String nextState, data) = getTransitionInfo(t.next)
+		  String tcode = generateTransitionCode(nextState, isInsideNavigationView(view), 
 												view.embedded as boolean, 
 												animated, transition)
 		  if (tcode) { 
@@ -417,9 +417,10 @@ abstract class ViewProcessor {
 	generator.injectCodeFromTemplateRef(classModel, "Default:localDecl", declmap)
   }
 
+  protected def getTransitionDataType(type) { type }
+
   protected void handleSpecialLocalDeclarations() { 	
-	def uset = view['#info']?.useSet
-	if (uset && 'data' in uset) {
+	if (dataVarType) {
 	  def type = getTransitionDataType(dataVarType)
 	  typeInfo.addVariable('data', type)
 
@@ -513,7 +514,7 @@ abstract class ViewProcessor {
 	if (widgetType && attrName) { 
 	  def t = typeInfo.getPropertyType(widgetType, attrName)
 
-	  if (widgetType == 'NumberStepper') { 
+	  if (widgetType == 'Stepper') { 
 		if (attrName == 'value' &&
 		   widgetSubtype == 'Int') { 
 		  // handle special case, customize using #subtype
@@ -533,7 +534,7 @@ abstract class ViewProcessor {
 								boolean isEmbedded = false, 
 								boolean animated = true,
 								ModalTransitionStyle style = null,
-								data = null) { 
+								String data = null) { 
     String actionCode = null
     if (next) {      
       def nextView = getChild(next, true)
@@ -544,9 +545,11 @@ abstract class ViewProcessor {
 	  }
       if (nextView && Language.isPopup(nextView.nodeType)) { 
 		info "[ViewProcessor] process popup ${nextView.id}"
-		actionCode = generator.generatePopupTransitionCode(getWidgetName(nextView), 
+		actionCode = generator.generatePopupTransitionCode(classModel,
+														   getWidgetName(nextView), 
 														   popupProcessor.getTemplateName(nextView.widgetType), 
-														   popupProcessor.isMenu(nextView.widgetType))
+														   popupProcessor.isMenu(nextView.widgetType),
+														   data)
       } else { 
 		//nextView = view.parent.getChild(next, true)
 		if (nextView){ 
@@ -593,6 +596,45 @@ abstract class ViewProcessor {
 	  }
 	}
 	return attrCode
+  }
+
+  // return a map of [ attr: unparsed exp ]
+  def generateSetAttributesCode(widget, attrs, defaultValue, params) { 
+	def attrCode = [:]
+	if (attrs) { 
+	  attrs.each { a ->
+		info "[ViewProcessor] process attribute ${a} ${widget.widgetType} ${widget.getPlatformWidgetName(platform)} ${platform}"
+		String code = null 
+		def src = widget["${a}.src"]
+		if (src && isDependentAttribute(widget, a)) { 
+		  code = generator.unparseUpdateExp(this, src.code, widget, params)
+		} else { 
+		  code = generator.getAttributeValue(widget.widgetType, 
+											 widget.getPlatformWidgetName(platform),
+											 a, widget[a], defaultValue)
+		}
+		if (code != null) {
+		  attrCode[a] = code 
+		}			  
+	  }
+	}
+	return attrCode
+  }
+
+
+  //
+  // handle view data varaible type and values 
+  //
+
+  def getDataVarType() { 
+	def t = viewInfo?.dataVarType
+	return simpleType(t)
+  }
+  
+  void setDataVarType(t) { 
+	if (viewInfo) { 
+	  viewInfo.dataVarType = t
+	}
   }
 
 }

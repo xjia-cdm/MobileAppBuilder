@@ -130,6 +130,15 @@ class WidgetProcessor extends xj.mobile.common.WidgetProcessor {
 		  height = AndroidAppGenerator.androidConfig.defaults.layout_height 
 		attributes['android:layout_width'] = width
 		attributes['android:layout_height'] = height
+
+		def minWidth = AndroidAppGenerator.androidConfig.defaults[wname].minimum_width 
+		if (minWidth) { 
+		  attributes['android:minWidth'] = "${minWidth}dp"
+		}
+	  }
+
+	  if (widget.align) { 
+		attributes['android:layout_gravity'] = DefaultViewProcessor.alignment(widget.align)
 	  }
 
       // find widgets
@@ -144,7 +153,7 @@ class WidgetProcessor extends xj.mobile.common.WidgetProcessor {
 	  def attrs = getWidgetAttributes(widget) - defaultAttributes.keySet()
 
 	  // handle attributes, must be handled before generating layout 
-	  attrs.removeAll('width', 'height') 
+	  attrs.removeAll('width', 'height', 'align') 
 	  if (wtemp.initialAttributes) 
 		attrs.removeAll(wtemp.initialAttributes)
 	  if (attrs) { 
@@ -191,10 +200,20 @@ class WidgetProcessor extends xj.mobile.common.WidgetProcessor {
 		wtemp.processor.process(widget, vp)
 	  } else if (wtemp.template) { 
 		binding += [ actionCode: genActionCode(widget) ]
+		if (wtemp.templateVars instanceof Map) { 
+		  wtemp.templateVars.each { var, exp -> 
+			if (exp instanceof Closure) { 
+			  binding[var] = exp(widget) 
+			} else { 
+			  binding[var] = exp 
+			}
+		  }
+		}
 		generator.injectCodeFromTemplateRef(vp.classModel, wtemp.template, binding)
-      } else { 
-		handleAction(widget, wtemp, attributes) 
       }
+
+	  if (!wtemp.skip_action)
+		handleAction(widget, wtemp, attributes) 
 
 	  if (wtemp.layoutProcessor) { 
 		wtemp.layoutProcessor.process(widget, mainLayout, uiclass0, attributes)

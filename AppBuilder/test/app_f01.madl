@@ -1,0 +1,18 @@
+/* Mobile Application Definition Language */
+
+/*
+ *
+ *  Version 1, 2013/12/31
+ */
+
+app('App Test F-01') { 
+  
+  int N = 24000  // 8000 (android)
+
+  ListView(id: list1, title: 'A Long List') { 
+	for (i = 1; i <= N; i++) { 
+	  Item(text: "List item #${i}")	
+	}
+  }
+
+}

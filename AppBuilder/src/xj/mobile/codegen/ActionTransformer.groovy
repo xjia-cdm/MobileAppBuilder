@@ -13,6 +13,7 @@ import xj.mobile.lang.ast.*
 import xj.mobile.lang.Language
 import xj.mobile.lang.WidgetMap
 
+import static xj.mobile.lang.AttributeMap.findCommonAttributeDef
 import static xj.mobile.lang.ast.PrettyPrinter.*
 import static xj.translate.Logger.info 
 
@@ -42,7 +43,8 @@ class ActionTransformer extends ClassCodeExpressionTransformer {
 		  !(exp.name in viewProcessor.widgetTable.keySet()) && 
 		  decl == null && 
 		  !isParam(exp.name)) { 
-		if (viewProcessor.generator.attributeHandler.apiResolver.hasPropertyDef(widget.nodeType, exp.name)) { 
+		if (findCommonAttributeDef(widget.nodeType, exp.name) ||
+			viewProcessor.generator.attributeHandler.apiResolver.hasPropertyDef(widget.nodeType, exp.name)) { 
 		  if (transformResults && needTransformGetViewProperty(widget.id, exp.name)) { 
 			// consider an attribute of the current widget
 			def gvpExp = new GetViewPropertyExpression(viewProcessor.view.id, 

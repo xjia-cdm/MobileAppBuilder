@@ -15,6 +15,19 @@ ${actionBody}
        action_var : 'textField'
      ],
 
+	 /*
+     UITextViewDelegate : [
+       action : '''
+- (BOOL)textFieldShouldReturn:(UITextField *)textView 
+{
+\t[textField resignFirstResponder];
+${actionBody}
+\treturn YES;
+}
+''',
+       action_var : 'textView'
+     ],
+	 */
      UIActionSheetDelegate : [
        action : '''
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

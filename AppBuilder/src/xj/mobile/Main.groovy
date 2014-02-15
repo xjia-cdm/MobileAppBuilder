@@ -30,6 +30,7 @@ class Main {
   
   static final String confDir = 'conf'
 
+  static userConfigFile = null
   static userConfigName = null
   static userConfig = null
   static String scriptFile = null
@@ -81,6 +82,7 @@ class Main {
 			sourceDir = new File(scriptFile).parent
 		  } else {  
 			File file = new File(f)
+			userConfigFile = f
 			userConfigName = getFileName(file.name) //filename[0 ..< filename.indexOf('.')]
 			userConfig = new ConfigSlurper().parse(file.toURL())
 			//println userConfig.toString()
@@ -91,7 +93,7 @@ class Main {
       if (scriptFile) { 
 		if (!quiet) { 
 		  println "${PROG_NAME} ${PROG_VERSION}"
-		  println "Processing ${scriptFile}"
+		  println "Processing ${scriptFile} ${userConfigFile}"
 		}
 		success = new Main().runScript(scriptFile)
 	  }
@@ -156,7 +158,8 @@ class Main {
 
 		boolean first = true
 		[ 'iOS', 'Android' ].each { plat ->	  
-		  if (userConfig.platform[plat.toLowerCase()] && 
+		  if (okay &&
+			  userConfig.platform[plat.toLowerCase()] && 
 			  (first || !nocode)) { // if compile-only, process only the first platform 
 			info "===== Start ${plat} ====="
 			Preprocessor.reset()

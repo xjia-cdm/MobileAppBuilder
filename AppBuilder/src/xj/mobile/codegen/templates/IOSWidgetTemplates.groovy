@@ -184,6 +184,8 @@ ${other}.selected = !${name}.selected;''',
 
       processor: new RadioButtonProcessor(),
 
+	  skip_action: true, 
+
     ],
 
     TextField: [
@@ -202,9 +204,13 @@ ${other}.selected = !${name}.selected;''',
 
       initialAttributes: [ 'text' ],
 
-	  defaultAttributes: [ 'delegate': 'self' ],
+	  defaultAttributes: [ 'delegate': 'self',
+						   'layer.borderColor': '[[[UIColor grayColor] colorWithAlphaComponent:0.25] CGColor]',
+						   'layer.borderWidth': '1',
+						   'layer.cornerRadius': '5',
+						   'clipsToBounds': 'YES' ],
 
-      delegate: 'UITextViewDelegate',
+	  delegate: 'UITextViewDelegate',
     ], 
 
     Switch: [
@@ -228,10 +234,11 @@ ${other}.selected = !${name}.selected;''',
 
       needsFrame: true, 
 
-      defaultAttributes: [ 'segmentedControlStyle': 'UISegmentedControlStylePlain' ],
+	  // deprecated in iOS 7
+      //defaultAttributes: [ 'segmentedControlStyle': 'UISegmentedControlStylePlain' ],
  
-      get_value: '[${name} titleForSegmentAtIndex:[${name} selectedSegmentIndex]]',
-	  get_value_indexed: '[${name} selectedSegmentIndex]',
+      get_value: '(${name}.selectedSegmentIndex >= 0 && ${name}.selectedSegmentIndex < ${name}.numberOfSegments ? [${name} titleForSegmentAtIndex:${name}.selectedSegmentIndex] : @"")',
+	  get_value_indexed: '${name}.selectedSegmentIndex',
     ],
 
 	Stepper: [
@@ -264,6 +271,8 @@ ${other}.selected = !${name}.selected;''',
 
       get_value: '[${name}Data objectAtIndex:[${name} selectedRowInComponent:0]]',
       get_value_indexed: '[[${name}Data objectAtIndex:${index}] objectAtIndex:[${name} selectedRowInComponent:${index}]]',
+	  skip_action: true, 
+
     ],
 
     DatePicker: [
@@ -272,6 +281,8 @@ ${other}.selected = !${name}.selected;''',
       defaultAttributes: [ 
 		'datePickerMode': 'UIDatePickerModeDate'
       ],
+
+	  skip_action: true, 
 
     ],
 
@@ -282,13 +293,19 @@ ${other}.selected = !${name}.selected;''',
 		'datePickerMode': 'UIDatePickerModeTime'
       ],
 
-      get_time: '[[${name} date] description]'
+      get_time: '[[${name} date] description]',
+
+	  skip_action: true, 
+
     ],
 
     DateTimePicker: [
       uiclass: 'UIDatePicker',
 
-      get_date_time: '[[${name} date] description]'
+      get_date_time: '[[${name} date] description]',
+
+	  skip_action: true, 
+
     ],
 
     WebView: [

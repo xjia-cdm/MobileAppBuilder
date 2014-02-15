@@ -63,8 +63,8 @@ class Templates {
 	widgetTemplates.getTemplate(wtemp, name)
   }
 
-  def getActionTemplate(String popupType, boolean isMenu) { 
-	popupTemplates.getActionTemplate(popupType, isMenu)
+  def getPopupActionTemplate(String popupType, boolean isMenu, boolean hasData) { 
+	popupTemplates.getActionTemplate(popupType, isMenu, hasData)
   }
 
   def getTemplateForWidget(String platformName) { 

@@ -56,13 +56,17 @@ class AppBuilderTest2 extends AppBuilderTest {
 				 views: [ 'Vw1' ] ], 
 	'app02h' : [ name: 'App Control',
 				 views: [ 'View1' ] ],
+	'app02i' : [ name: 'App Text Edit',
+				 views: [ 'View1' ] ],
+	'app02ia': [ name: 'App Text Edit 2',
+				 views: [ 'View1' ] ],
 
     'app03'  : [ name: 'Tabs', 
 				 views: [ 'Top', 'First', 'Second', 'Third' ] ], 
     'app04'  : [ name: 'NavView', 
 				 views: [ 'Top', 'V1', 'V2' ] ], 
     'app04a' : [ name: 'NavView2', 
-				 views: [ 'Top', 'V1', 'V2' ] ], 
+				 views: [ 'Top', 'V1', 'V2', 'V3' ] ], 
     'app04b' : [ name: 'NavView3', 
 				 views: [ 'Top', 'V1', 'V2', 'V3', 'V4' ] ], 
     'app04c' : [ name: 'NavView4', 
@@ -157,6 +161,12 @@ class AppBuilderTest2 extends AppBuilderTest {
 				 layouts: [ 'main' ] ], 
 	'app02h' : [ name: 'App Control',
 				 views: [ 'AppControl' ],
+				 layouts: [ 'main' ] ],
+	'app02i' : [ name: 'App Text Edit',
+				 views: [ 'AppTextEdit' ],
+				 layouts: [ 'main' ] ],
+	'app02ia': [ name: 'App Text Edit 2',
+				 views: [ 'AppTextEdit2' ],
 				 layouts: [ 'main' ] ],
 
     'app03'  : [ name: 'Tabs', 
@@ -431,6 +441,25 @@ class AppBuilderTest2 extends AppBuilderTest {
     test_Android('app02h')
   }
 
+  @Test(timeout=80000L)
+  public void test02i_iOS() {
+    test_iOS('app02i')
+  }
+
+  @Test(timeout=80000L)
+  public void test02i_Android() {
+    test_Android('app02i')
+  }
+
+  @Test(timeout=80000L)
+  public void test02ia_iOS() {
+    test_iOS('app02ia')
+  }
+
+  @Test(timeout=80000L)
+  public void test02ia_Android() {
+    test_Android('app02ia')
+  }
 
   //
 

@@ -17,6 +17,10 @@ app('First App 10') {
 		Label(text:'Right', align: right) 
 		Text(prompt: 'enter text')
       }
+      Row { 
+		Label(text:'Left') 
+		Text(prompt: 'enter text')
+      }
     }
   }
 

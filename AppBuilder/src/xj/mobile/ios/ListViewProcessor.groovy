@@ -220,10 +220,13 @@ cell = [[UITableViewCell alloc] initWithStyle:cellStyle reuseIdentifier:cellId];
   String generateNextViewCode(next) { 
 	boolean inNavView = isInsideNavigationView(view)
 	def (String nextState, data) = getTransitionInfo(next)	
+	String dataStr = null
+	if (data)
+	  dataStr = generator.valueToCode(classModel, data)
 	if (nextState) { 
 	  return generateTransitionCode(nextState, inNavView, 
 									view.embedded as boolean,
-									true, null, data)
+									true, null, dataStr)
 	}
 	return ''
   }
@@ -240,7 +243,7 @@ cell = [[UITableViewCell alloc] initWithStyle:cellStyle reuseIdentifier:cellId];
 		listActionCode = generator.generateActionCode(this, view['selection.src'], null)
       } 
 	  if (view.next) {
-		listTransitionCode = generateTransitionCode(view.next, inNavView, view.embedded as boolean)
+		listTransitionCode = generateTransitionCode(view.next.toString(), inNavView, view.embedded as boolean)
       } 
 	  if (view.menu) {
 		listMenuCode = generateTransitionCode(view.menu, inNavView, view.embedded as boolean) 
@@ -291,8 +294,11 @@ cell = [[UITableViewCell alloc] initWithStyle:cellStyle reuseIdentifier:cellId];
 			  def next = nextSet.iterator().next()
 			  def (String nextState, data) = getTransitionInfo(next)
 			  if (nextState) { 
+				String dataStr = null
+				if (data)
+				  dataStr = generator.valueToCode(classModel, data)
 				secTransCode = generateTransitionCode(nextState, inNavView, view.embedded as boolean, 
-											   true, null, data) 
+											   true, null, dataStr) 
 				if (secTransCode) secTransCode += ' ' else secTransCode = ''
 
 				if(hasMenuInSec)
@@ -314,8 +320,12 @@ cell = [[UITableViewCell alloc] initWithStyle:cellStyle reuseIdentifier:cellId];
 					def (String nextState, data) = getTransitionInfo(next)
 					if (nextState) { 				  
 					  if (transCode) transCode += '\n'
+
+					  String dataStr = null
+					  if (data)
+						dataStr = generator.valueToCode(classModel, data)
 					  transCode += generateTransitionCode(nextState, inNavView, view.embedded as boolean, 
-														  true, null, data) 
+														  true, null, dataStr) 
 					}
 				  } else { 
 					if (sectionTransitionCode) { 
@@ -334,8 +344,12 @@ cell = [[UITableViewCell alloc] initWithStyle:cellStyle reuseIdentifier:cellId];
 					def (String nextState, data) = getTransitionInfo(row.menu)
 					if (nextState) { 				  
 					  if (menuCode) menuCode += '\n'
+
+					  String dataStr = null
+					  if (data)
+						dataStr = generator.valueToCode(classModel, data)
 					  menuCode += generateTransitionCode(nextState, inNavView, view.embedded as boolean, 
-														 true, null, data) 
+														 true, null, dataStr) 
 					}
 				  } else { 
 					if (sectionMenuCode) { 

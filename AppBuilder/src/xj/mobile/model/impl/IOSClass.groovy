@@ -9,7 +9,6 @@ import xj.mobile.codegen.CodeGenerator.InjectionPoint
 import static xj.mobile.codegen.CodeGenerator.InjectionPoint.*
 
 import static xj.mobile.util.CommonUtils.*
-import static xj.mobile.common.ViewProcessor.*
 import static xj.mobile.codegen.templates.IOSDelegateTemplates.*
 import static xj.translate.Logger.info 
 
@@ -271,7 +270,7 @@ ${indent(action.code)}
   def getDelegateTemplateForWidget(wtemp, name) { 
     def temp = null 
     def delegateName = getTemplate(wtemp, 'delegate')
-    if (delegateName) { 
+    if (delegateName && delegateTemplates[delegateName]) { 
       temp = delegateTemplates[delegateName][name]
     }
     return temp 

@@ -78,7 +78,7 @@ class FrameworkTypeInfo {
 				checked: boolean_TYPE ],
 
 	/*
-	NumberStepper: [ super: 'Widget' ], 
+	Stepper: [ super: 'Widget' ], 
 	*/
 
     Widget: [], 

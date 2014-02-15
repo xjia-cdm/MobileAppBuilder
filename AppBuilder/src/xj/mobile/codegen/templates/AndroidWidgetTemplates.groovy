@@ -82,7 +82,8 @@ ${indent(actionBody, 2, '    ')}
     SeekBar: [
       uiclass: 'SeekBar',
 
-	  template: 'Default:slider'
+	  template: 'Default:slider',
+	  skip_action: true, 
     ],
 
     CheckBox: [
@@ -117,9 +118,23 @@ ${indent(actionBody, 2, '    ')}
 		'android:drawSelectorOnTop': 'true' 
       ],
 
-      processor: new SpinnerProcessor(),
+	  template: 'Default:spinner',
+	  templateVars: [
+		values: { widget -> widget.options.collect{ "\"${it}\"" }.join(',\n') }
+	  ],
 
-      get_value: 'item'
+	  actionListener: '''
+${name}.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+${indent(actionBody, 2, '    ')}
+    }
+    public void onNothingSelected(AdapterView parent) { }
+});
+''',
+
+      //get_value: 'item'
+	  get_value: '${name}.getSelectedItem().toString()'
+
     ],
 
 	NumberStepper: [
@@ -162,7 +177,8 @@ ${indent(actionBody, 2, '    ')}
     TimePicker: [
       uiclass: 'TimePicker',
 
-      processor: new TimePickerProcessor(),
+	  template: 'Default:timePicker',
+	  skip_action: true, 
 
       get_time: 'time'
     ],
@@ -170,7 +186,8 @@ ${indent(actionBody, 2, '    ')}
     DatePicker: [
       uiclass: 'DatePicker',
 
-      processor: new DatePickerProcessor(),
+	  template: 'Default:datePicker',
+	  skip_action: true, 
 
       get_date: 'date'
     ],

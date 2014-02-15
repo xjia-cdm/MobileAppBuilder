@@ -6,10 +6,7 @@ import xj.mobile.common.ViewProcessor
 import xj.mobile.codegen.templates.PopupTemplates
 import xj.mobile.codegen.Delegate
 
-import static xj.mobile.common.ViewUtils.getWidgetAttributes
-import static xj.mobile.common.ViewUtils.getActionInfo
-import static xj.mobile.common.ViewUtils.getWidgetName
-
+import static xj.mobile.common.ViewUtils.*
 import static xj.mobile.util.CommonUtils.*
 import static xj.mobile.lang.ast.ASTUtils.getClosureParameters
 import static xj.translate.Logger.info 
@@ -38,52 +35,34 @@ class PopupProcessor extends xj.mobile.common.PopupProcessor {
 		}
       }
 
+	  def t1 = getDataVarTypeForWidget(popup)
+	  def t2 = simpleType(t1)
+	  def params = t2 ? [data: t2] : null
+
       boolean staticText = true
       def eh = null
       if (vp instanceof ListViewProcessor) {
 		eh = vp.findEntityHandler(popup)
       }
 
-      def title = 'nil'
-      if (popup.title) { 
-		if (popup['title.src'] == null) { 
-		  title = "@\"${popup.title}\""
-		} else { 
-		  staticText = false
-		  title = generateExpressionCode(popup, 'title', eh)
+	  def attrs = [  'title', 'message', 'cancel', 'affirm'  ]
+	  def attrValues = vp.generateSetAttributesCode(popup, attrs, 'nil', params)
+	  if (eh) { 
+		attrs.each { a -> 
+		  if (popup["${a}.src"] != null) { 
+			staticText = false
+			attrValues[a] = generateExpressionCode(popup, a, eh)
+		  }
 		}
-      }
-      def message = 'nil'
-      if (popup.message) { 
-		if (popup['message.src'] == null) {
-		  message = "@\"${popup.message}\""
-		} else { 
-		  staticText = false
-		  message = generateExpressionCode(popup, 'message', eh)
-		}
-      }
-      def cancel = 'nil'
-      if (popup.cancel) { 
-		if (popup['cancel.src'] == null) {
-		  cancel = "@\"${popup.cancel}\"" 
-		} else { 
-		  staticText = false
-		  cancel = generateExpressionCode(popup, 'cancel', eh)
-		}
-      } else if (popup.widgetType == 'Alert' && !popup.buttons) { 
-		cancel = '@\"OK\"'
-      }
-      def affirm = 'nil'
-      if (popup.affirm) { 
-		if (popup['affirm.src'] == null) {
-		  affirm = "@\"${popup.affirm}\"" 
-		} else { 
-		  staticText = false
-		  affirm = generateExpressionCode(popup, 'affirm', eh)
-		}
-      } else if (!popup.buttons && !popup.children) { 
-		affirm = '@\"OK\"'
-      }
+	  }
+
+	  if (attrValues.cancel == 'nil' && popup.widgetType == 'Alert' && !popup.buttons) { 
+		attrValues.cancel = '@\"OK\"'
+	  }
+	  if (attrValues.affirm == 'nil' && !popup.buttons && !popup.children) { 
+		attrValues.affirm = '@\"OK\"'
+	  }
+
       def other = 'nil'
       if (popup.children) {
 		def items = popup.children.findAll { it.widgetType == 'Item' } 
@@ -100,21 +79,18 @@ class PopupProcessor extends xj.mobile.common.PopupProcessor {
       }
 
       if (popup.widgetType == 'Alert' && popup.affirm) { 
-		other = affirm + ', ' + other
+		other = attrValues.affirm + ', ' + other
       }
 	
       def ctemp = temp.create
       def binding = [ name : name,
-					  uiclass : temp.uiclass, 
-					  title : title,
-					  message : message,
-					  cancel : cancel,
-					  affirm : affirm,
-					  other : other ]
+					  uiclass : temp.uiclass,
+					  other : other ] + attrValues
+
       def template = engine.createTemplate(ctemp).make(binding)
       def body = template.toString()
 
-	  def attrs = getWidgetAttributes(popup, [ 'title', 'message', 'cancel', 'affirm', 'other' ])
+	  attrs = getWidgetAttributes(popup, [ 'title', 'message', 'cancel', 'affirm', 'other' ])
 	  def attrCode = vp.setAttributes(popup, attrs, vp.classModel)
 	  body += attrCode.collect { '\n' + it[1] }.join('')
 
@@ -128,6 +104,14 @@ ${indent(body)}
 	  
       def stemp = temp.show
       def arg = (isMenu(popup.widgetType)) ? ':(NSIndexPath *)indexPath' : ''
+	  if (t2) { 
+		def type = vp.getTransitionDataType(t2)
+		if (arg) { 
+		  arg += " withData: (${vp.getTransitionNativeType(type)} *) data"
+		} else { 
+		  arg = "_withData: (${vp.getTransitionNativeType(type)} *) data"
+		}
+	  }
       def binding2 = [ name : name,
 					   arg : arg,
 					   body : body,

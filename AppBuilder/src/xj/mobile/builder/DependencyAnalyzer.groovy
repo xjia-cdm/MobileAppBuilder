@@ -39,11 +39,12 @@ class DependencyAnalyzer {
   }
 
   def analyzeExpression(owner, key, src) { 
-    if (src) { 
+    if (src) {  
       def useSet = getUseVarSet(src)
       if (verbose) info "[DependencyAnalyzer] useSet: ${useSet}"
-      owner[key + '.src'] = [ code: src, useSet: useSet ]
       if (useSet) { 
+		owner[key + '.src'] = [ code: src, useSet: useSet ]
+
 		def view = findTopView(owner)
 		if (view) { 
 		  Set uset = view['#info'].useSet
@@ -53,14 +54,16 @@ class DependencyAnalyzer {
 		  view['#info'].useSet = uset
 		}
 
-		useSet.each { name -> 
-		  def vd = findDeclarationInView(name) 
-		  if (vd) { // dependency on a local variable 
-			def decl = vd[1]
-			if (!decl.isDummy) { // ignore dummy var of an entity collection
-			  if (decl.updates == null) decl.updates = [] as Set
-			  if (verbose) info "[DependencyAnalyzer] update: ${owner.id} ${key}"
-			  decl.updates << [ owner.id, key ] 
+		if (key != 'next.data') { 
+		  useSet.each { name -> 
+			def vd = findDeclarationInView(name) 
+			if (vd) { // dependency on a local variable 
+			  def decl = vd[1]
+			  if (!decl.isDummy) { // ignore dummy var of an entity collection
+				if (decl.updates == null) decl.updates = [] as Set
+				if (verbose) info "[DependencyAnalyzer] update: ${owner.id} ${key}"
+				decl.updates << [ owner.id, key ] 
+			  }
 			}
 		  }
 		}
@@ -151,20 +154,25 @@ class DependencyAnalyzer {
 				name != 'action.src' &&
 				name != 'selection.src' &&
 				value instanceof Map) { 
-			  def useSet = value.useSet
-			  if (verbose) info "       process widget ${w.id} ${name}: useSet=${useSet}"
-			  useSet.each { var -> 
-				def wdef = view.getChild(var, true)
-				if (wdef) { 
-				  if (verbose) info "         found widget ${wdef.id}"
-				  def srcInfo = wdef['action.src']
-				  if (!srcInfo) { 
-					srcInfo = wdef['action.src'] = [ updates: [] as Set ]
+			  String key = name[0 .. -5]
+			  if (key != 'next.data') { 
+				def useSet = value.useSet
+				if (verbose) info "       process widget ${w.id} ${name}: useSet=${useSet}"
+				useSet.each { var -> 
+				  def wdef = view.getChild(var, true)
+				  if (wdef) { 
+					if (verbose) info "         found widget ${wdef.id}"
+					def srcInfo = wdef['action.src']
+					if (!srcInfo) { 
+					  srcInfo = wdef['action.src'] = [ updates: [] as Set ]
+					}
+					if (!srcInfo['updates']) { 
+					  srcInfo['updates'] = [] as Set 
+					}
+					srcInfo['updates'] << [ w.id, key ]
+				  } else { 
+					"[DependencyAnalyzer] postProcess() unknown widget ${var}"
 				  }
-				  if (!srcInfo['updates']) { 
-					srcInfo['updates'] = [] as Set 
-				  }
-				  srcInfo['updates'] << [ w.id, name[0 .. -5] ]
 				}
 			  }
 			}

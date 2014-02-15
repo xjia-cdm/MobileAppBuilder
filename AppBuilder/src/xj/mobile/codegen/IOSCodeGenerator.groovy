@@ -15,12 +15,14 @@ class IOSCodeGenerator extends CodeGenerator {
 	templates = IOSTemplates.getInstance()
 	actionHandler = new xj.mobile.codegen.IOSActionHandler()
 	attributeHandler = new xj.mobile.api.IOSAttributeHandler()
+	init()
+  }
 
+  void init() { 
 	AppGenerator appgen = AppGenerator.getAppGenerator('ios')
 	unparser = appgen.translator.unparser
 	engine = appgen.engine
   }
-
 
   //
   // generate transition code
@@ -30,7 +32,7 @@ class IOSCodeGenerator extends CodeGenerator {
 									String curView, 
 									String nextView, 
 									boolean isEmbedded = false, 
-									data = null) { 
+									String data = null) { 
 	String target = isEmbedded ? 'self.owner' : 'self'
     if (nextView != null && nextView != '' && nextView[0] != '#') { 
 	  String nextViewControllerName = getViewControllerName(toViewName(nextView))
@@ -38,9 +40,8 @@ class IOSCodeGenerator extends CodeGenerator {
 
 	  String setData = ''
 	  if (data) { 
-		String value = valueToCode(data)
-		setData = "${nextView}.data = ${value};\n"
-		//setData = "${nextView}.data = @\"${data}\";\n"
+		//String value = valueToCode(data)
+		setData = "${nextView}.data = ${data};\n"
 	  }
 	  return """if (${nextView} == nil) ${nextView} = [[${nextViewControllerName} alloc] init];
 ${setData}[${target}.navigationController pushViewController:${nextView} animated:YES];"""	
@@ -57,7 +58,7 @@ ${setData}[${target}.navigationController pushViewController:${nextView} animate
 									 boolean isEmbedded = false, 
 									 boolean animated = true,
 									 ModalTransitionStyle style = null,
-									 data = null) { 
+									 String data = null) { 
 	String ani = (animated || style != null) ? 'YES' : 'NO'
 	String target = isEmbedded ? 'self.owner' : 'self'
     if (nextView != null && nextView != '' && nextView[0] != '#') { 
@@ -70,9 +71,8 @@ ${setData}[${target}.navigationController pushViewController:${nextView} animate
 		setStyle = "\n${nextView}.modalTransitionStyle = ${style.toIOSString()};"
 	  }
 	  if (data) { 
-		String value = valueToCode(data)
-		setData = "\n${nextView}.data = ${value};"
-		//setData = "\n${nextView}.data = @\"${data}\";"
+		//String value = valueToCode(data)
+		setData = "\n${nextView}.data = ${data};"
 	  }
 	  return """if (${nextView} == nil) ${nextView} = [[${nextViewControllerName} alloc] init];${setStyle}${setData}
 [${target} presentViewController:${nextView} animated:${ani} completion: NULL];"""
@@ -85,5 +85,16 @@ while (top.presentingViewController != nil) top = top.presentingViewController;
 	}
   }
 
+  String valueToCode(ClassModel classModel, value) { 
+	IOSUtils.valueToCode(value)
+  }
+
+  String mapToCode(Map value, String var) { 
+	if (value) { 
+	  "NSDictionary *${var} = ${IOSUtils.valueToCode(value)};"
+	} else { 
+	  null
+	} 
+  }
 
 }

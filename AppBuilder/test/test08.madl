@@ -1,0 +1,17 @@
+app(name : 'Alerts') { 
+
+  View(id: top) { 
+    Button(text: 'Action 1',
+		   next: p1)
+    Button(text: 'Action 2',
+		   next: p2)
+  }
+
+  Popup(id: p1, 
+		title: 'Simple Action')
+
+  Popup(id: p2,
+		title: 'OK-Cancel Action',
+		cancel: 'Cancel',
+		affirm: 'OK')
+}

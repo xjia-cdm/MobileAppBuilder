@@ -34,9 +34,6 @@
   <!-- Compilation class path -->
 
   <path id="compile.classpath">
-    <fileset dir="${lib}">
-      <include name="translator.jar" />
-    </fileset>
     <fileset dir="${extlib}">
       <include name="*.jar" />
       <exclude name="ant-1.8.2.jar" />

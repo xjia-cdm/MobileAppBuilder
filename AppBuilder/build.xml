@@ -26,8 +26,8 @@
       <classpath>
 		<pathelement path="${classes}"/>
 		<path refid="compile.classpath"/>
-		<pathelement path="../Translator/classes"/>
-		<!--<pathelement path="/Users/jia/Development/Groovy/Translator/classes"/>-->
+		<pathelement path="lib/translator.jar"/>
+		<!--<pathelement path="../Translator/classes"/>-->
       </classpath>
       <include name="${prefix}/**"/>
       <javac source="1.5" target="1.5" debug="on" />

@@ -47,7 +47,7 @@ class Slider { }
 
 class Selection { }
 
-class NumberStepper { }
+class Stepper { }
 
 class CheckBox { }
 

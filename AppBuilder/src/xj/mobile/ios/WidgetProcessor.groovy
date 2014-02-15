@@ -101,12 +101,24 @@ class WidgetProcessor extends xj.mobile.common.WidgetProcessor {
 		wtemp.processor.process(widget, vp)
 	  } else if (wtemp.template) { 
 		binding += [ actionCode: genActionCode(widget) ]
+		if (wtemp.templateVars instanceof Map) { 
+		  wtemp.templateVars.each { var, exp -> 
+			if (exp instanceof Closure) { 
+			  binding[var] = exp(widget) 
+			} else { 
+			  binding[var] = exp 
+			}
+		  }
+		}
 		generator.injectCodeFromTemplateRef(vp.classModel, wtemp.template, binding)
       } else { 
-		// default when no processor is specified 
-		// handle action 
 		handleAction(widget, wtemp) 
-      }
+	  }
+
+	  /*
+	  if (!wtemp.skip_action)
+		handleAction(widget, wtemp) 
+	  */
 
       vp.handleImageFiles(widget)
     }

@@ -9,8 +9,6 @@ import static xj.mobile.ios.IOSAppGenerator.*
 import static xj.mobile.util.CommonUtils.*
 import static xj.mobile.codegen.IOSUtils.*
 
-import static xj.mobile.common.ViewProcessor.*
-
 class PickerProcessor { 
 
   String dataVar

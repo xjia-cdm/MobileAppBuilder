@@ -1,6 +1,6 @@
 package xj.mobile.tool
 
-public class TestGEnerator { 
+public class TestGenerator { 
 
   /*
    * Generating test cases for testing list view
@@ -19,9 +19,22 @@ public class TestGEnerator {
    *    data: yes / no
    */
 
-  static void main(args) { 
-	
+  static final String outdir = 'test'
+  static final String outfile = 'app_g01.madl'
 
+  static void main(args) { 
+	generateTest01()
+	generateTest02()
+
+  }
+
+  static void generateTest01() { 
+	def content = '''app(\'MADL Test Case G-01\') {
+
+}
+'''
+	File f = new File(outdir + File.separator + outfile)
+	f.text = content
   }
 
 }

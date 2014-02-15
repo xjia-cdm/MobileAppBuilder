@@ -64,6 +64,10 @@ class ModelNode extends Expando {
     return result 
   }
 
+  int count() { 
+	1 + (children ? children.sum { it.count() } : 0)
+  }
+
   void visit(closure) { 
 	if (closure) {  
 	  closure(this)

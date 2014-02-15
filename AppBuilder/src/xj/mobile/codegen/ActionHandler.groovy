@@ -48,10 +48,16 @@ class ActionHandler {
     return stmt
   }
 
+  Expression transformAction(Expression expr, Parameter[] params, ModelNode widget) {
+    transformer.setContext(viewProcessor, widget, params)
+    return transformer.transform(expr)
+  }
+
   // srcInfo.code is a ClosureExpression
   String generateActionCode(Map srcInfo, ModelNode widget) { 
     String actionCode = null
 	def unparser = viewProcessor.generator.unparser
+	unparser.classModel = classModel
 
     def src = srcInfo?.code
     if (src instanceof ClosureExpression && viewProcessor) { 
@@ -133,10 +139,11 @@ class ActionHandler {
   }
 
   // src is an update Expression
-  def generateUpdateCode(Expression src, ModelNode widget, 
-						 String wname, String attribute, VariableScope scope = null) { 
+  String generateUpdateCode(Expression src, ModelNode widget, 
+							String wname, String attribute, VariableScope scope = null) { 
 	if (src) { 
 	  def unparser = viewProcessor.generator.unparser
+	  unparser.classModel = classModel
 
 	  def updateExp = xj.translate.ASTUtil.copyExpression(src, scope) 
 	  def exp = new SetViewPropertyExpression(viewProcessor.view.id, wname, attribute, updateExp)	  
@@ -157,5 +164,56 @@ class ActionHandler {
 	}		
 	return null
   }
+
+  // src is an update Expression
+  String unparseUpdateExp(Expression src, ModelNode widget, 
+						  Map params = null,
+						  VariableScope scope = null) {  
+	if (src) { 
+	  info "[ActionHandler] unparseUpdateExp() enter ${src}"
+
+	  def unparser = viewProcessor.generator.unparser
+	  unparser.classModel = classModel
+	  viewProcessor.typeInfo.parameterMap = params
+
+	  def updateExp = xj.translate.ASTUtil.copyExpression(src, scope) 		
+	  def transformedUpdate = transformAction(updateExp, null, widget)
+	  
+	  info "[ActionHandler] unparseUpdateExp() ${updateExp}"
+	  def ucode = unparser.unparse(transformedUpdate)
+	  info "[ActionHandler] unparseUpdateExp() unparsed: ${ucode}"
+
+	  viewProcessor.typeInfo.parameterMap = null
+	  return ucode
+	}		
+	return null
+  }
+
+
+  String unparseMapExp(MapExpression src, 
+					   String var, 
+					   ModelNode widget, 
+					   Map params = null,
+					   VariableScope scope = null) {  
+	if (src) { 
+	  info "[ActionHandler] unparseMapExp() enter ${src}"
+
+	  def unparser = viewProcessor.generator.unparser
+	  unparser.classModel = classModel
+	  viewProcessor.typeInfo.parameterMap = params
+
+	  def updateExp = xj.translate.ASTUtil.copyExpression(src, scope) 		
+	  def transformedUpdate = transformAction(updateExp, null, widget)
+	  
+	  info "[ActionHandler] unparseMapExp() ${updateExp}"
+	  def ucode = unparser.unparseMap(transformedUpdate, var)
+	  info "[ActionHandler] unparseMapExp() unparsed: ${ucode}"
+
+	  viewProcessor.typeInfo.parameterMap = null
+	  return ucode
+	}		
+	return null
+  }
+
 
 }

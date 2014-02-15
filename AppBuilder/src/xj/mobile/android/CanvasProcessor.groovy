@@ -12,7 +12,6 @@ import xj.mobile.common.ViewHierarchyProcessor
 import static xj.mobile.android.AndroidAppGenerator.*
 import static xj.mobile.util.CommonUtils.*
 import static xj.mobile.lang.Language.*
-import static xj.mobile.common.ViewProcessor.*
 import static xj.mobile.model.impl.ClassModel.getCustomViewName
 import static xj.mobile.codegen.CodeGenerator.InjectionPoint.*
 

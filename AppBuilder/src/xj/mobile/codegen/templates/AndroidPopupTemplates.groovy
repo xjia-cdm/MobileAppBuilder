@@ -11,9 +11,12 @@ class AndroidPopupTemplates extends PopupTemplates {
   static popupTemplates = [
     AlertDialog : [
       action : '''alertAction${capitalize(name)}().show();''',
+      actionMenu : '''alertAction${capitalize(name)}().show();''',
+      actionData : '''alertAction${capitalize(name)}(${data}).show();''',
+      actionMenuData : '''alertAction${capitalize(name)}(${data}).show();''',
 
       create : '''
-AlertDialog alertAction${capitalize(name)}() {
+AlertDialog alertAction${capitalize(name)}(${arg}) {
     AlertDialog.Builder builder = new AlertDialog.Builder(this);${setters}
     builder.setCancelable(${cancellable});${indent(buttons, 1, '    ')}
     AlertDialog alert = builder.create();

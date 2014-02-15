@@ -33,14 +33,14 @@ class PopupTemplates {
     return temp
   }
 
-  static String actionTemplateName(boolean isMenu) { 
-	isMenu ? 'actionMenu' : 'action'
+  static String actionTemplateName(boolean isMenu, boolean hasData) { 
+	(isMenu ? 'actionMenu' : 'action') + (hasData ? 'Data' : '')
   }
 
-  def getActionTemplate(String popupType, boolean isMenu) { 
+  def getActionTemplate(String popupType, boolean isMenu, boolean hasData) { 
 	def temp = popupTemplates[popupType]
 	if (temp)
-	  return temp[actionTemplateName(isMenu)]
+	  return temp[actionTemplateName(isMenu, hasData)]
 	else 
 	  return null
   }

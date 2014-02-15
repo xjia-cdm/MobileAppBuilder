@@ -15,6 +15,7 @@ import static xj.mobile.common.ViewUtils.isDependentAttribute
 import static xj.mobile.common.ViewUtils.allowImage
 import static xj.mobile.common.ViewUtils.getImageSizeForWidget
 import static xj.mobile.common.ViewUtils.getPlatformWidgetName
+import static xj.mobile.common.ViewUtils.isInsideNavigationView
 
 
 import static java.lang.Math.max
@@ -30,6 +31,7 @@ class Layout {
     int m = config.defaults.margin
 	int statusBarHeight = config.defaults.statusBar.height
     int vw = 0, vh = 0
+	int top = m // + statusBarHeight,
 	boolean bounded = !(view.scroll || 
 						view.children.any { w -> (w instanceof Widget) && w.scroll })
 	vw = config.defaults.Screen.width - 2 * m
@@ -37,11 +39,21 @@ class Layout {
     if (view.nodeType == 'TabbedView') { 
       vh -= config.defaults.TabBar.height
     }
+
+	//info "[Layout] layout(): isInsideNavigationView = ${isInsideNavigationView(view)}"
+	if (isInsideNavigationView(view)) { 
+	  int navBarHeight = config.defaults.navBar.height
+	  info "[Layout] layout(): isInsideNavigationView navBarHeight = ${navBarHeight} view.scroll = ${view.scroll}"
+	  if (!view.scroll)
+		top += (navBarHeight + statusBarHeight)
+	  vh -= navBarHeight
+	}
+
 	def constraints = [ top : [ 'top', null, m ],
 						left : [ 'left', null, m ], 
 						right: [ 'right', null, m ], 
 						bottom: [ 'bottom', null, m ], ]
-	def dim = layout(view, m, m, // + statusBarHeight,
+	def dim = layout(view, m, top, 
 					 vw, vh, m, m, config, constraints, bounded, setWidgetFrame) 
 	//if (view.autoLayout) layoutConstraint(view, config)
     return dim
@@ -50,7 +62,7 @@ class Layout {
   // return [width, heght] (the content size)
   static layout(View view, 
 				int x, int y,     // current position
-				int rw, int rh,   // remaining width and height
+				int rw, int rh,   // remaining width and height, excluding margin
 				int mx, int my,   // margin x and y 
 				def config,
 				def constraints, 
@@ -89,9 +101,6 @@ class Layout {
 		  }
 
 		  if (Language.isGroup(widget.nodeType)) { 
-			int rw0 = rw - (cx - x)
-			int rh0 = rh - (cy - y)
-
 			if (horizontal) { 
 			  if (prev) constraints.left = [ 'next', prev.id, config.defaults.gap ] 
 			} else { 
@@ -103,7 +112,15 @@ class Layout {
 				}
 			  }
 			}
-			(w, h) = layout(widget, cx, cy, rw0, rh0, mx, my, config, constraints, bounded, setWidgetFrame)	    
+			(w, h) = layout(widget, cx, cy, rw, rh, mx, my, config, constraints, bounded, setWidgetFrame)	
+			if (widget.align?.toLowerCase() == 'right') { 
+			  int adjx = rw - w
+			  layout(widget, cx + adjx, cy, rw, rh, mx, my, config, constraints, bounded, setWidgetFrame)
+			} else if (widget.align?.toLowerCase() == 'center') { 
+			  int adjx = (rw - w) / 2 
+			  layout(widget, cx + adjx, cy, rw, rh, mx, my, config, constraints, bounded, setWidgetFrame)
+			}
+   
 		  } else if (Language.isTopView(widget.nodeType) && widget.embedded) {  
 			(w, h) = [ rw, rh ]  // a group view will take the remaining space
 			if (constraints) 
@@ -144,9 +161,10 @@ class Layout {
 		  if (horizontal) { 
 			if (w > 0) { 
 			  cx += (w + config.defaults.gap)
-			  rw -= (cx - x)
+			  rw -= (w + config.defaults.gap)
 			  leftmost = false
 			}
+			cy = y
 			if (constraints) { 
 			  if (prev)
 				widget['#layout'] << [ 'next', prev.id, config.defaults.gap ]
@@ -154,9 +172,10 @@ class Layout {
 		  } else { 
 			if (h > 0) { 
 			  cy += (h + config.defaults.gap)
-			  rh -= (cy - y)
+			  rh -= (h + config.defaults.gap)
 			  topmost = false
 			}
+			cx = x
 			if (constraints) { 
 			  if (prev) {
 				if (Language.isGroup(prev.nodeType)) { 
@@ -188,6 +207,8 @@ class Layout {
     int vw = 0, vh = 0;
     if (view && view.children) { 
       //boolean horizontal = false // alwaws vertical 
+	  int rw0 = rw, rh0 = rh 
+
 
       def colWidth = [:]  // the maximum width of each column 
       def colStretch = [:] // whether each column is stretchable 
@@ -204,18 +225,16 @@ class Layout {
 		if (Language.isUI(widget.nodeType) &&
 			!Language.isPopup(widget.nodeType)) { 
 		  if (Language.isGroup(widget.nodeType)) {  
-			int rw0 = rw - (cx - x)
-			int rh0 = rh - (cy - y)
-			(w, h) = layout(widget, cx, cy, rw0, rh0, mx, my, config, null, bounded, setWidgetFrame) // true 
+			(w, h) = layout(widget, cx, cy, rw, rh, mx, my, config, null, bounded, setWidgetFrame) // true 
 
-			if (widget.nodeType == 'Row') { 
+			if (widget.nodeType == 'Row') {
 			  widget.children.eachWithIndex { w1, i ->
 				colStretch[i] = w1._frame[4]  // wfill
 				int width = w1._frame[2]
 				int cwidth = colWidth[i] ?: 0
 				colWidth[i] = max(width, cwidth)
 			  }
-
+			  
 			  prevRow = widget
 			}
 		  } else { 
@@ -228,18 +247,42 @@ class Layout {
 	  
 		  // vertical 
 		  cy += (h + config.defaults.gap)
-		  rh -= (cy - y)
-
+		  rh -= (h + config.defaults.gap)
 		  prev = widget
 		}
+		cx = x
 		topmost = false
       }
+
+	  int nCol = colWidth.size()
+	  int nStretchCol = 0 
+	  float fixWidth = 0 
+	  float stretchWidth = 0 
+	  for (int i = 0; i < nCol; i++) { 
+		if (colStretch[i]) { 
+		  nStretchCol++;
+		  stretchWidth += colWidth[i]
+		} else { 
+		  fixWidth += colWidth[i]
+		}
+	  }
+	  if (nStretchCol > 0) { 
+		float flex = rw - fixWidth - config.defaults.gap * (nCol - 1)
+		if (flex > 0) { 
+		  for (int i = 0; i < nCol; i++) { 
+			if (colStretch[i]) {
+			  colWidth[i] = (int) ((colWidth[i]/stretchWidth) * flex)
+			}
+		  } 
+		}
+	  }
 
       info "[LayoutTable] colWidth: ${colWidth}  colStretch: ${colStretch}"
       view._colWidth = colWidth
       view._colStretch = colStretch
 
       // the second pass 
+	  rw = rw0; rh = rh0;
       cx = x; cy = y;
       w = 0; h = 0;
       wfill = false; hfill = false; 
@@ -268,12 +311,21 @@ class Layout {
 			  }
 			}
 
-			int rw0 = rw - (cx - x)
-			int rh0 = rh - (cy - y)
 			if (widget.nodeType == 'Row') { 
-			  (w, h) = layoutTableRow(widget, cx, cy, rw0, rh0, mx, my, 
+			  (w, h) = layoutTableRow(widget, cx, cy, rw, rh, mx, my, 
 									  colWidth, colStretch,
 									  config, constraints, bounded, setWidgetFrame)
+			  if (widget.align?.toLowerCase() == 'right') { 
+				int adjx = rw - w
+				layoutTableRow(widget, cx + adjx, cy, rw, rh, mx, my, 
+							   colWidth, colStretch,
+							   config, constraints, bounded, setWidgetFrame)
+			  } else if (widget.align?.toLowerCase() == 'center') { 
+				int adjx = (rw - w) / 2 
+				layoutTableRow(widget, cx + adjx, cy, rw, rh, mx, my, 
+							   colWidth, colStretch,
+							   config, constraints, bounded, setWidgetFrame)
+			  }
 
 			  if (constraints) { 
 				widget.children.eachWithIndex { w1, i ->
@@ -286,7 +338,14 @@ class Layout {
 
 			  prevRow = widget
 			} else { 
-			  (w, h) = layout(widget, cx, cy, rw0, rh0, mx, my, config, constraints, bounded, setWidgetFrame)
+			  (w, h) = layout(widget, cx, cy, rw, rh, mx, my, config, constraints, bounded, setWidgetFrame)
+			  if (widget.align?.toLowerCase() == 'right') { 
+				int adjx = rw - w
+				layout(widget, cx + adjx, cy, rw, rh, mx, my, config, constraints, bounded, setWidgetFrame)
+			  } else if (widget.align?.toLowerCase() == 'center') { 
+				int adjx = (rw - w) / 2 
+				layout(widget, cx + adjx, cy, rw, rh, mx, my, config, constraints, bounded, setWidgetFrame)
+			  }
 			}
 		  } else { 
 			if (widget.widgetType == 'Image' && 
@@ -322,7 +381,7 @@ class Layout {
 	  
 		  // vertical 
 		  cy += (h + config.defaults.gap)
-		  rh -= (cy - y)
+		  rh  -= (h + config.defaults.gap)
 
 		  if (constraints) { 
 			if (prev) {
@@ -337,6 +396,7 @@ class Layout {
 		  prev = widget
 		}
 		topmost = false
+		cx = x
 		info "[LayoutTable] widget ${widget.nodeType} ${widget.id} #layout: ${widget['#layout']}" 
       }
 
@@ -355,7 +415,7 @@ class Layout {
 						def constraints,
 						boolean bounded = true, 
 						boolean setWidgetFrame = true) { 
-    info "[LayoutTableRow] id=${view.id}"
+    info "[LayoutTableRow] id=${view.id} cur=(${x},${y}) remaining=(${rw},${rh})"
 
     int vw = 0, vh = 0;
     if (view && view.children) { 
@@ -368,6 +428,7 @@ class Layout {
 	  Widget prev = null
       view.children.eachWithIndex { widget, i -> 
 		info "[LayoutTableRow] ${view.id} child ${widget.id} isUI=${Language.isUI(widget.nodeType)}"
+		int cx1 = cx, cy1 = cy
 
 		if (Language.isUI(widget.nodeType) &&
 			!Language.isPopup(widget.nodeType)) { 
@@ -380,14 +441,12 @@ class Layout {
 		  if (Language.isGroup(widget.nodeType)) {  
 			if (prev) constraints.left = [ 'next', prev.id, config.defaults.gap ] 
 
-			int rw0 = rw - (cx - x)
-			int rh0 = rh - (cy - y)
-			(w, h) = layout(widget, cx, cy, rw0, rh0, mx, my, config, constraints, bounded, setWidgetFrame)	    
+			(w, h) = layout(widget, cx, cy, rw, rh, mx, my, config, constraints, bounded, setWidgetFrame)	    
 		  } else { 
 			if (widget.frame) { 
-			  (cx, cy, w, h) = widget.frame
+			  (cx1, cy1, w, h) = widget.frame
 			} else { 
-			  (cx, cy, w, h, wfill, hfill) = determineWidgetFrame(widget, cx, cy, rw, rh, mx, my,
+			  (cx1, cy1, w, h, wfill, hfill) = determineWidgetFrame(widget, cx, cy, colWidth[i], rh, mx, my,
 																  topmost, leftmost, config, bounded)
 			}
 		  }
@@ -405,7 +464,7 @@ class Layout {
 		  if (setWidgetFrame) { 
 			if (widget.nodeType != 'Image' ||  
 				rw > 0 || rh > 0) { 
-			  widget._frame = [cx, cy, w, h, wfill, hfill]
+			  widget._frame = [cx1, cy1, w, h, wfill, hfill]
 			  info "[LayoutTableRow] widget ${widget.nodeType} ${widget.id} layout: ${widget._frame}" 
 
 			  if (constraints) { 
@@ -424,8 +483,8 @@ class Layout {
 		  vh = max(vh, cy + h)
 	  
 		  // horizontal 
-		  cx += (w + config.defaults.gap)
-		  rw -= (cx - x)
+		  cx += (colWidth[i] + config.defaults.gap)
+		  rw -= (colWidth[i] + config.defaults.gap)
 		  leftmost = false
 
 		  if (constraints) { 
@@ -445,11 +504,15 @@ class Layout {
   // utilities 
   //
 
-  // return [x, y, w, h, wfill, hfill]
+  
+  // curX, curY:           current top-right position  
+  // maxWidth, maxHeight:  max remaining width and height of the container, exclude margin 
+  // marginX, marginY:     margin x and y 
+  // return:  [x, y, w, h, wfill, hfill]
   static determineWidgetFrame(Widget widget,
-							  int curX, int curY,           // current top-right position   
-							  int maxWidth, int maxHeight,  // max width and height of the container 
-							  int marginX, int marginY,     // margin x and y 
+							  int curX, int curY,           
+							  int maxWidth, int maxHeight,  
+							  int marginX, int marginY,     
 							  boolean topmost,
 							  boolean leftmost,
 							  def config,
@@ -577,9 +640,16 @@ class Layout {
       }      
     }
 
+	if (widget.align?.toLowerCase() == 'right') {
+	  int x = curX + (maxWidth - w)
+	  return [x, curY, w, h, wfill, hfill]
+	} else if (widget.align?.toLowerCase() == 'center') { 
+	  int x = curX + (maxWidth - w) / 2
+	  return [x, curY, w, h, wfill, hfill]
+	}
+
     return [curX, curY, w, h, wfill, hfill]
   }
-
 
   static int getStringWidth(String text, String fname, int size, String style = null) { 
 	(int) Math.ceil(FontMetrics.getStringWidth(text, fname, size, style))

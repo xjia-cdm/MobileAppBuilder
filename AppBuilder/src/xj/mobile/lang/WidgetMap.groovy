@@ -101,7 +101,7 @@ class WidgetMap {
 					android : 'SeekBar' ], 
     Selection :   [ ios     : 'SegmentedControl',
 					android : 'Spinner' ], 
-	NumberStepper:[ ios     : 'Stepper',
+	Stepper:      [ ios     : 'Stepper',
 					android : 'NumberStepper' ],
     ProgressBar : [ ios     : 'ProgressView', 
 					android : 'ProgressBar' ],
@@ -150,7 +150,7 @@ class WidgetMap {
 	  'WebView'     : 'android.webkit',
 	  'MapView'     : 'com.google.android.maps',
 
-	  'NumberStepper' : '__CUSTOM__',
+	  'Stepper'     : '__CUSTOM__',
 	]
 	if (wname) { 
 	  def pkg = pkgnames[wname]

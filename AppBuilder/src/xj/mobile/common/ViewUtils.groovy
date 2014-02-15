@@ -12,6 +12,8 @@ import org.codehaus.groovy.ast.*
 import org.codehaus.groovy.ast.expr.*
 import org.codehaus.groovy.ast.stmt.*
 
+import static org.codehaus.groovy.ast.ClassHelper.*
+
 import javax.imageio.ImageIO
 import java.awt.image.BufferedImage
 
@@ -174,6 +176,64 @@ class ViewUtils {
 	return widget
   }
 
+
+  //
+  //
+  //
+
+  static def getDataVarTypeForWidget(Widget widget) { 
+	widget?.'#info'?.dataVarType
+  }
+  
+  static void setDataVarTypeForWidget(Widget widget, t) { 
+	if (widget) {
+	  if (widget.'#info' == null) widget.'#info' = [:]
+	  widget.'#info'.dataVarType = t
+	}
+  }
+
+  static def getDataVarValuesForWidget(Widget widget) { 
+	widget?.'#info'?.dataVarValues
+  }
+
+  static void addDataVarValuesForWidget(Widget widget, v) { 
+	if (widget) {
+	  if (widget.'#info' == null) widget.'#info' = [:]
+	  if (widget.'#info'.dataVarValues == null) widget.'#info'.dataVarValues = []
+	  widget.'#info'.dataVarValues << v
+	}
+  }
+
+  //
+  // data var type 
+  //
+  
+  static typeOf(data) { 
+	def type = null
+	if (data) { 
+	  if (data instanceof String ||
+		  data instanceof GString) {  
+		type = STRING_TYPE
+	  } else if (data instanceof List) { 
+		//type = LIST_TYPE
+		type = []
+		data.each { v -> type << typeOf(v) }
+	  } else if (data instanceof Map) { 
+		//type = MAP_TYPE
+		type = [:]
+		data.each { k, v -> type[k] = typeOf(v) }
+	  } else { 
+		type = OBJECT_TYPE
+	  }
+	}
+	return type 
+  }
+
+  static simpleType(type) { 
+	if (type instanceof List) return LIST_TYPE
+	else if (type instanceof Map) return MAP_TYPE
+	else return type
+  }
 
   //
   // Widget

@@ -49,6 +49,7 @@ class IOSAppTemplate extends AppTemplate {
 	generateAppDelegate(ad)
 
 	info '[IOSAppTemplate] Generating iOS App: generate view controllers'
+	info '[IOSAppTemplate] Generating iOS App: #classes ' + project.classes.size()
 
 	project.classes.each { c -> 
 	  //generateViewController(c)

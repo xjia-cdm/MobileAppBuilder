@@ -8,8 +8,7 @@ import xj.mobile.common.ViewProcessor
 import xj.mobile.codegen.UnparserUtil
 import xj.mobile.codegen.templates.PopupTemplates
 
-import static xj.mobile.common.ViewUtils.getActionInfo
-import static xj.mobile.common.ViewUtils.getWidgetName
+import static xj.mobile.common.ViewUtils.*
 import static xj.mobile.lang.ast.ASTUtils.getClosureParameters
 import static xj.mobile.util.CommonUtils.indent
 import static xj.translate.Logger.info 
@@ -29,13 +28,19 @@ class PopupProcessor extends xj.mobile.common.PopupProcessor {
 
     def temp = getPopupTemplate(popup)
     if (temp) { 
-      def ctemp = temp.create
+	  def t1 = getDataVarTypeForWidget(popup)
+	  def t2 = simpleType(t1)
+	  def params0 = t2 ? [data: t2] : null
+
+	  def attrs = [  'title', 'message', 'cancel', 'affirm'  ]
+	  def attrValues = vp.generateSetAttributesCode(popup, attrs, 'null', params0)
+
       def builderSetters = ''
       if (popup.title) { 
-		builderSetters = "\n    builder.setTitle(\"${popup.title}\");"
+		builderSetters = "\n    builder.setTitle(${attrValues.title});"
       }
       if (popup.message) { 
-		builderSetters += "\n    builder.setMessage(\"${popup.message}\");"
+		builderSetters += "\n    builder.setMessage(${attrValues.message});"
       }
 
       String actionCode = vp.widgetProcessor.genActionCode(popup) 
@@ -48,7 +53,8 @@ class PopupProcessor extends xj.mobile.common.PopupProcessor {
       def preAction = ''
 
       if (popup.cancel) { 
-		def cancelText = "\"${popup.cancel}\""
+		//def cancelText = "\"${popup.cancel}\""
+		def cancelText = attrValues.cancel
 		def cancelAction = 'dialog.cancel();'
 		if (actionCode) { 
 		  if (params) { 
@@ -68,7 +74,10 @@ class PopupProcessor extends xj.mobile.common.PopupProcessor {
       } 
 
       if (popup.affirm || !popup.children && !popup.buttons) { 
-		def affirmText = popup.affirm ? "\"${popup.affirm}\"" : '\"OK\"'
+		//def affirmText = popup.affirm ? "\"${popup.affirm}\"" : '\"OK\"'
+		def affirmText = attrValues.affirm
+		if (affirmText == 'null') affirmText = '\"OK\"'
+
 		def affirmCode = 'null'
 		preAction = ''
 		if (actionCode) { 
@@ -128,7 +137,14 @@ class PopupProcessor extends xj.mobile.common.PopupProcessor {
 		buttonCode += "\n${template}"   
       }
 
+      def ctemp = temp.create
+      def arg = ''
+	  if (t2) { 
+		def type = vp.getTransitionDataType(t2)
+		arg = "${vp.getTransitionNativeType(type)} data"
+	  }
       binding = [ name : name,
+				  arg: arg,
 				  cancellable : !popup.cancel,
 				  setters : builderSetters,
 				  buttons : buttonCode, 

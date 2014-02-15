@@ -41,7 +41,10 @@ class AndroidDefaultViewTemplates {
 		declaration: '${type} ${name};'
 	  ],
 	  [
-		creation: '${name} = getIntent().getExtras().get${type}(\"${viewid.toUpperCase()}_DATA\");'
+		binding: [
+		  typeName: { type.endsWith('[]') ? (type[0 .. -3] + 'Array') : type }
+		], 
+		creation: '${name} = getIntent().getExtras().get${typeName}(\"${viewid.toUpperCase()}_DATA\");'
 	  ], 
 	],  
 
@@ -83,10 +86,11 @@ findViewById(android.R.id.content).setOnTouchListener(new View.OnTouchListener()
 	],
 
 	//
-	// handle spinner 
+	// handle spinner group 
 	//
 
-	spinner1: [
+	spinnerg1: [
+	  //when: { actionCode != null || selectCode != null }, 
 	  creation: '''AdapterView.OnItemSelectedListener selectionListener = new AdapterView.OnItemSelectedListener() {
 
     String[] items = { ${items} };
@@ -102,15 +106,34 @@ ${indent(actionCode, 2, '    ')}
 '''
 	],
 
-	spinner2: [
+	spinnerg2: [
 	  creation: '${name}.setOnItemSelectedListener(selectionListener);'
 	], 
+	
+	//
+	// handle spinner 
+	//
+
+	spinner: [
+	  [
+		declaration: '''private static final String[] ${name}Data = {
+${indent(values, 1, '    ')}
+};'''
+	  ],
+	  [
+		creation: '''ArrayAdapter<String> ${name}Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ${name}Data);
+${name}Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+${name}.setAdapter(${name}Adapter);
+'''
+	  ]
+	],
 
 	//
 	// handle slider 
 	//
 
 	slider: [
+	  when: { actionCode != null }, 
 	  creation: '''${name}.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -123,6 +146,59 @@ ${indent(actionCode, 2, '    ')}
 '''
 	],
 
+	//
+	//  handle DatePicker 
+	//
+
+	datePicker: [
+	  [
+		when: { actionCode != null }, 
+		import: [ 'java.text.DateFormat', 'java.util.Calendar', 'java.util.Date' ],
+	  ], 
+	  [
+		when: { actionCode != null }, 
+		creation: '''final Calendar c = Calendar.getInstance();
+final int year = c.get(Calendar.YEAR);
+final int month = c.get(Calendar.MONTH);
+final int day = c.get(Calendar.DAY_OF_MONTH);
+${name}.init(year, month, day, new DatePicker.OnDateChangedListener() {
+
+    public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+        String date = DateFormat.getDateInstance(DateFormat.MEDIUM).format(new Date(year, monthOfYear, dayOfMonth));
+${indent(actionCode, 2, '    ')}
+  }
+
+});
+'''
+	  ], 
+	], 
+
+	//
+	//  handle TimePicker 
+	//
+
+	timePicker: [
+	  [
+		when: { actionCode != null }, 
+		import: [ 'java.text.DateFormat', 'java.util.Calendar', 'java.util.Date' ],
+	  ], 
+	  [
+		when: { actionCode != null }, 
+		creation: '''final Calendar c = Calendar.getInstance();
+final int year = c.get(Calendar.YEAR);
+final int month = c.get(Calendar.MONTH);
+final int day = c.get(Calendar.DAY_OF_MONTH);
+${name}.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+
+    public void onTimeChanged(TimePicker view, int hour, int minute) {
+        String time = DateFormat.getTimeInstance(DateFormat.MEDIUM).format(new Date(year, month, day, hour, minute));
+${indent(actionCode, 2, '    ')}
+  }
+
+});
+'''
+	  ],
+	],
 
 	//
 	// handle interface orientations

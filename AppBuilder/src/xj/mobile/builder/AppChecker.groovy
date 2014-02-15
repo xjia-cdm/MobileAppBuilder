@@ -19,14 +19,25 @@ class AppChecker {
   AppChecker(app) { 
     this.app = app
     info "[AppChecker] verbose=${verbose}"
-    if (app?.mainView)
-      check(app.mainView)
+    //if (app?.mainView)
+	//check(app.mainView)
+
+    if (app.children) { 
+      app.children.each { w -> check(w) }
+    }
   }
 
   def check(ModelNode node) { 
     if (verbose) info "[AppChecker] check ${node.nodeType}"
-	
 	String nodeType = node.nodeType
+
+	if (node.parent == app && 
+		!Language.isTopView(nodeType)) { 
+	  errors << new ErrorMessage(file: Main.scriptFile, line: node.'#line', 
+								 message: "${nodeType} is not a top-level view. It is not allowed here.")
+    
+	}
+	
 	if (Language.isTransition(nodeType)) { 
 
 	} else if (Language.isState(nodeType)) { 

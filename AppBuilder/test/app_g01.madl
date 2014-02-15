@@ -1,0 +1,20 @@
+
+def widgets =
+[
+  Label: [],
+  Button: [],
+  Image: [],
+  
+] 
+
+def view() { 
+  View { 
+	
+  }
+}
+
+app('MADL Test Case G01') {
+
+  
+
+}

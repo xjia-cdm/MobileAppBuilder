@@ -26,15 +26,6 @@ class PopupProcessor {
 		tname = wtype
 	  } else { 
 		tname = WidgetMap.getPlatformWidgetName(wtype, vp.widgetProcessor.target)
-		/*
-		def wmap = WidgetMap.widgets[wtype]
-		def pname = wmap ? wmap[vp.widgetProcessor.target] : null  
-		if (pname && pname instanceof List) { 
-		  tname = pname[0]
-		} else { 
-		  tname = pname
-		}
-		*/
 	  }
 	}
 	return tname
