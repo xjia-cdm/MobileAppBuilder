@@ -16,6 +16,8 @@ class AndroidAppTemplate extends AppTemplate {
 
   public static final  tab = '    '
 
+  static final String ANT_LOG_FILE = Main.WORK_DIR + File.separator + 'ant_log.txt'
+
   String version  // SDK version 
 
   def androidConfig;
@@ -36,8 +38,12 @@ class AndroidAppTemplate extends AppTemplate {
     super(appInfo)
     this.androidConfig = appInfo.platformConfig
     sdkHome = Main.systemConfig.android.sdk.home
-    templateDir = androidConfig.template.dir
+    templateDir = (Main.getAppBuilderHome() ?: '') + androidConfig.template.dir
 	version = appInfo.userConfig.platform.android.version ?: '4.0'
+
+	//println "[AndroidAppTemplate] Main.APP_BUILDER_HOME=${Main.APP_BUILDER_HOME}"
+	//println "[AndroidAppTemplate] androidConfig.template.dir=${androidConfig.template.dir}"
+	//println "[AndroidAppTemplate] templateDir=${templateDir}"
 
     mainActivity = appid
 
@@ -67,6 +73,7 @@ class AndroidAppTemplate extends AppTemplate {
   }
 
   boolean generateCode(Project project) { 
+	boolean okay = true
 	if (isSDKAvailble && isVersionAvailable) { 
 	  generateProject()
 
@@ -93,16 +100,18 @@ class AndroidAppTemplate extends AppTemplate {
 	  generateResources(project)  
 
 	  ant.echo('Android App Project Generation Complete.') 
-	  return true
 	} else { 
 	  ant.echo('Android App Project Generation Failed.') 
-	  return false
+	  okay = false
 	}
+
+	new File(ANT_LOG_FILE).delete()
+	return okay
   }
 
   void generateProject() {  
-	new File('ant-log.txt').delete()
-	ant.record(name: 'ant-log.txt', action: 'start')
+	new File(ANT_LOG_FILE).delete()
+	ant.record(name: ANT_LOG_FILE, action: 'start')
     ant.echo('Create Android App Project')
     ant.delete(dir: projectOutputDir)
 
@@ -130,14 +139,41 @@ class AndroidAppTemplate extends AppTemplate {
     info "Std out:\n${proc.in.text}"    
 
     ant.echo('Copy res/drawable')
-    ant.copy(todir: "${projectOutputDir}",
+    ant.copy(todir: projectOutputDir,
 			 overwrite: true) {
       fileset(dir: templateDir) {
 		include(name:"res/drawable*/*.png")
       }
     }
-	ant.record(name: 'ant-log.txt', action: 'stop')
-	info new File('ant-log.txt').text
+
+
+	ant.copy(todir: projectOutputDir,
+			 overwrite: true) {
+	  fileset(dir: templateDir) {
+		include(name: "*.sh")
+		include(name: "*.bat")
+		include(name: "*.py")
+	  }
+	  filterset(begintoken: '___', endtoken: '___') { 
+		filter(token: 'PROJECTNAME', value: appname)
+		filter(token: 'PROJECTNAMEASIDENTIFIER', value: appid)
+		filter(token: 'PACKAGE', value: packageName)
+	  
+		filter(token: 'FULLUSERNAME', value: author)
+		filter(token: 'DATE', value: dateString)
+		filter(token: 'YEAR', value: yearString)
+		filter(token: 'ORGANIZATIONNAME', value: org)
+	  }
+	}
+
+	ant.chmod(perm: '+x') { 
+	  fileset(dir: projectOutputDir) {
+		include(name: "*.sh")
+	  }
+	}
+
+	ant.record(name: ANT_LOG_FILE, action: 'stop')
+	info new File(ANT_LOG_FILE).text
   }
 
   void generateViewLayout(AndroidResources res) { 
@@ -171,8 +207,8 @@ class AndroidAppTemplate extends AppTemplate {
     if (c) { 
 	  c.process()
 
-	  new File('ant-log.txt').delete()
-	  ant.record(name: 'ant-log.txt', action: 'start')
+	  new File(ANT_LOG_FILE).delete()
+	  ant.record(name: ANT_LOG_FILE, action: 'start')
       ant.echo('Create Class')
       def viewname = c.isMainView ? appid : c.name
       def outputDir = "${projectOutputDir}/src/${packageName.replaceAll('\\.', '/')}"
@@ -206,15 +242,15 @@ class AndroidAppTemplate extends AppTemplate {
       }
       
       ant.echo('Class Done')
-	  ant.record(name: 'ant-log.txt', action: 'stop')
-	  info new File('ant-log.txt').text
+	  ant.record(name: ANT_LOG_FILE, action: 'stop')
+	  info new File(ANT_LOG_FILE).text
     }
 
   }
 
   void generateAuxiliaryClasses(auxiliaryClasses) { 
-	new File('ant-log.txt').delete()
-	ant.record(name: 'ant-log.txt', action: 'start')
+	new File(ANT_LOG_FILE).delete()
+	ant.record(name: ANT_LOG_FILE, action: 'start')
 	ant.echo('Generate Auxiliary Classes')
 
 	def outputDir = "${projectOutputDir}/src/${packageName.replaceAll('\\.', '/')}"
@@ -240,8 +276,8 @@ class AndroidAppTemplate extends AppTemplate {
 	}
 
 	ant.echo('Auxiliary Classes Done')
-	ant.record(name: 'ant-log.txt', action: 'stop')
-	info new File('ant-log.txt').text
+	ant.record(name: ANT_LOG_FILE, action: 'stop')
+	info new File(ANT_LOG_FILE).text
   }
 
   void generateAppManifest(Project project) { 
@@ -384,17 +420,8 @@ class AndroidAppTemplate extends AppTemplate {
   void addImageFiles(imageFiles) { 
     // copy image files
     if (imageFiles) { 
-	  /*
-      ant.copy(todir: "${projectOutputDir}/res/drawable-mdpi") {
-		fileset(dir: "${Main.sourceDir}/images") {
-		  imageFiles.each { f -> 
-			include(name: f)
-		  }
-		}
-      }
-	  */
 	  imageFiles.each { f -> 
-		def fname = "${Main.sourceDir}/images/${f}"
+		def fname = "${Main.imageDir}/${f}"
 		if (new File(fname).exists()) { 
 		  ant.copy(file: fname,
 				   tofile: "${projectOutputDir}/res/drawable-mdpi/${f.toLowerCase()}")

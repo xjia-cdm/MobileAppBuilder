@@ -4,6 +4,7 @@ app(name : 'European Countries') {
 	[ key: 'austria', name: 'Austria', capital: 'Vienna' ],
 	[ key: 'belgium', name: 'Belgium', capital: 'City of Brussels' ],
 	[ key: 'bulgaria', name: 'Bulgaria', capital: 'Sofia' ],
+	[ key: 'croatia', name: 'Croatia', capital: 'Zagreb' ], 
 	[ key: 'cyprus', name: 'Cyprus', capital: 'Nicosia' ],
 	[ key: 'czechrepublic', name: 'Czech Republic', capital: 'Prague' ],
 	[ key: 'denmark', name: 'Denmark', capital: 'Copenhagen' ],

@@ -6,7 +6,7 @@ files="android02b"
 mkdir gen/Platform.Android-Ref
 for f in $files
 do
-    devbin/appbuilder -nodate test/$f.madl test/org-android.properties
+    devbin/appbuilder -nodate test/$f.madl test/org-android.conf
     cp -R gen/Platform.Android/$f gen/Platform.Android-Ref/
 done
 

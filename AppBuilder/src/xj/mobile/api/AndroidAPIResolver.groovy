@@ -2,6 +2,7 @@ package xj.mobile.api
 
 import org.ho.yaml.Yaml
 
+import xj.mobile.Main
 import xj.mobile.codegen.templates.WidgetTemplates
 import xj.mobile.model.properties.Font
 import xj.mobile.common.ViewProcessor
@@ -12,7 +13,7 @@ import static xj.mobile.lang.AttributeMap.*
 
 class AndroidAPIResolver extends APIResolver {  
 
-  static baseDir = 'lib/api/android'
+  static baseDir = Main.getAppBuilderHome() + 'lib/api/android'
 
   static fontAttrDef = 
     new AndroidPropertyDef(name: 'font', className: 'TextView', type: 'Font', 

@@ -11,12 +11,14 @@ import xj.mobile.model.impl.ClassModel
 import xj.mobile.codegen.EntityUnparser
 import xj.mobile.codegen.UnparserViewProperty
 import xj.mobile.lang.ast.*
+import xj.mobile.common.AppInfo
 
 @Mixin(xj.mobile.codegen.UnparserViewProperty)
 class UnparserAndroid extends UnparserJava { 
 
   String target = 'android'
   
+  AppInfo appInfo
   ClassModel classModel
 
   EntityUnparser entityUnparser 
@@ -122,5 +124,15 @@ class UnparserAndroid extends UnparserJava {
 	classModel.addImport(f)
   }
 
+  String getFloatFormat() { 
+	def floatPrec = appInfo?.userConfig?.format?.floatingPoint?.precision
+	//println "[UnparserIOS] getFloatFormat(): appname = ${appInfo?.appname}  floatPrec = ${floatPrec}"
+	if (floatPrec) { 
+	  int p = floatPrec as int
+	  if (p > 0 && p < 6) 
+		return '#.' + ('#' * p)
+	}
+	return null
+  }
 
 }

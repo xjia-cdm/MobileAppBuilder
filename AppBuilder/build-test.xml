@@ -169,6 +169,23 @@
     </junit>
   </target>   
 
+  <target name="regression_d1"> 
+    <junit printsummary="yes"
+		   showoutput="no"
+		   outputtoformatters="yes"
+		   fork="yes" 
+		   haltonfailure="no"
+		   maxmemory="512m">
+      <classpath location="${classes}"/>
+      <classpath refid="compile.classpath"/>
+      <classpath location="../Translator/classes"/>
+      <classpath location="work"/>
+
+      <formatter type="plain"/>
+      <test name="xj.mobile.test.AppBuilderTestD1"/>
+    </junit>
+  </target>   
+
   <target name="regression_e1"> 
     <junit printsummary="yes"
 		   showoutput="no"
@@ -199,7 +216,16 @@
       <classpath location="work"/>
 
       <formatter type="plain"/>
-      <test name="xj.mobile.test.AppBuilderTestT1"/>
+	  <test name="xj.mobile.test.AppBuilderTestT1"/> 
+	  <test name="xj.mobile.test.AppBuilderTestTD"/> 
+      <!-- 
+	  <batchtest todir=".">
+		<fileset dir="${src}">
+			<include name="xj/mobile/test/AppBuilderTestT*.java" />
+		</fileset>
+	  </batchtest>
+	  --> 
+
     </junit>
   </target>   
 
@@ -260,6 +286,7 @@
     <antcall target="regression5"/>
     <antcall target="regression6"/>
     <antcall target="regression7"/>
+    <antcall target="regression_d1"/>
     <antcall target="regression_e1"/>
     <antcall target="regression_t1"/>
     <antcall target="regression_ps1"/>

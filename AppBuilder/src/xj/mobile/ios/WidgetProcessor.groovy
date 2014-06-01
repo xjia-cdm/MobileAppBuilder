@@ -11,6 +11,7 @@ import xj.mobile.codegen.Delegate
 
 import xj.mobile.codegen.CodeGenerator
 
+import static xj.mobile.codegen.CodeGenerator.InjectionPoint.*
 import static xj.mobile.codegen.templates.IOSDelegateTemplates.*
 import static xj.mobile.codegen.templates.IOSWidgetTemplates.*
 import static xj.mobile.common.ViewUtils.*
@@ -68,18 +69,6 @@ class WidgetProcessor extends xj.mobile.common.WidgetProcessor {
 	  if (vp.autoLayout) { 
 		generator.injectCodeFromTemplateRef(classModel, "${platformName}:autoCreate", binding)
 		generator.injectCodeFromTemplateRef(classModel, "${platformName}:autoResize", binding)
-		widget['#layout']?.each { c -> 
-		  def param = toLayoutParam(c, binding)
-		  if (param instanceof List) { 
-			param.each { p -> 
-			  generator.injectCodeFromTemplateRef(classModel, "${platformName}:autoLayout", 
-												  binding + p)
-			}
-		  } else { 
-			generator.injectCodeFromTemplateRef(classModel, "${platformName}:autoLayout", 
-												binding + param)
-		  }
-		}
 	  } else { 
 		generator.injectCodeFromTemplateRef(classModel, "${platformName}:create", binding)
 		if (wtemp.initWithAttributes)
@@ -96,6 +85,22 @@ class WidgetProcessor extends xj.mobile.common.WidgetProcessor {
 
 	  generator.injectCodeFromTemplateRef(classModel, "${platformName}:addSubview", binding)
 	  classModel.declareProperty(binding.uiclass, binding.name)
+
+	  if (vp.autoLayout) { 
+		widget['#layout']?.each { c -> 
+		  def param = toLayoutParam(c, binding)
+		  if (param instanceof List) { 
+			param.each { p -> 
+			  generator.injectCodeFromTemplateRef(classModel, "${platformName}:autoLayout", 
+												  binding + p)
+			}
+		  } else { 
+			generator.injectCodeFromTemplateRef(classModel, "${platformName}:autoLayout", 
+												binding + param)
+		  }
+		  classModel.injectCode(LoadView, ' ') // add a blamk line
+		}
+	  } 
 
       if (wtemp.processor) { 
 		wtemp.processor.process(widget, vp)

@@ -7,6 +7,7 @@ import org.codehaus.groovy.ast.expr.*
 import org.codehaus.groovy.ast.stmt.*
 import org.codehaus.groovy.ast.builder.AstBuilder
 
+import xj.mobile.Main
 import xj.mobile.lang.*
 import xj.mobile.model.*
 import xj.mobile.model.sm.*
@@ -42,7 +43,7 @@ class ModelBuilder {
   DependencyAnalyzer analyzer
 
   ModelBuilder() { 
-    info "[ModelBuilder] verbose=${verbose}"
+    //info "[ModelBuilder] verbose=${verbose}"
 	analyzer = new  DependencyAnalyzer(this)
   }
 
@@ -65,15 +66,16 @@ class ModelBuilder {
 	widgetTable = [:]
   }
 
-  def getAppDefLineNumber() { 
+  int getAppDefLineNumber() { 
     Throwable t = new Throwable()
     //t.printStackTrace()
     getAppDefLineNumber(t)
   }
 
-  def getAppDefLineNumber(Throwable t) { 
+  int getAppDefLineNumber(Throwable t) { 
     if (t) { 
       for (StackTraceElement ste in t.stackTrace) { 
+		//if (ste?.fileName?.endsWith(Main.SCRIPT_FILENAME)) { 
 		if (ste.fileName == 'app.groovy') { 
 		  return ste.lineNumber
 		}

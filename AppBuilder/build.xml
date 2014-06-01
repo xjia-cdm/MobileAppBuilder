@@ -10,7 +10,9 @@
   <property name="deprecation" value="off"/>
 
   <property name="devpack" value="AppBuilder-dev"/>
+  <property name="binpack" value="AppBuilder-bin"/>
   <property name="docpack" value="AppBuilder-doc"/>
+  <property name="tutpack" value="AppBuilder-Tutorial"/>
   <property name="defpack" value="AppBuilder-def"/>
 
   <import file="build-base.xml"/>
@@ -72,6 +74,7 @@
 		  preservelastmodified="true">
 	  <fileset dir=".">
 		<include name="build*"/>
+		<include name="LICENSE"/>
 
 		<include name="${bin}/*"/>
 		<include name="${devbin}/*"/>
@@ -82,13 +85,14 @@
 		<include name="${src}/**"/>
 
 		<include name="${conf}/**"/>
-		<exclude name="${conf}/system-mac.conf"/>		
+		<exclude name="${conf}/system-mac.conf"/>	
+		<exclude name="${conf}/md5.txt"/>			
 
 		<include name="${lib}/**"/>
 		<include name="${templates}/**"/>
 
 		<include name="${test}/*.madl"/>
-		<include name="${test}/*.properties"/>
+		<include name="${test}/*.conf"/>
 		<include name="${test}/images/**"/>
 		<include name="${test}/apps/**"/>
 	  </fileset>
@@ -102,9 +106,61 @@
 		 includes="${devpack}/**"/>
   </target>
 
+  <target name="binpack" depends="prepare">
+    <delete dir="${dist}/${binpack}"/>
+
+    <copy todir="${dist}/${binpack}" 
+		  includeEmptyDirs="false"
+		  preservelastmodified="true">
+	  <fileset dir=".">
+		<include name="LICENSE"/>
+
+		<include name="${bin}/*"/>
+
+		<include name="${conf}/**"/>
+		<exclude name="${conf}/system*.conf"/>		
+		<exclude name="${conf}/md5.txt"/>		
+
+		<include name="${lib}/**"/>
+		<include name="${templates}/**"/>
+
+		<!--
+		<include name="${test}/*.madl"/>
+		<include name="${test}/*.conf"/>
+		<include name="${test}/images/**"/>
+		-->
+	  </fileset>
+    </copy>
+
+    <copy todir="${dist}/${binpack}/conf">
+	  <fileset dir="devconf">
+		<include name="*"/>
+	  </fileset>
+    </copy>
+
+    <copy todir="${dist}/${binpack}" 
+		  includeEmptyDirs="false"
+		  preservelastmodified="true">
+	  <fileset dir="${test}">
+		<include name="Tutorials/*.madl"/>
+		<include name="Tutorials/*.conf"/>
+		<include name="Tutorials/images/**"/>
+	  </fileset>
+    </copy>
+
+    <chmod perm="+x" file="${dist}/${binpack}/${bin}/*"/>
+
+    <zip destfile="${dist}/${binpack}-${DSTAMP}.zip" 
+		 basedir="${dist}" 
+		 includes="${binpack}/**"/>
+  </target>
+
   <target name="docpack" depends="prepare">
     <zip destfile="${dist}/${docpack}-${DSTAMP}.zip" 
 		 basedir="${test}" 
+		 includes="output/**,Screenshots/**"/>    
+    <zip destfile="${dist}/${tutpack}-${DSTAMP}.zip" 
+		 basedir="${test}/Tutorials" 
 		 includes="output/**,Screenshots/**"/>    
     <zip destfile="${dist}/${defpack}-${DSTAMP}.zip" 
 		 basedir="${test}/lang" 

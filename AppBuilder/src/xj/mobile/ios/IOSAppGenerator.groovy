@@ -25,7 +25,7 @@ class IOSAppGenerator extends AppGenerator {
 
     def unparser = new UnparserIOS()
     translator = new Translator(Language.ObjectiveC, unparser)
-    translator.load('conf/View.groovy')
+    translator.load(Main.getAppBuilderHome() + 'conf/View.groovy')
 
     unparser.setUnparseOptions([ UseNSInteger: true ])
 	unparser.appInfo = appInfo

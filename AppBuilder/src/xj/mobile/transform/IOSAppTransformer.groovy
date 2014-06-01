@@ -32,6 +32,14 @@ class IOSAppTransformer extends AppTransformer {
 		]
 	  ],
 
+	  Popup: [
+		[ { lhs -> lhs.message != null },
+		  { lhs ->
+			lhs['#type'] = 'Alert'
+		  }
+		]
+	  ],
+
 	  Text: [
 		[ true,
 		  { 

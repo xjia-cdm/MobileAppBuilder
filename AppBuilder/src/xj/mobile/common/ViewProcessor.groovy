@@ -637,4 +637,8 @@ abstract class ViewProcessor {
 	}
   }
 
+  def getDataVarValues() { 
+	view.'#info'?.dataVarValues
+  }
+
 }

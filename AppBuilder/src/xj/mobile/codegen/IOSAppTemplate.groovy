@@ -12,6 +12,8 @@ class IOSAppTemplate extends AppTemplate {
 
   static int sdk_version = 7
 
+  static final String ANT_LOG_FILE = Main.WORK_DIR + File.separator + 'ant_log.txt'
+
   def iosConfig;
 
   String projectTemplateDir;
@@ -25,16 +27,16 @@ class IOSAppTemplate extends AppTemplate {
 
 	if (userConfig.platform.ios.version == 5) { 
 	  sdk_version = 5
-	  projectTemplateDir = iosConfig.template.sdk5.dir
-	  viewControllerTemplateDir = iosConfig.template.sdk5.file.dir
+	  projectTemplateDir = Main.getAppBuilderHome() + iosConfig.template.sdk5.dir
+	  viewControllerTemplateDir = Main.getAppBuilderHome() + iosConfig.template.sdk5.file.dir
 	} else if (userConfig.platform.ios.version == 6) { 
 	  sdk_version = 6
-	  projectTemplateDir = iosConfig.template.sdk6.dir
-	  viewControllerTemplateDir = iosConfig.template.sdk6.file.dir
+	  projectTemplateDir = Main.getAppBuilderHome() + iosConfig.template.sdk6.dir
+	  viewControllerTemplateDir = Main.getAppBuilderHome() + iosConfig.template.sdk6.file.dir
 	} else { 
 	  sdk_version = 7
-	  projectTemplateDir = iosConfig.template.sdk7.dir
-	  viewControllerTemplateDir = iosConfig.template.sdk7.file.dir
+	  projectTemplateDir = Main.getAppBuilderHome() + iosConfig.template.sdk7.dir
+	  viewControllerTemplateDir = Main.getAppBuilderHome() + iosConfig.template.sdk7.file.dir
 	}
   }
 
@@ -58,6 +60,7 @@ class IOSAppTemplate extends AppTemplate {
 	addFilesToProject(project)
 
     ant.echo('iOS App Project Generation Complete.')
+	new File(ANT_LOG_FILE).delete()
 	return true
   }
 
@@ -68,8 +71,8 @@ class IOSAppTemplate extends AppTemplate {
   }
 
   void generateProject(Project project) {  
-	new File('ant-log.txt').delete()
-	ant.record(name: 'ant-log.txt', action: 'start')
+	new File(ANT_LOG_FILE).delete()
+	ant.record(name: ANT_LOG_FILE, action: 'start')
 
     ant.echo('Create iOS App Project')
     ant.delete(dir: projectOutputDir)
@@ -118,14 +121,14 @@ class IOSAppTemplate extends AppTemplate {
       }
 	}
 
-	ant.record(name: 'ant-log.txt', action: 'stop')
-	info new File('ant-log.txt').text
+	ant.record(name: ANT_LOG_FILE, action: 'stop')
+	info new File(ANT_LOG_FILE).text
   }
 
   void generateAppDelegate(IOSAppDelegate ad) {  
     if (ad) { 
-	  new File('ant-log.txt').delete()
-	  ant.record(name: 'ant-log.txt', action: 'start')
+	  new File(ANT_LOG_FILE).delete()
+	  ant.record(name: ANT_LOG_FILE, action: 'start')
 	
       ant.echo('Create AppDelegate')
 
@@ -166,8 +169,8 @@ class IOSAppTemplate extends AppTemplate {
       }
 
       ant.echo('AppDelegate Done')
-	  ant.record(name: 'ant-log.txt', action: 'stop')
-	  info new File('ant-log.txt').text
+	  ant.record(name: ANT_LOG_FILE, action: 'stop')
+	  info new File(ANT_LOG_FILE).text
     }
   }
 
@@ -176,8 +179,8 @@ class IOSAppTemplate extends AppTemplate {
     if (vc) { 
 	  vc.process()
 
-	  new File('ant-log.txt').delete()
-	  ant.record(name: 'ant-log.txt', action: 'start')
+	  new File(ANT_LOG_FILE).delete()
+	  ant.record(name: ANT_LOG_FILE, action: 'start')
 	
       ant.echo('Create ViewController')
       def viewControllerName = vc.name
@@ -224,8 +227,8 @@ class IOSAppTemplate extends AppTemplate {
       }
       
       ant.echo('ViewController Done')
-	  ant.record(name: 'ant-log.txt', action: 'stop')
-	  info new File('ant-log.txt').text
+	  ant.record(name: ANT_LOG_FILE, action: 'stop')
+	  info new File(ANT_LOG_FILE).text
     }
   }
  
@@ -238,8 +241,8 @@ class IOSAppTemplate extends AppTemplate {
 
 	  projHandler.addFiles(sourceFiles, imageFiles + systemImageFiles, frameworks)
 
-	  new File('ant-log.txt').delete()
-	  ant.record(name: 'ant-log.txt', action: 'start')
+	  new File(ANT_LOG_FILE).delete()
+	  ant.record(name: ANT_LOG_FILE, action: 'start')
 	
 	  boolean imageDirExists = (new File(Main.imageDir)).exists()
 
@@ -248,7 +251,7 @@ class IOSAppTemplate extends AppTemplate {
 		ant.copy(todir: "${projectOutputDir}/${appname}/images") {
 		  fileset(dir: Main.imageDir) {
 			imageFiles.each { f -> 
-			  def fname = "${Main.sourceDir}/images/${f}"
+			  def fname = "${Main.imageDir}/${f}"
 			  if (new File(fname).exists()) { 
 				include(name: f)
 			  } else { 
@@ -285,8 +288,8 @@ class IOSAppTemplate extends AppTemplate {
 		}
 	  }
 
-	  ant.record(name: 'ant-log.txt', action: 'stop')
-	  info new File('ant-log.txt').text
+	  ant.record(name: ANT_LOG_FILE, action: 'stop')
+	  info new File(ANT_LOG_FILE).text
 
 	}
   }

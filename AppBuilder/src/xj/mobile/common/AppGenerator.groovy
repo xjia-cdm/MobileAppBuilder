@@ -62,7 +62,8 @@ abstract class AppGenerator {
 	  info "[${platform}AppGenerator] After mapping widgets:\n" + app.print()
 	  info "[${platform}AppGenerator] Analyzing ${target} App ..."
 
-	  def appInfo = new AppInfo(app, filename, target, getAppConfig(target), userConfig)
+	  def appInfo = new AppInfo(app, filename, target,
+								getAppConfig(target), userConfig)
 	  setUp(appInfo)
 
 

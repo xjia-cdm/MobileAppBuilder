@@ -22,7 +22,7 @@ import java.lang.reflect.InvocationTargetException;
 public class NumberStepper extends LinearLayout {
 
   final long REPEAT_DELAY = 50;
-  final int BUTTON_HEIGHT = 35;
+  final int BUTTON_HEIGHT = 50;
 
   protected int fontSize = 15;
 	

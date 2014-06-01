@@ -14,21 +14,21 @@ for f in $files
 do
     #mkdir gen/Platform.iOS-Ref/$f
     #mkdir gen/Platform.Android-Ref/$f
-    devbin/appbuilder -nodate test/$f.madl test/org-ios.properties
+    devbin/appbuilder -nodate test/$f.madl test/org-ios.conf
     cp -R gen/Platform.iOS/$f gen/Platform.iOS-Ref/
 
-    devbin/appbuilder -nodate test/$f.madl test/org-android.properties
+    devbin/appbuilder -nodate test/$f.madl test/org-android.conf
     cp -R gen/Platform.Android/$f gen/Platform.Android-Ref/
 done
 
 for f in $iosfiles
 do
-    devbin/appbuilder -nodate test/$f.madl test/org-ios.properties
+    devbin/appbuilder -nodate test/$f.madl test/org-ios.conf
     cp -R gen/Platform.iOS/$f gen/Platform.iOS-Ref/
 done
 
 for f in $androidfiles
 do
-    devbin/appbuilder -nodate test/$f.madl test/org-android.properties
+    devbin/appbuilder -nodate test/$f.madl test/org-android.conf
     cp -R gen/Platform.Android/$f gen/Platform.Android-Ref/
 done

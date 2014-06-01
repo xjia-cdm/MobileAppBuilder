@@ -77,4 +77,29 @@ class EditorInfo {
 	Language.Actions
   } 
 
+  static void main(args) { 
+	println '\t// widgets'
+	println '\t' + getWidgetNames().collect { "\"${it}\"" }.join(',\n\t')
+
+	println '\n\t// view containers'
+	println '\t' + getViewContainerNames().collect { "\"${it}\"" }.join(',\n\t')
+
+	println '\n\t// transitions'
+	println '\t' + getTransitionNames().collect { "\"${it}\"" }.join(',\n\t')
+
+	println '\n\t// actions'
+	println '\t' + getActionNames().collect { "\"${it}\"" }.join(',\n\t')
+
+	println '\n\t// shapes'
+	println '\t' + getShapeNames().collect { "\"${it}\"" }.join(',\n\t')
+
+	println '\n\t// paths'
+	println '\t' + getPathNames().collect { "\"${it}\"" }.join(',\n\t')
+
+
+
+
+	
+  }
+
 }

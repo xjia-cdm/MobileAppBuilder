@@ -10,6 +10,6 @@ files="ios11b"
 mkdir gen/Platform.iOS-Ref
 for f in $files
 do
-    devbin/appbuilder -nodate test/$f.madl test/org-ios.properties
+    devbin/appbuilder -nodate test/$f.madl test/org-ios.conf
     cp -R gen/Platform.iOS/$f gen/Platform.iOS-Ref/
 done

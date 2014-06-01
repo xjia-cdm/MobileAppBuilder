@@ -28,6 +28,8 @@ class AndroidAppGenerator extends AppGenerator {
     translator = new Translator(Language.Java, unparser)
     translator.load(Main.confDir + '/View.groovy')
 
+	unparser.appInfo = appInfo
+
 	CodeGenerator generator = CodeGenerator.getCodeGenerator('android')
 	generator.unparser = unparser
 

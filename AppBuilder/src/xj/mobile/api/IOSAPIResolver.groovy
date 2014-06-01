@@ -2,6 +2,7 @@ package xj.mobile.api
 
 import org.ho.yaml.Yaml
 
+import xj.mobile.Main
 import xj.mobile.codegen.templates.WidgetTemplates
 import xj.mobile.lang.WidgetMap
 
@@ -10,7 +11,7 @@ import static xj.mobile.lang.AttributeMap.*
 
 class IOSAPIResolver extends APIResolver {  
   
-  static baseDir = 'lib/api/ios'
+  static baseDir = Main.getAppBuilderHome() + 'lib/api/ios'
 
   static attributeDef = [
 	UIButton: [

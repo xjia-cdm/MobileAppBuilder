@@ -56,7 +56,7 @@ class ErrorMessage {
 			} catch (NumberFormatException nfe) { }
 		  }
 		  
-		  if (file == 'work/app.groovy') { 
+		  if (file == Main.SCRIPT_FILENAME) { 
 			file = Main.scriptFile 
 			if (line > 0) { 
 			  line -= Main.SCRIPT_HEADER_LINE

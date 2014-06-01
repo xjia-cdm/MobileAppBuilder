@@ -11,15 +11,18 @@ class AppBuilderTest {
 
   // test for platforms
 
-  static USER_CONFIG = 'test/org.properties'
+  static USER_CONFIG = 'test/org.conf'
 
-  static USER_CONFIG_IOS = 'test/org-ios.properties'
-  static USER_CONFIG_IOS_AUTOLAYOUT = 'test/org-autolayout.properties'
-  static USER_CONFIG_IOS_FORMAT1 = 'test/org-ios-format1.properties'
+  static USER_CONFIG_IOS = 'test/org-ios.conf'
+  static USER_CONFIG_IOS_AUTOLAYOUT = 'test/org-autolayout.conf'
+  static USER_CONFIG_IOS_FORMAT1 = 'test/org-ios-format1.conf'
 
-  static USER_CONFIG_ANDROID = 'test/org-android.properties'
-  static USER_CONFIG_ANDROID_NOSUPPORT = 'test/org-android-nosupport.properties'
-  static USER_CONFIG_ANDROID_FORMAT1 = 'test/org-android-format1.properties'
+  static USER_CONFIG_ANDROID = 'test/org-android.conf'
+  static USER_CONFIG_ANDROID_NOSUPPORT = 'test/org-android-nosupport.conf'
+  static USER_CONFIG_ANDROID_FORMAT1 = 'test/org-android-format1.conf'
+
+  static USER_CONFIG_ANDROID_RADIOGROUP = 'test/org-android-radiogroup.conf'
+  static USER_CONFIG_ANDROID_EXPANDABLE = 'test/org-android-expandable.conf'
 
   void test_iOS(String name, param = null) { 
     println "\n\nTest Case iOS: ${name}" 
@@ -116,11 +119,13 @@ class AppBuilderTest {
 	  boolean iosAutoLayout = false;
 	  boolean androidSupport = true;
 	  boolean format1 = false
+	  String designOpt = null
 	  if (param) { 
 		if (param.containsKey('androidSupport')) androidSupport = param['androidSupport']
 		if (param.containsKey('iosAutoLayout')) iosAutoLayout = param['iosAutoLayout']
 		//if (param.containsKey('format1')) 
 		format1 = param['format1']
+		designOpt = param['design']
 	  }
 
 	  String userConfig = USER_CONFIG
@@ -139,6 +144,12 @@ class AppBuilderTest {
 		  userConfig = USER_CONFIG_ANDROID_NOSUPPORT
 		} else if (format1) { 
 		  userConfig = USER_CONFIG_ANDROID_FORMAT1
+		} else if (designOpt == 'radiogroup') { 
+		  userConfig = USER_CONFIG_ANDROID_RADIOGROUP
+		  outdir = 'DesignOpt'
+		} else if (designOpt == 'expandable') { 
+		  userConfig = USER_CONFIG_ANDROID_EXPANDABLE
+		  outdir = 'DesignOpt'
 		} else {  
 		  userConfig = USER_CONFIG_ANDROID
 		}
@@ -165,6 +176,7 @@ class AppBuilderTest {
 	} else { 
 	  args = ([ '-nodate', "test/${infile}.madl", userConfig ]) as String[]
 	}
+	Main.TESTING = true
     Main.main(args)  // error if there is an exception
 	assertTrue("Test Case (${infile})", Main.success)
 

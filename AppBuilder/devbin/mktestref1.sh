@@ -222,7 +222,8 @@
 #files="app02b app02ba app02bb app02bc"
 #files="app12fa"
 #files="app07da app12fa"
-files="app02i"
+#files="app02i app12f app12fa"
+files="app07ca app07d"
 
 mkdir gen/Platform.iOS-Ref
 mkdir gen/Platform.Android-Ref
@@ -231,9 +232,9 @@ do
     #mkdir gen/Platform.iOS-Ref/$f
     #mkdir gen/Platform.Android-Ref/$f
 
-    devbin/appbuilder -nodate test/$f.madl test/org-ios.properties
+    devbin/appbuilder -nodate test/$f.madl test/org-ios.conf
     cp -R gen/Platform.iOS/$f gen/Platform.iOS-Ref/
 
-    devbin/appbuilder -nodate test/$f.madl test/org-android.properties
+    devbin/appbuilder -nodate test/$f.madl test/org-android.conf
     cp -R gen/Platform.Android/$f gen/Platform.Android-Ref/
 done

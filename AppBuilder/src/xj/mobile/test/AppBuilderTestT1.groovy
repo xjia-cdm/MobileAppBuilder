@@ -22,17 +22,21 @@ class AppBuilderTestT1 extends AppBuilderTest {
 				   views: [ 'View1' ] ], 
     'Actions'  : [ name: 'Actions', 
 				   views: [ 'View1' ] ], 
-    'Actions2' : [ name: 'Actions 2', 
+    'ImplicitActions' : [ name: 'Implicit Actions', 
 				   views: [ 'View1' ] ], 
 
-	'Table'    : [ name: 'Table', 
+	'Form'     : [ name: 'Form', 
 				   views: [ 'View1' ] ], 
+	'FormAction' : [ name: 'Form Action', 
+				   views: [ 'View1' ] ], 
+
 	'Tabs'     : [ name: 'Tabs', 
 				   views: [ 'TabbedView1', 'View1', 'View2', 'View3' ] ], 
 	'Navigation' : [ name: 'Navigation',
 					 views: [ 'Top', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8' ] ],
 	'Navigation2' : [ name: 'Navigation2',
 					  views: [ 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8' ] ],
+
 	'TipCalculator' : [ name: 'Tip Calculator', 
 						views: [ 'View1' ],
 						param: [ format1: true ] ], 
@@ -42,6 +46,14 @@ class AppBuilderTestT1 extends AppBuilderTest {
 	'TipCalculator3' : [ name: 'Tip Calculator 3', 
 						 views: [ 'View1' ],
 						 param: [ format1: true ] ], 
+
+	'WorldCities' : [ name: 'World Cities',
+					  views: [ 'Top', 'ListView1' ] ],
+	'EuropeanCountries' : [ name: 'European Countries',
+					  views: [ 'Top', 'ListView1' ] ],
+	'EuropeanUnion' : [ name: 'European Union',
+						 views: [ 'Top', 'ListView1', 'Country' ] ],
+
   ];
 
   static androidFileMap = [
@@ -54,13 +66,17 @@ class AppBuilderTestT1 extends AppBuilderTest {
     'Actions'  : [ name: 'Actions', 
 				   views: [ 'Actions' ], 
 				   layouts: [ 'main' ] ], 
-    'Actions2' : [ name: 'Actions 2', 
-				   views: [ 'Actions2' ], 
+    'ImplicitActions' : [ name: 'Implicit Actions', 
+				   views: [ 'ImplicitActions' ], 
 				   layouts: [ 'main' ] ], 
 
-	'Table'    : [ name: 'Table', 
-				   views: [ 'Table' ],
+	'Form'     : [ name: 'Form', 
+				   views: [ 'Form' ],
 				   layouts: [ 'main' ] ], 
+	'FormAction': [ name: 'Form Action', 
+				   views: [ 'FormAction' ],
+				   layouts: [ 'main' ] ], 
+
 	'Tabs'     : [ name: 'Tabs', 
 				   views: [ 'Tabs', 'View1', 'View2', 'View3' ],
 				   layouts: [ 'main', 'view1', 'view2', 'view3' ] ], 
@@ -70,6 +86,7 @@ class AppBuilderTestT1 extends AppBuilderTest {
 	'Navigation2' : [ name: 'Navigation2',
 					  views: [ 'Navigation2', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8' ],
 					  layouts: [ 'main', 'v2', 'v3', 'v4', 'v5', 'v6', 'v7', 'v8' ] ],
+
 	'TipCalculator' : [ name: 'Tip Calculator', 
 						views: [ 'TipCalculator' ],
 						layouts: [ 'main' ],
@@ -82,6 +99,17 @@ class AppBuilderTestT1 extends AppBuilderTest {
 						 views: [ 'TipCalculator3' ],
 						 layouts: [ 'main' ],
 						 param: [ format1: true ] ], 
+
+	'WorldCities' : [ name: 'World Cities',
+					  views: [ 'WorldCities' ],
+					  layouts: [ 'main', 'list_item_listview1' ] ],
+	'EuropeanCountries' : [ name: 'European Countries',
+							 views: [ 'EuropeanCountries' ],
+							 layouts: [ 'main', 'list_item_listview1', 'list_header_listview1' ] ],
+	'EuropeanUnion' : [ name: 'European Union',
+						 views: [ 'EuropeanUnion', 'Country' ],
+						 layouts: [ 'main', 'list_item_listview1', 'country' ] ],
+
   ];
 
 

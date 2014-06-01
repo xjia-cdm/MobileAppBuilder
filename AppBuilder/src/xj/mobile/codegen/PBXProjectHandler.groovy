@@ -1,6 +1,8 @@
 
 package xj.mobile.codegen
 
+import static xj.mobile.Main.WORK_DIR
+
 class PBXProjectHandler { 
 
   IOSAppTemplate apptemp;
@@ -57,7 +59,7 @@ class PBXProjectHandler {
     if (sourceFiles || imageFiles || frameworks ) { 
       def appname = apptemp.appname
       def pbxprojName = "${apptemp.projectOutputDir}/${appname}.xcodeproj/project.pbxproj"
-      def tempName = 'work/project.pbxproj'
+	  def tempName = WORK_DIR + File.separator + 'project.pbxproj'
       def pbxprojFile = new File(pbxprojName)
       def pbxprojLines = []
       pbxprojFile.eachLine { line ->

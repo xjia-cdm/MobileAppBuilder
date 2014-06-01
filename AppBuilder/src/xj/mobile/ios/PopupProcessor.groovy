@@ -95,9 +95,11 @@ class PopupProcessor extends xj.mobile.common.PopupProcessor {
 	  body += attrCode.collect { '\n' + it[1] }.join('')
 
       if (staticText) { 
-		body = """if (${name} == nil) {
+		if (t2 == null) {  // no transition data  
+		  body = """if (${name} == nil) {
 ${indent(body)}
 }"""
+		}
       } else if (eh) { 
 		body = eh.getDataScrap() + '\n' + body
       }

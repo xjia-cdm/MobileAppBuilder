@@ -8,7 +8,13 @@ import xj.mobile.model.sm.*
 import xj.mobile.lang.*
 
 import static org.codehaus.groovy.ast.ClassHelper.*
-import static xj.mobile.common.ViewUtils.*
+
+import static xj.mobile.common.ViewUtils.simpleType
+import static xj.mobile.common.ViewUtils.typeOf
+import static xj.mobile.common.ViewUtils.getTransitionInfo
+import static xj.mobile.common.ViewUtils.getDataVarTypeForWidget
+import static xj.mobile.common.ViewUtils.setDataVarTypeForWidget
+import static xj.mobile.common.ViewUtils.addDataVarValuesForWidget
 
 import static xj.translate.Logger.info 
 
@@ -60,8 +66,8 @@ class TransitionAnalyzer extends Analyzer {
 		}
 
 		addDataVarValuesForWidget(nextView, data)
-
-		info "[TransitionAnalyzer] handleTransitionData() update popup dataVarType: type=${type} dataVarType=${getDataVarTypeForWidget(nextView)}"
+		info "[TransitionAnalyzer] handleTransitionData() addDataVarValuesForWidget: ${nextView.id} => ${data}"
+		info "[TransitionAnalyzer] handleTransitionData() update dataVarType: type=${type} dataVarType=${getDataVarTypeForWidget(nextView)}"
 	  }
 	}
   }

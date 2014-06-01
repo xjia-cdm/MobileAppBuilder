@@ -1,5 +1,12 @@
 #files="Hello Widgets Actions Actions2"
-files="Table Tabs Navigation Navigation2"
+#files="Tabs Navigation Navigation2"
+
+#files="ImplicitActions Form Widgets"
+#files="FormAction"
+#files="WorldCities EuropeanCountries EuropeanUnion"
+#files="MultiViews MultiViews2 ListViews"
+
+files="EuropeanCountries"
 
 mkdir gen/Platform.iOS-Ref
 mkdir gen/Platform.Android-Ref
@@ -8,9 +15,9 @@ do
     #mkdir gen/Platform.iOS-Ref/$f
     #mkdir gen/Platform.Android-Ref/$f
 
-    devbin/appbuilder -nodate test/Tutorials/$f.madl test/org-ios.properties
+    devbin/appbuilder -nodate test/Tutorials/$f.madl test/org-ios.conf
     cp -R gen/Platform.iOS/$f gen/Platform.iOS-Ref/
 
-    devbin/appbuilder -nodate test/Tutorials/$f.madl test/org-android.properties
+    devbin/appbuilder -nodate test/Tutorials/$f.madl test/org-android.conf
     cp -R gen/Platform.Android/$f gen/Platform.Android-Ref/
 done

@@ -5,6 +5,7 @@ import xj.mobile.common.AppGenerator
 import xj.mobile.transform.AppTransformer
 import xj.mobile.model.Application
 import xj.mobile.model.ui.View
+import xj.mobile.model.ui.Widget
 import xj.mobile.Main
 import xj.mobile.tool.GraphViz
 
@@ -23,8 +24,8 @@ class AppBuilder {
 
   static ModelBuilder builder = new ModelBuilder()
 
-  static final boolean verbose = true //false
-  static final boolean WRITE_ATTRIBUTES = true
+  static boolean verbose = true //false
+  static boolean WRITE_ATTRIBUTES = true
 
   String filename
   String target
@@ -85,6 +86,8 @@ class AppBuilder {
 		if (WRITE_ATTRIBUTES) writeAttributes()
 
 		if (Main.graphviz) GraphViz.generateDiagram(filename, app)
+
+		processDesignOptions()
 		transformApp()
 		success = generateApp()
 	  }
@@ -132,6 +135,30 @@ class AppBuilder {
 	  checker.errors.clear()
       return false
     }
+  }
+
+  void processDesignOptions() { 
+	info '[AppBuilder] processDesignOptions()'
+	if (userConfig.design) { 
+	  info '[AppBuilder] processDesignOptions() userConfig.design: ' + userConfig.design
+	  [ 'iOS', 'Android' ].each { plat ->	  
+		String pname = plat.toLowerCase()
+		def designOpt = userConfig.design[pname]
+		if (designOpt && designOpt instanceof Map) { 
+		  info "[AppBuilder] processDesignOptions() userConfig.design[${pname}]: " + userConfig.design[pname]
+
+		  app.visit { node -> 
+			if (node instanceof Widget) { 
+			  if (designOpt[node.widgetType]) { 
+				info "[AppBuilder] processDesignOptions() userConfig.design[${pname}] ${node.widgetType}"
+
+				node["@Design:${plat}"] = designOpt[node.widgetType] 
+			  }
+			}
+		  }
+		}
+	  }
+	}
   }
 
   void transformApp() { 

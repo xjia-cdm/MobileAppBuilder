@@ -25,21 +25,60 @@ import static xj.translate.Logger.info
 
 class Main { 
 
+  static TESTING = false
+
   static PROG_NAME = 'Mobile App Builder'
-  static PROG_VERSION = 'ver. 0.4'
-  
-  static final String confDir = 'conf'
+  static PROG_VERSION = 'ver. 1.0.0 (2014/03)'
+
+  static COMMAND_LINE_ARGS = null
 
   static userConfigFile = null
   static userConfigName = null
   static userConfig = null
   static String scriptFile = null
   static String sourceDir = null 
+  static String resDir = null 
   static String destDir = null
 
-  static String getImageDir() { 
-    sourceDir ? "${sourceDir}/images" : 'images'
+  static String APP_BUILDER_HOME = null
+  static String CONF_DIR = null
+
+  static final String WORK_DIR = 'work' 
+  static final String SCRIPT_FILENAME = WORK_DIR + File.separator + 'app.groovy'  
+
+
+  static String getAppBuilderHome() { 
+	if (APP_BUILDER_HOME == null) { 
+	  String env = System.getenv('APP_BUILDER_HOME')
+	  if (env) { 
+		if (env.endsWith(File.separator)) 
+		  APP_BUILDER_HOME = env
+		else 
+		  APP_BUILDER_HOME = env + File.separator
+	  } else { 
+		APP_BUILDER_HOME = ''
+	  }
+	} 
+	return APP_BUILDER_HOME
   }
+
+  static String getConfDir() { 
+	if (CONF_DIR == null) { 
+	  CONF_DIR = getAppBuilderHome() + 'conf'
+	}
+	return CONF_DIR
+  }
+
+  static String getImageDir() {
+	String prefix = ''
+	if (resDir) 
+	  return resDir 
+	else if (sourceDir) 
+	  prefix = sourceDir + File.separator 
+	return prefix + 'images'
+    //sourceDir ? "${sourceDir}/images" : "${new File('.').absolutePath}/images"
+  }
+
 
   static systemConfig = new ConfigSlurper().parse(new File(confDir + '/system.conf').toURL())
 
@@ -47,21 +86,30 @@ class Main {
   static boolean nocode = false // compilation only
   static boolean quiet = false
   static boolean graphviz = false // generate diagram in GraphViz 
+  static boolean inIDE = false
 
   static boolean success = true 
   static ErrorMessages errors = new ErrorMessages()
 
   public static void main(String[] args) {
 	//systemConfig = new ConfigSlurper().parse(new File(confDir + '/system.conf').toURL())
-
+	//info "[Main] args: ${args}"
     reInit()
+
+	COMMAND_LINE_ARGS = args
     if (args?.length > 0) { 
 	  boolean expectDest = false 
+	  boolean expectHome = false 
+	  boolean expectRes = false 
       args.each { f -> 
 		if (f[0] == '-') { 
 		  // options 
 		  if ('-nodate' == f) { 
 			nodate = true
+		  } else if ('-ide' == f) { 
+			inIDE = true
+			AppBuilder.verbose = false
+			AppBuilder.WRITE_ATTRIBUTES = false
 		  } else if ('-nocode' == f) { 
 			nocode = true
 		  } else if ('-quiet' == f) { 
@@ -72,11 +120,23 @@ class Main {
 		  } else if ('-d' == f) { 
 			// destination dir 
 			expectDest = true
+		  } else if ('-res' == f) { 
+			// images dir 
+			expectRes = true
+		  } else if ('-h' == f) { 
+			// app builder home dir 
+			expectHome = true
 		  }
 		} else {  
 		  if (expectDest) { 
 			destDir = f
 			expectDest = false 
+		  } else if (expectRes) {
+			resDir = f
+			expectRes = false
+		  } else if (expectHome) { 
+			APP_BUILDER_HOME = f
+			expectHome = false 
 		  } else if (!scriptFile) { 
 			scriptFile = f
 			sourceDir = new File(scriptFile).parent
@@ -85,7 +145,6 @@ class Main {
 			userConfigFile = f
 			userConfigName = getFileName(file.name) //filename[0 ..< filename.indexOf('.')]
 			userConfig = new ConfigSlurper().parse(file.toURL())
-			//println userConfig.toString()
 		  }
 		}
       }
@@ -109,11 +168,16 @@ class Main {
     userConfig = null;
     scriptFile = null;
     sourceDir = null; 
+    resDir = null; 
 	destDir = null;
     nodate = false;
 	nocode = false; 
 	quiet = false;
 	graphviz = false;
+	inIDE = false;
+
+	APP_BUILDER_HOME = null
+	COMMAND_LINE_ARGS = null
 
 	Logger.logLevel = Logger.INFO
   }
@@ -127,16 +191,18 @@ class Main {
 	  
 	  String plat_suffix = [ 'ios', 'android' ].findAll{ userConfig.platform[it] }.join('-')
 	  String uconfig = userConfigName
-	  int i = userConfigName.indexOf('/')
-	  Logger.setLogFile("logs/${filename}-${plat_suffix}+${userConfigName}.log")
+	  int i = userConfigName.indexOf(File.separator)
+	  Logger.setLogFile("logs${File.separator}${filename}-${plat_suffix}+${userConfigName}.log")
 
       String srcdir = infile.parent 
-      info "[Main] infile: ${infile}   fileanme: ${filename}  srcdir: ${srcdir}"
+	  info "[Main] command-line args: ${COMMAND_LINE_ARGS?.join(' ')}"
+      info "[Main] infile: ${infile}   fileanme: ${filename}  srcdir: ${srcdir}   resDir: ${resDir}"
+	  info "[Main] APP_BUILDER_HOME: ${APP_BUILDER_HOME}"
 
       def script = SCRIPT_HEADER + infile.text
-      def wdir = new File('work')
+	  def wdir = new File(WORK_DIR)
       if (!wdir.exists()) wdir.mkdir()
-      def script1 = new File('work/app.groovy')
+	  def script1 = new File(SCRIPT_FILENAME)
       script1.write(script)
 
       def builder = new AppBuilder(filename, userConfig)
@@ -144,7 +210,7 @@ class Main {
 
       if (okay) { 
 		def binding = new Binding([builder : builder])
-		List<String> classpath = [ 'lib/madl.jar' ]
+		List<String> classpath = [ 'lib' + File.separator + 'madl.jar' ]
 		CompilerConfiguration cc = new CompilerConfiguration();
 		//cc.setScriptBaseClass( Main.class.getName() );
 		cc.setClasspathList(classpath);
@@ -181,6 +247,8 @@ class Main {
       //println "[Error] File not found: ${madlScript}" 
 	  okay = false 
     } catch (Exception e) { 
+	  if (TESTING) throw e
+
 	  println "[Error] ${e.class.simpleName} caused by\n\t${e.message}.\nFail to process ${madlScript}" 
 	  e.printStackTrace()
 	  okay = false 
@@ -193,6 +261,11 @@ class Main {
 	  e.printStackTrace()
     }
 	  */
+
+	if (inIDE) { 
+	  new File(SCRIPT_FILENAME).delete()	  
+	  new File(WORK_DIR).delete()	  
+	}
 	return okay
   }
 
