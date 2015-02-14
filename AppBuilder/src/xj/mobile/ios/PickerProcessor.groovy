@@ -14,7 +14,8 @@ class PickerProcessor {
   String dataVar
 
   void process(Widget widget, ViewProcessor vp) { 
-    dataVar = "${widget.id}Data"
+    dataVar = vp.getIVarName(widget.id) + 'Data'
+	//"${widget.id}Data"
 
     int numComponents = 1
     if (widget.options) { 

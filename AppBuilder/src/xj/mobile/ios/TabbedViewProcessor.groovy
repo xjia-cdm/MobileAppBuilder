@@ -28,6 +28,7 @@ class TabbedViewProcessor extends DefaultViewProcessor {
 	  boolean first = true
       view.children.each { Widget widget -> 
 		if (Language.isTopView(widget.widgetType)) {  
+		  //String name = getWidgetName(popup)
 		  String name = widget.id
 		  String uiclass = getViewControllerName(widget.viewProcessor.viewName)
 
@@ -35,7 +36,8 @@ class TabbedViewProcessor extends DefaultViewProcessor {
 			classModel.addImport(uiclass) 
 			classModel.declareProperty(uiclass, name)
 
-			def binding = [ name: name, uiclass: uiclass ]
+			def binding = [ name: getIVarName(name), //name, 
+							uiclass: uiclass ]
 			generator.injectCodeFromTemplateRef(classModel, "TabbedView:tab1", binding)
 
 			if (first) first = false
@@ -53,7 +55,7 @@ class TabbedViewProcessor extends DefaultViewProcessor {
   def processSubviewAttributes(subview) { 
     if (subview) { 
 	  def binding = [
-		name: subview.id,
+		name: getIVarName(subview.id), //subview.id,
 		title: subview.title,
 		image: subview.tabImage
 	  ]
@@ -69,7 +71,7 @@ class TabbedViewProcessor extends DefaultViewProcessor {
   }
 
   def initializeView() { 
-	def binding = [ views: topViews ]
+	def binding = [ views: topViews.collect { getIVarName(it) } ]
 	generator.injectCodeFromTemplateRef(classModel, "TabbedView:init", binding)
   }
 

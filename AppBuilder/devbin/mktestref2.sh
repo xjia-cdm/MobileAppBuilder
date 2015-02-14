@@ -6,7 +6,12 @@
 #files="WorldCities EuropeanCountries EuropeanUnion"
 #files="MultiViews MultiViews2 ListViews"
 
-files="EuropeanCountries"
+#files="EuropeanCountries"
+#files="EuropeanUnion"
+
+#files="Navigation Navigation2"
+
+files="Actions EuropeanCountries EuropeanUnion Form FormAction Hello ImplicitActions Navigation Navigation2 Tabs Widgets WorldCities MultiViews MultiViews2 ListViews"
 
 mkdir gen/Platform.iOS-Ref
 mkdir gen/Platform.Android-Ref

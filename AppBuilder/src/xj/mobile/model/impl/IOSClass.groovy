@@ -7,6 +7,7 @@ import xj.mobile.model.properties.ModalTransitionStyle
 import xj.mobile.codegen.CodeGenerator
 import xj.mobile.codegen.CodeGenerator.InjectionPoint
 import static xj.mobile.codegen.CodeGenerator.InjectionPoint.*
+import static xj.mobile.codegen.IOSCodeGenOptions.*
 
 import static xj.mobile.util.CommonUtils.*
 import static xj.mobile.codegen.templates.IOSDelegateTemplates.*
@@ -20,7 +21,8 @@ class IOSClass extends ClassModel {
   List<String> frameworks = []
 
   List<String> classDecls = []
-  List<String> propertyNames = []
+  //List<String> propertyNames = []
+  Set<String> propertyNames = [] as Set
 
   List<String> delegates = []
   Map<String, Delegate> delegateActions = [:]
@@ -64,15 +66,25 @@ class IOSClass extends ClassModel {
 
   String getSynthesizerScrap() {
 	boolean onePerLine = true
-    if (propertyNames) { 
-	  if (onePerLine) { 
-		return propertyNames.sort().collect { "@synthesize ${it};" }.join('\n')
-	  } else { 
-		return '@synthesize ' + propertyNames.sort().join(', ') + ';'
+	if (propertyNames) { 
+	  def names = propertyNames
+	  if (!GENERATE_PROPERTY_SYNTHESIZER) {
+		/*
+		if ('data' in names)
+		  names = [ 'data' ]
+		else 
+		*/
+		names = null
+	  } 
+	  if (names) { 
+		if (onePerLine) { 
+		  return names.sort().collect { "@synthesize ${it};" }.join('\n')
+		} else { 
+		  return '@synthesize ' + names.sort().join(', ') + ';'
+		}
 	  }
-    } else { 
-      return ''
-    }
+    } 
+	return ''
   }
   
   String getIvarDeclarationScrap() { 
@@ -187,15 +199,21 @@ ${indent(ivarDeclScrap)}
 	}
   }
 
-  void declareVariable(String type, String name) { 
+  public void declareVariable(String type, String name) { 
 	declarationScrap += "\n${type} *${name};"
   }
 
-  void declareProperty(String type, String name, boolean strong = true) {
-	String ref = strong ? 'strong' : 'weak'
-	String s = (type == 'id' ? '' : '*')
-	propertyScrap += "\n@property(nonatomic, ${ref}) ${type} ${s}${name};"
-	propertyNames += name
+  public void declareProperty(String type, String name, boolean strong = true) {
+	if (!(name in propertyNames)) { 
+	  String ref = strong ? 'strong' : 'weak'
+	  String s = (type == 'id' ? '' : '*')
+	  propertyScrap += "\n@property(nonatomic, ${ref}) ${type} ${s}${name};"
+	  propertyNames += name
+	}
+  }
+
+  public String getIVarName(String name) { 
+	GENERATE_PROPERTY_SYNTHESIZER || !(name in propertyNames) ? name : '_' + name  
   }
 
   String setViewBackgroundCode(background, String view) { 

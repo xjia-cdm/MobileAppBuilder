@@ -1,0 +1,67 @@
+app(name : 'List Data 2') {
+
+  def groups = [
+	'Group A': 'group_a',
+	'Group B': 'group_b',
+  ]
+
+  def items = [
+	[ group: 'Group A', name: 'Item A-1', detail: 'Detail A-1', images: [ 'scene1.jpg', 'scene2.jpg' ] ],
+	[ group: 'Group A', name: 'Item A-2', detail: 'Detail A-2', images: [ 'scene1.jpg', 'scene2.jpg' ] ],
+	[ group: 'Group A', name: 'Item A-3', detail: 'Detail A-3', images: [ 'scene1.jpg', 'scene2.jpg' ] ],
+	[ group: 'Group A', name: 'Item A-4', detail: 'Detail A-4', images: [ 'scene1.jpg', 'scene2.jpg' ] ],
+
+	[ group: 'Group B', name: 'Item B-1', detail: 'Detail B-1', images: [ 'scene3.jpg', 'scene4.jpg' ] ],
+	[ group: 'Group B', name: 'Item B-2', detail: 'Detail B-2', images: [ 'scene3.jpg', 'scene4.jpg' ]  ],
+	[ group: 'Group B', name: 'Item B-3', detail: 'Detail B-3', images: [ 'scene3.jpg', 'scene4.jpg' ]  ],
+	[ group: 'Group B', name: 'Item B-4', detail: 'Detail B-4', images: [ 'scene3.jpg', 'scene4.jpg' ]  ],
+  ]
+
+  View(title: 'Select') { 
+	Label(text: 'Select Group' )
+	Button(text: 'Select', next: m1)
+
+	Menu(id: m1, title:'Group') {
+	  Item(text: 'All Groups', next:all)
+
+	  groups.each { k, v ->
+		Item(text: k, next: v) 
+	  }
+
+	}
+	Button(text: 'All Groups', next: all)
+	
+  }
+
+  ListView(id: all, title: 'All Groups') { 
+	items.each { item ->
+	  Item(text: item.name, detailText:"Group: ${item.group}", 
+		   next:[to:detail, data:item])
+	}
+  }
+
+  groups.each { k, v ->
+	ListView(id: v, title: k) { 
+	  items.findAll{ it.group == k }.each { item ->
+		Item(text: item.name, detailText:"Group: ${item.group}", 
+			 next:[to:detail, data:item])
+	  }
+	}	
+  }
+
+  View(id: detail, title: 'Detail', scroll: true) { 
+	Label(text: "${data.name}", width: '*')
+	Label(text: "Group: ${data.group}", width: '*' ) 
+	Label(text: "Details: ${data.detail}", width: '*') 
+
+	Image(file:"${data.images[0]}")
+	Image(file:"${data.images[1]}")
+
+	/*
+	data.images.each { imageFile ->
+	  Image(file:"${imageFile}")
+	}
+	*/
+  }
+
+} 

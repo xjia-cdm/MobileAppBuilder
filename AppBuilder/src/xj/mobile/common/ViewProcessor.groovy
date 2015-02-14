@@ -7,6 +7,7 @@ import static org.codehaus.groovy.ast.ClassHelper.*
 import static xj.mobile.util.GroovyEvaluator.*
 
 import static xj.mobile.common.ViewUtils.*
+import static xj.mobile.lang.AttributeMap.findCommonAttributeDef
 
 import xj.mobile.*
 import xj.mobile.model.sm.*
@@ -86,6 +87,11 @@ abstract class ViewProcessor {
 
   def getWidget(id) { 
     widgetTable[id]
+  }
+
+  boolean hasAttributeForWidget(widget, attr) { 
+	widget && attr && (findCommonAttributeDef(widget.nodeType, attr) ||
+					   generator.attributeHandler.apiResolver.hasPropertyDef(widget.nodeType, attr))
   }
 
   View findViewPredecessor(v) { 
@@ -248,9 +254,12 @@ abstract class ViewProcessor {
 			transition = t.transition
 
 		  def (String nextState, data) = getTransitionInfo(t.next)
+		  String dataStr = null
+		  if (data)
+			dataStr = generator.valueToCode(classModel, data)
 		  String tcode = generateTransitionCode(nextState, isInsideNavigationView(view), 
 												view.embedded as boolean, 
-												animated, transition)
+												animated, transition, dataStr)
 		  if (tcode) { 
 			if (code) code += ('\n' + tcode) 
 			else code = tcode
@@ -332,11 +341,15 @@ abstract class ViewProcessor {
 
     initializeTopView()
 
-    handleLocalDeclarations()
+	handleSpecialLocalDeclarations()
+	processSubviewDeclarations(view)
+
 	processAttributes()
     processSubviews(view)
 	processTransitions()
+
     postProcessTopView()
+	handleLocalDeclarations()
 
     if (needKeyboardHandling)
       handleKeyboard() 
@@ -353,7 +366,7 @@ abstract class ViewProcessor {
 	  if (attr instanceof List) { 
 		// combination attributes with a signle setter 
 		if (attr.every{ widget[it] != null }) { 
-		  def code = generator.generateSetCompoundAttributeCode(widget.widgetType, 
+		  def code = generator.generateSetCompoundAttributeCode(this, widget.widgetType, 
 																widget.getPlatformWidgetName(platform),
 																name, attr, attr.collect{ widget[it] })
 		  if (code != null) 
@@ -367,7 +380,7 @@ abstract class ViewProcessor {
 			generator.injectCodeFromTemplate(classModel, CodeGenerator.InjectionPoint.UpdateView, code)
 		} else { 
 		  if (widget[attr]) { 
-			def code = generator.generateSetAttributeCode(widget.widgetType, 
+			def code = generator.generateSetAttributeCode(this, widget.widgetType, 
 														  widget.getPlatformWidgetName(platform),
 														  name, attr, widget[attr])
 			if (code != null)
@@ -384,6 +397,8 @@ abstract class ViewProcessor {
 	  processAttribute(null, view, attr)
 	}
   }
+
+  protected void processSubviewDeclarations(View view) { }
 
   protected void processSubviews(View view) { }
 
@@ -402,7 +417,6 @@ abstract class ViewProcessor {
 		  }
 		} 
       }
-	  handleSpecialLocalDeclarations()
     }
   }
 
@@ -543,6 +557,7 @@ abstract class ViewProcessor {
 		nextView = parent.getChild(next, true)
 		parent = parent.parent
 	  }
+
       if (nextView && Language.isPopup(nextView.nodeType)) { 
 		info "[ViewProcessor] process popup ${nextView.id}"
 		actionCode = generator.generatePopupTransitionCode(classModel,
@@ -553,7 +568,8 @@ abstract class ViewProcessor {
       } else { 
 		//nextView = view.parent.getChild(next, true)
 		if (nextView){ 
-		  nextViews << next	  
+		  //nextViews << next	  
+		  declareNextView(next)
 		} else if (next in [ 'Previous', 'Top', 'previous', 'top' ]) {  
 		  next = "#${next.capitalize()}"
 		} else { 
@@ -572,6 +588,11 @@ abstract class ViewProcessor {
     return actionCode
   }
 
+  void declareNextView(next) { 
+	if (next) 
+	  nextViews << next	  
+  }
+
   def setAttributes(widget, attrs, classModel) { 
 	def attrCode = []
 	if (attrs) { 
@@ -583,7 +604,7 @@ abstract class ViewProcessor {
 		  def ucode = generator.generateUpdateCode(this, src.code, widget, name, a);
 		  generator.injectCodeFromTemplate(classModel, CodeGenerator.InjectionPoint.UpdateView, ucode)
 		} else { 
-		  def code = generator.generateSetAttributeCode(widget.widgetType, 
+		  def code = generator.generateSetAttributeCode(this, widget.widgetType, 
 														widget.getPlatformWidgetName(platform),
 														name, a, widget[a])
 		  if (code != null) { 
@@ -621,6 +642,12 @@ abstract class ViewProcessor {
 	return attrCode
   }
 
+  public String getIVarName(String name) {
+	if (!typeInfo.parameterMap || !typeInfo.parameterMap[name])
+	  return classModel.getIVarName(name)
+	else 
+	  return name 
+  }
 
   //
   // handle view data varaible type and values 

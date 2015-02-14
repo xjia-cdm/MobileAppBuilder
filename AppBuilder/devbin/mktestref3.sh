@@ -1,6 +1,7 @@
 files="TipCalculator TipCalculator2 TipCalculator3"
 #files="TipCalculator2"
 #files="Form"
+#files="TipCalculator3"
 
 mkdir gen/Platform.iOS-Ref
 mkdir gen/Platform.Android-Ref

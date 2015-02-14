@@ -20,8 +20,9 @@ class ListEntity extends Expando implements GroovyInterceptable {
 
     info "[ListEntity] args=${args}"
 
+	// add all the declared field info of the entity class to the list fields
+	// include all field in the super class 
     entityClass = xj.mobile.builder.AppBuilder.app.classes[this['class'].name.toString()]
-
     ClassNode c = entityClass
     while (c && c.name != 'java.lang.Object') { 
       info "[ListEntity] get fields: c=${c.name} ${c.superClass?.name}"
@@ -33,9 +34,9 @@ class ListEntity extends Expando implements GroovyInterceptable {
 
   def invokeMethod(String name, arg) { 
     if (name == 'each') { 
-      ListEntityHandler handler = new ListEntityHandler()
-      handler.handle(this, name, arg)
+	  this._dummy_ = getDummyVarName(name, arg)
 
+	  // insert declaration for the dummy 
       def viewDecl = builder.viewStack[-1].declarations
       if (!viewDecl) { 
 		viewDecl = [:]
@@ -43,7 +44,6 @@ class ListEntity extends Expando implements GroovyInterceptable {
       }
       viewDecl[this._dummy_] = [ isDummy: true, entity: this ]      
 
-      //def e = [ this ].collect(arg[0])
       def e = [ this ].collect(arg[0])
       //println "[ListEntity] ${e}"
       def object = e[0]
@@ -53,7 +53,26 @@ class ListEntity extends Expando implements GroovyInterceptable {
 
     } else { 
       super.invokeMethod(name, arg)
+	  //throw new UnsupportedOperationException("ListEntity: ${name}")
+	  // call getAt
     }
+  }
+
+  def getDummyVarName(String name, arg) { 
+    info "[ListEntity] handle() name: ${name}  arg: ${arg}"
+	String dummy = null
+    if (arg[0] instanceof Closure) { 
+      info "[ListEntity] ${arg[0].metaClass}"
+
+      def c = arg[0].metaClass.classNode.getDeclaredMethods("doCall")[0]
+      // println c.parameters
+      info "[ListEntity] ${c.parameters[0].name}"
+
+      //this._dummy_ = c.parameters[0].name
+      //println c.code
+	  dummy = c.parameters[0].name
+    }
+	return dummy 
   }
 
 }
@@ -61,20 +80,3 @@ class ListEntity extends Expando implements GroovyInterceptable {
 class ListEntityDummy { 
   
 } 
-
-class ListEntityHandler { 
-
-  def handle(ListEntity entity, String name, arg) { 
-    info "[ListEntityHandler] handle() name: ${name}  arg: ${arg}"
-    if (arg[0] instanceof Closure) { 
-      def c = arg[0].metaClass.classNode.getDeclaredMethods("doCall")[0]
-      // println c.parameters
-      info "[ListEntityHandler] ${c.parameters[0].name}"
-
-      entity._dummy_ = c.parameters[0].name
-      //println c.code
-
-    }
-  }
-
-}

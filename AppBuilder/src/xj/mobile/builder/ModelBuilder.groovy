@@ -250,19 +250,6 @@ class ModelBuilder {
     return owner
   }
 
-  static class DummyData { 
-	static final theInstance = new DummyData()
-	static DummyData getInstance() { theInstance } 
-
-	@Delegate String sdata = 'data'
-	def getAt(i) { null }
-	void putAt(i, v) {}
-	def getProperty(String name) { this }
-	void setProperty(String name, value) {}
-	def propertyMissing(String name) { this } 
-	String toString() { sdata }
-  }
-
   // groovy hook for processing undefined property 
   def propertyMissing(String name) { 
     if (verbose) info "[ModelBuilder] propertyMissing(): ${name}"
@@ -271,10 +258,8 @@ class ModelBuilder {
 	if (name.toUpperCase() == 'ANDROID') return ANDROID
 
 	if (name == 'data') { 
-	  //return Null.getInstance()
-	  //return new DummyData()
-	  //return name
-	  return DummyData.getInstance()
+	  //return DummyData.getInstance(this)
+	  return new DummyData(this)
 	} else if (name == 'previous') { 
 	  // treated as special var name 
 	  return name

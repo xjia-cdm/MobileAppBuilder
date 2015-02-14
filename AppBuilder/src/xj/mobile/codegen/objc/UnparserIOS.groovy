@@ -9,10 +9,12 @@ import xj.translate.objc.UnparserObjectiveC
 import xj.translate.typeinf.TypeCategory
 
 import xj.mobile.codegen.EntityUnparser
+import xj.mobile.codegen.CodeGenerator
 import xj.mobile.codegen.UnparserViewProperty
 import xj.mobile.model.properties.PropertyType
 import xj.mobile.model.impl.ClassModel
 import xj.mobile.common.AppInfo
+import xj.mobile.common.ViewProcessor
 
 import xj.mobile.lang.ast.*
 
@@ -29,7 +31,9 @@ class UnparserIOS extends UnparserObjectiveC {
   String target = 'ios'
 
   AppInfo appInfo
+  ViewProcessor vp 
   ClassModel classModel
+  def params             // the parameters of the enclosing method 
   
   EntityUnparser entityUnparser 
 
@@ -78,6 +82,10 @@ class UnparserIOS extends UnparserObjectiveC {
 			return value.toIOSString()
 		  }
 		}
+		if ((!params || !params[exp.name]) && classModel)
+		  return classModel.getIVarName(exp.name)
+		else 
+		  return exp.name
       default:
 		return super.expression(exp, expectedType)      
       }

@@ -13,6 +13,8 @@ import static xj.mobile.common.ViewUtils.isInsideNavigationView
 
 class WidgetProcessor { 
 
+  static DATA_VAR_NAME = 'data_'
+
   CodeGenerator generator
 
   ViewProcessor vp
@@ -29,6 +31,9 @@ class WidgetProcessor {
 	attributeHandler = vp.generator.attributeHandler
   }
   
+  void declareWidget(Widget widget) { }
+  void process(Widget widget) { }
+
   def genActionCode(Widget widget) { 
     String actionCode = null
     def srcInfo = getActionInfo(widget)
@@ -49,17 +54,20 @@ class WidgetProcessor {
 	  if (nextState) { 
 		if (data) {
 		  if (data instanceof Map) { 
-			dataStr = 'data'
-			if (widget['next.data.src']) { 
-			  setup = vp.generator.unparseMapExp(vp, widget['next.data.src'].code, 'data', widget)
+			dataStr = DATA_VAR_NAME 
+			//if (widget['next.data.src']) { 
+			if (hasNextDataUpdate(widget)) { 
+			  setup = vp.generator.unparseMapExp(vp, widget['next.data.src'].code, DATA_VAR_NAME,  
+												 widget)
 			} else { 
-			  setup = vp.generator.mapToCode(data, 'data')
+			  setup = vp.generator.mapToCode(data, DATA_VAR_NAME) 
 			}
 			setup += '\n'
 		  } else { 
-			if (widget['next.data.src']) { 
+			//if (widget['next.data.src']) { 
+			if (hasNextDataUpdate(widget)) { 
 			  dataStr = vp.generator.unparseUpdateExp(vp, widget['next.data.src'].code, widget)
-			} else { 
+			} else {			 
 			  dataStr = vp.generator.valueToCode(vp.classModel, data)
 			}
 		  }
@@ -73,5 +81,20 @@ class WidgetProcessor {
     }
     return actionCode
   }
+
+  boolean hasNextDataUpdate(widget) { 
+	if (widget['next.data.src']) { 
+	  def useSet = widget['next.data.src'].useSet
+	  if (useSet) { 
+		for (name in useSet) { 
+		  if (vp.getWidget(name)) 
+			return true
+		  if (vp.hasAttributeForWidget(widget, name))
+			return true
+		}
+	  }
+	}
+	return false 
+  } 
 
 }

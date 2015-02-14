@@ -19,7 +19,7 @@ class AndroidWidgetTemplates extends WidgetTemplates {
 
   ////// Widget Templates  
 
-  def CommonWidgetTemplate = [
+  def commonWidgetTemplate = [
 
     setAttribute: '${name}.set${capitalize(attribute)}(${value})',
     getAttribute: '${name}.get${capitalize(attribute)}()',

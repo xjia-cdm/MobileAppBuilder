@@ -17,18 +17,18 @@ class IOSPopupTemplates extends PopupTemplates {
       actionData : '[self showActionSheet_${name}_withData:${data}];',
       actionMenuData : '[self showActionSheet_${name}:indexPath withData:${data}];',
 
-      create :  '''${name} = [[UIActionSheet alloc] initWithTitle:${title}
+      create :  '''${ivarName} = [[UIActionSheet alloc] initWithTitle:${title}
 \t\t\t\tdelegate:self
 \t\t\t\tcancelButtonTitle:${cancel} 
 \t\t\t\tdestructiveButtonTitle:${affirm} 
 \t\t\t\totherButtonTitles:${other}];
-${name}.actionSheetStyle = UIActionSheetStyleDefault;''', 
+${ivarName}.actionSheetStyle = UIActionSheetStyleDefault;''', 
 
       show : '''
 - (void)showActionSheet_${name}${arg}
 {
 ${indent(body)}
-	[${name} showInView:self.view];
+	[${ivarName} showInView:self.view];
 }
 ''',
 
@@ -44,7 +44,7 @@ ${indent(body)}
       actionData : '[self showAlert_${name}_withData:${data}];',
       actionMenuData : '[self showAlert_${name}:indexPath withData:${data}];',
 
-      create : '''${name} = [[UIAlertView alloc] initWithTitle:${title}
+      create : '''${ivarName} = [[UIAlertView alloc] initWithTitle:${title}
 \t\t\t\tmessage:${message}
 \t\t\t\tdelegate:self
 \t\t\t\tcancelButtonTitle:${cancel} 
@@ -54,7 +54,7 @@ ${indent(body)}
 - (void)showAlert_${name}${arg}
 {
 ${indent(body)}
-	[${name} show];	
+	[${ivarName} show];	
 }
 ''',
 

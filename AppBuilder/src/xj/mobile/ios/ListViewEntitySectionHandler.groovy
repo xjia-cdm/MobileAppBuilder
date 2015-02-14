@@ -18,6 +18,7 @@ import xj.mobile.builder.ListEntity
 import static xj.mobile.ios.IOSAppGenerator.*
 import static xj.mobile.util.CommonUtils.*
 import static xj.mobile.codegen.IOSUtils.*
+import static xj.mobile.codegen.IOSCodeGenOptions.*
 
 import static xj.mobile.lang.ast.PrettyPrinter.*
 import static xj.translate.Logger.info 
@@ -99,9 +100,9 @@ implements EntityUnparser {
   def getDataScrap() { 
     if (view.choiceMode == 'Multiple') { 
       """NSMutableArray *sec = (NSMutableArray *) [${dataVarName} objectAtIndex:indexPath.section];    
-NSMutableDictionary* data = (NSMutableDictionary *) [sec objectAtIndex:indexPath.row];"""
+NSMutableDictionary *${LISTVIEW_LOCAL_DATA_VAR} = (NSMutableDictionary *) [sec objectAtIndex:indexPath.row];"""
     } else {
-      "NSMutableArray *data = (NSMutableArray *) [${dataVarName} objectAtIndex:indexPath.section];"
+      "NSMutableArray *${LISTVIEW_LOCAL_DATA_VAR} = (NSMutableArray *) [${dataVarName} objectAtIndex:indexPath.section];"
     }
   }
 
@@ -213,7 +214,7 @@ NSMutableDictionary* data = (NSMutableDictionary *) [sec objectAtIndex:indexPath
 	  if (exp.objectExpression instanceof VariableExpression &&
 		  exp.objectExpression.name == entityDef._dummy_) { 
 		def pname = exp.propertyAsString
-		return "[data objectForKey:k${pname.capitalize()}Key]"
+		return "[${LISTVIEW_LOCAL_DATA_VAR} objectForKey:k${pname.capitalize()}Key]"
 	  }
 	}
 	null

@@ -18,13 +18,35 @@ class PopupProcessor extends xj.mobile.common.PopupProcessor {
 	popupTemplates = PopupTemplates.getPopupTemplates('ios')
   }
 
+  void declareWidget(Widget widget) { 
+    String name = getWidgetName(widget)
+
+	def classModel = vp.classModel
+	def temp = getPopupTemplate(widget)
+
+    if (temp && temp.uiclass) { 
+	  def uiclass = temp.uiclass
+	  if (temp.uiclass instanceof Closure) { 
+		uiclass = temp.uiclass(widget)
+	  }
+
+	  info "[PopupProcessor] declareWidget ${name} template uiclass ${uiclass}"
+
+	  classModel.declareProperty(uiclass, name)
+	}
+  }
+
   void process(Widget popup) { 
     String name = getWidgetName(popup)
+
     info "[PopupProcessor] process ${name}"
 
     def temp = getPopupTemplate(popup)
     if (temp) { 
       info "[PopupProcessor] found popup template"
+
+	  //vp.classModel.declareProperty(temp.uiclass, name)
+	  String ivarName = vp.getIVarName(name)
 
       if (temp.delegate) { 
 		if (!(temp.delegate in vp.classModel.delegates)) { 
@@ -84,6 +106,7 @@ class PopupProcessor extends xj.mobile.common.PopupProcessor {
 	
       def ctemp = temp.create
       def binding = [ name : name,
+					  ivarName: ivarName, 
 					  uiclass : temp.uiclass,
 					  other : other ] + attrValues
 
@@ -96,7 +119,7 @@ class PopupProcessor extends xj.mobile.common.PopupProcessor {
 
       if (staticText) { 
 		if (t2 == null) {  // no transition data  
-		  body = """if (${name} == nil) {
+		  body = """if (${ivarName} == nil) {
 ${indent(body)}
 }"""
 		}
@@ -114,13 +137,14 @@ ${indent(body)}
 		  arg = "_withData: (${vp.getTransitionNativeType(type)} *) data"
 		}
 	  }
-      def binding2 = [ name : name,
+      def binding2 = [ name : name, 
+					   ivarName: ivarName, 
 					   arg : arg,
 					   body : body,
 					   indent: xj.mobile.util.CommonUtils.&indent ]
       template = engine.createTemplate(stemp).make(binding2)
       vp.classModel.popupActionScrap += template.toString()
-	  vp.classModel.declareProperty(temp.uiclass, name)
+
 
       handleAction(popup, temp, eh)
     }

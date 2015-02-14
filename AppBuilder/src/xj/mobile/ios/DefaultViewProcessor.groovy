@@ -85,17 +85,42 @@ class DefaultViewProcessor extends ViewProcessor {
 	classModel.setViewBackground(view.background)
   }
 
-  protected void processNextViews() { 
-	if (nextViews) { 
-	  nextViews.each { vid -> 
-		String name = vid
-		def vp = vhp.findViewProcessor(vid)
-		if (vp) { 
-		  String uiclass = getViewControllerName(vp.viewName)
-		  classModel.addImport(uiclass) 
-		  classModel.declareProperty(uiclass, name)
+  void declareNextView(next) { 
+	if (next && !(next in nextViews)) { 
+	  nextViews << next	  
+	  String name = next
+	  def vp = vhp.findViewProcessor(next)
+	  if (vp) { 
+		String uiclass = getViewControllerName(vp.viewName)
+		classModel.addImport(uiclass) 
+		classModel.declareProperty(uiclass, name)
+	  }
+	}
+  }
+
+  protected void processSubviewDeclarations(View view) {
+	view.children.each { widget -> 
+	  if (widget instanceof Widget) {
+		if (Language.isTopView(widget.nodeType) && widget.embedded) {  
+		  declareEmbeddedView(widget)
+		} else if (Language.isGroup(widget.nodeType)) {  
+		  //if (widget.widgetType == 'RadioGroup') { 
+		  //preProcessRadioGroup(widget)
+		  //processSubviews(widget)
+		  //postProcessRadioGroup(widget)
+		  processSubviewDeclarations(widget)
+		} else if (Language.isPopup(widget.nodeType)) {  
+		  popupProcessor.declareWidget(widget)
+		} else if (Language.isWidget(widget.nodeType)) {  
+		  widgetProcessor.declareWidget(widget)
 		}
 	  }
+	} 
+
+	if (view.embedded) { 
+	  String ownerViewClass = getViewControllerName(toViewName(view.parent.id))
+	  classModel.declareProperty(ownerViewClass, 'owner', false)
+	  classModel.addImport(ownerViewClass) 
 	}
   }
 
@@ -120,34 +145,26 @@ class DefaultViewProcessor extends ViewProcessor {
 		}
 	  }
     }
+
   }
 
   protected void postProcessTopView() { 
 	super.postProcessTopView()
-
-	processNextViews()
-	if (view.embedded) { 
-	  String ownerViewClass = getViewControllerName(toViewName(view.parent.id))
-	  classModel.declareProperty(ownerViewClass, 'owner', false)
-	  classModel.addImport(ownerViewClass) 
-	}
-
     classModel.handleDelegates()
-	/*
-    if (needKeyboardHandling)
-      handleKeyboard() 
-	*/
   }
 
-  void processEmbeddedView(widget) { 
-	//nextViews << widget.id
-
+  void declareEmbeddedView(widget) { 
 	String name = widget.id
 	String viewClass = getViewControllerName(toViewName(name))
 	classModel.addImport(viewClass) 
 	classModel.declareProperty(viewClass, name)
+  }
 
-	def binding = [ name: name, 
+  void processEmbeddedView(widget) { 
+	String name = widget.id
+	String viewClass = getViewControllerName(toViewName(name))
+
+	def binding = [ name: getIVarName(name), 
 					viewClass: viewClass, 
 					frame: widget._frame ? widget._frame[0..3].join(', ') : '0, 0, 0, 0' ]
 	generator.injectCodeFromTemplateRef(classModel, "Default:embeddedView", binding)
@@ -158,7 +175,7 @@ class DefaultViewProcessor extends ViewProcessor {
       def members = []
       rgroup.children.each { Widget widget -> 
 		if (widget.widgetType == 'RadioButton') { 
-		  members << widget.id
+		  members << getIVarName(widget.id)
 		}
       }
       radioGroups[rgroup.id] = members

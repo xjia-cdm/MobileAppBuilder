@@ -8,6 +8,7 @@ import xj.mobile.model.properties.ModalTransitionStyle
 import static xj.mobile.common.ViewHierarchyProcessor.toViewName
 import static xj.mobile.model.impl.ViewControllerClass.getViewControllerName
 import static xj.mobile.codegen.IOSUtils.valueToCode
+import static xj.mobile.codegen.IOSCodeGenOptions.*
 
 class IOSCodeGenerator extends CodeGenerator { 
 
@@ -37,14 +38,14 @@ class IOSCodeGenerator extends CodeGenerator {
     if (nextView != null && nextView != '' && nextView[0] != '#') { 
 	  String nextViewControllerName = getViewControllerName(toViewName(nextView))
 	  //classModel.addImport(nextViewControllerName)
-
+	  String nextViewVarName = classModel.getIVarName(nextView)
 	  String setData = ''
 	  if (data) { 
 		//String value = valueToCode(data)
-		setData = "${nextView}.data = ${data};\n"
+		setData = "${nextViewVarName}.data = ${data};\n"
 	  }
-	  return """if (${nextView} == nil) ${nextView} = [[${nextViewControllerName} alloc] init];
-${setData}[${target}.navigationController pushViewController:${nextView} animated:YES];"""	
+	  return """if (${nextViewVarName} == nil) ${nextViewVarName} = [[${nextViewControllerName} alloc] init];
+${setData}[${target}.navigationController pushViewController:${nextViewVarName} animated:YES];"""	
 	} else if (nextView == '#Previous') {  
 	  return "[${target}.navigationController popViewControllerAnimated:YES];"
 	} else if (nextView == '#Top') {
@@ -64,18 +65,18 @@ ${setData}[${target}.navigationController pushViewController:${nextView} animate
     if (nextView != null && nextView != '' && nextView[0] != '#') { 
 	  String nextViewControllerName = getViewControllerName(toViewName(nextView))
 	  classModel.addImport(nextViewControllerName)
-
+	  String nextViewVarName = classModel.getIVarName(nextView)
 	  String setStyle = ''
 	  String setData = ''
 	  if (style) { 
-		setStyle = "\n${nextView}.modalTransitionStyle = ${style.toIOSString()};"
+		setStyle = "\n${nextViewVarName}.modalTransitionStyle = ${style.toIOSString()};"
 	  }
 	  if (data) { 
 		//String value = valueToCode(data)
-		setData = "\n${nextView}.data = ${data};"
+		setData = "\n${nextViewVarName}.data = ${data};"
 	  }
-	  return """if (${nextView} == nil) ${nextView} = [[${nextViewControllerName} alloc] init];${setStyle}${setData}
-[${target} presentViewController:${nextView} animated:${ani} completion: NULL];"""
+	  return """if (${nextViewVarName} == nil) ${nextViewVarName} = [[${nextViewControllerName} alloc] init];${setStyle}${setData}
+[${target} presentViewController:${nextViewVarName} animated:${ani} completion: NULL];"""
 	} else if (nextView == '#Previous') {  
 	  return "[${target} dismissViewControllerAnimated:${ani} completion:NULL];"
 	} else if (nextView == '#Top') {
@@ -95,6 +96,10 @@ while (top.presentingViewController != nil) top = top.presentingViewController;
 	} else { 
 	  null
 	} 
+  }
+
+  public String getWidgetIVarName(String name) { 
+	GENERATE_PROPERTY_SYNTHESIZER ? name : '_' + name  
   }
 
 }

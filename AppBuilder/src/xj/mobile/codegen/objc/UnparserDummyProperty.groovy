@@ -7,6 +7,8 @@ import xj.mobile.lang.ast.*
 
 import xj.translate.common.Unparser
 
+import static xj.mobile.codegen.IOSCodeGenOptions.*
+
 import static org.codehaus.groovy.ast.ClassHelper.*
 import static xj.translate.typeinf.TypeUtil.* 
 
@@ -31,11 +33,11 @@ class UnparserDummyProperty {
 		value = "[NSNumber numberWith${tname}: ${value}]"
 	  }
     }
-	return "[data setObject:${value} forKey:k${exp.attribute.capitalize()}Key]"
+	return "[${LISTVIEW_LOCAL_DATA_VAR} setObject:${value} forKey:k${exp.attribute.capitalize()}Key]"
   }
 
   String unparseGetDummyProperty(GetDummyPropertyExpression exp) { 
-	def value = "[data objectForKey:k${exp.attribute.capitalize()}Key]"
+	def value = "[${LISTVIEW_LOCAL_DATA_VAR} objectForKey:k${exp.attribute.capitalize()}Key]"
 	def type = exp.attributeType
 	if (isNumericalType(type)) { 
 	  type = wrapSafely(type)

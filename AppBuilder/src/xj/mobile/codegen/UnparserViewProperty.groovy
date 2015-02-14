@@ -30,8 +30,9 @@ class UnparserViewProperty {
     }
 	String prefix = ''
 	if (exp.owner && target == 'ios') 
-	  prefix = exp.owner + '.'
-	unparseSetViewProperty(target, exp.viewType, exp.platformViewType, 
+	  //prefix = exp.owner + '.'
+	  prefix = vp.getIVarName(exp.owner) + '.'
+	unparseSetViewProperty(vp, target, exp.viewType, exp.platformViewType, 
 						   exp.viewName, exp.attribute, value, 			   
 						   prefix, valueExpUnparsed)
   }
@@ -40,12 +41,14 @@ class UnparserViewProperty {
     def index = exp.indexExpression ? expression(exp.indexExpression) : null
 	String prefix = ''
 	if (exp.owner && target == 'ios') 
-	  prefix = exp.owner + '.'
-	unparseGetViewProperty(target, exp.viewType, exp.platformViewType, 
+	  //prefix = exp.owner + '.'
+	  prefix = vp.getIVarName(exp.owner) + '.'
+	unparseGetViewProperty(vp, target, exp.viewType, exp.platformViewType, 
 						   exp.viewName, exp.attribute, index, prefix)
   } 
 
-  static String unparseSetViewProperty(String target, 
+  static String unparseSetViewProperty(ViewProcessor vp,
+									   String target, 
 									   String viewType, 
 									   String platformViewType, 
 									   String viewName, 
@@ -53,10 +56,10 @@ class UnparserViewProperty {
 									   value, 
 									   String prefix = null, 
 									   boolean valueUnparsed = true) { 
-	def generator = CodeGenerator.getCodeGenerator(target)
-    if (generator) { 
-	  def code = generator.generateSetAttributeCode(viewType, platformViewType, viewName, attribute, value, 
-													null, prefix, valueUnparsed)	  
+	//def generator = CodeGenerator.getCodeGenerator(target)
+    if (vp.generator) { 
+	  def code = vp.generator.generateSetAttributeCode(vp, viewType, platformViewType, viewName, attribute, value, 
+													   null, prefix, valueUnparsed)	  
 	  if (code) { 
 		return code[1]
 	  }
@@ -65,16 +68,17 @@ class UnparserViewProperty {
     return "${viewName}.${attribute} = ${value}"
   }
 
-  static String unparseGetViewProperty(String target, 
+  static String unparseGetViewProperty(ViewProcessor vp,
+									   String target, 
 									   String viewType, 
 									   String platformViewType, 
 									   String viewName, 
 									   String attribute, 
 									   index,
 									   String prefix = null) {
-	def generator = CodeGenerator.getCodeGenerator(target)
-    if (generator) { 
-	  def code = generator.generateGetAttributeCode(viewType, platformViewType, viewName, attribute, index, prefix)
+	//def generator = CodeGenerator.getCodeGenerator(target)
+    if (vp.generator) { 
+	  def code = vp.generator.generateGetAttributeCode(vp, viewType, platformViewType, viewName, attribute, index, prefix)
 	  if (code) { 
 		return code
 	  }

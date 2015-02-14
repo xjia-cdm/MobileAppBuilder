@@ -32,8 +32,10 @@ class ClassModel {
   List<String> systemImports = []
   List<String> imports = []
 
-  List<String> systemImageFiles = []
-  List<String> imageFiles = []
+  //List<String> systemImageFiles = []
+  //List<String> imageFiles = []
+  Set<String> systemImageFiles = [] as Set
+  Set<String> imageFiles = [] as Set
 
   String declarationScrap = ''
   String methodScrap = ''
@@ -66,6 +68,10 @@ class ClassModel {
     if (header) {
 	  imports << header
     }
+  }
+
+  public String getIVarName(String name) { 
+	name
   }
 
   //

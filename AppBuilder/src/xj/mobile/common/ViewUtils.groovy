@@ -76,6 +76,14 @@ class ViewUtils {
     return null
   }
 
+  static String getActionName(String widgetType, String name) {
+	if (widgetType && name) { 
+	  if (name[0] != '_') name = '_' + name
+	  return getActionName(widgetType) + name
+	}
+    return null 
+  }
+
   static boolean hasWidgetTypes(ModelNode widget, wtypes) { 
     if (widget instanceof Widget) { 
       if (widget instanceof View) { 
@@ -215,13 +223,13 @@ class ViewUtils {
 		  data instanceof GString) {  
 		type = STRING_TYPE
 	  } else if (data instanceof List) { 
-		//type = LIST_TYPE
-		type = []
-		data.each { v -> type << typeOf(v) }
+		type = LIST_TYPE
+		//type = []
+		//data.each { v -> type << typeOf(v) }
 	  } else if (data instanceof Map) { 
-		//type = MAP_TYPE
-		type = [:]
-		data.each { k, v -> type[k] = typeOf(v) }
+		type = MAP_TYPE
+		//type = [:]
+		//data.each { k, v -> type[k] = typeOf(v) }
 	  } else { 
 		type = OBJECT_TYPE
 	  }

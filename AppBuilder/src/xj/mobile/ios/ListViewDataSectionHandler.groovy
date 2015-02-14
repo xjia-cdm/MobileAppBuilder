@@ -11,13 +11,14 @@ import xj.mobile.common.ViewProcessor
 import static xj.mobile.ios.IOSAppGenerator.*
 import static xj.mobile.util.CommonUtils.*
 import static xj.mobile.codegen.IOSUtils.*
+import static xj.mobile.codegen.IOSCodeGenOptions.*
 
 import static xj.translate.Logger.info 
 
 import xj.translate.common.ModuleProcessor
 
 class ListViewDataSectionHandler 
-extends xj.mobile.common.ListViewDataSectionHandler { 
+extends xj.mobile.common.ListViewDataSectionHandler {
 
   @groovy.lang.Delegate
   ListViewProcessor lvp
@@ -148,20 +149,20 @@ ${dictionary} nil]"""
   def getDataScrap() { 
 	if (view.choiceMode == 'Multiple') { 
 	  """NSArray *sec = (NSArray *) [${dataVarName} objectAtIndex:indexPath.section];    
-NSMutableDictionary* data = (NSMutableDictionary *) [sec objectAtIndex:indexPath.row];"""
+NSMutableDictionary *${LISTVIEW_LOCAL_DATA_VAR} = (NSMutableDictionary *) [sec objectAtIndex:indexPath.row];"""
 	} else {
-	  "NSArray *data = (NSArray *) [${dataVarName} objectAtIndex:indexPath.section];"
+	  "NSArray *${LISTVIEW_LOCAL_DATA_VAR} = (NSArray *) [${dataVarName} objectAtIndex:indexPath.section];"
 	}
   }
 
   def getCellTextScrap() { 
 	if (view.choiceMode == 'Multiple') { 
-	  '[data objectForKey:kTextKey]'
+	  "[${LISTVIEW_LOCAL_DATA_VAR} objectForKey:kTextKey]"
 	} else { 
 	  if (dataMode == ListSectionDataMode.Text) { 
-		'[data objectAtIndex:indexPath.row]'
+		"[${LISTVIEW_LOCAL_DATA_VAR} objectAtIndex:indexPath.row]"
 	  } else {  
-		'[[data objectAtIndex:indexPath.row] objectAtIndex:0]'
+		"[[${LISTVIEW_LOCAL_DATA_VAR} objectAtIndex:indexPath.row] objectAtIndex:0]"
 	  }
 	}
   }
@@ -169,9 +170,9 @@ NSMutableDictionary* data = (NSMutableDictionary *) [sec objectAtIndex:indexPath
   def getCellDetailTextScrap() { 
 	if (dataMode == ListSectionDataMode.Tuple) { 
 	  if (view.choiceMode == 'Multiple') { 
-		'[data objectForKey:kDetailKey]'
+		"[${LISTVIEW_LOCAL_DATA_VAR} objectForKey:kDetailKey]"
 	  } else { 
-		"[[data objectAtIndex:indexPath.row] objectAtIndex:${colDetailText}]"
+		"[[${LISTVIEW_LOCAL_DATA_VAR} objectAtIndex:indexPath.row] objectAtIndex:${colDetailText}]"
 	  }
 	} else { 
 	  ''
@@ -181,9 +182,9 @@ NSMutableDictionary* data = (NSMutableDictionary *) [sec objectAtIndex:indexPath
   def getCellImageScrap() { 
 	if (dataMode == ListSectionDataMode.Tuple && hasImage) { 
 	  if (view.choiceMode == 'Multiple') { 
-		'[data objectForKey:kImageKey]'
+		"[${LISTVIEW_LOCAL_DATA_VAR} objectForKey:kImageKey]"
 	  } else { 
-		"[[data objectAtIndex:indexPath.row] objectAtIndex:${colImage}]"
+		"[[${LISTVIEW_LOCAL_DATA_VAR} objectAtIndex:indexPath.row] objectAtIndex:${colImage}]"
 	  }
 	} else { 
 	  ''
@@ -191,7 +192,7 @@ NSMutableDictionary* data = (NSMutableDictionary *) [sec objectAtIndex:indexPath
   }
 
   def getCellState() { 
-	'[data objectForKey:kStateKey]'
+	"[${LISTVIEW_LOCAL_DATA_VAR} objectForKey:kStateKey]"
   }
 
   def getCellAccessoryScrap() { 
@@ -199,7 +200,7 @@ NSMutableDictionary* data = (NSMutableDictionary *) [sec objectAtIndex:indexPath
 	  "([${cellState} boolValue] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone)"
 	} else if (dataMode == ListSectionDataMode.Tuple &&
 			   hasAccessory) { 
-	  "[(NSNumber *) [[data objectAtIndex:indexPath.row] objectAtIndex:${colAccessory}] intValue]"
+	  "[(NSNumber *) [[${LISTVIEW_LOCAL_DATA_VAR} objectAtIndex:indexPath.row] objectAtIndex:${colAccessory}] intValue]"
 	} else { 
 	  null
 	}
@@ -236,11 +237,11 @@ cell.accessoryType = UITableViewCellAccessoryCheckmark;
 self.lastSelected = indexPath;'''
 
   static choiceTemplate = '''NSArray *sec = (NSArray *) [${DataVar} objectAtIndex:indexPath.section];
-NSMutableDictionary* data = (NSMutableDictionary *) [sec objectAtIndex:indexPath.row];
-Boolean checked = [[data objectForKey:${StateKey}] boolValue];
+NSMutableDictionary* ''' + LISTVIEW_LOCAL_DATA_VAR + ''' = (NSMutableDictionary *) [sec objectAtIndex:indexPath.row];
+Boolean checked = [[''' + LISTVIEW_LOCAL_DATA_VAR + ''' objectForKey:${StateKey}] boolValue];
 
 UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-[data setObject:[NSNumber numberWithInteger: !checked] forKey:${StateKey}];
+[''' + LISTVIEW_LOCAL_DATA_VAR + ''' setObject:[NSNumber numberWithInteger: !checked] forKey:${StateKey}];
 if (checked) {
     cell.accessoryType = UITableViewCellAccessoryNone;
     [cell setSelected:FALSE animated:TRUE];

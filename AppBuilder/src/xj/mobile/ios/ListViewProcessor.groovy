@@ -42,9 +42,13 @@ class ListViewProcessor extends DefaultViewProcessor {
 	  currentViewProcessor = this
 
       // common processing 
-      processListView()   // ListViewCategory
-      initializeTopView() // DefaultViewProcessor
-	  processAttributes() // ViewProcessor
+      processListView()         // ListViewCategory
+      initializeTopView()       // DefaultViewProcessor
+	  handleLocalDeclarations() // ViewProcessor
+	  handleSpecialLocalDeclarations() // ViewProcessor
+	  processSubviewDeclarations(view) // ViewProcessor 
+
+	  processAttributes()       // ViewProcessor
 
       if (hasDetailText || hasImage || hasAccessory) { 
 		dataMode = ListSectionDataMode.Tuple 

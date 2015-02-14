@@ -252,7 +252,8 @@ class CodeGenerator {
 							VariableScope scope = null) { 
 	actionHandler.setContext(vp)
 	def w = vp.getWidget(wname)
-	actionHandler.generateUpdateCode(src, w ?: vp.view, wname, attribute, scope)
+	actionHandler.generateUpdateCode(src, w ?: vp.view, wname, 
+									 attribute, scope)
 									 
   }
 
@@ -361,7 +362,7 @@ class CodeGenerator {
 		  //temp = setterTemp(widgetName, value)
 		  temp = setterTemp(name, value)
 		} else { 
-		  def binding = [ name : name,
+		  def binding = [ name : getWidgetIVarName(name), //name,
 						  value : value.toString() ]
 		  temp = engine.createTemplate(setterTemp).make(binding)
 		}
@@ -374,7 +375,8 @@ class CodeGenerator {
   // look up common attributes first, then native properties 
   // if default value is provided use widget template to generate code. 
   // default value is in native syntax  
-  def generateSetAttributeCode(String widgetType, 
+  def generateSetAttributeCode(xj.mobile.common.ViewProcessor vp,
+							   String widgetType, 
 							   String platformType, 
 							   String widgetName, 
 							   String attrName, 
@@ -394,8 +396,12 @@ class CodeGenerator {
  
 		String value = valueUnparsed ? attrValue : attributeHandler.getAttributeValue(attrName, attrValue, attrDef?.type)
 		if (value == null) value = defaultValue
-		String name = (prefix ?: '') + widgetName
-		def binding = [ name : name,
+		String name 
+		if (prefix)
+		  name = prefix + widgetName
+		else 
+		  name = vp.getIVarName(widgetName)
+		def binding = [ name : name,  //getWidgetIVarName(name), 
 						attribute : attrName,
 						value : value 
 					  ] + UnparserUtil.baseBinding
@@ -409,7 +415,8 @@ class CodeGenerator {
 	return null
   }
 
-  def generateSetCompoundAttributeCode(String widgetType,
+  def generateSetCompoundAttributeCode(xj.mobile.common.ViewProcessor vp,
+									   String widgetType,
 									   String platformType,  
 									   String widgetName, 
 									   List attrs, 
@@ -418,7 +425,7 @@ class CodeGenerator {
 	def setAttr = getAttributeSetterTemplate(widgetType, platformType, attrs.join('_'))
 	if (setAttr) { 
 	  String name = (prefix ?: '') + widgetName
-	  def binding = [ name : name ]
+	  def binding = [ name : vp.getIVarName(name) ]  // getWidgetIVarName(name) ] 
 	  attrs.eachWithIndex { attr, i -> binding[attr] = attributeHandler.getAttributeValue(attr, values[i]) }
 	  def temp = engine.createTemplate(setAttr).make(binding)
 	  return [ attrs, "${temp}"]
@@ -436,13 +443,14 @@ class CodeGenerator {
 	def prop = attributeHandler.apiResolver.findPropertyDef(nativeWidgetClass, attrName, false)
 	if (prop) { 
 	  String name = (prefix ?: '') + widgetName
-	  def binding = [ name : name ]
+	  def binding = [ name : getWidgetIVarName(name) ] 
 	  return engine.createTemplate(prop.getterTemplate).make(binding).toString()
 	}
 	return null
   }
 
-  String generateGetAttributeCode(String widgetType,
+  String generateGetAttributeCode(xj.mobile.common.ViewProcessor vp,
+								  String widgetType,
 								  String platformType, 
 								  String widgetName, 
 								  String attrName, 
@@ -455,8 +463,12 @@ class CodeGenerator {
 	if (attrDef && !attrDef.native) { 
 	  def getAttr = getAttributeGetterTemplate(platformType, attrName, index != null)
 	  if (getAttr) { 
-		String name = (prefix ?: '') + widgetName
-		def binding = [ name : name,
+		String name 
+		if (prefix)
+		  name = prefix + widgetName
+		else 
+		  name = vp.getIVarName(widgetName)
+		def binding = [ name : name,  //getWidgetIVarName(name), 
 						attribute : attrName,
 						index : index ?: '' 
 					  ] + UnparserUtil.baseBinding
@@ -471,6 +483,10 @@ class CodeGenerator {
 
   String typeName(ClassNode type, boolean mapType = true) { 
 	unparser.typeName(type)
+  }
+
+  public String getWidgetIVarName(String name) { 
+	name  
   }
 
   //

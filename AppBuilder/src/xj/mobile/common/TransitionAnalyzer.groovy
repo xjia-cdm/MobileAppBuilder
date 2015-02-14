@@ -59,8 +59,11 @@ class TransitionAnalyzer extends Analyzer {
 	  Widget nextView = app.getChild(next, true)
 	  if (nextView && (Language.isPopup(nextView.nodeType) ||
 					   Language.isTopView(nextView.nodeType))) { 
-		if (getDataVarTypeForWidget(nextView)) { 
-		  if (getDataVarTypeForWidget(nextView) != type) setDataVarTypeForWidget(nextView, OBJECT_TYPE)
+		def nextType = getDataVarTypeForWidget(nextView)
+		if (nextType) { 
+		  if (nextType != type) { 
+			setDataVarTypeForWidget(nextView, OBJECT_TYPE)
+		  }
 		} else { 
 		  setDataVarTypeForWidget(nextView, type)
 		}

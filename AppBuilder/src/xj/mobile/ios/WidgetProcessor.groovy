@@ -27,6 +27,25 @@ class WidgetProcessor extends xj.mobile.common.WidgetProcessor {
 	generator = CodeGenerator.getCodeGenerator('ios')
   }
 
+  void declareWidget(Widget widget) { 
+    String name = getWidgetName(widget)
+	String widgetType = widget.widgetType
+
+	def classModel = vp.classModel
+    def wtemp = getWidgetTemplate(widget)
+
+    if (wtemp && wtemp.uiclass) { 
+	  def uiclass = wtemp.uiclass
+	  if (wtemp.uiclass instanceof Closure) { 
+		uiclass = wtemp.uiclass(widget)
+	  }
+
+	  info "[WidgetProcessor] declareWidget ${name} template uiclass ${uiclass}"
+
+	  classModel.declareProperty(uiclass, name)
+	}
+  }
+
   void process(Widget widget) { 
     String name = getWidgetName(widget)
 	String widgetType = widget.widgetType
@@ -44,7 +63,10 @@ class WidgetProcessor extends xj.mobile.common.WidgetProcessor {
 
 	  info "[WidgetProcessor] process ${name} template uiclass ${uiclass}"
 
-      def binding = [ name: name,
+	  //classModel.declareProperty(uiclass, name)
+	  String ivarName = vp.getIVarName(name)
+
+      def binding = [ name: ivarName,
 					  widgetType: widgetType,
 					  uiclass: uiclass, 
 					  frame: widget._frame ? widget._frame[0..3].join(', ') : '0, 0, 0, 0' ]
@@ -77,14 +99,13 @@ class WidgetProcessor extends xj.mobile.common.WidgetProcessor {
 		  generator.injectCodeFromTemplateRef(classModel, "${platformName}:setFrame", binding)
 	  }
 
-	  handleAttributes(widget, wtemp, classModel, excludeAttrs) 
+	  handleAttributes(widget, wtemp, classModel, excludeAttrs, vp.autoLayout as boolean) 
 
 	  if (wtemp.images) { 
 		classModel.systemImageFiles.addAll(wtemp.images)
 	  }
 
 	  generator.injectCodeFromTemplateRef(classModel, "${platformName}:addSubview", binding)
-	  classModel.declareProperty(binding.uiclass, binding.name)
 
 	  if (vp.autoLayout) { 
 		widget['#layout']?.each { c -> 
@@ -98,7 +119,7 @@ class WidgetProcessor extends xj.mobile.common.WidgetProcessor {
 			generator.injectCodeFromTemplateRef(classModel, "${platformName}:autoLayout", 
 												binding + param)
 		  }
-		  classModel.injectCode(LoadView, ' ') // add a blamk line
+		  classModel.injectCode(LoadView, ' ') // add a blank line
 		}
 	  } 
 
@@ -129,20 +150,21 @@ class WidgetProcessor extends xj.mobile.common.WidgetProcessor {
     }
   }
 
-  static toLayoutParam(constraints, binding, boolean eq = true) { 
+  def toLayoutParam(constraints, binding, boolean eq = true) { 
 	if (constraints[1] instanceof List) { 
 	  return constraints[1].collect { w -> toLayoutParam([constraints[0], w, constraints[2]], binding, false)}
 	} else { 
 	  def param = [
 		parent: 'self.view',
 		item1: binding.name,
-		item2: constraints[1] ?: 'self.view',
+		item2: (constraints[1] ? vp.getIVarName(constraints[1]) : 'self.view'),
 		attribute1: 'NSLayoutAttributeTop', 
 		attribute2: 'NSLayoutAttributeTop', 
 		relation: 'NSLayoutRelationEqual',
 		multiplier: '1.0',
 		constant: constraints[2] ?: 0
 	  ]
+
 	  switch (constraints[0]) { 
 	  case 'top': 
 		param.attribute1 = 'NSLayoutAttributeTop'
@@ -179,20 +201,27 @@ class WidgetProcessor extends xj.mobile.common.WidgetProcessor {
 	}
   }
 
-  void handleAttributes(widget, wtemp, classModel, excludeAttrs = null) { 
+  void handleAttributes(widget, wtemp, classModel, excludeAttrs = null, boolean autoLayout = false) { 
 	String name = getWidgetName(widget)
 	def defaultAttrCode = []
 	def defaultAttributes = [:]
-	if (wtemp.defaultAttributes) { 
-	  defaultAttributes = wtemp.defaultAttributes
+	def defaultTemp 
+	if (autoLayout && wtemp.defaultAttributesAutoLayout) {
+	  defaultTemp = wtemp.defaultAttributesAutoLayout
+	} else {  
+	  defaultTemp = wtemp.defaultAttributes
+	}
+	if (defaultTemp) { 
+	  defaultAttributes = defaultTemp
 	  if (defaultAttributes instanceof Closure) { 
 		defaultAttributes = defaultAttributes(widget)
 	  }
 
 	  defaultAttributes.each { attr, value -> 
-		def code = generator.generateSetAttributeCode(widget.widgetType, 
+		def code = generator.generateSetAttributeCode(vp, widget.widgetType, 
 													  widget.getPlatformWidgetName(vp.platform),
-													  name, attr, widget[attr], value)
+													  name, 
+													  attr, widget[attr], value)
 		if (code != null) { 
 		  defaultAttrCode << [ code[0], "${code[1]};" ]
 		}			  
@@ -243,7 +272,10 @@ class WidgetProcessor extends xj.mobile.common.WidgetProcessor {
       }
     }
 
-	vp.classModel.injectActionCode(widget.nodeType, getWidgetName(widget), wtemp, actionCode) 
+    //String name = getWidgetName(widget)
+	//String ivarName = vp.getIVarName(name)
+	vp.classModel.injectActionCode(widget.nodeType, getWidgetName(widget), //ivarName, 
+								   wtemp, actionCode) 
   }
 
 }

@@ -78,7 +78,7 @@ class NavigationViewProcessor extends TabbedViewProcessor {
   }
 
   def initializeView() { 
-	def binding = [ viewname: topViews[0] ]
+	def binding = [ viewname: getIVarName(topViews[0]) ]
 	generator.injectCodeFromTemplateRef(classModel, "NavView:init", binding)
 
   }

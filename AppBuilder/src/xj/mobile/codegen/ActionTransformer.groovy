@@ -43,8 +43,7 @@ class ActionTransformer extends ClassCodeExpressionTransformer {
 		  !(exp.name in viewProcessor.widgetTable.keySet()) && 
 		  decl == null && 
 		  !isParam(exp.name)) { 
-		if (findCommonAttributeDef(widget.nodeType, exp.name) ||
-			viewProcessor.generator.attributeHandler.apiResolver.hasPropertyDef(widget.nodeType, exp.name)) { 
+		if (viewProcessor.hasAttributeForWidget(widget, exp.name)) { 
 		  if (transformResults && needTransformGetViewProperty(widget.id, exp.name)) { 
 			// consider an attribute of the current widget
 			def gvpExp = new GetViewPropertyExpression(viewProcessor.view.id, 

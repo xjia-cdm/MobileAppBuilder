@@ -18,7 +18,7 @@ class IOSWidgetTemplates extends WidgetTemplates {
 
   ////// Widget Templates  
 
-  def CommonWidgetTemplate = [
+  def commonWidgetTemplate = [
 	autoCreate: '${name} = [[${uiclass} alloc] init];',
 	autoResize: '[${name} setTranslatesAutoresizingMaskIntoConstraints:NO];',
 
@@ -86,6 +86,10 @@ ${indent(actionBody)}
 			//'contentMode': 'UIViewContentModeScaleAspectFit',
 			'clipsToBounds': 'YES' ] 
 	  },
+
+      defaultAttributesAutoLayout: [ 'contentMode': 'UIViewContentModeScaleAspectFit',
+									 'clipsToBounds': 'YES' 
+								   ],
 
 	  initWithAttributes: [ 'file' ],
 

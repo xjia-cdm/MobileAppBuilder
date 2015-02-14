@@ -175,8 +175,7 @@ class AppBuilder {
     // insert the root navigation view when necessary 
     if (app.mainView.widgetType != 'NavigationView') { 
 	  if (app.views.size() > 1 && app.views.every { it.widgetType != 'NavigationView' } && app.navigationBar || 
-		  app.mainView.widgetType == 'ListView' ||
-		  app.mainView.widgetType == 'ExpandableListView') { 
+		  app.views.any { it.widgetType == 'ListView' || it.widgetType == 'ExpandableListView' }) { 
 		def top = new View()
 		top.'#type' = 'NavigationView' 
 		top.id = Preprocessor.getID('top')

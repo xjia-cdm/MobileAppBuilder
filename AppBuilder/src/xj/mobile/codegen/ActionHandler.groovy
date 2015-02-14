@@ -57,14 +57,18 @@ class ActionHandler {
   String generateActionCode(Map srcInfo, ModelNode widget) { 
     String actionCode = null
 	def unparser = viewProcessor.generator.unparser
+	unparser.vp = viewProcessor 
 	unparser.classModel = classModel
 
     def src = srcInfo?.code
     if (src instanceof ClosureExpression && viewProcessor) { 
 
 	  if (srcInfo.param) { 
-		viewProcessor.typeInfo.parameterMap = srcInfo.param
+		viewProcessor.typeInfo.parameterMap = srcInfo.param		
+		unparser.params = srcInfo.param
 	  }
+	  info '[ActionHandler] srcInfo.param: ' + srcInfo.param?.getClass()
+	  info '[ActionHandler] srcInfo.param: ' + srcInfo.param 
 
       info '[ActionHandler] Action code pre-transform:\n' + print(src, 2)
       def writer = new StringWriter()
@@ -98,6 +102,7 @@ class ActionHandler {
       }
 
 	  viewProcessor.typeInfo.parameterMap = null
+	  unparser.params = null
     }
 
 	def updates = srcInfo?.updates
@@ -124,7 +129,8 @@ class ActionHandler {
 		if (w) { 
 		  def updateSrc = w["${u[1]}.src"]?.code
 		  if (updateSrc) { 
-			def ucode = generateUpdateCode(updateSrc, w, u[0], u[1], scope)
+			def ucode = generateUpdateCode(updateSrc, w, u[0], 
+										   u[1], scope)
 										   
 			if (updateCode) { 
 			  updateCode += "\n${ucode}"
@@ -140,10 +146,16 @@ class ActionHandler {
 
   // src is an update Expression
   String generateUpdateCode(Expression src, ModelNode widget, 
-							String wname, String attribute, VariableScope scope = null) { 
+							String wname, String attribute, 
+							VariableScope scope = null) { 
 	if (src) { 
+	  info "[ActionHandler] unparseUpdateCode() enter ${wname}.${attribute} = ${src}"
+
 	  def unparser = viewProcessor.generator.unparser
 	  unparser.classModel = classModel
+	  unparser.vp = viewProcessor 
+
+	  info "[ActionHandler] unparseUpdateCode() vp: ${unparser.vp?.viewName} class: ${unparser.classModel?.name} params: ${unparser.params?.keySet()}"
 
 	  def updateExp = xj.translate.ASTUtil.copyExpression(src, scope) 
 	  def exp = new SetViewPropertyExpression(viewProcessor.view.id, wname, attribute, updateExp)	  
@@ -160,6 +172,8 @@ class ActionHandler {
 	  info "[ActionHandler] update code ${stmt}"
 	  def ucode = unparser.unparse(transformedUpdate)
 	  info "[ActionHandler] update code unparsed: ${ucode}"
+
+	  info "[ActionHandler] unparseUpdateCode() leave ${src}"
 	  return ucode
 	}		
 	return null
@@ -174,6 +188,7 @@ class ActionHandler {
 
 	  def unparser = viewProcessor.generator.unparser
 	  unparser.classModel = classModel
+	  unparser.vp = viewProcessor 
 	  viewProcessor.typeInfo.parameterMap = params
 
 	  def updateExp = xj.translate.ASTUtil.copyExpression(src, scope) 		
@@ -200,6 +215,7 @@ class ActionHandler {
 
 	  def unparser = viewProcessor.generator.unparser
 	  unparser.classModel = classModel
+	  unparser.vp = viewProcessor 
 	  viewProcessor.typeInfo.parameterMap = params
 
 	  def updateExp = xj.translate.ASTUtil.copyExpression(src, scope) 		

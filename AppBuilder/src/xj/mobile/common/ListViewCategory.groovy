@@ -15,9 +15,12 @@ class ListViewCategory {
   //    no mix of section/item allowed
 
   // Assume the following declaration
-  // def sections          = []  // list of widgets (Section) 
-  // def sectionTitles     = []
-  // def sectionItems      = [] // list of setions -> list of items, each item is an Item
+
+  // def sections        = []  // list of widgets (Section) 
+  // def sectionTitles   = []  // list of strings 
+  // def sectionItems    = []  // list of list of items, each item is a Cell
+  // def sectionEntities = []  // list of entities for each section, null if the section is static 
+
   // boolean hasNextView   = false
   // boolean hasMenu       = false
   // boolean hasSelection  = false
@@ -34,12 +37,14 @@ class ListViewCategory {
   void handleNextView(next) {
 	if (next) { 
 	  if (next instanceof Map) { 
-		nextViews << next.to?.toString()
+		//nextViews << next.to?.toString()
+		declareNextView(next.to?.toString())
 		if (next.data != null) { 
 		  hasData = true
 		}
 	  } else {  
-		nextViews << next?.toString()
+		//nextViews << next?.toString()
+		declareNextView(next?.toString())
 	  }
 	}
   }

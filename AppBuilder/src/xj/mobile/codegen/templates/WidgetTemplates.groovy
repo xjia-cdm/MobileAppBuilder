@@ -40,7 +40,7 @@ class WidgetTemplates {
     if (wtemp && wtemp[name]) { 
       return wtemp[name]
     } else { 
-      return CommonWidgetTemplate[name]
+      return commonWidgetTemplate[name]
     }
   }
 
@@ -53,10 +53,10 @@ class WidgetTemplates {
 		return wtemp['setAttribute']
       }
     }  
-    if (CommonWidgetTemplate["set_${attr}"]) { 
-      return CommonWidgetTemplate["set_${attr}"]
+    if (commonWidgetTemplate["set_${attr}"]) { 
+      return commonWidgetTemplate["set_${attr}"]
     } else {  
-      return CommonWidgetTemplate['setAttribute']
+      return commonWidgetTemplate['setAttribute']
     }
   }
 
@@ -69,10 +69,10 @@ class WidgetTemplates {
 		return wtemp['getAttribute']
       }
     }  
-    if (CommonWidgetTemplate["get_${attr}"]) { 
-      return CommonWidgetTemplate["get_${attr}"]
+    if (commonWidgetTemplate["get_${attr}"]) { 
+      return commonWidgetTemplate["get_${attr}"]
     } else {  
-      return CommonWidgetTemplate['getAttribute']
+      return commonWidgetTemplate['getAttribute']
     }
   }
 
@@ -84,10 +84,10 @@ class WidgetTemplates {
 		return wtemp['getIndexedAttribute']
       }
     }  
-    if (CommonWidgetTemplate["get_${attr}_indexed"]) { 
-      return CommonWidgetTemplate["get_${attr}_indexed"]
+    if (commonWidgetTemplate["get_${attr}_indexed"]) { 
+      return commonWidgetTemplate["get_${attr}_indexed"]
     } else {  
-      return CommonWidgetTemplate['getIndexedAttribute']
+      return commonWidgetTemplate['getIndexedAttribute']
     }
   }
 

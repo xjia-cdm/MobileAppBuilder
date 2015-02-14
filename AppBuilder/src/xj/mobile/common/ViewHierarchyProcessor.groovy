@@ -125,7 +125,7 @@ class ViewHierarchyProcessor {
   //
   void analyze(View view, Analyzer analyzer) { 
     info "[ViewHierarchyProcessor] analyze() ${view.id}"
-	if (Language.isTopView(view.widgetType)) {  
+	if (Language.isTopView(view.widgetType)) { 
       view.children.each { widget -> 
 		analyze(view, widget, analyzer)
       }
@@ -140,7 +140,8 @@ class ViewHierarchyProcessor {
 	  if (Language.isTopView(widget.widgetType)) {  
 		analyze(widget, analyzer)
 	  } else { 
-		if (Language.isContainer(widget.widgetType)) { 
+		if (Language.isContainer(widget.widgetType) ||
+			Language.isMenu(widget.widgetType)) { 
 		  widget.children.each { w -> 
 			analyze(view, w, analyzer)
 		  }   

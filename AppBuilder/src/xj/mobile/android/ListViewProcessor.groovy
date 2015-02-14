@@ -114,6 +114,11 @@ class ListViewProcessor extends DefaultViewProcessor {
 	  currentViewProcessor = this
 
       processListView()
+
+	  handleLocalDeclarations() // ViewProcessor
+	  handleSpecialLocalDeclarations() // ViewProcessor
+	  processSubviewDeclarations(view) // ViewProcessor 
+
 	  processAttributes() // ViewProcessor
 
 	  handleInheritedNextView()

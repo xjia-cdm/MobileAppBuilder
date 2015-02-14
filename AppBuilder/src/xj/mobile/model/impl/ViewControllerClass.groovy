@@ -174,7 +174,8 @@ ${indent(viewWillAppearScrap)}
     if (delegateAction || widgetType == 'Text') { 
       if (delegateAction && (actionCode || widgetType == 'Text')) { 
 		Delegate d = delegateActions[wtemp.delegate]
-		d.actions << [ name: widgetName, code: actionCode ]
+		d.actions << [ name: getIVarName(widgetName), 
+					   code: actionCode ]
 
 		// actionCode -> dismiss keyboard 
 		if (textFieldUpdateCode) { 
@@ -185,12 +186,13 @@ ${indent(viewWillAppearScrap)}
       }
     } else { 
       if (actionCode) { 		
-		def actionName = "${getActionName(widgetType)}_${widgetName}"
+		def actionName = getActionName(widgetType, widgetName)
 		def actionTemplate = getTemplate(wtemp, 'action')
 		def targetTemplate = getTemplate(wtemp, 'target')
 		def event = getTemplate(wtemp, 'actionEvent')
 		CodeGenerator generator = CodeGenerator.getCodeGenerator('ios')
-		generator.injectCode(this, widgetName, event, actionCode, actionName, 
+		generator.injectCode(this, getIVarName(widgetName), 
+							 event, actionCode, actionName, 
 							 actionTemplate, targetTemplate) 
       }
     }

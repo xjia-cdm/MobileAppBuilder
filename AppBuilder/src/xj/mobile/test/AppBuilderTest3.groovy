@@ -61,7 +61,10 @@ class AppBuilderTest3 extends AppBuilderTest {
 				 views: [ 'List1', 'View1', 'View2' ] ], 
     'app06cc': [ name: 'Detail List 4c', 
 				 views: [ 'NavigationView1', 'List1', 'View1', 'View2' ] ], 
-
+	'app06d':  [ name: 'List Data', 
+				 views: [ 'Top', 'All', 'GroupA', 'GroupB', 'View1', 'Detail' ] ],
+	'app06da': [ name: 'List Data 2', 
+				 views: [ 'Top', 'All', 'GroupA', 'GroupB', 'View1', 'Detail' ] ],
 
     'app07'  : [ name: 'Countries', 
 				 views: [ 'Top', 'List1' ] ], 
@@ -203,6 +206,13 @@ class AppBuilderTest3 extends AppBuilderTest {
     'app06cc': [ name: 'Detail List 4c',
 				 views: [ 'DetailList4c', 'List1', 'View2' ], 
 				 layouts: [ 'main', 'list_item_list1', 'view2'] ], 
+	'app06d':  [ name: 'List Data', 
+				 views: [ 'ListData', 'All', 'GroupA', 'GroupB', 'Detail' ], 
+				 layouts: [ 'main', 'list_item_all', 'list_item_group_a', 'list_item_group_b', 'detail'] ],
+	'app06da': [ name: 'List Data 2', 
+				 views: [ 'ListData2', 'All', 'GroupA', 'GroupB', 'Detail' ], 
+				 layouts: [ 'main', 'list_item_all', 'list_item_group_a', 'list_item_group_b', 'detail'] ],
+
 
     'app07'  : [ name: 'Countries', 
 				 views: [ 'Countries' ], 
@@ -512,6 +522,26 @@ class AppBuilderTest3 extends AppBuilderTest {
   @Test(timeout=80000L)
   public void test06cc_Android() {
     test_Android('app06cc')
+  }
+
+  @Test(timeout=80000L)
+  public void test06d_iOS() {
+    test_iOS('app06d')
+  }
+
+  @Test(timeout=80000L)
+  public void test06d_Android() {
+    test_Android('app06d')
+  }
+
+  @Test(timeout=80000L)
+  public void test06da_iOS() {
+    test_iOS('app06da')
+  }
+
+  @Test(timeout=80000L)
+  public void test06da_Android() {
+    test_Android('app06da')
   }
 
   @Test(timeout=80000L)

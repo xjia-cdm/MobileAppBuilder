@@ -17,7 +17,7 @@ class RadioButtonProcessor {
     String actionCode = ''
     def codeTemplate = null
     String name = getWidgetName(widget)
-    def binding = [ name :  name ]
+    def binding = [ name : vp.getIVarName(name) ]
     def rgroup = widget.parent
     if (rgroup?.widgetType == 'RadioGroup') { 
       binding['group'] = getWidgetName(rgroup)

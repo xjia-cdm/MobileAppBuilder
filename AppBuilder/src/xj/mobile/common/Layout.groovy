@@ -149,9 +149,12 @@ class Layout {
 			  if (wfill) { 
 				widget['#layout'] << constraints.right
 			  }
+			  /*
 			  if (hfill) { 
 				widget['#layout'] << constraints.bottom
 			  }
+			  */
+			  
 			}
 		  }
 
@@ -191,6 +194,14 @@ class Layout {
 		//topmost = false
 		info "[Layout] widget ${widget.nodeType} ${widget.id} #layout: ${widget['#layout']}" 
       }
+	  if (view.scroll && prev) { 
+		while (Language.isGroup(prev.widgetType)) { 
+		  prev = prev.children[0]
+		}
+		if (prev) { 
+		  prev['#layout'] << constraints.bottom
+		}
+	  }
     }
     return [vw - x, vh - y]
   }
@@ -370,9 +381,11 @@ class Layout {
 			  if (wfill) { 
 				widget['#layout'] << constraints.right
 			  }
+			  /*
 			  if (hfill) { 
 				widget['#layout'] << constraints.bottom
 			  }
+			  */
 			} 
 		  }
 

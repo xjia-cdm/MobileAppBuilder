@@ -12,6 +12,7 @@ import xj.mobile.builder.ListEntity
 import static xj.mobile.ios.IOSAppGenerator.*
 import static xj.mobile.util.CommonUtils.*
 import static xj.mobile.codegen.IOSUtils.*
+import static xj.mobile.codegen.IOSCodeGenOptions.*
 
 import static xj.translate.Logger.info 
 
@@ -113,8 +114,8 @@ return nil;"""
   def getRowsInSectionScrap() { 
     if (sectionItems) { 
        """if (section >= 0 && section < ${dataVarName}.count) {
-\tNSArray *data = (NSArray *) [${dataVarName} objectAtIndex:section];
-\treturn [data count];
+\tNSArray *${LISTVIEW_LOCAL_DATA_VAR} = (NSArray *) [${dataVarName} objectAtIndex:section];
+\treturn [${LISTVIEW_LOCAL_DATA_VAR} count];
 }
 return 0;"""
     } else { 

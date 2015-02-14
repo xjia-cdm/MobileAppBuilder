@@ -12,6 +12,8 @@ import xj.mobile.codegen.EntityUnparser
 import xj.mobile.codegen.UnparserViewProperty
 import xj.mobile.lang.ast.*
 import xj.mobile.common.AppInfo
+import xj.mobile.common.ViewProcessor
+
 
 @Mixin(xj.mobile.codegen.UnparserViewProperty)
 class UnparserAndroid extends UnparserJava { 
@@ -19,7 +21,9 @@ class UnparserAndroid extends UnparserJava {
   String target = 'android'
   
   AppInfo appInfo
+  ViewProcessor vp 
   ClassModel classModel
+  def params             // the parameters of the enclosing method 
 
   EntityUnparser entityUnparser 
 
