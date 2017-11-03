@@ -10,6 +10,6 @@ AXIOM is comprised of the following sub-projects.
 * WebService.
 
 # Release Notes
-## 2014-FEB-09  Alpha Release
+
 This is the initial alpha release of AXIOM. There are still som elements of it that need to be improved and optimized.
 
